@@ -6,6 +6,8 @@ import web1 from '../public/images/web1.png';
 import web2 from '../public/images/web2.png';
 import web3 from '../public/images/web3.png';
 import web4 from '../public/images/web4.png';
+import logoWhite from '../public/images/logo-white.svg';
+import logoBlack from '../public/images/logo-black.svg';
 import {useEffect, useState} from "react";
 
 function App() {
@@ -19,7 +21,7 @@ function App() {
             <main className={'bg-white px-10 md:px-20 lg:px-40 dark:bg-gray-900'}>
                 <section className={'min-h-screen'}>
                     <nav className={'py-5 md:pb-1 mb-2 flex justify-between dark:text-white'}>
-                        <img src={`public/images/${darkMode ? 'logo-white.svg' : 'logo-black.svg'}`} alt=""  className={'h-10'}/>
+                        <img src={darkMode ? logoWhite : logoBlack} alt=""  className={'h-10'}/>
                         <ul className={'flex items-center'}>
                             <li>
                                 <BsFillMoonStarsFill className={'cursor-pointer'} onClick={()=>setDarkMode(!darkMode)}/>
