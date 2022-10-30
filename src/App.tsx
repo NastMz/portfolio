@@ -7,6 +7,7 @@ import web2 from '../public/images/web2.png';
 import web3 from '../public/images/web3.png';
 import web4 from '../public/images/web4.png';
 import {useEffect, useState} from "react";
+import Logo from "./Logo";
 
 function App() {
 
@@ -18,10 +19,8 @@ function App() {
         <div className={`${darkMode ? 'dark' : ''}`}>
             <main className={'bg-white px-10 md:px-20 lg:px-40 dark:bg-gray-900'}>
                 <section className={'min-h-screen'}>
-                    <nav className={'py-5 mb-2 flex justify-between dark:text-white'}>
-                        <h1 className={'text-5xl font-misstral'}>
-                            KM
-                        </h1>
+                    <nav className={'py-5 md:pb-1 mb-2 flex justify-between dark:text-white'}>
+                        <Logo isDark={darkMode}/>
                         <ul className={'flex items-center'}>
                             <li>
                                 <BsFillMoonStarsFill className={'cursor-pointer'} onClick={()=>setDarkMode(!darkMode)}/>
@@ -34,7 +33,7 @@ function App() {
                             </li>
                         </ul>
                     </nav>
-                    <div className={'text-center p-10 py-10'}>
+                    <div className={'text-center p-10 py-10 md:py-1'}>
                         <h2 className={'text-5xl py-2 text-teal-600 font-medium md:text-6xl dark:text-white'}>
                             Kevin Martinez
                         </h2>
@@ -54,7 +53,7 @@ function App() {
                         <AiFillLinkedin/>
                     </div>
                     <div
-                        className={'mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 relative overflow-hidden md:h-96 md:w-96'}>
+                        className={'mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 relative overflow-hidden md:h-96 md:w-96 md:mb-10'}>
                         <img src={avatar} alt="" className={'object-cover'}/>
                     </div>
                 </section>
@@ -94,7 +93,7 @@ function App() {
                                 realidad.
                             </p>
                             <h4 className={'py-4 text-teal-600'}>Herramientas de desarrollo que uso</h4>
-                            <div className={'grid grid-cols-3'}>
+                            <div className={'grid grid-cols-3 md:grid-cols-2'}>
                                 <p className={'py-1 text-gray-800'}>React</p>
                                 <p className={'py-1 text-gray-800'}>Django</p>
                                 <p className={'py-1 text-gray-800'}>Spring</p>

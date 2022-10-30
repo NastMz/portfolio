@@ -6,11 +6,7 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        misstral: 'Misstral',
-      },
-    },
+    extend: {},
   },
   plugins: [],
 }
