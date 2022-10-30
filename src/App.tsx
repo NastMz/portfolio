@@ -7,7 +7,7 @@ import web2 from '../public/images/web2.png';
 import web3 from '../public/images/web3.png';
 import web4 from '../public/images/web4.png';
 import {useEffect, useState} from "react";
-import Logo from "./Logo";
+import Logo from "./components/Logo";
 
 function App() {
 
