@@ -6,8 +6,8 @@ import web1 from '../public/images/web1.png';
 import web2 from '../public/images/web2.png';
 import web3 from '../public/images/web3.png';
 import web4 from '../public/images/web4.png';
-import logoWhite from '../public/images/logo-white.svg';
-import logoBlack from '../public/images/logo-black.svg';
+import logoWhite from '../public/images/logo-white.png';
+import logoBlack from '../public/images/logo-black.png';
 import {useEffect, useState} from "react";
 
 function App() {
@@ -59,7 +59,7 @@ function App() {
                     </div>
                 </section>
 
-                <section id={'services'}>
+                <section id={'services'} className={'pt-20 pb-5 md:py-2'}>
                     <div>
                         <h3 className={'text-3xl py-1 dark:text-white'}>
                             Servicios que ofrezco
