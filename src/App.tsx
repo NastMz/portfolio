@@ -7,7 +7,6 @@ import web2 from '../public/images/web2.png';
 import web3 from '../public/images/web3.png';
 import web4 from '../public/images/web4.png';
 import {useEffect, useState} from "react";
-import Logo from "./components/Logo";
 
 function App() {
 
@@ -20,7 +19,7 @@ function App() {
             <main className={'bg-white px-10 md:px-20 lg:px-40 dark:bg-gray-900'}>
                 <section className={'min-h-screen'}>
                     <nav className={'py-5 md:pb-1 mb-2 flex justify-between dark:text-white'}>
-                        <Logo isDark={darkMode}/>
+                        <img src={`public/images/${darkMode ? 'logo-white.svg' : 'logo-black.svg'}`} alt=""  className={'h-10'}/>
                         <ul className={'flex items-center'}>
                             <li>
                                 <BsFillMoonStarsFill className={'cursor-pointer'} onClick={()=>setDarkMode(!darkMode)}/>
@@ -69,7 +68,7 @@ function App() {
                             className={'text-teal-500'}>personalizadas</span> para cualquier tipo de necesidad.
                         </p>
                         <p className={'text-md py-2 leading-8 text-gray-800 dark:text-gray-200'}>
-                            Ofresco una amplia gama de servicios de desarrollo, entre los cuales estan el desarrolo web
+                            Ofrezco una amplia gama de servicios de desarrollo, entre los cuales estan el desarrolo web
                             (Frontend y Backend), el desarrollo móvil y aplicaciones de escritorio.
                         </p>
                     </div>
@@ -123,7 +122,7 @@ function App() {
                         </h3>
                         <p className={'text-md py-2 leading-8 text-gray-800 dark:text-gray-200'}>
                             A continuación puedes ver algunos <span
-                            className={'text-teal-500'}>ejemplos</span>  de lo que podria llegar a ser tu próxima <span className={'text-teal-500'}>aplicación</span>.
+                            className={'text-teal-500'}>ejemplos</span>  de lo que podría llegar a ser tu próxima <span className={'text-teal-500'}>aplicación</span>.
                         </p>
                     </div>
                     <div className={'flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap'}>
