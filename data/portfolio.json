@@ -1,0 +1,93 @@
+{
+  "personalInfo": {
+    "name": "Alex Johnson",
+    "title": "Backend Developer",
+    "description": "Building scalable, high-performance server-side applications and APIs that power modern web experiences.",
+    "location": "San Francisco, CA",
+    "email": "alex.johnson@email.com",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "availability": "Available for hire"
+  },
+  "skills": [
+    {
+      "id": "1",
+      "name": "Node.js",
+      "category": "Languages & Runtime",
+      "experience": "5+ years",
+      "projects": "25+ projects",
+      "icon": "🟢"
+    },
+    {
+      "id": "2",
+      "name": "Python",
+      "category": "Languages & Runtime",
+      "experience": "4+ years",
+      "projects": "20+ projects",
+      "icon": "🐍"
+    },
+    {
+      "id": "3",
+      "name": "PostgreSQL",
+      "category": "Databases",
+      "experience": "5+ years",
+      "projects": "Production scale",
+      "icon": "🐘"
+    },
+    {
+      "id": "4",
+      "name": "MongoDB",
+      "category": "Databases",
+      "experience": "4+ years",
+      "projects": "High-volume apps",
+      "icon": "🍃"
+    },
+    {
+      "id": "5",
+      "name": "AWS",
+      "category": "Cloud & DevOps",
+      "experience": "4+ years",
+      "projects": "Multi-region deployments",
+      "icon": "☁️"
+    },
+    {
+      "id": "6",
+      "name": "Docker",
+      "category": "Cloud & DevOps",
+      "experience": "5+ years",
+      "projects": "Container orchestration",
+      "icon": "🐳"
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "title": "E-commerce API Platform",
+      "description": "Scalable microservices architecture handling 10M+ requests daily with real-time inventory management and payment processing.",
+      "tech": ["Node.js", "PostgreSQL", "Redis", "Docker", "AWS"],
+      "metrics": [
+        { "label": "Uptime", "value": "99.9%", "icon": "Shield" },
+        { "label": "Response Time", "value": "<200ms", "icon": "Zap" },
+        { "label": "Daily Users", "value": "500K+", "icon": "Users" }
+      ],
+      "github": "#",
+      "demo": "#",
+      "gradient": "from-blue-500 to-purple-600"
+    }
+  ],
+  "experience": [
+    {
+      "id": "1",
+      "title": "Senior Backend Engineer",
+      "company": "TechCorp Inc.",
+      "period": "2022 - Present",
+      "location": "San Francisco, CA",
+      "achievements": [
+        "Led migration to microservices architecture, reducing deployment time by 60%",
+        "Optimized database queries resulting in 40% performance improvement",
+        "Mentored 5 junior developers and established code review processes"
+      ],
+      "color": "border-l-blue-500"
+    }
+  ]
+}
