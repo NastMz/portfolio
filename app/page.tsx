@@ -79,7 +79,7 @@ export default function Portfolio() {
     <div className="min-h-screen bg-background transition-colors duration-300" id="top">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center">
+        <div className="container mx-auto flex h-16 items-center">
           <div className="mr-4 flex">
             <Link href="#top" className="mr-6 flex items-center space-x-2" aria-label="Inicio">
               <div className="relative">
@@ -120,7 +120,7 @@ export default function Portfolio() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent dark:from-primary/5" />
-        <div className="container relative py-24 md:py-32">
+        <div className="container mx-auto relative py-24 md:py-32">
           <div className="flex flex-col items-center text-center space-y-8">
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-xl" />
@@ -194,7 +194,7 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="container py-24">
+      <section id="about" className="container mx-auto py-24">
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tighter mb-4">Sobre mí</h2>
@@ -331,7 +331,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="container py-24">
+      <section id="projects" className="container mx-auto py-24">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tighter mb-4">Proyectos destacados</h2>
@@ -456,7 +456,7 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="container py-24">
+      <section id="contact" className="container mx-auto py-24">
         <div className="mx-auto max-w-2xl text-center">
           <div className="mb-16">
             <h2 className="text-3xl font-bold tracking-tighter mb-4">Conversemos</h2>
@@ -501,7 +501,7 @@ export default function Portfolio() {
 
       {/* Footer */}
       <footer className="border-t bg-muted/30 dark:bg-muted/10 border-border/50">
-        <div className="container py-8">
+        <div className="container mx-auto py-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center space-x-2">
               <Code2 className="h-6 w-6 text-primary" />
