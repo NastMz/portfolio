@@ -2,7 +2,7 @@
   "personalInfo": {
     "name": "Kevin Martinez",
     "title": "Líder Técnico Backend .NET | Backend Developer",
-    "description": "Ingeniero de Sistemas con experiencia en desarrollo backend de aplicaciones web y móviles, especializado en .NET, C#, Python y Node.js. Experto en diseño de APIs escalables, optimización de bases de datos y automatización de despliegues.",
+    "description": "Ingeniero de Sistemas con sólida experiencia en desarrollo backend para aplicaciones web y móviles, especializado en .NET, C#, Python y Node.js. Experto en diseño de APIs escalables, optimización de bases de datos y automatización de despliegues. Proactivo, autodidacta y orientado a la mejora continua.",
     "location": "Tunja, Boyacá, Colombia",
     "email": "ksmartinez23@outlook.com",
     "phone": "+57 314 4397291",
@@ -88,6 +88,30 @@
       "experience": "3+ years",
       "projects": "Enterprise systems",
       "icon": "🏛️"
+    },
+    {
+      "id": "10",
+      "name": "React / Next.js",
+      "category": "Frontend",
+      "experience": "2+ years",
+      "projects": "E-commerce & dashboards",
+      "icon": "⚛️"
+    },
+    {
+      "id": "11",
+      "name": "Flutter & React Native",
+      "category": "Mobile",
+      "experience": "1+ years",
+      "projects": "Cross-platform apps",
+      "icon": "📱"
+    },
+    {
+      "id": "12",
+      "name": "Spring MVC",
+      "category": "Languages & Frameworks",
+      "experience": "1+ years",
+      "projects": "Academic & enterprise projects",
+      "icon": "🌱"
     }
   ],
   "projects": [
@@ -105,7 +129,11 @@
       ],
       "github": "#",
       "gradient": "from-blue-600 to-indigo-700",
-      "color": "border-l-blue-500"
+      "metrics": [
+        { "label": "Módulos", "value": "5", "icon": "Layers" },
+        { "label": "Confiabilidad", "value": "Alta", "icon": "Shield" },
+        { "label": "Descargas", "value": "Interno", "icon": "Activity" }
+      ]
     },
     {
       "id": "oss-1",
@@ -114,7 +142,10 @@
       "tech": ["React", "TypeScript", "NPM"],
       "github": "https://github.com/NastMz/light-query",
       "gradient": "from-sky-500 to-indigo-600",
-      "color": "border-l-sky-500"
+      "metrics": [
+        { "label": "Descargas", "value": "1k+", "icon": "Zap" },
+        { "label": "Actividad", "value": "Activa", "icon": "Activity" }
+      ]
     },
     {
       "id": "oss-2",
@@ -123,7 +154,10 @@
       "tech": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
       "github": "https://github.com/NastMz/Html2Pdf",
       "gradient": "from-rose-500 to-orange-600",
-      "color": "border-l-rose-500"
+      "metrics": [
+        { "label": "Rendimiento", "value": "Óptimo", "icon": "TrendingUp" },
+        { "label": "Uso", "value": "Producción", "icon": "Activity" }
+      ]
     },
     {
       "id": "oss-3",
@@ -132,7 +166,10 @@
       "tech": [".NET 8", "C#"],
       "github": "https://github.com/NastMz/SimpleMediator",
       "gradient": "from-blue-500 to-cyan-600",
-      "color": "border-l-cyan-500"
+      "metrics": [
+        { "label": "Tamaño", "value": "Ligero", "icon": "File" },
+        { "label": "Extensible", "value": "Sí", "icon": "Package" }
+      ]
     },
     {
       "id": "oss-4",
@@ -141,13 +178,16 @@
       "tech": ["PHP 8.4+", "PSR-4/12/15", "SQLite"],
       "github": "https://github.com/NastMz/mini-php-framework",
       "gradient": "from-amber-500 to-yellow-600",
-      "color": "border-l-amber-500"
+      "metrics": [
+        { "label": "Aprendizaje", "value": "Alto", "icon": "Terminal" },
+        { "label": "Módulos", "value": "Core", "icon": "Layers" }
+      ]
     }
   ],
   "experience": [
     {
       "id": "exp-1",
-      "title": "Líder técnico backend .NET",
+      "title": "Líder Técnico Backend .NET",
       "company": "Enternova SAS",
       "period": "Enero 2025 – Actualidad",
       "location": "Bogotá, Colombia",
@@ -155,53 +195,60 @@
       "achievements": [
         "Liderazgo de equipo backend en proyectos de abastecimiento",
         "Revisión de código, mentoría y capacitación continua",
-        "Garantizar buenas prácticas en .NET y bases de datos",
-        "Soporte técnico y resolución de desafíos complejos"
+        "Participación en decisiones arquitectónicas clave",
+        "Entrega de soluciones escalables y robustas"
       ]
     },
     {
       "id": "exp-2",
-      "title": "Desarrollador de software",
+      "title": "Desarrollador .NET Backend",
       "company": "Enternova SAS",
-      "period": "Octubre 2024 – Enero 2025",
+      "period": "Noviembre 2024 – Enero 2025",
       "location": "Bogotá, Colombia",
-      "color": "border-l-green-500"
+      "color": "border-l-green-500",
+      "achievements": [
+        "Desarrollo de sistemas de información en .NET",
+        "Integración de servicios externos y SQL Server",
+        "Mantenimiento y optimización de bases de datos"
+      ]
     },
     {
       "id": "exp-3",
-      "title": "Backend Developer",
-      "company": "Ignicion Games",
+      "title": "Desarrollador Backend C#",
+      "company": "Ignition Games",
       "period": "Octubre 2024 – Enero 2025",
       "location": "Villavicencio, Colombia",
       "color": "border-l-purple-500",
       "achievements": [
-        "Desarrollo de plugin en .NET para validación OTP y actualizaciones automáticas"
+        "Desarrollo de chatbot con inteligencia artificial",
+        "Implementación de arquitectura de microservicios",
+        "Despliegue en Azure Cloud"
       ]
     },
     {
       "id": "exp-4",
-      "title": "Desarrollador full stack",
+      "title": "Desarrollador de software",
       "company": "Centro de Enseñanza Automovilística JMontoya",
-      "period": "Enero 2024 – Julio 2024",
+      "period": "Octubre 2023 – Julio 2024",
       "location": "Villavicencio, Colombia",
       "color": "border-l-orange-500",
       "achievements": [
-        "Diseño y desarrollo de sistema de información empresarial",
-        "Implementación de módulos de gestión y reportes",
+        "Desarrollo de 4 páginas web integradas con CMS Strapi",
+        "Diseño y desarrollo de sistema de gestión empresarial con Django y Next.js",
         "Mejora de procesos internos mediante digitalización"
       ]
     },
     {
       "id": "exp-5",
-      "title": "Frontend Developer",
+      "title": "Desarrollador de software",
       "company": "TulipannStore",
-      "period": "Octubre 2022 – Febrero 2023",
+      "period": "Octubre 2021 – Enero 2023",
       "location": "Bogotá, Colombia",
       "color": "border-l-pink-500",
       "achievements": [
-        "Desarrollo de plataforma e-commerce completa y panel de administración",
-        "Integración de pagos y gestión de pedidos",
-        "Optimización de UI/UX para experiencia de usuario fluida"
+        "Desarrollo de plataforma e-commerce y panel administrativo",
+        "Implementación de pagos y gestión de pedidos",
+        "Optimización de UI/UX con React y Django"
       ]
     }
   ],
@@ -210,7 +257,7 @@
       "id": "edu-1",
       "title": "Ingeniería de Sistemas",
       "institution": "Universidad de Los Llanos",
-      "period": "Febrero 2019 – Agosto 2024"
+      "period": "Febrero 2019 – Diciembre 2024"
     }
   ],
   "certifications": [
@@ -221,6 +268,6 @@
   ],
   "languages": [
     { "language": "Español", "level": "Nativo" },
-    { "language": "Inglés", "level": "Professional Working" }
+    { "language": "Inglés", "level": "Intermedio" }
   ]
 }

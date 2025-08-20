@@ -1,5 +1,6 @@
 "use client"
 
+import type { ComponentType } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -21,7 +22,6 @@ import {
   ExternalLink,
   MapPin,
   Calendar,
-  Globe,
   Users,
   TrendingUp,
   Coffee,
@@ -34,15 +34,16 @@ import {
   Package,
   Layers,
   Terminal,
+  Globe,
 } from "lucide-react"
 import Link from "next/link"
 
 // --- Utilidades ---
 const year = new Date().getFullYear()
 
-const IconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const IconMap = {
   Shield,
-  Zap: TrendingUp, // usando TrendingUp como "Zap" genérico
+  Zap: TrendingUp, // alias
   Users,
   Activity,
   Clock,
@@ -51,7 +52,9 @@ const IconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Layers,
   Terminal,
   Globe,
-}
+} satisfies Record<string, ComponentType<{ className?: string }>>
+
+type IconName = keyof typeof IconMap
 
 export default function Portfolio() {
   // Obtener datos del JSON
@@ -60,13 +63,17 @@ export default function Portfolio() {
   const projects = getProjects()
   const experience = getExperience()
 
-  // Stats conservadoras (evitamos claims no verificados). Puedes mover esto a tu JSON si lo prefieres.
+  // Stats conservadoras
   const stats = [
     { label: "Años de experiencia", value: "4+", icon: Calendar, color: "text-blue-600 dark:text-blue-400" },
     { label: "Proyectos", value: "10+", icon: CheckCircle, color: "text-green-600 dark:text-green-400" },
     { label: "Tecnologías", value: "15+", icon: Globe, color: "text-purple-600 dark:text-purple-400" },
-    { label: "Repos públicos", value: "0+", icon: Activity, color: "text-orange-600 dark:text-orange-400" },
-  ]
+    { label: "Repos públicos", value: "4+", icon: Activity, color: "text-orange-600 dark:text-orange-400" },
+  ] as const
+
+  const mobility = (personalInfo as any).mobility as
+    | { travel?: boolean; relocation?: boolean; vehicle?: boolean }
+    | undefined
 
   return (
     <div className="min-h-screen bg-background transition-colors duration-300" id="top">
@@ -155,6 +162,20 @@ export default function Portfolio() {
                 <Coffee className="h-4 w-4 text-primary" aria-hidden />
                 <span>{personalInfo.availability}</span>
               </div>
+              {mobility && (
+                <>
+                  {"travel" in mobility && (
+                    <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                      Viajar: {mobility.travel ? "Sí" : "No"}
+                    </Badge>
+                  )}
+                  {"relocation" in mobility && (
+                    <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                      Reubicación: {mobility.relocation ? "Sí" : "No"}
+                    </Badge>
+                  )}
+                </>
+              )}
             </div>
 
             <div className="flex space-x-4">
@@ -180,7 +201,7 @@ export default function Portfolio() {
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-muted-foreground leading-relaxed">
                 Soy desarrollador backend especializado en .NET, con foco en APIs escalables, optimización de bases de
@@ -320,7 +341,7 @@ export default function Portfolio() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project: any) => {
               const gradient = project.gradient || "from-primary to-secondary"
-              const metrics = project.metrics as Array<{ label: string; value: string; icon?: string }>
+              const metrics = project.metrics as Array<{ label: string; value: string; icon?: IconName }>
               return (
                 <Card key={project.id} className="group overflow-hidden hover:shadow-xl transition-all duration-300 dark:hover:shadow-primary/10 border-border/50">
                   <div className={`h-2 bg-gradient-to-r ${gradient}`} />

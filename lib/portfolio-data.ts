@@ -10,6 +10,11 @@ export interface PersonalInfo {
   github: string
   linkedin: string
   availability: string
+  mobility?: {
+    travel?: boolean
+    relocation?: boolean
+    vehicle?: boolean
+  }
 }
 
 export interface Skill {
@@ -20,6 +25,18 @@ export interface Skill {
   projects: string
   icon: string
 }
+
+export type IconName =
+  | "Shield"
+  | "Zap"
+  | "Users"
+  | "Activity"
+  | "Clock"
+  | "File"
+  | "Package"
+  | "Layers"
+  | "Terminal"
+  | "Globe"
 
 export interface Project {
   id: string
@@ -32,7 +49,7 @@ export interface Project {
   metrics?: Array<{
     label: string
     value: string
-    icon: any
+    icon?: IconName
   }>
 }
 
@@ -100,13 +117,11 @@ export function getLanguages(): Language[] {
   return portfolioData.languages as Language[]
 }
 
-// Función para organizar skills por categoría
+// Organizar skills por categoría
 export function getSkillsByCategory(): Record<string, Skill[]> {
   const skills = getSkills()
   return skills.reduce((acc, skill) => {
-    if (!acc[skill.category]) {
-      acc[skill.category] = []
-    }
+    if (!acc[skill.category]) acc[skill.category] = []
     acc[skill.category].push(skill)
     return acc
   }, {} as Record<string, Skill[]>)
