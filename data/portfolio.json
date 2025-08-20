@@ -1,93 +1,189 @@
 {
   "personalInfo": {
-    "name": "Alex Johnson",
-    "title": "Backend Developer",
-    "description": "Building scalable, high-performance server-side applications and APIs that power modern web experiences.",
-    "location": "San Francisco, CA",
-    "email": "alex.johnson@email.com",
-    "github": "https://github.com",
-    "linkedin": "https://linkedin.com",
+    "name": "Kevin Santiago Martinez",
+    "title": "Líder Técnico Backend .NET | Backend Developer",
+    "description": "Ingeniero de Sistemas con experiencia en desarrollo backend de aplicaciones web y móviles, especializado en .NET, C#, Python y Node.js. Experto en diseño de APIs escalables, optimización de bases de datos y automatización de despliegues.",
+    "location": "Tunja, Boyacá, Colombia",
+    "email": "ksmartinez23@outlook.com",
+    "phone": "+57 314 4397291",
+    "github": "https://github.com/NastMz",
+    "linkedin": "https://www.linkedin.com/in/ksmartinez23/",
     "availability": "Available for hire"
   },
   "skills": [
     {
       "id": "1",
-      "name": "Node.js",
-      "category": "Languages & Runtime",
-      "experience": "5+ years",
-      "projects": "25+ projects",
-      "icon": "🟢"
+      "name": ".NET 8 / C#",
+      "category": "Languages & Frameworks",
+      "experience": "4+ years",
+      "projects": "Enterprise & retail systems",
+      "icon": "⚙️"
     },
     {
       "id": "2",
-      "name": "Python",
-      "category": "Languages & Runtime",
+      "name": "Entity Framework & Dapper",
+      "category": "ORM & Data Access",
       "experience": "4+ years",
-      "projects": "20+ projects",
-      "icon": "🐍"
+      "projects": "CQRS & data optimization",
+      "icon": "🗂️"
     },
     {
       "id": "3",
-      "name": "PostgreSQL",
+      "name": "SQL Server / PostgreSQL / MySQL",
       "category": "Databases",
       "experience": "5+ years",
-      "projects": "Production scale",
+      "projects": "Transactional & reporting systems",
       "icon": "🐘"
     },
     {
       "id": "4",
-      "name": "MongoDB",
-      "category": "Databases",
-      "experience": "4+ years",
-      "projects": "High-volume apps",
-      "icon": "🍃"
+      "name": "Node.js",
+      "category": "Languages & Runtime",
+      "experience": "3+ years",
+      "projects": "APIs & microservices",
+      "icon": "🟢"
     },
     {
       "id": "5",
-      "name": "AWS",
-      "category": "Cloud & DevOps",
-      "experience": "4+ years",
-      "projects": "Multi-region deployments",
-      "icon": "☁️"
+      "name": "Python & Django",
+      "category": "Languages & Frameworks",
+      "experience": "3+ years",
+      "projects": "Web & scripting",
+      "icon": "🐍"
     },
     {
       "id": "6",
       "name": "Docker",
       "category": "Cloud & DevOps",
-      "experience": "5+ years",
-      "projects": "Container orchestration",
+      "experience": "3+ years",
+      "projects": "Containerized apps & plugins",
       "icon": "🐳"
+    },
+    {
+      "id": "7",
+      "name": "CI/CD (GitHub Actions, GitLab CI, Azure Pipelines)",
+      "category": "DevOps & Automation",
+      "experience": "3+ years",
+      "projects": "Automated builds & deployments",
+      "icon": "🔄"
+    },
+    {
+      "id": "8",
+      "name": "Azure DevOps",
+      "category": "Cloud & DevOps",
+      "experience": "2+ years",
+      "projects": "Project management & pipelines",
+      "icon": "☁️"
     }
   ],
   "projects": [
     {
-      "id": "1",
-      "title": "E-commerce API Platform",
-      "description": "Scalable microservices architecture handling 10M+ requests daily with real-time inventory management and payment processing.",
-      "tech": ["Node.js", "PostgreSQL", "Redis", "Docker", "AWS"],
-      "metrics": [
-        { "label": "Uptime", "value": "99.9%", "icon": "Shield" },
-        { "label": "Response Time", "value": "<200ms", "icon": "Zap" },
-        { "label": "Daily Users", "value": "500K+", "icon": "Users" }
+      "id": "work-1",
+      "title": "ICG Retail Plugin",
+      "description": "Plugin en .NET para validación OTP con AWS SNS, integración con React frontend, gestión de contratos y sistema de actualizaciones automáticas obligatorias tipo Chrome.",
+      "tech": [
+        ".NET 8",
+        "WinForms",
+        "AWS SNS",
+        "SQL Server",
+        "Docker",
+        "Velopack"
       ],
       "github": "#",
-      "demo": "#",
-      "gradient": "from-blue-500 to-purple-600"
+      "gradient": "from-blue-600 to-indigo-700"
+    },
+    {
+      "id": "oss-1",
+      "title": "light-query",
+      "description": "Librería de data-fetching para React con hooks de queries, mutations e infinite loading, con caché configurable y soporte para Suspense.",
+      "tech": ["React", "TypeScript", "NPM"],
+      "github": "https://github.com/NastMz/light-query",
+      "gradient": "from-sky-500 to-indigo-600"
+    },
+    {
+      "id": "oss-2",
+      "title": "Html2Pdf",
+      "description": "Librería .NET 8 para convertir HTML a PDF usando RazorLight y PuppeteerSharp. Incluye pool de navegadores, DI y opciones personalizables.",
+      "tech": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
+      "github": "https://github.com/NastMz/Html2Pdf",
+      "gradient": "from-rose-500 to-orange-600"
+    },
+    {
+      "id": "oss-3",
+      "title": "SimpleMediator",
+      "description": "Implementación ligera del patrón Mediator para .NET 8 con soporte para commands, queries, notifications y behaviors personalizables.",
+      "tech": [".NET 8", "C#"],
+      "github": "https://github.com/NastMz/SimpleMediator",
+      "gradient": "from-blue-500 to-cyan-600"
+    },
+    {
+      "id": "oss-4",
+      "title": "mini-php-framework",
+      "description": "Micro-framework educativo en PHP con DDD & Clean Architecture: routing por atributos, middleware PSR-15, CQRS básico y JWT auth.",
+      "tech": ["PHP 8.4+", "PSR-4/12/15", "SQLite"],
+      "github": "https://github.com/NastMz/mini-php-framework",
+      "gradient": "from-amber-500 to-yellow-600"
     }
   ],
   "experience": [
     {
-      "id": "1",
-      "title": "Senior Backend Engineer",
-      "company": "TechCorp Inc.",
-      "period": "2022 - Present",
-      "location": "San Francisco, CA",
+      "id": "exp-1",
+      "title": "Líder técnico backend .NET",
+      "company": "Enternova SAS",
+      "period": "Enero 2025 – Actualidad",
+      "location": "Bogotá, Colombia",
       "achievements": [
-        "Led migration to microservices architecture, reducing deployment time by 60%",
-        "Optimized database queries resulting in 40% performance improvement",
-        "Mentored 5 junior developers and established code review processes"
-      ],
-      "color": "border-l-blue-500"
+        "Liderazgo de equipo backend en proyectos de abastecimiento",
+        "Revisión de código, mentoría y capacitación continua",
+        "Garantizar buenas prácticas en .NET y bases de datos",
+        "Soporte técnico y resolución de desafíos complejos"
+      ]
+    },
+    {
+      "id": "exp-2",
+      "title": "Desarrollador de software",
+      "company": "Enternova SAS",
+      "period": "Octubre 2024 – Enero 2025",
+      "location": "Bogotá, Colombia"
+    },
+    {
+      "id": "exp-3",
+      "title": "Backend Developer",
+      "company": "Ignicion Games",
+      "period": "Octubre 2024 – Enero 2025",
+      "location": "Villavicencio, Colombia"
+    },
+    {
+      "id": "exp-4",
+      "title": "Desarrollador full stack",
+      "company": "Centro de Enseñanza Automovilística JMontoya",
+      "period": "Enero 2024 – Julio 2024",
+      "location": "Villavicencio, Colombia"
+    },
+    {
+      "id": "exp-5",
+      "title": "Frontend Developer",
+      "company": "TulipannStore",
+      "period": "Octubre 2022 – Febrero 2023",
+      "location": "Bogotá, Colombia"
     }
+  ],
+  "education": [
+    {
+      "id": "edu-1",
+      "title": "Ingeniería de Sistemas",
+      "institution": "Universidad de Los Llanos",
+      "period": "Febrero 2019 – Agosto 2024"
+    }
+  ],
+  "certifications": [
+    "Scrum Foundation Professional Certificate (SFPC)",
+    "Cybersecurity Essentials",
+    "Introduction to Cybersecurity",
+    "Ponencia SICSYB 2024"
+  ],
+  "languages": [
+    { "language": "Español", "level": "Nativo" },
+    { "language": "Inglés", "level": "Professional Working" }
   ]
 }
