@@ -1,6 +1,6 @@
 {
   "personalInfo": {
-    "name": "Kevin Santiago Martinez",
+    "name": "Kevin Martinez",
     "title": "Líder Técnico Backend .NET | Backend Developer",
     "description": "Ingeniero de Sistemas con experiencia en desarrollo backend de aplicaciones web y móviles, especializado en .NET, C#, Python y Node.js. Experto en diseño de APIs escalables, optimización de bases de datos y automatización de despliegues.",
     "location": "Tunja, Boyacá, Colombia",
@@ -10,6 +10,12 @@
     "linkedin": "https://www.linkedin.com/in/ksmartinez23/",
     "availability": "Available for hire"
   },
+  "highlights": [
+    "Experiencia liderando equipos técnicos y promoviendo buenas prácticas de desarrollo",
+    "Diseño de arquitecturas limpias, CQRS y DDD para sistemas empresariales",
+    "Implementación de sistemas de actualización automática en aplicaciones de escritorio",
+    "Contribuidor OSS con librerías en .NET, React y PHP"
+  ],
   "skills": [
     {
       "id": "1",
@@ -74,6 +80,14 @@
       "experience": "2+ years",
       "projects": "Project management & pipelines",
       "icon": "☁️"
+    },
+    {
+      "id": "9",
+      "name": "Clean Architecture / CQRS / DDD",
+      "category": "Architecture & Design",
+      "experience": "3+ years",
+      "projects": "Enterprise systems",
+      "icon": "🏛️"
     }
   ],
   "projects": [
@@ -90,7 +104,8 @@
         "Velopack"
       ],
       "github": "#",
-      "gradient": "from-blue-600 to-indigo-700"
+      "gradient": "from-blue-600 to-indigo-700",
+      "color": "border-l-blue-500"
     },
     {
       "id": "oss-1",
@@ -98,7 +113,8 @@
       "description": "Librería de data-fetching para React con hooks de queries, mutations e infinite loading, con caché configurable y soporte para Suspense.",
       "tech": ["React", "TypeScript", "NPM"],
       "github": "https://github.com/NastMz/light-query",
-      "gradient": "from-sky-500 to-indigo-600"
+      "gradient": "from-sky-500 to-indigo-600",
+      "color": "border-l-sky-500"
     },
     {
       "id": "oss-2",
@@ -106,7 +122,8 @@
       "description": "Librería .NET 8 para convertir HTML a PDF usando RazorLight y PuppeteerSharp. Incluye pool de navegadores, DI y opciones personalizables.",
       "tech": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
       "github": "https://github.com/NastMz/Html2Pdf",
-      "gradient": "from-rose-500 to-orange-600"
+      "gradient": "from-rose-500 to-orange-600",
+      "color": "border-l-rose-500"
     },
     {
       "id": "oss-3",
@@ -114,7 +131,8 @@
       "description": "Implementación ligera del patrón Mediator para .NET 8 con soporte para commands, queries, notifications y behaviors personalizables.",
       "tech": [".NET 8", "C#"],
       "github": "https://github.com/NastMz/SimpleMediator",
-      "gradient": "from-blue-500 to-cyan-600"
+      "gradient": "from-blue-500 to-cyan-600",
+      "color": "border-l-cyan-500"
     },
     {
       "id": "oss-4",
@@ -122,7 +140,8 @@
       "description": "Micro-framework educativo en PHP con DDD & Clean Architecture: routing por atributos, middleware PSR-15, CQRS básico y JWT auth.",
       "tech": ["PHP 8.4+", "PSR-4/12/15", "SQLite"],
       "github": "https://github.com/NastMz/mini-php-framework",
-      "gradient": "from-amber-500 to-yellow-600"
+      "gradient": "from-amber-500 to-yellow-600",
+      "color": "border-l-amber-500"
     }
   ],
   "experience": [
@@ -132,6 +151,7 @@
       "company": "Enternova SAS",
       "period": "Enero 2025 – Actualidad",
       "location": "Bogotá, Colombia",
+      "color": "border-l-blue-500",
       "achievements": [
         "Liderazgo de equipo backend en proyectos de abastecimiento",
         "Revisión de código, mentoría y capacitación continua",
@@ -144,28 +164,45 @@
       "title": "Desarrollador de software",
       "company": "Enternova SAS",
       "period": "Octubre 2024 – Enero 2025",
-      "location": "Bogotá, Colombia"
+      "location": "Bogotá, Colombia",
+      "color": "border-l-green-500"
     },
     {
       "id": "exp-3",
       "title": "Backend Developer",
       "company": "Ignicion Games",
       "period": "Octubre 2024 – Enero 2025",
-      "location": "Villavicencio, Colombia"
+      "location": "Villavicencio, Colombia",
+      "color": "border-l-purple-500",
+      "achievements": [
+        "Desarrollo de plugin en .NET para validación OTP y actualizaciones automáticas"
+      ]
     },
     {
       "id": "exp-4",
       "title": "Desarrollador full stack",
       "company": "Centro de Enseñanza Automovilística JMontoya",
       "period": "Enero 2024 – Julio 2024",
-      "location": "Villavicencio, Colombia"
+      "location": "Villavicencio, Colombia",
+      "color": "border-l-orange-500",
+      "achievements": [
+        "Diseño y desarrollo de sistema de información empresarial",
+        "Implementación de módulos de gestión y reportes",
+        "Mejora de procesos internos mediante digitalización"
+      ]
     },
     {
       "id": "exp-5",
       "title": "Frontend Developer",
       "company": "TulipannStore",
       "period": "Octubre 2022 – Febrero 2023",
-      "location": "Bogotá, Colombia"
+      "location": "Bogotá, Colombia",
+      "color": "border-l-pink-500",
+      "achievements": [
+        "Desarrollo de plataforma e-commerce completa y panel de administración",
+        "Integración de pagos y gestión de pedidos",
+        "Optimización de UI/UX para experiencia de usuario fluida"
+      ]
     }
   ],
   "education": [
