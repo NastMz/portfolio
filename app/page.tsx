@@ -68,7 +68,7 @@ export default function Portfolio() {
     { label: "Años de experiencia", value: "4+", icon: Calendar, color: "text-blue-600 dark:text-blue-400" },
     { label: "Proyectos", value: "10+", icon: CheckCircle, color: "text-green-600 dark:text-green-400" },
     { label: "Tecnologías", value: "15+", icon: Globe, color: "text-purple-600 dark:text-purple-400" },
-    { label: "Repos públicos", value: "4+", icon: Activity, color: "text-orange-600 dark:text-orange-400" },
+    { label: "Repos públicos", value: "20+", icon: Activity, color: "text-orange-600 dark:text-orange-400" },
   ] as const
 
   const mobility = (personalInfo as any).mobility as
@@ -194,7 +194,7 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="container mx-auto py-24">
+      <section id="about" className="container mx-auto py-24 scroll-offset">
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tighter mb-4">Sobre mí</h2>
@@ -264,7 +264,7 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 bg-gradient-to-br from-muted/30 to-background dark:from-muted/10">
+      <section id="skills" className="py-24 bg-gradient-to-br from-muted/30 to-background dark:from-muted/10 scroll-offset">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tighter mb-4">Habilidades</h2>
@@ -331,7 +331,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="container mx-auto py-24">
+      <section id="projects" className="container mx-auto py-24 scroll-offset">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tighter mb-4">Proyectos destacados</h2>
@@ -402,7 +402,7 @@ export default function Portfolio() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-24 bg-gradient-to-br from-muted/30 to-background dark:from-muted/10">
+      <section id="experience" className="py-24 bg-gradient-to-br from-muted/30 to-background dark:from-muted/10 scroll-offset">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tighter mb-4">Experiencia</h2>
@@ -456,7 +456,7 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="container mx-auto py-24">
+      <section id="contact" className="container mx-auto py-24 scroll-offset">
         <div className="mx-auto max-w-2xl text-center">
           <div className="mb-16">
             <h2 className="text-3xl font-bold tracking-tighter mb-4">Conversemos</h2>

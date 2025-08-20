@@ -10,6 +10,9 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .scroll-offset {
+    scroll-margin-top: 5rem; /* 80px - un poco más que el header h-16 (64px) */
+  }
 }
 
 @layer base {
@@ -87,6 +90,9 @@ body {
 @layer base {
   * {
     @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
   }
   body {
     @apply bg-background text-foreground;
