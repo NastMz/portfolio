@@ -1,7 +1,7 @@
 {
   "personalInfo": {
     "name": "Kevin Martinez",
-    "title": "Líder Técnico Backend .NET | Backend Developer",
+    "title": "Software Engineer | Backend Developer",
     "description": "Ingeniero de Sistemas con sólida experiencia en desarrollo backend para aplicaciones web y móviles, especializado en .NET, C#, Python y Node.js. Experto en diseño de APIs escalables, optimización de bases de datos y automatización de despliegues. Proactivo, autodidacta y orientado a la mejora continua.",
     "location": "Tunja, Boyacá, Colombia",
     "email": "ksmartinez23@outlook.com",
@@ -116,26 +116,6 @@
   ],
   "projects": [
     {
-      "id": "work-1",
-      "title": "ICG Retail Plugin",
-      "description": "Plugin en .NET para validación OTP con AWS SNS, integración con React frontend, gestión de contratos y sistema de actualizaciones automáticas obligatorias tipo Chrome.",
-      "tech": [
-        ".NET 8",
-        "WinForms",
-        "AWS SNS",
-        "SQL Server",
-        "Docker",
-        "Velopack"
-      ],
-      "github": "#",
-      "gradient": "from-blue-600 to-indigo-700",
-      "metrics": [
-        { "label": "Módulos", "value": "5", "icon": "Layers" },
-        { "label": "Confiabilidad", "value": "Alta", "icon": "Shield" },
-        { "label": "Descargas", "value": "Interno", "icon": "Activity" }
-      ]
-    },
-    {
       "id": "oss-1",
       "title": "light-query",
       "description": "Librería de data-fetching para React con hooks de queries, mutations e infinite loading, con caché configurable y soporte para Suspense.",
@@ -143,7 +123,7 @@
       "github": "https://github.com/NastMz/light-query",
       "gradient": "from-sky-500 to-indigo-600",
       "metrics": [
-        { "label": "Descargas", "value": "1k+", "icon": "Zap" },
+        { "label": "Aprendizaje", "value": "Alto", "icon": "Terminal" },
         { "label": "Actividad", "value": "Activa", "icon": "Activity" }
       ]
     },
