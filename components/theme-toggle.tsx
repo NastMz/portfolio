@@ -9,23 +9,44 @@ export function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [displayTheme, setDisplayTheme] = useState<string | undefined>(undefined)
+  const [isAnimating, setIsAnimating] = useState(false)
 
+  // Inicializar el componente
   useEffect(() => {
     setMounted(true)
-    if (mounted) {
+  }, [])
+
+  // Sincronizar displayTheme con resolvedTheme solo cuando no estamos animando
+  useEffect(() => {
+    if (mounted && !isAnimating) {
       setDisplayTheme(resolvedTheme)
     }
-  }, [resolvedTheme, mounted])
+  }, [resolvedTheme, mounted, isAnimating])
 
   const toggleTheme = () => {
-    // Primero cambia el displayTheme para iniciar la animación de salida
+    if (isAnimating || !mounted) return // Prevenir múltiples clicks
+    
+    setIsAnimating(true)
     const newTheme = resolvedTheme === "dark" ? "light" : "dark"
+    
+    // Cambiar displayTheme inmediatamente para iniciar la animación
     setDisplayTheme(newTheme)
     
-    // Después de que la animación esté a la mitad, cambia el tema real
-    setTimeout(() => {
+    // Cambiar el tema real después de la mitad de la animación
+    const themeTimeout = setTimeout(() => {
       setTheme(newTheme)
-    }, 150)
+    }, 350) // Mitad de 700ms
+    
+    // Resetear el estado de animación
+    const animationTimeout = setTimeout(() => {
+      setIsAnimating(false)
+    }, 700) // Duración completa de la animación
+
+    // Cleanup en caso de desmontaje
+    return () => {
+      clearTimeout(themeTimeout)
+      clearTimeout(animationTimeout)
+    }
   }
 
   if (!mounted) {
@@ -45,7 +66,10 @@ export function ThemeToggle() {
       variant="ghost" 
       size="icon" 
       onClick={toggleTheme} 
-      className="hover:bg-primary/10 transition-colors relative overflow-hidden"
+      disabled={isAnimating}
+      className={`hover:bg-primary/10 transition-colors relative overflow-hidden ${
+        isAnimating ? 'cursor-wait' : 'cursor-pointer'
+      }`}
       aria-label={`Switch to ${currentTheme === "dark" ? "light" : "dark"} mode`}
     >
       <Sun className={`h-5 w-5 absolute inset-0 m-auto transition-all duration-700 ease-out transform-gpu ${
