@@ -7,38 +7,38 @@ import { Code2, Database, Cloud, Users, TrendingUp, Shield } from "lucide-react"
 
 export function AboutSection() {
   return (
-    <section id="about" className="container mx-auto py-24 scroll-offset">
+    <section id="about" className="container mx-auto py-16 md:py-24 scroll-offset px-4 lg:px-6">
       <div className="mx-auto max-w-4xl">
         <ScrollAnimation animation="slideUp" delay={100}>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter mb-4">Sobre mí</h2>
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Sobre mí</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
           </div>
         </ScrollAnimation>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <ScrollAnimation animation="slideLeft" delay={200}>
-            <div className="space-y-6">
-              <p className="text-muted-foreground leading-relaxed">
+            <div className="space-y-4 md:space-y-6">
+              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
                 Soy desarrollador backend especializado en .NET, con foco en APIs escalables, optimización de bases de
                 datos y automatización de despliegues. Me interesa construir soluciones prácticas, mantenibles y con
                 buen performance.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
                 También tengo experiencia con Node.js y Python. Me gusta acompañar a equipos en buenas prácticas,
                 revisión de código y diseño limpio.
               </p>
-              <div className="flex flex-wrap gap-3">
-                <Badge variant="secondary" className="px-3 py-1 bg-primary/10 text-primary border-primary/20">
+              <div className="flex flex-wrap gap-2 md:gap-3">
+                <Badge variant="secondary" className="px-2 md:px-3 py-1 bg-primary/10 text-primary border-primary/20 text-xs">
                   <Code2 className="h-3 w-3 mr-1" /> Clean Architecture
                 </Badge>
-                <Badge variant="secondary" className="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20">
+                <Badge variant="secondary" className="px-2 md:px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20 text-xs">
                   <Database className="h-3 w-3 mr-1" /> SQL / EF / Dapper
                 </Badge>
-                <Badge variant="secondary" className="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20">
+                <Badge variant="secondary" className="px-2 md:px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20 text-xs">
                   <Cloud className="h-3 w-3 mr-1" /> CI/CD & Docker
                 </Badge>
-                <Badge variant="secondary" className="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20">
+                <Badge variant="secondary" className="px-2 md:px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20 text-xs">
                   <Users className="h-3 w-3 mr-1" /> Team Lead
                 </Badge>
               </div>
@@ -46,33 +46,33 @@ export function AboutSection() {
           </ScrollAnimation>
 
           <ScrollAnimation animation="slideRight" delay={400}>
-            <Card className="p-6 bg-gradient-to-br from-primary/5 to-secondary/5 border-0 shadow-lg dark:from-primary/10 dark:to-secondary/10">
-              <div className="space-y-4">
+            <Card className="p-4 md:p-6 bg-gradient-to-br from-primary/5 to-secondary/5 border-0 shadow-lg dark:from-primary/10 dark:to-secondary/10">
+              <div className="space-y-3 md:space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <TrendingUp className="h-6 w-6 text-primary" aria-hidden />
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-primary" aria-hidden />
                   </div>
                   <div>
-                    <div className="font-semibold">Orientación a rendimiento</div>
-                    <div className="text-sm text-muted-foreground">Optimización de consultas y tiempos de respuesta</div>
+                    <div className="font-semibold text-sm md:text-base">Orientación a rendimiento</div>
+                    <div className="text-xs md:text-sm text-muted-foreground">Optimización de consultas y tiempos de respuesta</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center">
-                    <Shield className="h-6 w-6 text-green-600 dark:text-green-400" aria-hidden />
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-green-500/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Shield className="h-5 w-5 md:h-6 md:w-6 text-green-600 dark:text-green-400" aria-hidden />
                   </div>
                   <div>
-                    <div className="font-semibold">Confiabilidad</div>
-                    <div className="text-sm text-muted-foreground">Buenas prácticas, pruebas y observabilidad</div>
+                    <div className="font-semibold text-sm md:text-base">Confiabilidad</div>
+                    <div className="text-xs md:text-sm text-muted-foreground">Buenas prácticas, pruebas y observabilidad</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center">
-                    <Users className="h-6 w-6 text-purple-600 dark:text-purple-400" aria-hidden />
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-500/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Users className="h-5 w-5 md:h-6 md:w-6 text-purple-600 dark:text-purple-400" aria-hidden />
                   </div>
                   <div>
-                    <div className="font-semibold">Colaboración</div>
-                    <div className="text-sm text-muted-foreground">Mentoría y revisión de código</div>
+                    <div className="font-semibold text-sm md:text-base">Colaboración</div>
+                    <div className="text-xs md:text-sm text-muted-foreground">Mentoría y revisión de código</div>
                   </div>
                 </div>
               </div>

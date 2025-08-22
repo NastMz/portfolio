@@ -37,14 +37,16 @@ export default function Portfolio() {
   }
 
   return (
-    <div className="min-h-screen bg-background transition-colors duration-300" id="top">
+    <div className="min-h-screen bg-background transition-colors duration-300 enable-sticky" id="top">
       <Header personalInfo={personalInfo} />
-      <HeroSection personalInfo={personalInfo} stats={stats} />
-      <AboutSection />
-      <SkillsSection skillsByCategory={skillsByCategory} />
-      <ProjectsSection projects={projects} />
-      <ExperienceSection experience={experience} />
-      <ContactSection personalInfo={personalInfo} />
+      <main className="prevent-overflow">
+        <HeroSection personalInfo={personalInfo} stats={stats} />
+        <AboutSection />
+        <SkillsSection skillsByCategory={skillsByCategory} />
+        <ProjectsSection projects={projects} />
+        <ExperienceSection experience={experience} />
+        <ContactSection personalInfo={personalInfo} />
+      </main>
       <Footer personalInfo={personalInfo} />
     </div>
   )

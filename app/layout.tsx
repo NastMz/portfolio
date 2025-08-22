@@ -4,7 +4,8 @@ import { ThemeProvider } from '@/components/theme-provider'
 
 export const metadata: Metadata = {
   title: 'Kevin Martinez',
-  description: 'Portfolio de Kevin Martinez, desarrollador backend .NET'
+  description: 'Portfolio de Kevin Martinez, desarrollador backend .NET',
+  viewport: 'width=device-width, initial-scale=1'
 }
 
 export default function RootLayout({
