@@ -126,3 +126,120 @@ export function getSkillsByCategory(): Record<string, Skill[]> {
     return acc
   }, {} as Record<string, Skill[]>)
 }
+
+// Calcular stats dinámicos
+export function getYearsOfExperience(): number {
+  const experience = getExperience()
+  if (experience.length === 0) return 0
+  
+  // Buscar la fecha más antigua de inicio
+  const startDates = experience.map(exp => {
+    const periodParts = exp.period.toLowerCase().split(' – ')
+    const startPart = periodParts[0].trim()
+    
+    // Extraer año de inicio (formato: "mes año" o "año")
+    const yearRegex = /(\d{4})/
+    const match = yearRegex.exec(startPart)
+    return match ? parseInt(match[1]) : new Date().getFullYear()
+  })
+  
+  const earliestYear = Math.min(...startDates)
+  const currentYear = new Date().getFullYear()
+  
+  return currentYear - earliestYear
+}
+
+export function getTotalProjects(): number {
+  return getProjects().length
+}
+
+export function getTotalTechnologies(): number {
+  return getSkills().length
+}
+
+export function getPublicRepos(): number {
+  const projects = getProjects()
+  return projects.filter(project => project.github).length
+}
+
+// Función para obtener stats adicionales opcionales
+export function getAdditionalStats() {
+  const projects = getProjects()
+  const experience = getExperience()
+  
+  return {
+    // Stats por categoría de skills
+    skillCategories: Object.keys(getSkillsByCategory()).length,
+    
+    // Lenguajes/frameworks únicos
+    uniqueTechnologies: [...new Set(
+      projects.flatMap(p => p.tech || [])
+    )].length,
+    
+    // Proyectos con demo en vivo
+    projectsWithDemo: projects.filter(p => p.demo).length,
+    
+    // Años de experiencia más granular
+    experienceMonths: calculateExperienceInMonths(experience),
+    
+    // Empresas donde ha trabajado
+    companiesWorked: [...new Set(experience.map(exp => exp.company))].length,
+    
+    // Proyectos open source vs privados
+    openSourceProjects: projects.filter(p => p.github).length,
+    
+    // Tecnologías por categoría
+    technologiesByCategory: Object.entries(getSkillsByCategory()).reduce((acc, [category, skills]) => {
+      acc[category] = skills.length
+      return acc
+    }, {} as Record<string, number>)
+  }
+}
+
+function calculateExperienceInMonths(experience: Experience[]): number {
+  const currentDate = new Date()
+  let totalMonths = 0
+  
+  experience.forEach(exp => {
+    const periodParts = exp.period.toLowerCase().split(' – ')
+    const startPart = periodParts[0].trim()
+    const endPart = periodParts[1]?.trim() || 'actualidad'
+    
+    // Extraer fechas de inicio y fin
+    const startDate = parseExperienceDate(startPart)
+    const endDate = endPart === 'actualidad' ? currentDate : parseExperienceDate(endPart)
+    
+    if (startDate && endDate) {
+      const months = (endDate.getFullYear() - startDate.getFullYear()) * 12 + 
+                    (endDate.getMonth() - startDate.getMonth())
+      totalMonths += Math.max(0, months)
+    }
+  })
+  
+  return totalMonths
+}
+
+function parseExperienceDate(dateStr: string): Date | null {
+  const months = {
+    'enero': 0, 'febrero': 1, 'marzo': 2, 'abril': 3, 'mayo': 4, 'junio': 5,
+    'julio': 6, 'agosto': 7, 'septiembre': 8, 'octubre': 9, 'noviembre': 10, 'diciembre': 11
+  }
+  
+  const yearRegex = /(\d{4})/
+  const yearMatch = yearRegex.exec(dateStr)
+  
+  if (!yearMatch) return null
+  
+  const year = parseInt(yearMatch[1])
+  let month = 0
+  
+  // Buscar el mes en el string
+  for (const [monthName, monthIndex] of Object.entries(months)) {
+    if (dateStr.toLowerCase().includes(monthName)) {
+      month = monthIndex
+      break
+    }
+  }
+  
+  return new Date(year, month, 1)
+}

@@ -11,6 +11,10 @@ import {
   getSkillsByCategory,
   getProjects,
   getExperience,
+  getYearsOfExperience,
+  getTotalProjects,
+  getTotalTechnologies,
+  getPublicRepos,
 } from "@/lib/portfolio-data"
 import {
   Code2,
@@ -63,14 +67,6 @@ export default function Portfolio() {
   const skillsByCategory = getSkillsByCategory()
   const projects = getProjects()
   const experience = getExperience()
-
-  // Stats conservadoras
-  const stats = [
-    { label: "Años de experiencia", value: "4+", icon: Calendar, color: "text-blue-600 dark:text-blue-400" },
-    { label: "Proyectos", value: "10+", icon: CheckCircle, color: "text-green-600 dark:text-green-400" },
-    { label: "Tecnologías", value: "15+", icon: Globe, color: "text-purple-600 dark:text-purple-400" },
-    { label: "Repos públicos", value: "20+", icon: Activity, color: "text-orange-600 dark:text-orange-400" },
-  ] as const
 
   const mobility = (personalInfo as any).mobility as
     | { travel?: boolean; relocation?: boolean; vehicle?: boolean }
@@ -145,7 +141,32 @@ export default function Portfolio() {
             {/* Stats Grid */}
             <ScrollAnimation animation="slideUp" delay={600}>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-4xl">
-                {stats.map((stat, index) => (
+                {[
+                  { 
+                    label: "Años de experiencia", 
+                    value: `${getYearsOfExperience()}+`, 
+                    icon: Calendar, 
+                    color: "text-blue-600 dark:text-blue-400" 
+                  },
+                  { 
+                    label: "Proyectos", 
+                    value: `${getTotalProjects()}+`, 
+                    icon: CheckCircle, 
+                    color: "text-green-600 dark:text-green-400" 
+                  },
+                  { 
+                    label: "Tecnologías", 
+                    value: `${getTotalTechnologies()}+`, 
+                    icon: Globe, 
+                    color: "text-purple-600 dark:text-purple-400" 
+                  },
+                  { 
+                    label: "Repos públicos", 
+                    value: `${getPublicRepos()}+`, 
+                    icon: Activity, 
+                    color: "text-orange-600 dark:text-orange-400" 
+                  },
+                ].map((stat, index) => (
                   <ScrollAnimation 
                     key={stat.label} 
                     animation="scaleIn" 
