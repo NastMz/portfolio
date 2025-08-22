@@ -162,6 +162,154 @@
         { "label": "Aprendizaje", "value": "Alto", "icon": "Terminal" },
         { "label": "Módulos", "value": "Core", "icon": "Layers" }
       ]
+    },
+    {
+      "id": "oss-tulipann",
+      "title": "Tulipann Store",
+      "description": "Plataforma e-commerce con frontend y dashboard SPA en React + TypeScript + TailwindCSS y API en Django REST Framework.",
+      "tech": [
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "Python",
+        "Django REST Framework"
+      ],
+      "github": "https://github.com/NastMz/tulipann-store",
+      "gradient": "from-rose-500 to-pink-600",
+      "metrics": [
+        {
+          "label": "Módulos",
+          "value": "Full Stack",
+          "icon": "Layers"
+        },
+        { "label": "Objetivo", "value": "E-commerce", "icon": "Package" }
+      ]
+    },
+    {
+      "id": "oss-unitrack",
+      "title": "Unitrack",
+      "description": "Sistema distribuido para horarios de paraderos: backend en Flask (microservicios) + frontend en React; docker-compose y despliegue con Kubernetes/Minikube.",
+      "tech": [
+        "TypeScript",
+        "React",
+        "Python",
+        "Flask",
+        "Docker",
+        "Kubernetes"
+      ],
+      "github": "https://github.com/NastMz/Unitrack",
+      "gradient": "from-teal-500 to-cyan-600",
+      "metrics": [
+        { "label": "Microservicios", "value": "3+", "icon": "Layers" },
+        { "label": "Orquestación", "value": "K8s", "icon": "Globe" }
+      ]
+    },
+    {
+      "id": "oss-unirutas",
+      "title": "UniRutas + FlexCore",
+      "description": "Caso de uso que demuestra FlexCore, mini-framework Java agnóstico a motor de BD (soporta MySQL, PostgreSQL y MongoDB).",
+      "tech": ["Java", "FlexCore", "MySQL", "PostgreSQL", "MongoDB"],
+      "github": "https://github.com/NastMz/UniRutas",
+      "gradient": "from-amber-500 to-yellow-600",
+      "metrics": [
+        { "label": "Framework", "value": "FlexCore", "icon": "Package" },
+        { "label": "Motores BD", "value": "SQL & NoSQL", "icon": "Layers" }
+      ]
+    },
+    {
+      "id": "oss-automata-wordle",
+      "title": "Automata Wordle",
+      "description": "Clon de Wordle con modelado por autómatas finitos deterministas; backend Flask, app de escritorio PySide6 y UI en Astro.",
+      "tech": [
+        "Python",
+        "Flask",
+        "PySide6",
+        "Astro",
+        "TypeScript",
+        "JavaScript"
+      ],
+      "github": "https://github.com/NastMz/Automata-Wordle",
+      "gradient": "from-indigo-500 to-blue-600",
+      "metrics": [
+        { "label": "Frontend", "value": "Astro", "icon": "File" },
+        { "label": "Desktop", "value": "PySide6", "icon": "Terminal" }
+      ]
+    },
+    {
+      "id": "oss-secure-chat",
+      "title": "Secure Chat (C)",
+      "description": "Chat seguro en C con sockets; cifrado híbrido (RSA para intercambio y AES para mensajes), codificación Base64 y utilidades de sistema.",
+      "tech": ["C", "Sockets", "RSA", "AES"],
+      "github": "https://github.com/NastMz/Secure-Chat",
+      "gradient": "from-slate-600 to-zinc-800",
+      "metrics": [
+        { "label": "Cifrado", "value": "RSA/AES", "icon": "Shield" },
+        { "label": "Paradigma", "value": "Bajo nivel", "icon": "Terminal" }
+      ]
+    },
+    {
+      "id": "oss-grafos",
+      "title": "Grafos App (PyQt6)",
+      "description": "Aplicación de escritorio para crear/analizar grafos con PyQt6 y NetworkX; visualización, matrices/listas de adyacencia y ruta más corta.",
+      "tech": ["Python", "PyQt6", "NetworkX", "Matplotlib"],
+      "github": "https://github.com/NastMz/Grafos",
+      "gradient": "from-purple-500 to-fuchsia-600",
+      "metrics": [
+        { "label": "Algoritmos", "value": "Rutas", "icon": "Activity" },
+        { "label": "UI", "value": "PyQt6", "icon": "File" }
+      ]
+    },
+    {
+      "id": "oss-post-office",
+      "title": "Post Office (Frontend)",
+      "description": "Cliente web para un servidor de correos académico; React + TypeScript con integración a API propia.",
+      "tech": ["React", "TypeScript", "CSS"],
+      "github": "https://github.com/NastMz/Post-Office",
+      "gradient": "from-sky-500 to-blue-600",
+      "metrics": [
+        { "label": "Dominio", "value": "Email", "icon": "Globe" },
+        { "label": "Integración", "value": "API propia", "icon": "Layers" }
+      ]
+    },
+    {
+      "id": "oss-post-office-api",
+      "title": "Post Office API",
+      "description": "API backend del servidor de correos: Python, con contenedor Docker opcional y soporte tipo SMTP/POP3/IMAP.",
+      "tech": ["Python", "Docker"],
+      "github": "https://github.com/NastMz/Post-Office-API",
+      "gradient": "from-emerald-500 to-green-600",
+      "metrics": [
+        {
+          "label": "Protocolos",
+          "value": "SMTP/POP3/IMAP",
+          "icon": "Package"
+        },
+        { "label": "Contenedor", "value": "Docker", "icon": "Globe" }
+      ]
+    },
+    {
+      "id": "oss-spidey",
+      "title": "Spidey (Text Mining)",
+      "description": "Proyecto de analítica de texto sobre transformación digital en universidades: crawler, preprocesamiento y visualizaciones.",
+      "tech": ["Python", "JavaScript", "HTML", "CSS"],
+      "github": "https://github.com/NastMz/Spidey",
+      "gradient": "from-orange-500 to-red-600",
+      "metrics": [
+        { "label": "Stack", "value": "Py + JS", "icon": "Layers" },
+        { "label": "Tipo", "value": "NLP/ETL", "icon": "Activity" }
+      ]
+    },
+    {
+      "id": "oss-uniapp",
+      "title": "UniApp Unillanos (Flutter)",
+      "description": "App móvil Flutter para rutas y novedades universitarias; acompañada de servicios Python y soporte Docker.",
+      "tech": ["Flutter/Dart", "Python", "Docker"],
+      "github": "https://github.com/NastMz/UniApp-Unillanos",
+      "gradient": "from-cyan-500 to-blue-600",
+      "metrics": [
+        { "label": "Plataforma", "value": "Móvil", "icon": "Globe" },
+        { "label": "Servicios", "value": "Dart + Py", "icon": "Layers" }
+      ]
     }
   ],
   "experience": [
