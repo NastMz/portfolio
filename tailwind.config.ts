@@ -101,5 +101,10 @@ const config: Config = {
   	}
   },
   plugins: [require("tailwindcss-animate")],
+  safelist: [
+    { pattern: /from-*-*/ },
+    { pattern: /to-*-*/ },
+    { pattern: /border-l-*-*/ },
+  ],
 };
 export default config;
