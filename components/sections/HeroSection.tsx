@@ -71,25 +71,25 @@ export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-4xl px-4">
               {[
                 { 
-                  label: "Años de experiencia", 
+                  label: "Years of experience", 
                   value: `${stats.yearsOfExperience}+`, 
                   icon: Calendar, 
                   color: "text-blue-600 dark:text-blue-400" 
                 },
                 { 
-                  label: "Proyectos", 
+                  label: "Projects", 
                   value: `${stats.totalProjects}+`, 
                   icon: CheckCircle, 
                   color: "text-green-600 dark:text-green-400" 
                 },
                 { 
-                  label: "Tecnologías", 
+                  label: "Technologies", 
                   value: `${stats.totalTechnologies}+`, 
                   icon: Globe, 
                   color: "text-purple-600 dark:text-purple-400" 
                 },
                 { 
-                  label: "Repos públicos", 
+                  label: "Public repos", 
                   value: `${stats.publicRepos}+`, 
                   icon: Activity, 
                   color: "text-orange-600 dark:text-orange-400" 
@@ -144,11 +144,11 @@ export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
               <Button size="lg" asChild className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-lg w-full sm:w-auto">
                 <Link href="#projects">
                   <Rocket className="h-4 w-4 mr-2" aria-hidden />
-                  Ver proyectos
+                  View projects
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild className="border-primary/20 hover:bg-primary/5 bg-transparent w-full sm:w-auto">
-                <Link href="#contact">Contacto</Link>
+                <Link href="#contact">Contact</Link>
               </Button>
             </div>
           </ScrollAnimation>

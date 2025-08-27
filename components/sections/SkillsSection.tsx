@@ -27,9 +27,9 @@ export function SkillsSection({ skillsByCategory }: SkillsSectionProps) {
       <div className="container mx-auto max-w-6xl px-4 lg:px-6">
         <ScrollAnimation animation="slideUp" delay={100}>
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Habilidades</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Skills</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
-            <p className="text-muted-foreground mt-4 text-sm md:text-base">Experiencia aplicada en producción</p>
+            <p className="text-muted-foreground mt-4 text-sm md:text-base">Experience applied in production</p>
           </div>
         </ScrollAnimation>
 
@@ -77,24 +77,24 @@ export function SkillsSection({ skillsByCategory }: SkillsSectionProps) {
               <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                 <Database className="h-5 w-5 md:h-6 md:w-6 text-white" aria-hidden />
               </div>
-              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Optimización de bases de datos</h3>
-              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Consultas más rápidas y eficientes en producción</p>
+              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Database optimization</h3>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Faster and more efficient queries in production</p>
             </Card>
 
             <Card className="text-center p-4 md:p-6 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/50 dark:to-green-900/50 border-green-200 dark:border-green-800/50">
               <div className="w-10 h-10 md:w-12 md:h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                 <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-white" aria-hidden />
               </div>
-              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Escalabilidad</h3>
-              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Sistemas mantenibles y listos para crecer</p>
+              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Scalability</h3>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Maintainable systems ready to grow</p>
             </Card>
 
             <Card className="text-center p-4 md:p-6 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/50 dark:to-purple-900/50 border-purple-200 dark:border-purple-800/50 sm:col-span-2 lg:col-span-1">
               <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                 <Shield className="h-5 w-5 md:h-6 md:w-6 text-white" aria-hidden />
               </div>
-              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Buenas prácticas</h3>
-              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Seguridad, testing y observabilidad</p>
+              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Best practices</h3>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Security, testing and observability</p>
             </Card>
           </div>
         </ScrollAnimation>

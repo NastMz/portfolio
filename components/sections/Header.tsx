@@ -37,11 +37,11 @@ export function Header({ personalInfo }: HeaderProps) {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-            <Link href="#about" className="transition-colors hover:text-primary">Sobre mí</Link>
-            <Link href="#skills" className="transition-colors hover:text-primary">Habilidades</Link>
-            <Link href="#projects" className="transition-colors hover:text-primary">Proyectos</Link>
-            <Link href="#experience" className="transition-colors hover:text-primary">Experiencia</Link>
-            <Link href="#contact" className="transition-colors hover:text-primary">Contacto</Link>
+            <Link href="#about" className="transition-colors hover:text-primary">About me</Link>
+            <Link href="#skills" className="transition-colors hover:text-primary">Skills</Link>
+            <Link href="#projects" className="transition-colors hover:text-primary">Projects</Link>
+            <Link href="#experience" className="transition-colors hover:text-primary">Experience</Link>
+            <Link href="#contact" className="transition-colors hover:text-primary">Contact</Link>
           </nav>
           
           <div className="flex flex-1 items-center justify-end space-x-2">
@@ -83,35 +83,35 @@ export function Header({ personalInfo }: HeaderProps) {
                 className="text-sm font-medium transition-colors hover:text-primary py-2"
                 onClick={closeMenu}
               >
-                Sobre mí
+                About me
               </Link>
               <Link 
                 href="#skills" 
                 className="text-sm font-medium transition-colors hover:text-primary py-2"
                 onClick={closeMenu}
               >
-                Habilidades
+                Skills
               </Link>
               <Link 
                 href="#projects" 
                 className="text-sm font-medium transition-colors hover:text-primary py-2"
                 onClick={closeMenu}
               >
-                Proyectos
+                Projects
               </Link>
               <Link 
                 href="#experience" 
                 className="text-sm font-medium transition-colors hover:text-primary py-2"
                 onClick={closeMenu}
               >
-                Experiencia
+                Experience
               </Link>
               <Link 
                 href="#contact" 
                 className="text-sm font-medium transition-colors hover:text-primary py-2"
                 onClick={closeMenu}
               >
-                Contacto
+                Contact
               </Link>
               
               {/* Mobile Social Links */}

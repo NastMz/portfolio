@@ -50,7 +50,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
       <div className="mx-auto max-w-7xl">
         <ScrollAnimation animation="slideUp" delay={100}>
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Proyectos destacados</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Featured projects</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
           </div>
         </ScrollAnimation>

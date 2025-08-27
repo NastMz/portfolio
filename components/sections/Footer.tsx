@@ -20,7 +20,7 @@ export function Footer({ personalInfo }: FooterProps) {
             <span className="font-semibold text-sm md:text-base">{personalInfo.name}</span>
           </div>
           <p className="text-xs md:text-sm text-muted-foreground text-center md:text-right">
-            Construido con Next.js, Tailwind CSS y ☕ © {year}
+            Built with Next.js, Tailwind CSS and ☕ © {year}
           </p>
         </div>
       </div>

@@ -24,7 +24,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
       <div className="container mx-auto max-w-4xl px-4 lg:px-6">
         <ScrollAnimation animation="slideUp" delay={100}>
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Experiencia</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Experience</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
           </div>
         </ScrollAnimation>

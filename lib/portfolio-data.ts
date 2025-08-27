@@ -127,17 +127,17 @@ export function getSkillsByCategory(): Record<string, Skill[]> {
   }, {} as Record<string, Skill[]>)
 }
 
-// Calcular stats dinámicos
+// Calculate dynamic stats
 export function getYearsOfExperience(): number {
   const experience = getExperience()
   if (experience.length === 0) return 0
   
-  // Buscar la fecha más antigua de inicio
+  // Find the earliest start date
   const startDates = experience.map(exp => {
     const periodParts = exp.period.toLowerCase().split(' – ')
     const startPart = periodParts[0].trim()
     
-    // Extraer año de inicio (formato: "mes año" o "año")
+    // Extract start year (format: "month year" or "year")
     const yearRegex = /(\d{4})/
     const match = yearRegex.exec(startPart)
     return match ? parseInt(match[1]) : new Date().getFullYear()
@@ -162,33 +162,33 @@ export function getPublicRepos(): number {
   return projects.filter(project => project.github).length
 }
 
-// Función para obtener stats adicionales opcionales
+// Function to get additional optional stats
 export function getAdditionalStats() {
   const projects = getProjects()
   const experience = getExperience()
   
   return {
-    // Stats por categoría de skills
+    // Stats by skill category
     skillCategories: Object.keys(getSkillsByCategory()).length,
     
-    // Lenguajes/frameworks únicos
+    // Unique languages/frameworks
     uniqueTechnologies: [...new Set(
       projects.flatMap(p => p.tech || [])
     )].length,
     
-    // Proyectos con demo en vivo
+    // Projects with live demo
     projectsWithDemo: projects.filter(p => p.demo).length,
     
-    // Años de experiencia más granular
+    // More granular experience years
     experienceMonths: calculateExperienceInMonths(experience),
     
-    // Empresas donde ha trabajado
+    // Companies worked at
     companiesWorked: [...new Set(experience.map(exp => exp.company))].length,
     
-    // Proyectos open source vs privados
+    // Open source vs private projects
     openSourceProjects: projects.filter(p => p.github).length,
     
-    // Tecnologías por categoría
+    // Technologies by category
     technologiesByCategory: Object.entries(getSkillsByCategory()).reduce((acc, [category, skills]) => {
       acc[category] = skills.length
       return acc
@@ -203,11 +203,11 @@ function calculateExperienceInMonths(experience: Experience[]): number {
   experience.forEach(exp => {
     const periodParts = exp.period.toLowerCase().split(' – ')
     const startPart = periodParts[0].trim()
-    const endPart = periodParts[1]?.trim() || 'actualidad'
+    const endPart = periodParts[1]?.trim() || 'present'
     
-    // Extraer fechas de inicio y fin
+    // Extract start and end dates
     const startDate = parseExperienceDate(startPart)
-    const endDate = endPart === 'actualidad' ? currentDate : parseExperienceDate(endPart)
+    const endDate = endPart === 'present' ? currentDate : parseExperienceDate(endPart)
     
     if (startDate && endDate) {
       const months = (endDate.getFullYear() - startDate.getFullYear()) * 12 + 
@@ -221,8 +221,8 @@ function calculateExperienceInMonths(experience: Experience[]): number {
 
 function parseExperienceDate(dateStr: string): Date | null {
   const months = {
-    'enero': 0, 'febrero': 1, 'marzo': 2, 'abril': 3, 'mayo': 4, 'junio': 5,
-    'julio': 6, 'agosto': 7, 'septiembre': 8, 'octubre': 9, 'noviembre': 10, 'diciembre': 11
+    'january': 0, 'february': 1, 'march': 2, 'april': 3, 'may': 4, 'june': 5,
+    'july': 6, 'august': 7, 'september': 8, 'october': 9, 'november': 10, 'december': 11
   }
   
   const yearRegex = /(\d{4})/

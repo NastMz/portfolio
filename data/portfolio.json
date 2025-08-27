@@ -2,7 +2,7 @@
   "personalInfo": {
     "name": "Kevin Martinez",
     "title": "Software Engineer | Backend Developer",
-    "description": "Ingeniero de Sistemas con sólida experiencia en desarrollo backend para aplicaciones web y móviles, especializado en .NET, C#, Python y Node.js. Experto en diseño de APIs escalables, optimización de bases de datos y automatización de despliegues. Proactivo, autodidacta y orientado a la mejora continua.",
+    "description": "Systems Engineer with solid experience in backend development for web and mobile applications, specialized in .NET, C#, Python and Node.js. Expert in scalable API design, database optimization and deployment automation. Proactive, self-taught and focused on continuous improvement.",
     "location": "Tunja, Boyacá, Colombia",
     "email": "ksmartinez23@outlook.com",
     "phone": "+57 314 4397291",
@@ -11,10 +11,10 @@
     "availability": "Available for hire"
   },
   "highlights": [
-    "Experiencia liderando equipos técnicos y promoviendo buenas prácticas de desarrollo",
-    "Diseño de arquitecturas limpias, CQRS y DDD para sistemas empresariales",
-    "Implementación de sistemas de actualización automática en aplicaciones de escritorio",
-    "Contribuidor OSS con librerías en .NET, React y PHP"
+    "Experience leading technical teams and promoting software development best practices",
+    "Design of clean architectures, CQRS and DDD for enterprise systems",
+    "Implementation of automatic update systems in desktop applications",
+    "OSS contributor with libraries in .NET, React and PHP"
   ],
   "skills": [
     {
@@ -118,55 +118,55 @@
     {
       "id": "oss-1",
       "title": "light-query",
-      "description": "Librería de data-fetching para React con hooks de queries, mutations e infinite loading, con caché configurable y soporte para Suspense.",
+      "description": "Data-fetching library for React with hooks for queries, mutations and infinite loading, with configurable cache and Suspense support.",
       "tech": ["React", "TypeScript", "NPM"],
       "github": "https://github.com/NastMz/light-query",
       "gradient": "from-sky-500 to-indigo-600",
       "metrics": [
-        { "label": "Aprendizaje", "value": "Alto", "icon": "Terminal" },
-        { "label": "Actividad", "value": "Activa", "icon": "Activity" }
+        { "label": "Learning", "value": "High", "icon": "Terminal" },
+        { "label": "Activity", "value": "Active", "icon": "Activity" }
       ]
     },
     {
       "id": "oss-2",
       "title": "Html2Pdf",
-      "description": "Librería .NET 8 para convertir HTML a PDF usando RazorLight y PuppeteerSharp. Incluye pool de navegadores, DI y opciones personalizables.",
+      "description": ".NET 8 library to convert HTML to PDF using RazorLight and PuppeteerSharp. Includes browser pool, DI and customizable options.",
       "tech": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
       "github": "https://github.com/NastMz/Html2Pdf",
       "gradient": "from-rose-500 to-orange-600",
       "metrics": [
-        { "label": "Rendimiento", "value": "Óptimo", "icon": "TrendingUp" },
-        { "label": "Uso", "value": "Producción", "icon": "Activity" }
+        { "label": "Performance", "value": "Optimal", "icon": "TrendingUp" },
+        { "label": "Usage", "value": "Production", "icon": "Activity" }
       ]
     },
     {
       "id": "oss-3",
       "title": "SimpleMediator",
-      "description": "Implementación ligera del patrón Mediator para .NET 8 con soporte para commands, queries, notifications y behaviors personalizables.",
+      "description": "Lightweight implementation of the Mediator pattern for .NET 8 with support for commands, queries, notifications and customizable behaviors.",
       "tech": [".NET 8", "C#"],
       "github": "https://github.com/NastMz/SimpleMediator",
       "gradient": "from-blue-500 to-cyan-600",
       "metrics": [
-        { "label": "Tamaño", "value": "Ligero", "icon": "File" },
-        { "label": "Extensible", "value": "Sí", "icon": "Package" }
+        { "label": "Size", "value": "Lightweight", "icon": "File" },
+        { "label": "Extensible", "value": "Yes", "icon": "Package" }
       ]
     },
     {
       "id": "oss-4",
       "title": "mini-php-framework",
-      "description": "Micro-framework educativo en PHP con DDD & Clean Architecture: routing por atributos, middleware PSR-15, CQRS básico y JWT auth.",
+      "description": "Educational micro-framework in PHP with DDD & Clean Architecture: attribute routing, PSR-15 middleware, basic CQRS and JWT auth.",
       "tech": ["PHP 8.4+", "PSR-4/12/15", "SQLite"],
       "github": "https://github.com/NastMz/mini-php-framework",
       "gradient": "from-amber-500 to-yellow-600",
       "metrics": [
-        { "label": "Aprendizaje", "value": "Alto", "icon": "Terminal" },
-        { "label": "Módulos", "value": "Core", "icon": "Layers" }
+        { "label": "Learning", "value": "High", "icon": "Terminal" },
+        { "label": "Modules", "value": "Core", "icon": "Layers" }
       ]
     },
     {
       "id": "oss-tulipann",
       "title": "Tulipann Store",
-      "description": "Plataforma e-commerce con frontend y dashboard SPA en React + TypeScript + TailwindCSS y API en Django REST Framework.",
+      "description": "E-commerce platform with frontend and SPA dashboard in React + TypeScript + TailwindCSS and API in Django REST Framework.",
       "tech": [
         "React",
         "TypeScript",
@@ -178,17 +178,17 @@
       "gradient": "from-rose-500 to-pink-600",
       "metrics": [
         {
-          "label": "Módulos",
+          "label": "Modules",
           "value": "Full Stack",
           "icon": "Layers"
         },
-        { "label": "Objetivo", "value": "E-commerce", "icon": "Package" }
+        { "label": "Objective", "value": "E-commerce", "icon": "Package" }
       ]
     },
     {
       "id": "oss-unitrack",
       "title": "Unitrack",
-      "description": "Sistema distribuido para horarios de paraderos: backend en Flask (microservicios) + frontend en React; docker-compose y despliegue con Kubernetes/Minikube.",
+      "description": "Distributed system for bus stop schedules: Flask backend (microservices) + React frontend; docker-compose and deployment with Kubernetes/Minikube.",
       "tech": [
         "TypeScript",
         "React",
@@ -207,19 +207,19 @@
     {
       "id": "oss-unirutas",
       "title": "UniRutas + FlexCore",
-      "description": "Caso de uso que demuestra FlexCore, mini-framework Java agnóstico a motor de BD (soporta MySQL, PostgreSQL y MongoDB).",
+      "description": "Use case that demonstrates FlexCore, Java mini-framework agnostic to database engine (supports MySQL, PostgreSQL and MongoDB).",
       "tech": ["Java", "FlexCore", "MySQL", "PostgreSQL", "MongoDB"],
       "github": "https://github.com/NastMz/UniRutas",
       "gradient": "from-amber-500 to-yellow-600",
       "metrics": [
         { "label": "Framework", "value": "FlexCore", "icon": "Package" },
-        { "label": "Motores BD", "value": "SQL & NoSQL", "icon": "Layers" }
+        { "label": "DB Engines", "value": "SQL & NoSQL", "icon": "Layers" }
       ]
     },
     {
       "id": "oss-automata-wordle",
       "title": "Automata Wordle",
-      "description": "Clon de Wordle con modelado por autómatas finitos deterministas; backend Flask, app de escritorio PySide6 y UI en Astro.",
+      "description": "Wordle clone with deterministic finite automaton modeling; Flask backend, PySide6 desktop app and UI in Astro.",
       "tech": [
         "Python",
         "Flask",
@@ -238,164 +238,164 @@
     {
       "id": "oss-secure-chat",
       "title": "Secure Chat (C)",
-      "description": "Chat seguro en C con sockets; cifrado híbrido (RSA para intercambio y AES para mensajes), codificación Base64 y utilidades de sistema.",
+      "description": "Secure chat in C with sockets; hybrid encryption (RSA for exchange and AES for messages), Base64 encoding and system utilities.",
       "tech": ["C", "Sockets", "RSA", "AES"],
       "github": "https://github.com/NastMz/Secure-Chat",
       "gradient": "from-slate-600 to-zinc-800",
       "metrics": [
-        { "label": "Cifrado", "value": "RSA/AES", "icon": "Shield" },
-        { "label": "Paradigma", "value": "Bajo nivel", "icon": "Terminal" }
+        { "label": "Encryption", "value": "RSA/AES", "icon": "Shield" },
+        { "label": "Paradigm", "value": "Low level", "icon": "Terminal" }
       ]
     },
     {
       "id": "oss-grafos",
       "title": "Grafos App (PyQt6)",
-      "description": "Aplicación de escritorio para crear/analizar grafos con PyQt6 y NetworkX; visualización, matrices/listas de adyacencia y ruta más corta.",
+      "description": "Desktop application to create/analyze graphs with PyQt6 and NetworkX; visualization, adjacency matrices/lists and shortest path.",
       "tech": ["Python", "PyQt6", "NetworkX", "Matplotlib"],
       "github": "https://github.com/NastMz/Grafos",
       "gradient": "from-purple-500 to-fuchsia-600",
       "metrics": [
-        { "label": "Algoritmos", "value": "Rutas", "icon": "Activity" },
+        { "label": "Algorithms", "value": "Paths", "icon": "Activity" },
         { "label": "UI", "value": "PyQt6", "icon": "File" }
       ]
     },
     {
       "id": "oss-post-office",
       "title": "Post Office (Frontend)",
-      "description": "Cliente web para un servidor de correos académico; React + TypeScript con integración a API propia.",
+      "description": "Web client for an academic mail server; React + TypeScript with integration to custom API.",
       "tech": ["React", "TypeScript", "CSS"],
       "github": "https://github.com/NastMz/Post-Office",
       "gradient": "from-sky-500 to-blue-600",
       "metrics": [
-        { "label": "Dominio", "value": "Email", "icon": "Globe" },
-        { "label": "Integración", "value": "API propia", "icon": "Layers" }
+        { "label": "Domain", "value": "Email", "icon": "Globe" },
+        { "label": "Integration", "value": "Custom API", "icon": "Layers" }
       ]
     },
     {
       "id": "oss-post-office-api",
       "title": "Post Office API",
-      "description": "API backend del servidor de correos: Python, con contenedor Docker opcional y soporte tipo SMTP/POP3/IMAP.",
+      "description": "Backend API for mail server: Python, with optional Docker container and SMTP/POP3/IMAP-like support.",
       "tech": ["Python", "Docker"],
       "github": "https://github.com/NastMz/Post-Office-API",
       "gradient": "from-emerald-500 to-green-600",
       "metrics": [
         {
-          "label": "Protocolos",
+          "label": "Protocols",
           "value": "SMTP/POP3/IMAP",
           "icon": "Package"
         },
-        { "label": "Contenedor", "value": "Docker", "icon": "Globe" }
+        { "label": "Container", "value": "Docker", "icon": "Globe" }
       ]
     },
     {
       "id": "oss-spidey",
       "title": "Spidey (Text Mining)",
-      "description": "Proyecto de analítica de texto sobre transformación digital en universidades: crawler, preprocesamiento y visualizaciones.",
+      "description": "Text analytics project on digital transformation in universities: crawler, preprocessing and visualizations.",
       "tech": ["Python", "JavaScript", "HTML", "CSS"],
       "github": "https://github.com/NastMz/Spidey",
       "gradient": "from-orange-500 to-red-600",
       "metrics": [
         { "label": "Stack", "value": "Py + JS", "icon": "Layers" },
-        { "label": "Tipo", "value": "NLP/ETL", "icon": "Activity" }
+        { "label": "Type", "value": "NLP/ETL", "icon": "Activity" }
       ]
     },
     {
       "id": "oss-uniapp",
       "title": "UniApp Unillanos (Flutter)",
-      "description": "App móvil Flutter para rutas y novedades universitarias; acompañada de servicios Python y soporte Docker.",
+      "description": "Flutter mobile app for university routes and news; accompanied by Python services and Docker support.",
       "tech": ["Flutter/Dart", "Python", "Docker"],
       "github": "https://github.com/NastMz/UniApp-Unillanos",
       "gradient": "from-cyan-500 to-blue-600",
       "metrics": [
-        { "label": "Plataforma", "value": "Móvil", "icon": "Globe" },
-        { "label": "Servicios", "value": "Dart + Py", "icon": "Layers" }
+        { "label": "Platform", "value": "Mobile", "icon": "Globe" },
+        { "label": "Services", "value": "Dart + Py", "icon": "Layers" }
       ]
     }
   ],
   "experience": [
     {
       "id": "exp-1",
-      "title": "Líder Técnico Backend .NET",
-      "company": "Enternova SAS (Remoto)",
-      "period": "Enero 2025 – Actualidad",
+      "title": "Backend Technical Lead .NET",
+      "company": "Enternova SAS (Remote)",
+      "period": "January 2025 – Present",
       "location": "Bogotá, Colombia",
       "color": "border-l-blue-500",
       "achievements": [
-        "Liderazgo de equipo backend en proyectos de abastecimiento",
-        "Revisión de código, mentoría y capacitación continua",
-        "Participación en decisiones arquitectónicas clave",
-        "Entrega de soluciones escalables y robustas"
+        "Backend team leadership in supply chain projects",
+        "Code review, mentoring and continuous training",
+        "Participation in key architectural decisions",
+        "Delivery of scalable and robust solutions"
       ]
     },
     {
       "id": "exp-2",
-      "title": "Desarrollador .NET Backend",
-      "company": "Enternova SAS (Remoto)",
-      "period": "Noviembre 2024 – Enero 2025",
+      "title": ".NET Backend Developer",
+      "company": "Enternova SAS (Remote)",
+      "period": "November 2024 – January 2025",
       "location": "Bogotá, Colombia",
       "color": "border-l-green-500",
       "achievements": [
-        "Desarrollo de sistemas de información en .NET",
-        "Integración de servicios externos y SQL Server",
-        "Mantenimiento y optimización de bases de datos"
+        "Development of information systems in .NET",
+        "Integration of external services and SQL Server",
+        "Database maintenance and optimization"
       ]
     },
     {
       "id": "exp-3",
-      "title": "Desarrollador Backend C#",
-      "company": "Ignition Games (Remoto)",
-      "period": "Octubre 2024 – Enero 2025",
+      "title": "C# Backend Developer",
+      "company": "Ignition Games (Remote)",
+      "period": "October 2024 – January 2025",
       "location": "Villavicencio, Colombia",
       "color": "border-l-purple-500",
       "achievements": [
-        "Desarrollo de chatbot con inteligencia artificial",
-        "Implementación de arquitectura de microservicios",
-        "Despliegue en Azure Cloud"
+        "Development of chatbot with artificial intelligence",
+        "Implementation of microservices architecture",
+        "Deployment on Azure Cloud"
       ]
     },
     {
       "id": "exp-4",
-      "title": "Desarrollador de software",
-      "company": "Centro de Enseñanza Automovilística JMontoya (Remoto)",
-      "period": "Octubre 2023 – Julio 2024",
+      "title": "Software Developer",
+      "company": "Centro de Enseñanza Automovilística JMontoya (Remote)",
+      "period": "October 2023 – July 2024",
       "location": "Villavicencio, Colombia",
       "color": "border-l-orange-500",
       "achievements": [
-        "Desarrollo de 4 páginas web integradas con CMS Strapi",
-        "Diseño y desarrollo de sistema de gestión empresarial con Django y Next.js",
-        "Mejora de procesos internos mediante digitalización"
+        "Development of 4 websites integrated with Strapi CMS",
+        "Design and development of enterprise management system with Django and Next.js",
+        "Improvement of internal processes through digitalization"
       ]
     },
     {
       "id": "exp-5",
-      "title": "Desarrollador de software",
-      "company": "TulipannStore (Remoto)",
-      "period": "Octubre 2021 – Enero 2023",
+      "title": "Software Developer",
+      "company": "TulipannStore (Remote)",
+      "period": "October 2021 – January 2023",
       "location": "Bogotá, Colombia",
       "color": "border-l-pink-500",
       "achievements": [
-        "Desarrollo de plataforma e-commerce y panel administrativo",
-        "Implementación de pagos y gestión de pedidos",
-        "Optimización de UI/UX con React y Django"
+        "Development of e-commerce platform and administrative panel",
+        "Implementation of payments and order management",
+        "UI/UX optimization with React and Django"
       ]
     }
   ],
   "education": [
     {
       "id": "edu-1",
-      "title": "Ingeniería de Sistemas",
+      "title": "Systems Engineering",
       "institution": "Universidad de Los Llanos",
-      "period": "Febrero 2019 – Diciembre 2024"
+      "period": "February 2019 – December 2024"
     }
   ],
   "certifications": [
     "Scrum Foundation Professional Certificate (SFPC)",
     "Cybersecurity Essentials",
     "Introduction to Cybersecurity",
-    "Ponencia SICSYB 2024"
+    "SICSYB 2024 Presentation"
   ],
   "languages": [
-    { "language": "Español", "level": "Nativo" },
-    { "language": "Inglés", "level": "Intermedio" }
+    { "language": "Spanish", "level": "Native" },
+    { "language": "English", "level": "Intermediate" }
   ]
 }

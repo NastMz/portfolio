@@ -11,7 +11,7 @@ export function AboutSection() {
       <div className="mx-auto max-w-4xl">
         <ScrollAnimation animation="slideUp" delay={100}>
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Sobre mí</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">About me</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
           </div>
         </ScrollAnimation>
@@ -20,13 +20,12 @@ export function AboutSection() {
           <ScrollAnimation animation="slideLeft" delay={200}>
             <div className="space-y-4 md:space-y-6">
               <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                Soy desarrollador backend especializado en .NET, con foco en APIs escalables, optimización de bases de
-                datos y automatización de despliegues. Me interesa construir soluciones prácticas, mantenibles y con
-                buen performance.
+                I am a backend developer specialized in .NET, with focus on scalable APIs, database optimization and 
+                deployment automation. I'm interested in building practical, maintainable solutions with good performance.
               </p>
               <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                También tengo experiencia con Node.js y Python. Me gusta acompañar a equipos en buenas prácticas,
-                revisión de código y diseño limpio.
+                I also have experience with Node.js and Python. I like to accompany teams in best practices,
+                code review and clean design.
               </p>
               <div className="flex flex-wrap gap-2 md:gap-3">
                 <Badge variant="secondary" className="px-2 md:px-3 py-1 bg-primary/10 text-primary border-primary/20 text-xs">
@@ -53,8 +52,8 @@ export function AboutSection() {
                     <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-primary" aria-hidden />
                   </div>
                   <div>
-                    <div className="font-semibold text-sm md:text-base">Orientación a rendimiento</div>
-                    <div className="text-xs md:text-sm text-muted-foreground">Optimización de consultas y tiempos de respuesta</div>
+                    <div className="font-semibold text-sm md:text-base">Performance oriented</div>
+                    <div className="text-xs md:text-sm text-muted-foreground">Query optimization and response times</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -62,8 +61,8 @@ export function AboutSection() {
                     <Shield className="h-5 w-5 md:h-6 md:w-6 text-green-600 dark:text-green-400" aria-hidden />
                   </div>
                   <div>
-                    <div className="font-semibold text-sm md:text-base">Confiabilidad</div>
-                    <div className="text-xs md:text-sm text-muted-foreground">Buenas prácticas, pruebas y observabilidad</div>
+                    <div className="font-semibold text-sm md:text-base">Reliability</div>
+                    <div className="text-xs md:text-sm text-muted-foreground">Best practices, testing and observability</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -71,8 +70,8 @@ export function AboutSection() {
                     <Users className="h-5 w-5 md:h-6 md:w-6 text-purple-600 dark:text-purple-400" aria-hidden />
                   </div>
                   <div>
-                    <div className="font-semibold text-sm md:text-base">Colaboración</div>
-                    <div className="text-xs md:text-sm text-muted-foreground">Mentoría y revisión de código</div>
+                    <div className="font-semibold text-sm md:text-base">Collaboration</div>
+                    <div className="text-xs md:text-sm text-muted-foreground">Mentoring and code review</div>
                   </div>
                 </div>
               </div>
