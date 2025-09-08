@@ -164,6 +164,28 @@
       ]
     },
     {
+      "id": "oss-voicecmd",
+      "title": "VoiceCMD + Snake (Monorepo)",
+      "description": "OOP voice command recognizer using FFT → split into N parts → band energy with SQLite profiles. Includes CLI, Tkinter GUI for dataset/live testing, and a Pygame Snake demo.",
+      "tech": [
+        "Python",
+        "NumPy",
+        "SciPy",
+        "sounddevice",
+        "soundfile",
+        "SQLite",
+        "Tkinter",
+        "Pygame",
+        "CLI"
+      ],
+      "github": "https://github.com/NastMz/voicecmd-monorepo",
+      "gradient": "from-violet-500 to-indigo-600",
+      "metrics": [
+        { "label": "DSP", "value": "FFT/Bands", "icon": "Activity" },
+        { "label": "Live", "value": "Streaming", "icon": "Terminal" }
+      ]
+    },
+    {
       "id": "oss-tulipann",
       "title": "Tulipann Store",
       "description": "E-commerce platform with frontend and SPA dashboard in React + TypeScript + TailwindCSS and API in Django REST Framework.",
