@@ -152,6 +152,19 @@
       ]
     },
     {
+      "id": "oss-flask-forge-cli",
+      "title": "Flask Forge CLI",
+      "description": "Clean Architecture scaffolding CLI for Flask (OOP-first). Generates domain/app/infra/interfaces, wires DI, sets up Alembic (autogenerate-ready env.py), and includes DX niceties (ruff/black/pre-commit, dev server, resource generator).",
+      "tech": ["Python", "Flask", "Typer", "Jinja2", "SQLAlchemy", "Alembic"],
+      "github": "https://github.com/NastMz/flask-forge",
+      "pypi": "https://pypi.org/project/flask-forge-cli/",
+      "gradient": "from-emerald-500 to-lime-600",
+      "metrics": [
+        { "label": "DX", "value": "High", "icon": "TrendingUp" },
+        { "label": "Scaffolds", "value": "Clean Arch", "icon": "Layers" }
+      ]
+    },
+    {
       "id": "oss-4",
       "title": "mini-php-framework",
       "description": "Educational micro-framework in PHP with DDD & Clean Architecture: attribute routing, PSR-15 middleware, basic CQRS and JWT auth.",
