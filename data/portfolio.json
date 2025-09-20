@@ -120,6 +120,12 @@
       "title": "light-query",
       "description": "Data-fetching library for React with hooks for queries, mutations and infinite loading, with configurable cache and Suspense support.",
       "tech": ["React", "TypeScript", "NPM"],
+      "categories": {
+        "languages": ["TypeScript", "JavaScript"],
+        "frameworks": ["React"],
+        "tools": ["NPM", "Vite"],
+        "type": "Frontend Library"
+      },
       "github": "https://github.com/NastMz/light-query",
       "gradient": "from-sky-500 to-indigo-600",
       "metrics": [
@@ -132,6 +138,12 @@
       "title": "Html2Pdf",
       "description": ".NET 8 library to convert HTML to PDF using RazorLight and PuppeteerSharp. Includes browser pool, DI and customizable options.",
       "tech": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
+      "categories": {
+        "languages": ["C#"],
+        "frameworks": [".NET"],
+        "tools": ["RazorLight", "PuppeteerSharp", "NuGet"],
+        "type": "Backend Library"
+      },
       "github": "https://github.com/NastMz/Html2Pdf",
       "gradient": "from-rose-500 to-orange-600",
       "metrics": [
@@ -144,6 +156,12 @@
       "title": "SimpleMediator",
       "description": "Lightweight implementation of the Mediator pattern for .NET 8 with support for commands, queries, notifications and customizable behaviors.",
       "tech": [".NET 8", "C#"],
+      "categories": {
+        "languages": ["C#"],
+        "frameworks": [".NET"],
+        "patterns": ["CQRS", "Mediator"],
+        "type": "Backend Library"
+      },
       "github": "https://github.com/NastMz/SimpleMediator",
       "gradient": "from-blue-500 to-cyan-600",
       "metrics": [
@@ -156,6 +174,12 @@
       "title": "Flask Forge CLI",
       "description": "Clean Architecture scaffolding CLI for Flask (OOP-first). Generates domain/app/infra/interfaces, wires DI, sets up Alembic (autogenerate-ready env.py), and includes DX niceties (ruff/black/pre-commit, dev server, resource generator).",
       "tech": ["Python", "Flask", "Typer", "Jinja2", "SQLAlchemy", "Alembic"],
+      "categories": {
+        "languages": ["Python"],
+        "frameworks": ["Flask"],
+        "tools": ["Typer", "Jinja2", "SQLAlchemy", "Alembic"],
+        "type": "CLI Tool"
+      },
       "github": "https://github.com/NastMz/flask-forge",
       "pypi": "https://pypi.org/project/flask-forge-cli/",
       "gradient": "from-emerald-500 to-lime-600",
@@ -169,6 +193,13 @@
       "title": "mini-php-framework",
       "description": "Educational micro-framework in PHP with DDD & Clean Architecture: attribute routing, PSR-15 middleware, basic CQRS and JWT auth.",
       "tech": ["PHP 8.4+", "PSR-4/12/15", "SQLite"],
+      "categories": {
+        "languages": ["PHP"],
+        "frameworks": ["Custom Framework"],
+        "databases": ["SQLite"],
+        "patterns": ["DDD", "CQRS"],
+        "type": "Backend Framework"
+      },
       "github": "https://github.com/NastMz/mini-php-framework",
       "gradient": "from-amber-500 to-yellow-600",
       "metrics": [
@@ -191,6 +222,13 @@
         "Pygame",
         "CLI"
       ],
+      "categories": {
+        "languages": ["Python"],
+        "libraries": ["NumPy", "SciPy", "Pygame"],
+        "databases": ["SQLite"],
+        "tools": ["Tkinter"],
+        "type": "Machine Learning"
+      },
       "github": "https://github.com/NastMz/voicecmd-monorepo",
       "gradient": "from-violet-500 to-indigo-600",
       "metrics": [
@@ -209,6 +247,12 @@
         "Python",
         "Django REST Framework"
       ],
+      "categories": {
+        "languages": ["TypeScript", "Python"],
+        "frameworks": ["React", "Django"],
+        "styling": ["TailwindCSS"],
+        "type": "Full Stack"
+      },
       "github": "https://github.com/NastMz/tulipann-store",
       "gradient": "from-rose-500 to-pink-600",
       "metrics": [
@@ -232,6 +276,12 @@
         "Docker",
         "Kubernetes"
       ],
+      "categories": {
+        "languages": ["TypeScript", "Python"],
+        "frameworks": ["React", "Flask"],
+        "devops": ["Docker", "Kubernetes"],
+        "type": "Microservices"
+      },
       "github": "https://github.com/NastMz/Unitrack",
       "gradient": "from-teal-500 to-cyan-600",
       "metrics": [
@@ -244,6 +294,12 @@
       "title": "UniRutas + FlexCore",
       "description": "Use case that demonstrates FlexCore, Java mini-framework agnostic to database engine (supports MySQL, PostgreSQL and MongoDB).",
       "tech": ["Java", "FlexCore", "MySQL", "PostgreSQL", "MongoDB"],
+      "categories": {
+        "languages": ["Java"],
+        "frameworks": ["Custom Framework"],
+        "databases": ["MySQL", "PostgreSQL", "MongoDB"],
+        "type": "Backend Framework"
+      },
       "github": "https://github.com/NastMz/UniRutas",
       "gradient": "from-amber-500 to-yellow-600",
       "metrics": [
@@ -263,6 +319,12 @@
         "TypeScript",
         "JavaScript"
       ],
+      "categories": {
+        "languages": ["Python", "TypeScript", "JavaScript"],
+        "frameworks": ["Flask", "Astro"],
+        "tools": ["PySide6"],
+        "type": "Full Stack"
+      },
       "github": "https://github.com/NastMz/Automata-Wordle",
       "gradient": "from-indigo-500 to-blue-600",
       "metrics": [
@@ -275,6 +337,12 @@
       "title": "Secure Chat (C)",
       "description": "Secure chat in C with sockets; hybrid encryption (RSA for exchange and AES for messages), Base64 encoding and system utilities.",
       "tech": ["C", "Sockets", "RSA", "AES"],
+      "categories": {
+        "languages": ["C"],
+        "concepts": ["Sockets", "Encryption"],
+        "algorithms": ["RSA", "AES"],
+        "type": "System Programming"
+      },
       "github": "https://github.com/NastMz/Secure-Chat",
       "gradient": "from-slate-600 to-zinc-800",
       "metrics": [
@@ -287,6 +355,12 @@
       "title": "Grafos App (PyQt6)",
       "description": "Desktop application to create/analyze graphs with PyQt6 and NetworkX; visualization, adjacency matrices/lists and shortest path.",
       "tech": ["Python", "PyQt6", "NetworkX", "Matplotlib"],
+      "categories": {
+        "languages": ["Python"],
+        "frameworks": ["PyQt6"],
+        "libraries": ["NetworkX", "Matplotlib"],
+        "type": "Desktop Application"
+      },
       "github": "https://github.com/NastMz/Grafos",
       "gradient": "from-purple-500 to-fuchsia-600",
       "metrics": [
@@ -299,6 +373,12 @@
       "title": "Post Office (Frontend)",
       "description": "Web client for an academic mail server; React + TypeScript with integration to custom API.",
       "tech": ["React", "TypeScript", "CSS"],
+      "categories": {
+        "languages": ["TypeScript", "JavaScript"],
+        "frameworks": ["React"],
+        "styling": ["CSS"],
+        "type": "Frontend"
+      },
       "github": "https://github.com/NastMz/Post-Office",
       "gradient": "from-sky-500 to-blue-600",
       "metrics": [
@@ -311,6 +391,12 @@
       "title": "Post Office API",
       "description": "Backend API for mail server: Python, with optional Docker container and SMTP/POP3/IMAP-like support.",
       "tech": ["Python", "Docker"],
+      "categories": {
+        "languages": ["Python"],
+        "devops": ["Docker"],
+        "protocols": ["SMTP", "POP3", "IMAP"],
+        "type": "Backend API"
+      },
       "github": "https://github.com/NastMz/Post-Office-API",
       "gradient": "from-emerald-500 to-green-600",
       "metrics": [
@@ -327,6 +413,12 @@
       "title": "Spidey (Text Mining)",
       "description": "Text analytics project on digital transformation in universities: crawler, preprocessing and visualizations.",
       "tech": ["Python", "JavaScript", "HTML", "CSS"],
+      "categories": {
+        "languages": ["Python", "JavaScript"],
+        "web": ["HTML", "CSS"],
+        "concepts": ["NLP", "Data Mining", "Web Scraping"],
+        "type": "Data Science"
+      },
       "github": "https://github.com/NastMz/Spidey",
       "gradient": "from-orange-500 to-red-600",
       "metrics": [
@@ -339,6 +431,12 @@
       "title": "UniApp Unillanos (Flutter)",
       "description": "Flutter mobile app for university routes and news; accompanied by Python services and Docker support.",
       "tech": ["Flutter/Dart", "Python", "Docker"],
+      "categories": {
+        "languages": ["Dart", "Python"],
+        "frameworks": ["Flutter"],
+        "devops": ["Docker"],
+        "type": "Mobile Application"
+      },
       "github": "https://github.com/NastMz/UniApp-Unillanos",
       "gradient": "from-cyan-500 to-blue-600",
       "metrics": [

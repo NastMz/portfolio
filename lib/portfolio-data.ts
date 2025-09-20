@@ -43,6 +43,21 @@ export interface Project {
   title: string
   description: string
   tech: string[]
+  categories?: {
+    languages?: string[]
+    frameworks?: string[]
+    libraries?: string[]
+    databases?: string[]
+    devops?: string[]
+    tools?: string[]
+    styling?: string[]
+    protocols?: string[]
+    concepts?: string[]
+    patterns?: string[]
+    algorithms?: string[]
+    web?: string[]
+    type?: string
+  }
   github: string
   gradient: string
   demo?: string
