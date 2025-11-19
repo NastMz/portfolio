@@ -20,9 +20,9 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
       <div className="mx-auto max-w-2xl text-center">
         <ScrollAnimation animation="slideUp" delay={100}>
           <div className="mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Let's talk</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Let&apos;s work together</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-6" />
-            <p className="text-muted-foreground text-base md:text-lg">Open to new opportunities and collaborations.</p>
+            <p className="text-muted-foreground text-base md:text-lg">If you&apos;re looking for someone to design and build clear, maintainable backend systems in .NET, I&apos;d be happy to talk. You can reach me by email or through LinkedIn.</p>
           </div>
         </ScrollAnimation>
 
@@ -55,9 +55,6 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
               )}
             </div>
 
-            <div className="text-xs md:text-sm text-muted-foreground">
-              <p>Usually responds within 24 hours</p>
-            </div>
           </Card>
         </ScrollAnimation>
       </div>

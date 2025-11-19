@@ -20,25 +20,29 @@ export function AboutSection() {
           <ScrollAnimation animation="slideLeft" delay={200}>
             <div className="space-y-4 md:space-y-6">
               <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                I am a backend developer specialized in .NET, with focus on scalable APIs, database optimization and 
-                deployment automation. I'm interested in building practical, maintainable solutions with good performance.
+                I&apos;m a backend engineer specializing in .NET and C#, focused on building APIs, modular backends, and clean architecture. 
+                I work with SQL databases and practical DevOps tools like Docker and CI/CD pipelines to deliver reliable systems.
               </p>
               <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                I also have experience with Node.js and Python. I like to accompany teams in best practices,
-                code review and clean design.
+                I care about maintainability, modularity, and clear architecture more than just shipping code. I enjoy code reviews, 
+                documentation, and sharing knowledge with teams. I use AI-assisted development tools like Copilot, but I always review 
+                and validate the code manually—design and validation remain my responsibility.
               </p>
               <div className="flex flex-wrap gap-2 md:gap-3">
                 <Badge variant="secondary" className="px-2 md:px-3 py-1 bg-primary/10 text-primary border-primary/20 text-xs">
                   <Code2 className="h-3 w-3 mr-1" /> Clean Architecture
                 </Badge>
                 <Badge variant="secondary" className="px-2 md:px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20 text-xs">
-                  <Database className="h-3 w-3 mr-1" /> SQL / EF / Dapper
+                  <Database className="h-3 w-3 mr-1" /> Backend Systems
                 </Badge>
                 <Badge variant="secondary" className="px-2 md:px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20 text-xs">
-                  <Cloud className="h-3 w-3 mr-1" /> CI/CD & Docker
+                  <Cloud className="h-3 w-3 mr-1" /> .NET & C#
                 </Badge>
                 <Badge variant="secondary" className="px-2 md:px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20 text-xs">
-                  <Users className="h-3 w-3 mr-1" /> Team Lead
+                  <Users className="h-3 w-3 mr-1" /> Systems Design
+                </Badge>
+                <Badge variant="secondary" className="px-2 md:px-3 py-1 bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20 text-xs">
+                  <Code2 className="h-3 w-3 mr-1" /> AI-Assisted Development
                 </Badge>
               </div>
             </div>
@@ -52,8 +56,8 @@ export function AboutSection() {
                     <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-primary" aria-hidden />
                   </div>
                   <div>
-                    <div className="font-semibold text-sm md:text-base">Performance oriented</div>
-                    <div className="text-xs md:text-sm text-muted-foreground">Query optimization and response times</div>
+                    <div className="font-semibold text-sm md:text-base">Modular design</div>
+                    <div className="text-xs md:text-sm text-muted-foreground">Systems built for long-term maintainability</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -61,8 +65,8 @@ export function AboutSection() {
                     <Shield className="h-5 w-5 md:h-6 md:w-6 text-green-600 dark:text-green-400" aria-hidden />
                   </div>
                   <div>
-                    <div className="font-semibold text-sm md:text-base">Reliability</div>
-                    <div className="text-xs md:text-sm text-muted-foreground">Best practices, testing and observability</div>
+                    <div className="font-semibold text-sm md:text-base">Code quality</div>
+                    <div className="text-xs md:text-sm text-muted-foreground">Testing, reviews, and validation</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -70,8 +74,8 @@ export function AboutSection() {
                     <Users className="h-5 w-5 md:h-6 md:w-6 text-purple-600 dark:text-purple-400" aria-hidden />
                   </div>
                   <div>
-                    <div className="font-semibold text-sm md:text-base">Collaboration</div>
-                    <div className="text-xs md:text-sm text-muted-foreground">Mentoring and code review</div>
+                    <div className="font-semibold text-sm md:text-base">Knowledge sharing</div>
+                    <div className="text-xs md:text-sm text-muted-foreground">Mentoring, documentation, and reviews</div>
                   </div>
                 </div>
               </div>

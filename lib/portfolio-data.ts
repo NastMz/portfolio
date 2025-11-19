@@ -41,8 +41,8 @@ export type IconName =
 export interface Project {
   id: string
   title: string
-  description: string
-  tech: string[]
+  description?: string
+  tech?: string[]
   categories?: {
     languages?: string[]
     frameworks?: string[]
@@ -58,9 +58,10 @@ export interface Project {
     web?: string[]
     type?: string
   }
-  github: string
-  gradient: string
+  github?: string
+  gradient?: string
   demo?: string
+  priority?: "featured" | "key" | "other"
   metrics?: Array<{
     label: string
     value: string

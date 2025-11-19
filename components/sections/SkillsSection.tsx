@@ -77,24 +77,24 @@ export function SkillsSection({ skillsByCategory }: SkillsSectionProps) {
               <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                 <Database className="h-5 w-5 md:h-6 md:w-6 text-white" aria-hidden />
               </div>
-              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Database optimization</h3>
-              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Faster and more efficient queries in production</p>
+              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Clean architecture</h3>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Modular design for maintainable systems</p>
             </Card>
 
             <Card className="text-center p-4 md:p-6 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/50 dark:to-green-900/50 border-green-200 dark:border-green-800/50">
               <div className="w-10 h-10 md:w-12 md:h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                 <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-white" aria-hidden />
               </div>
-              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Scalability</h3>
-              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Maintainable systems ready to grow</p>
+              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Systems design</h3>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Scalable backend architecture</p>
             </Card>
 
             <Card className="text-center p-4 md:p-6 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/50 dark:to-purple-900/50 border-purple-200 dark:border-purple-800/50 sm:col-span-2 lg:col-span-1">
               <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                 <Shield className="h-5 w-5 md:h-6 md:w-6 text-white" aria-hidden />
               </div>
-              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Best practices</h3>
-              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Security, testing and observability</p>
+              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Developer experience</h3>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Tools and patterns that make teams faster</p>
             </Card>
           </div>
         </ScrollAnimation>

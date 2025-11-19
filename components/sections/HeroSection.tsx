@@ -77,7 +77,7 @@ export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
                   color: "text-blue-600 dark:text-blue-400" 
                 },
                 { 
-                  label: "Projects", 
+                  label: "Architecture & tooling projects", 
                   value: `${stats.totalProjects}+`, 
                   icon: CheckCircle, 
                   color: "text-green-600 dark:text-green-400" 
@@ -100,11 +100,11 @@ export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
                   animation="scaleIn" 
                   delay={800 + (index * 100)}
                 >
-                  <Card className="text-center border-0 bg-background/50 backdrop-blur shadow-lg dark:bg-background/20 dark:shadow-primary/5">
-                    <CardContent className="pt-4 md:pt-6 px-3 md:px-6">
-                      <stat.icon className={`h-6 w-6 md:h-8 md:w-8 mx-auto mb-2 ${stat.color}`} aria-hidden />
-                      <div className="text-xl md:text-2xl font-bold">{stat.value}</div>
-                      <div className="text-xs md:text-sm text-muted-foreground">{stat.label}</div>
+                  <Card className="text-center border-0 bg-background/50 backdrop-blur shadow-lg dark:bg-background/20 dark:shadow-primary/5 h-full flex flex-col">
+                    <CardContent className="pt-4 md:pt-6 px-3 md:px-6 flex-1 flex flex-col justify-center">
+                      <stat.icon className={`h-6 w-6 md:h-8 md:w-8 mx-auto mb-2 ${stat.color} flex-shrink-0`} aria-hidden />
+                      <div className="text-xl md:text-2xl font-bold mb-1">{stat.value}</div>
+                      <div className="text-xs md:text-sm text-muted-foreground leading-tight">{stat.label}</div>
                     </CardContent>
                   </Card>
                 </ScrollAnimation>
@@ -144,11 +144,11 @@ export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
               <Button size="lg" asChild className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-lg w-full sm:w-auto">
                 <Link href="#projects">
                   <Rocket className="h-4 w-4 mr-2" aria-hidden />
-                  View projects
+                  View my work
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild className="border-primary/20 hover:bg-primary/5 bg-transparent w-full sm:w-auto">
-                <Link href="#contact">Contact</Link>
+                <Link href="#contact">Contact me</Link>
               </Button>
             </div>
           </ScrollAnimation>
