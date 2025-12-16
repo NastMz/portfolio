@@ -88,7 +88,29 @@
   "Contact": {
     "title": "Trabajemos juntos",
     "description": "Si buscas a alguien para diseñar y construir sistemas backend claros y mantenibles en .NET, estaré encantado de conversar. Puedes contactarme por correo o a través de LinkedIn.",
-    "email": "Enviar correo"
+    "email": "Enviar correo",
+    "Form": {
+      "title": "Contáctame",
+      "description": "Envíame un mensaje y te responderé lo antes posible.",
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "tu@email.com",
+      "subject": "Asunto",
+      "subjectPlaceholder": "¿Sobre qué quieres hablar?",
+      "message": "Mensaje",
+      "messagePlaceholder": "Escribe tu mensaje aquí...",
+      "send": "Enviar mensaje",
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado correctamente!",
+      "error": "Hubo un error al enviar el mensaje. Por favor intenta de nuevo.",
+      "errors": {
+        "name": "El nombre debe tener al menos 2 caracteres.",
+        "email": "Por favor ingresa un correo válido.",
+        "subject": "El asunto debe tener al menos 5 caracteres.",
+        "message": "El mensaje debe tener al menos 10 caracteres."
+      }
+    }
   },
   "Footer": {
     "reserved": "Todos los derechos reservados.",

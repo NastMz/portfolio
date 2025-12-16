@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card"
 import { ScrollAnimation } from "@/components/scroll-animation"
 import { Mail, Github, Linkedin } from "lucide-react"
 import Link from "next/link"
+import { ContactForm } from "@/components/contact-form"
 import { useTranslations } from "next-intl"
 
 interface ContactSectionProps {
@@ -32,14 +33,12 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
         <ScrollAnimation animation="scaleIn" delay={300}>
           <Card className="p-6 md:p-8 bg-gradient-to-br from-primary/5 to-secondary/5 border-0 shadow-lg dark:from-primary/10 dark:to-secondary/10">
             <div className="flex justify-center flex-col sm:flex-row flex-wrap gap-3 md:gap-4 mb-6 md:mb-8">
-              {personalInfo.email && (
-                <Button size="lg" asChild className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-lg w-full sm:w-auto">
-                  <Link href={`mailto:${personalInfo.email}`}>
+                <ContactForm>
+                  <Button size="lg" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-lg w-full sm:w-auto">
                     <Mail className="h-4 w-4 md:h-5 md:w-5 mr-2" aria-hidden />
                     {t('email')}
-                  </Link>
-                </Button>
-              )}
+                  </Button>
+                </ContactForm>
               {personalInfo.linkedin && (
                 <Button variant="outline" size="lg" asChild className="border-primary/20 hover:bg-primary/5 bg-transparent w-full sm:w-auto">
                   <Link href={personalInfo.linkedin} target="_blank" rel="noreferrer noopener">
