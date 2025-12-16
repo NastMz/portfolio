@@ -138,7 +138,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               <div className="text-center mb-8 md:mb-12">
                 <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">{t('subtitle')}</h2>
                 <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
-                <p className="text-muted-foreground mt-4 text-sm md:text-base">Systems and libraries built with clean architecture principles</p>
+                <p className="text-muted-foreground mt-4 text-sm md:text-base">{t('description')}</p>
               </div>
               <div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {keyProjects.map((project, index) => {

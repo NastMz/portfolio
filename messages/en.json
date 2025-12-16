@@ -76,9 +76,8 @@
   "Projects": {
     "title": "Featured Projects",
     "subtitle": "Some of my recent work",
-    "viewProject": "View Project",
-    "viewCode": "View Code",
-    "viewAll": "View All Projects"
+    "description": "Systems and libraries built with clean architecture principles",
+    "viewAll": "Other Projects"
   },
   "Experience": {
     "title": "Work Experience",

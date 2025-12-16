@@ -76,9 +76,8 @@
   "Projects": {
     "title": "Proyectos Destacados",
     "subtitle": "Algunos de mis trabajos recientes",
-    "viewProject": "Ver Proyecto",
-    "viewCode": "Ver Código",
-    "viewAll": "Ver Todos"
+    "description": "Sistemas y bibliotecas construidos con principios de arquitectura limpia",
+    "viewAll": "Otros Proyectos"
   },
   "Experience": {
     "title": "Experiencia Laboral",
