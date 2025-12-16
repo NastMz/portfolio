@@ -23,12 +23,17 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
   const t = useTranslations('Experience')
 
   return (
-    <section id="experience" className="py-16 md:py-24 bg-gradient-to-br from-muted/30 to-background dark:from-muted/10 scroll-offset">
-      <div className="container mx-auto max-w-4xl px-4 lg:px-6">
+    <section id="experience" className="py-20 md:py-32 relative overflow-hidden bg-background">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/50 to-background" />
+      <div className="absolute top-1/4 -right-64 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -left-64 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+
+      <div className="container relative mx-auto max-w-4xl px-4 lg:px-6">
         <ScrollAnimation animation="slideUp" delay={100}>
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">{t('title')}</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4">{t('title')}</h2>
+            <div className="w-24 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-6" />
           </div>
         </ScrollAnimation>
 

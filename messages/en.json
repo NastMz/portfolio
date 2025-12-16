@@ -58,6 +58,7 @@
   "Skills": {
     "title": "Skills",
     "subtitle": "Experience applied in production",
+    "all": "All",
     "highlights": {
         "cleanArch": {
             "title": "Clean architecture",

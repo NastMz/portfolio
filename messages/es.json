@@ -58,6 +58,7 @@
   "Skills": {
     "title": "Habilidades",
     "subtitle": "Experiencia aplicada en producción",
+    "all": "Todos",
     "highlights": {
         "cleanArch": {
             "title": "Arquitectura limpia",
