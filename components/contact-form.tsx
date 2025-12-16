@@ -21,15 +21,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-// Define translation keys for validation during schema creation
-const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-  botcheck: z.boolean().optional(),
-})
-
 interface ContactFormProps {
   children: React.ReactNode
 }
@@ -39,6 +30,15 @@ export function ContactForm({ children }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const t = useTranslations('Contact')
   const tf = useTranslations('Contact.Form')
+
+  // Dynamic schema with translations
+  const formSchema = z.object({
+    name: z.string().min(2, { message: tf('errors.name') }),
+    email: z.string().email({ message: tf('errors.email') }),
+    subject: z.string().min(5, { message: tf('errors.subject') }),
+    message: z.string().min(10, { message: tf('errors.message') }),
+    botcheck: z.boolean().optional(),
+  })
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -97,9 +97,9 @@ export function ContactForm({ children }: ContactFormProps) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>{t('title')}</DialogTitle>
+          <DialogTitle>{tf('title')}</DialogTitle>
           <DialogDescription>
-            {t('description')}
+            {tf('description')}
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 pt-4">
@@ -111,11 +111,7 @@ export function ContactForm({ children }: ContactFormProps) {
               {...form.register("name")}
             />
             {form.formState.errors.name && (
-              <p className="text-sm text-destructive">{tf('errors.name')}</p> // Note: Schema validation messages are hardcoded in English in this simple version, typically we'd use t() in schema too but passing useTranslations hook to schema function or using a separate validation file. For now, I'll rely on the schema messages or override them if I moved schema inside component.
-              // To keep it clean, I will just let the Zod English messages show or I can map them.
-              // Actually, best practice for i18n forms is to define schema inside component useMemo or similar, but for speed I will leave Zod messages in English for now.
-              // Wait, I can just use the t() function if I move schema inside or make it a function.
-              // Let's stick to simple Zod implementation for now to avoid complexity.
+              <p className="text-sm text-destructive">{form.formState.errors.name.message}</p>
             )}
           </div>
           <div className="space-y-2">
