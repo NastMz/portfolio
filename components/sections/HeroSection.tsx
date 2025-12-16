@@ -15,6 +15,7 @@ import {
   Rocket,
 } from "lucide-react"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
 
 interface Mobility {
   travel?: boolean
@@ -39,6 +40,7 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
+  const t = useTranslations('Hero')
   const mobility = personalInfo.mobility
 
   return (
@@ -71,25 +73,25 @@ export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-4xl px-4">
               {[
                 { 
-                  label: "Years of experience", 
+                  label: t('stats.experience'), 
                   value: `${stats.yearsOfExperience}+`, 
                   icon: Calendar, 
                   color: "text-blue-600 dark:text-blue-400" 
                 },
                 { 
-                  label: "Architecture & tooling projects", 
+                  label: t('stats.projects'), 
                   value: `${stats.totalProjects}+`, 
                   icon: CheckCircle, 
                   color: "text-green-600 dark:text-green-400" 
                 },
                 { 
-                  label: "Technologies", 
+                  label: t('stats.tech'), 
                   value: `${stats.totalTechnologies}+`, 
                   icon: Globe, 
                   color: "text-purple-600 dark:text-purple-400" 
                 },
                 { 
-                  label: "Public repos", 
+                  label: t('stats.repos'), 
                   value: `${stats.publicRepos}+`, 
                   icon: Activity, 
                   color: "text-orange-600 dark:text-orange-400" 
@@ -101,11 +103,11 @@ export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
                   delay={800 + (index * 100)}
                 >
                   <Card className="text-center border-0 bg-background/50 backdrop-blur shadow-lg dark:bg-background/20 dark:shadow-primary/5 h-full flex flex-col">
-                    <CardContent className="pt-4 md:pt-6 px-3 md:px-6 flex-1 flex flex-col justify-center">
-                      <stat.icon className={`h-6 w-6 md:h-8 md:w-8 mx-auto mb-2 ${stat.color} flex-shrink-0`} aria-hidden />
-                      <div className="text-xl md:text-2xl font-bold mb-1">{stat.value}</div>
-                      <div className="text-xs md:text-sm text-muted-foreground leading-tight">{stat.label}</div>
-                    </CardContent>
+                  <CardContent className="pt-4 md:pt-6 px-3 md:px-6 flex-1 flex flex-col justify-center">
+                    <stat.icon className={`h-6 w-6 md:h-8 md:w-8 mx-auto mb-2 ${stat.color} flex-shrink-0`} aria-hidden />
+                    <div className="text-xl md:text-2xl font-bold mb-1">{stat.value}</div>
+                    <div className="text-xs md:text-sm text-muted-foreground leading-tight">{stat.label}</div>
+                  </CardContent>
                   </Card>
                 </ScrollAnimation>
               ))}
@@ -126,12 +128,12 @@ export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
                 <>
                   {"travel" in mobility && (
                     <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 text-xs">
-                      Viajar: {mobility.travel ? "Sí" : "No"}
+                      {t('mobility.travel')}: {mobility.travel ? t('mobility.yes') : t('mobility.no')}
                     </Badge>
                   )}
                   {"relocation" in mobility && (
                     <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 text-xs">
-                      Reubicación: {mobility.relocation ? "Sí" : "No"}
+                       {t('mobility.relocation')}: {mobility.relocation ? t('mobility.yes') : t('mobility.no')}
                     </Badge>
                   )}
                 </>
@@ -144,11 +146,11 @@ export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
               <Button size="lg" asChild className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-lg w-full sm:w-auto">
                 <Link href="#projects">
                   <Rocket className="h-4 w-4 mr-2" aria-hidden />
-                  View my work
+                  {t('actions.viewWork')}
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild className="border-primary/20 hover:bg-primary/5 bg-transparent w-full sm:w-auto">
-                <Link href="#contact">Contact me</Link>
+                <Link href="#contact">{t('actions.contact')}</Link>
               </Button>
             </div>
           </ScrollAnimation>

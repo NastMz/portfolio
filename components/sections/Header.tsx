@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Code2, Github, Linkedin, Menu, X } from "lucide-react"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
+
+import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 
 interface HeaderProps {
   readonly personalInfo: {
@@ -16,6 +19,7 @@ interface HeaderProps {
 
 export function Header({ personalInfo }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const t = useTranslations('Nav')
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   const closeMenu = () => setIsMenuOpen(false)
@@ -37,14 +41,15 @@ export function Header({ personalInfo }: HeaderProps) {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-            <Link href="#about" className="transition-colors hover:text-primary">About me</Link>
-            <Link href="#skills" className="transition-colors hover:text-primary">Skills</Link>
-            <Link href="#projects" className="transition-colors hover:text-primary">Projects</Link>
-            <Link href="#experience" className="transition-colors hover:text-primary">Experience</Link>
-            <Link href="#contact" className="transition-colors hover:text-primary">Contact</Link>
+            <Link href="#about" className="transition-colors hover:text-primary">{t('about')}</Link>
+            <Link href="#skills" className="transition-colors hover:text-primary">{t('skills')}</Link>
+            <Link href="#projects" className="transition-colors hover:text-primary">{t('projects')}</Link>
+            <Link href="#experience" className="transition-colors hover:text-primary">{t('experience')}</Link>
+            <Link href="#contact" className="transition-colors hover:text-primary">{t('contact')}</Link>
           </nav>
           
           <div className="flex flex-1 items-center justify-end space-x-2">
+            <LanguageSwitcher />
             <ThemeToggle />
             {personalInfo.github && (
               <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10 hidden sm:flex" aria-label="GitHub">
@@ -83,35 +88,35 @@ export function Header({ personalInfo }: HeaderProps) {
                 className="text-sm font-medium transition-colors hover:text-primary py-2"
                 onClick={closeMenu}
               >
-                About me
+                {t('about')}
               </Link>
               <Link 
                 href="#skills" 
                 className="text-sm font-medium transition-colors hover:text-primary py-2"
                 onClick={closeMenu}
               >
-                Skills
+                {t('skills')}
               </Link>
               <Link 
                 href="#projects" 
                 className="text-sm font-medium transition-colors hover:text-primary py-2"
                 onClick={closeMenu}
               >
-                Projects
+                {t('projects')}
               </Link>
               <Link 
                 href="#experience" 
                 className="text-sm font-medium transition-colors hover:text-primary py-2"
                 onClick={closeMenu}
               >
-                Experience
+                {t('experience')}
               </Link>
               <Link 
                 href="#contact" 
                 className="text-sm font-medium transition-colors hover:text-primary py-2"
                 onClick={closeMenu}
               >
-                Contact
+                {t('contact')}
               </Link>
               
               {/* Mobile Social Links */}

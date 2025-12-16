@@ -1,0 +1,97 @@
+{
+  "Nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "greeting": "Hello, I'm",
+    "viewProjects": "View Projects",
+    "contactMe": "Contact Me",
+    "title": "Welcome",
+    "description": "Welcome to my portfolio",
+    "stats": {
+      "experience": "Years of experience",
+      "projects": "Architecture & tooling projects",
+      "tech": "Technologies",
+      "repos": "Public repos"
+    },
+    "actions": {
+      "viewWork": "View my work",
+      "contact": "Contact me"
+    },
+    "mobility": {
+        "travel": "Travel",
+        "relocation": "Relocation",
+        "yes": "Yes",
+        "no": "No"
+    }
+  },
+  "About": {
+    "title": "About Me",
+    "description1": "I am a backend engineer specializing in .NET and C#, focused on building APIs, modular backends, and clean architecture. I work with SQL databases and practical DevOps tools like Docker and CI/CD pipelines to deliver reliable systems.",
+    "description2": "I care about maintainability, modularity, and clear architecture more than just shipping code. I enjoy code reviews, documentation, and sharing knowledge with teams. I use AI-assisted development tools like Copilot, but I always review and validate the code manually—design and validation remain my responsibility.",
+    "badges": {
+        "cleanArch": "Clean Architecture",
+        "backend": "Backend Systems",
+        "dotnet": ".NET & C#",
+        "design": "Systems Design",
+        "ai": "AI-Assisted Development"
+    },
+    "cards": {
+        "modular": {
+            "title": "Modular design",
+            "desc": "Systems built for long-term maintainability"
+        },
+        "quality": {
+            "title": "Code quality",
+            "desc": "Testing, reviews, and validation"
+        },
+        "sharing": {
+            "title": "Knowledge sharing",
+            "desc": "Mentoring, documentation, and reviews"
+        }
+    }
+  },
+  "Skills": {
+    "title": "Skills",
+    "subtitle": "Experience applied in production",
+    "highlights": {
+        "cleanArch": {
+            "title": "Clean architecture",
+            "desc": "Modular design for maintainable systems"
+        },
+        "systems": {
+            "title": "Systems design",
+            "desc": "Scalable backend architecture"
+        },
+        "dx": {
+            "title": "Developer experience",
+            "desc": "Tools and patterns that make teams faster"
+        }
+    }
+  },
+  "Projects": {
+    "title": "Featured Projects",
+    "subtitle": "Some of my recent work",
+    "viewProject": "View Project",
+    "viewCode": "View Code",
+    "viewAll": "View All Projects"
+  },
+  "Experience": {
+    "title": "Work Experience",
+    "subtitle": "My professional journey",
+    "present": "Present"
+  },
+  "Contact": {
+    "title": "Let's work together",
+    "description": "If you're looking for someone to design and build clear, maintainable backend systems in .NET, I'd be happy to talk. You can reach me by email or through LinkedIn.",
+    "email": "Send email"
+  },
+  "Footer": {
+    "reserved": "All rights reserved.",
+    "builtWith": "Built with Next.js, Tailwind CSS and ☕ © {year}"
+  }
+}

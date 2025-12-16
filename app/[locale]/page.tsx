@@ -1,5 +1,3 @@
-"use client"
-
 import {
   getPersonalInfo,
   getSkillsByCategory,
@@ -20,20 +18,31 @@ import {
   ContactSection,
   Footer,
 } from "@/components/sections"
+import { setRequestLocale } from 'next-intl/server';
 
-export default function Portfolio() {
+export default async function Portfolio({
+  params
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params;
+  
+  // Enable static rendering
+  setRequestLocale(locale);
+
   // Obtener datos del JSON
-  const personalInfo = getPersonalInfo()
-  const skillsByCategory = getSkillsByCategory()
-  const projects = getProjects()
-  const experience = getExperience()
+  // Note: These functions are now synchronous but accept locale
+  const personalInfo = getPersonalInfo(locale)
+  const skillsByCategory = getSkillsByCategory(locale)
+  const projects = getProjects(locale)
+  const experience = getExperience(locale)
 
   // Preparar stats para el HeroSection
   const stats = {
-    yearsOfExperience: getYearsOfExperience(),
-    totalProjects: getTotalProjects(),
-    totalTechnologies: getTotalTechnologies(),
-    publicRepos: getPublicRepos(),
+    yearsOfExperience: getYearsOfExperience(locale),
+    totalProjects: getTotalProjects(locale),
+    totalTechnologies: getTotalTechnologies(locale),
+    publicRepos: getPublicRepos(locale),
   }
 
   return (

@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card"
 import { ScrollAnimation } from "@/components/scroll-animation"
 import { Mail, Github, Linkedin } from "lucide-react"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
 
 interface ContactSectionProps {
   personalInfo: {
@@ -15,14 +16,16 @@ interface ContactSectionProps {
 }
 
 export function ContactSection({ personalInfo }: ContactSectionProps) {
+  const t = useTranslations('Contact')
+
   return (
     <section id="contact" className="container mx-auto py-16 md:py-24 scroll-offset px-4 lg:px-6">
       <div className="mx-auto max-w-2xl text-center">
         <ScrollAnimation animation="slideUp" delay={100}>
           <div className="mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Let&apos;s work together</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">{t('title')}</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-6" />
-            <p className="text-muted-foreground text-base md:text-lg">If you&apos;re looking for someone to design and build clear, maintainable backend systems in .NET, I&apos;d be happy to talk. You can reach me by email or through LinkedIn.</p>
+            <p className="text-muted-foreground text-base md:text-lg">{t('description')}</p>
           </div>
         </ScrollAnimation>
 
@@ -33,7 +36,7 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
                 <Button size="lg" asChild className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-lg w-full sm:w-auto">
                   <Link href={`mailto:${personalInfo.email}`}>
                     <Mail className="h-4 w-4 md:h-5 md:w-5 mr-2" aria-hidden />
-                    Send email
+                    {t('email')}
                   </Link>
                 </Button>
               )}

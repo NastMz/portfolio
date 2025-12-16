@@ -5,55 +5,49 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { ExternalLink, Activity, Layers, Package } from "lucide-react"
+import { 
+  ExternalLink, 
+  Activity, 
+  Layers, 
+  Package, 
+  File, 
+  Shield, 
+  Zap, 
+  Users, 
+  Clock, 
+  Terminal, 
+  Globe, 
+  TrendingUp, 
+  Database 
+} from "lucide-react"
 import Link from "next/link"
+import { type Project } from "@/lib/portfolio-data"
+import { useTranslations } from "next-intl"
 
 const IconMap = {
   Activity,
   Layers,
   Package,
+  File,
+  Shield,
+  Zap,
+  Users,
+  Clock,
+  Terminal,
+  Globe,
+  TrendingUp,
+  Database
 } satisfies Record<string, ComponentType<{ className?: string }>>
 
 type IconName = keyof typeof IconMap
-
-interface ProjectMetric {
-  label: string
-  value: string
-  icon?: IconName
-}
-
-interface Project {
-  id: string
-  title: string
-  description?: string
-  tech?: string[]
-  categories?: {
-    languages?: string[]
-    frameworks?: string[]
-    libraries?: string[]
-    databases?: string[]
-    devops?: string[]
-    tools?: string[]
-    styling?: string[]
-    protocols?: string[]
-    concepts?: string[]
-    patterns?: string[]
-    algorithms?: string[]
-    web?: string[]
-    type?: string
-  }
-  github?: string
-  demo?: string
-  gradient?: string
-  metrics?: ProjectMetric[]
-  priority?: "featured" | "key" | "other"
-}
 
 interface ProjectsSectionProps {
   readonly projects: readonly Project[]
 }
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
+  const t = useTranslations('Projects')
+  
   // Separate projects by priority
   const { featuredProject, keyProjects, otherProjects } = useMemo(() => {
     const featured = projects.find(p => p.priority === "featured")
@@ -69,12 +63,12 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
     <section id="projects" className="container mx-auto py-16 md:py-24 scroll-offset px-4 lg:px-6">
       <div className="mx-auto max-w-7xl">
-        {/* Featured Project - MicroEngine */}
+        {/* Featured Project */}
         {featuredProject && (
           <ScrollAnimation animation="slideUp" delay={100}>
             <div className="mb-16 md:mb-20">
               <div className="text-center mb-8 md:mb-12">
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Featured Project</h2>
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">{t('title')}</h2>
                 <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
               </div>
               <div className="max-w-4xl mx-auto">
@@ -118,7 +112,8 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     {Array.isArray(featuredProject.metrics) && featuredProject.metrics.length > 0 && (
                       <div className="grid grid-cols-2 gap-4 md:gap-6 pt-4 md:pt-6 border-t border-border/50">
                         {featuredProject.metrics.map((metric) => {
-                          const Icon = metric.icon && IconMap[metric.icon] ? IconMap[metric.icon] : Activity
+                          // Safe cast because we know the data might have icons relevant to the map
+                          const Icon = metric.icon && IconMap[metric.icon as IconName] ? IconMap[metric.icon as IconName] : Activity
                           return (
                             <div key={`${featuredProject.id}-${metric.label}`} className="text-center">
                               <Icon className="h-5 w-5 md:h-6 md:w-6 mx-auto mb-2 text-muted-foreground" aria-hidden />
@@ -141,7 +136,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           <ScrollAnimation animation="slideUp" delay={200}>
             <div className="mb-16 md:mb-20">
               <div className="text-center mb-8 md:mb-12">
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Key Architecture Projects</h2>
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">{t('subtitle')}</h2>
                 <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
                 <p className="text-muted-foreground mt-4 text-sm md:text-base">Systems and libraries built with clean architecture principles</p>
               </div>
@@ -200,7 +195,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                           {Array.isArray(metrics) && metrics.length > 0 && (
                             <div className="grid grid-cols-3 gap-2 md:gap-4 pt-3 md:pt-4 border-t border-border/50 mt-auto">
                               {metrics.map((metric) => {
-                                const Icon = metric.icon && IconMap[metric.icon] ? IconMap[metric.icon] : Activity
+                                const Icon = metric.icon && IconMap[metric.icon as IconName] ? IconMap[metric.icon as IconName] : Activity
                                 return (
                                   <div key={`${project.id}-${metric.label}`} className="text-center">
                                     <Icon className="h-3 w-3 md:h-4 md:w-4 mx-auto mb-1 text-muted-foreground" aria-hidden />
@@ -226,7 +221,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           <ScrollAnimation animation="slideUp" delay={600}>
             <div>
               <div className="text-center mb-6 md:mb-8">
-                <h3 className="text-xl md:text-2xl font-bold tracking-tighter mb-2">Other Projects</h3>
+                <h3 className="text-xl md:text-2xl font-bold tracking-tighter mb-2">{t('viewAll')}</h3>
                 <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
               </div>
               <div className="flex flex-wrap justify-center gap-3 md:gap-4">

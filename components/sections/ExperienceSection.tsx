@@ -3,6 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollAnimation } from "@/components/scroll-animation"
 import { CheckCircle, MapPin } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 interface Job {
   id: string
@@ -19,12 +20,14 @@ interface ExperienceSectionProps {
 }
 
 export function ExperienceSection({ experience }: ExperienceSectionProps) {
+  const t = useTranslations('Experience')
+
   return (
     <section id="experience" className="py-16 md:py-24 bg-gradient-to-br from-muted/30 to-background dark:from-muted/10 scroll-offset">
       <div className="container mx-auto max-w-4xl px-4 lg:px-6">
         <ScrollAnimation animation="slideUp" delay={100}>
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Experience</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">{t('title')}</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
           </div>
         </ScrollAnimation>

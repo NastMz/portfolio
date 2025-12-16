@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ScrollAnimation } from "@/components/scroll-animation"
 import { Database, TrendingUp, Shield } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 interface Skill {
   id: string
@@ -22,14 +23,16 @@ interface SkillsSectionProps {
 }
 
 export function SkillsSection({ skillsByCategory }: SkillsSectionProps) {
+  const t = useTranslations('Skills')
+
   return (
     <section id="skills" className="py-16 md:py-24 bg-gradient-to-br from-muted/30 to-background dark:from-muted/10 scroll-offset overflow-hidden">
       <div className="container mx-auto max-w-6xl px-4 lg:px-6">
         <ScrollAnimation animation="slideUp" delay={100}>
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">Skills</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">{t('title')}</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
-            <p className="text-muted-foreground mt-4 text-sm md:text-base">Experience applied in production</p>
+            <p className="text-muted-foreground mt-4 text-sm md:text-base">{t('subtitle')}</p>
           </div>
         </ScrollAnimation>
 
@@ -77,24 +80,24 @@ export function SkillsSection({ skillsByCategory }: SkillsSectionProps) {
               <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                 <Database className="h-5 w-5 md:h-6 md:w-6 text-white" aria-hidden />
               </div>
-              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Clean architecture</h3>
-              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Modular design for maintainable systems</p>
+              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">{t('highlights.cleanArch.title')}</h3>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{t('highlights.cleanArch.desc')}</p>
             </Card>
 
             <Card className="text-center p-4 md:p-6 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/50 dark:to-green-900/50 border-green-200 dark:border-green-800/50">
               <div className="w-10 h-10 md:w-12 md:h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                 <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-white" aria-hidden />
               </div>
-              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Systems design</h3>
-              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Scalable backend architecture</p>
+              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">{t('highlights.systems.title')}</h3>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{t('highlights.systems.desc')}</p>
             </Card>
 
             <Card className="text-center p-4 md:p-6 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/50 dark:to-purple-900/50 border-purple-200 dark:border-purple-800/50 sm:col-span-2 lg:col-span-1">
               <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                 <Shield className="h-5 w-5 md:h-6 md:w-6 text-white" aria-hidden />
               </div>
-              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">Developer experience</h3>
-              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">Tools and patterns that make teams faster</p>
+              <h3 className="font-semibold mb-2 text-sm md:text-base leading-tight">{t('highlights.dx.title')}</h3>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{t('highlights.dx.desc')}</p>
             </Card>
           </div>
         </ScrollAnimation>

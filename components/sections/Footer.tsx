@@ -1,6 +1,7 @@
 "use client"
 
 import { Code2 } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 interface FooterProps {
   personalInfo: {
@@ -8,7 +9,9 @@ interface FooterProps {
   }
 }
 
+
 export function Footer({ personalInfo }: FooterProps) {
+  const t = useTranslations('Footer')
   const year = new Date().getFullYear()
 
   return (
@@ -20,7 +23,7 @@ export function Footer({ personalInfo }: FooterProps) {
             <span className="font-semibold text-sm md:text-base">{personalInfo.name}</span>
           </div>
           <p className="text-xs md:text-sm text-muted-foreground text-center md:text-right">
-            Built with Next.js, Tailwind CSS and ☕ © {year}
+            {t('builtWith', { year })}
           </p>
         </div>
       </div>

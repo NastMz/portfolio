@@ -13,15 +13,11 @@ export function ThemeToggle() {
 
   // Inicializar el componente
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
   }, [])
 
-  // Sincronizar displayTheme con resolvedTheme solo cuando no estamos animando
-  useEffect(() => {
-    if (mounted && !isAnimating) {
-      setDisplayTheme(resolvedTheme)
-    }
-  }, [resolvedTheme, mounted, isAnimating])
+  // Sync effect removed as it causes lint errors and is redundant if logic is simplified
 
   const toggleTheme = () => {
     if (isAnimating || !mounted) return // Prevenir múltiples clicks
@@ -37,9 +33,10 @@ export function ThemeToggle() {
       setTheme(newTheme)
     }, 350) // Mitad de 700ms
     
-    // Resetear el estado de animación
+    // Resetear el estado de animación y limpiar displayTheme
     const animationTimeout = setTimeout(() => {
       setIsAnimating(false)
+      setDisplayTheme(undefined) // Fallback to resolvedTheme
     }, 700) // Duración completa de la animación
 
     // Cleanup en caso de desmontaje

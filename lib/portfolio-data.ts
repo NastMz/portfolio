@@ -1,4 +1,5 @@
-import portfolioData from '@/data/portfolio.json'
+import portfolioDataEn from '@/data/portfolio-en.json'
+import portfolioDataEs from '@/data/portfolio-es.json'
 
 export interface PersonalInfo {
   name: string
@@ -101,41 +102,43 @@ export interface PortfolioData {
   languages: Language[]
 }
 
-export function getPortfolioData(): PortfolioData {
-  return portfolioData as PortfolioData
+import { defaultLocale } from '@/i18n/config'
+
+export function getPortfolioData(locale: string = defaultLocale): PortfolioData {
+  return (locale === 'es' ? portfolioDataEs : portfolioDataEn) as PortfolioData
 }
 
-export function getPersonalInfo(): PersonalInfo {
-  return portfolioData.personalInfo as PersonalInfo
+export function getPersonalInfo(locale: string = defaultLocale): PersonalInfo {
+  return getPortfolioData(locale).personalInfo
 }
 
-export function getSkills(): Skill[] {
-  return portfolioData.skills as Skill[]
+export function getSkills(locale: string = defaultLocale): Skill[] {
+  return getPortfolioData(locale).skills
 }
 
-export function getProjects(): Project[] {
-  return portfolioData.projects as Project[]
+export function getProjects(locale: string = defaultLocale): Project[] {
+  return getPortfolioData(locale).projects
 }
 
-export function getExperience(): Experience[] {
-  return portfolioData.experience as Experience[]
+export function getExperience(locale: string = defaultLocale): Experience[] {
+  return getPortfolioData(locale).experience
 }
 
-export function getEducation(): Education[] {
-  return portfolioData.education as Education[]
+export function getEducation(locale: string = defaultLocale): Education[] {
+  return getPortfolioData(locale).education
 }
 
-export function getCertifications(): string[] {
-  return portfolioData.certifications as string[]
+export function getCertifications(locale: string = defaultLocale): string[] {
+  return getPortfolioData(locale).certifications
 }
 
-export function getLanguages(): Language[] {
-  return portfolioData.languages as Language[]
+export function getLanguages(locale: string = defaultLocale): Language[] {
+  return getPortfolioData(locale).languages
 }
 
 // Organizar skills por categoría
-export function getSkillsByCategory(): Record<string, Skill[]> {
-  const skills = getSkills()
+export function getSkillsByCategory(locale: string = defaultLocale): Record<string, Skill[]> {
+  const skills = getSkills(locale)
   return skills.reduce((acc, skill) => {
     if (!acc[skill.category]) acc[skill.category] = []
     acc[skill.category].push(skill)
@@ -144,8 +147,8 @@ export function getSkillsByCategory(): Record<string, Skill[]> {
 }
 
 // Calculate dynamic stats
-export function getYearsOfExperience(): number {
-  const experience = getExperience()
+export function getYearsOfExperience(locale: string = defaultLocale): number {
+  const experience = getExperience(locale)
   if (experience.length === 0) return 0
   
   // Find the earliest start date
@@ -165,27 +168,27 @@ export function getYearsOfExperience(): number {
   return currentYear - earliestYear
 }
 
-export function getTotalProjects(): number {
-  return getProjects().length
+export function getTotalProjects(locale: string = defaultLocale): number {
+  return getProjects(locale).length
 }
 
-export function getTotalTechnologies(): number {
-  return getSkills().length
+export function getTotalTechnologies(locale: string = defaultLocale): number {
+  return getSkills(locale).length
 }
 
-export function getPublicRepos(): number {
-  const projects = getProjects()
+export function getPublicRepos(locale: string = defaultLocale): number {
+  const projects = getProjects(locale)
   return projects.filter(project => project.github).length
 }
 
 // Function to get additional optional stats
-export function getAdditionalStats() {
-  const projects = getProjects()
-  const experience = getExperience()
+export function getAdditionalStats(locale: string = defaultLocale) {
+  const projects = getProjects(locale)
+  const experience = getExperience(locale)
   
   return {
     // Stats by skill category
-    skillCategories: Object.keys(getSkillsByCategory()).length,
+    skillCategories: Object.keys(getSkillsByCategory(locale)).length,
     
     // Unique languages/frameworks
     uniqueTechnologies: [...new Set(
@@ -205,7 +208,7 @@ export function getAdditionalStats() {
     openSourceProjects: projects.filter(p => p.github).length,
     
     // Technologies by category
-    technologiesByCategory: Object.entries(getSkillsByCategory()).reduce((acc, [category, skills]) => {
+    technologiesByCategory: Object.entries(getSkillsByCategory(locale)).reduce((acc, [category, skills]) => {
       acc[category] = skills.length
       return acc
     }, {} as Record<string, number>)
@@ -223,7 +226,7 @@ function calculateExperienceInMonths(experience: Experience[]): number {
     
     // Extract start and end dates
     const startDate = parseExperienceDate(startPart)
-    const endDate = endPart === 'present' ? currentDate : parseExperienceDate(endPart)
+    const endDate = (endPart === 'present' || endPart === 'presente') ? currentDate : parseExperienceDate(endPart)
     
     if (startDate && endDate) {
       const months = (endDate.getFullYear() - startDate.getFullYear()) * 12 + 
@@ -238,7 +241,10 @@ function calculateExperienceInMonths(experience: Experience[]): number {
 function parseExperienceDate(dateStr: string): Date | null {
   const months = {
     'january': 0, 'february': 1, 'march': 2, 'april': 3, 'may': 4, 'june': 5,
-    'july': 6, 'august': 7, 'september': 8, 'october': 9, 'november': 10, 'december': 11
+    'july': 6, 'august': 7, 'september': 8, 'october': 9, 'november': 10, 'december': 11,
+    // Spanish
+    'enero': 0, 'febrero': 1, 'marzo': 2, 'abril': 3, 'mayo': 4, 'junio': 5,
+    'julio': 6, 'agosto': 7, 'septiembre': 8, 'octubre': 9, 'noviembre': 10, 'diciembre': 11
   }
   
   const yearRegex = /(\d{4})/

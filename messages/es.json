@@ -1,0 +1,97 @@
+{
+  "Nav": {
+    "about": "Sobre mí",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "contact": "Contacto"
+  },
+  "Hero": {
+    "greeting": "Hola, soy",
+    "viewProjects": "Ver Proyectos",
+    "contactMe": "Contáctame",
+    "title": "Bienvenido",
+    "description": "Bienvenido a mi portafolio",
+    "stats": {
+      "experience": "Años de experiencia",
+      "projects": "Proyectos de arquitectura",
+      "tech": "Tecnologías",
+      "repos": "Repos públicos"
+    },
+    "actions": {
+      "viewWork": "Ver mi trabajo",
+      "contact": "Contáctame"
+    },
+    "mobility": {
+        "travel": "Viajar",
+        "relocation": "Reubicación",
+        "yes": "Sí",
+        "no": "No"
+    }
+  },
+  "About": {
+    "title": "Sobre Mí",
+    "description1": "Soy un ingeniero backend especializado en .NET y C#, enfocado en construir APIs, backends modulares y arquitectura limpia. Trabajo con bases de datos SQL y herramientas prácticas de DevOps como Docker y pipelines de CI/CD para entregar sistemas confiables.",
+    "description2": "Me importa la mantenibilidad, modularidad y arquitectura clara más que solo enviar código. Disfruto las revisiones de código, la documentación y compartir conocimiento con equipos. Uso herramientas de desarrollo asistidas por IA como Copilot, pero siempre reviso y valido el código manualmente: el diseño y la validación son mi responsabilidad.",
+    "badges": {
+        "cleanArch": "Arquitectura Limpia",
+        "backend": "Sistemas Backend",
+        "dotnet": ".NET & C#",
+        "design": "Diseño de Sistemas",
+        "ai": "Desarrollo Asistido por IA"
+    },
+    "cards": {
+        "modular": {
+            "title": "Diseño modular",
+            "desc": "Sistemas construidos para mantenibilidad a largo plazo"
+        },
+        "quality": {
+            "title": "Calidad de código",
+            "desc": "Pruebas, revisiones y validación"
+        },
+        "sharing": {
+            "title": "Compartir conocimiento",
+            "desc": "Mentoría, documentación y revisiones"
+        }
+    }
+  },
+  "Skills": {
+    "title": "Habilidades",
+    "subtitle": "Experiencia aplicada en producción",
+    "highlights": {
+        "cleanArch": {
+            "title": "Arquitectura limpia",
+            "desc": "Diseño modular para sistemas mantenibles"
+        },
+        "systems": {
+            "title": "Diseño de sistemas",
+            "desc": "Arquitectura backend escalable"
+        },
+        "dx": {
+            "title": "Experiencia de desarrollador",
+            "desc": "Herramientas y patrones que agilizan equipos"
+        }
+    }
+  },
+  "Projects": {
+    "title": "Proyectos Destacados",
+    "subtitle": "Algunos de mis trabajos recientes",
+    "viewProject": "Ver Proyecto",
+    "viewCode": "Ver Código",
+    "viewAll": "Ver Todos"
+  },
+  "Experience": {
+    "title": "Experiencia Laboral",
+    "subtitle": "Mi trayectoria profesional",
+    "present": "Presente"
+  },
+  "Contact": {
+    "title": "Trabajemos juntos",
+    "description": "Si buscas a alguien para diseñar y construir sistemas backend claros y mantenibles en .NET, estaré encantado de conversar. Puedes contactarme por correo o a través de LinkedIn.",
+    "email": "Enviar correo"
+  },
+  "Footer": {
+    "reserved": "Todos los derechos reservados.",
+    "builtWith": "Creado con Next.js, Tailwind CSS y ☕ © {year}"
+  }
+}
