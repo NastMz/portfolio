@@ -28,7 +28,6 @@ interface ContactFormProps {
 export function ContactForm({ children }: ContactFormProps) {
   const [open, setOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const t = useTranslations('Contact')
   const tf = useTranslations('Contact.Form')
 
   // Dynamic schema with translations
