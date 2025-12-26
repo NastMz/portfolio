@@ -298,27 +298,9 @@
       ]
     },
     {
-      "id": "oss-automata-wordle",
-      "title": "Automata Wordle",
-      "github": "https://github.com/NastMz/Automata-Wordle",
-      "priority": "other"
-    },
-    {
-      "id": "oss-grafos",
-      "title": "Grafos App (PyQt6)",
-      "github": "https://github.com/NastMz/Grafos",
-      "priority": "other"
-    },
-    {
-      "id": "oss-uniapp",
-      "title": "UniApp Unillanos (Flutter)",
-      "github": "https://github.com/NastMz/UniApp-Unillanos",
-      "priority": "other"
-    },
-    {
-      "id": "oss-voicecmd",
-      "title": "VoiceCMD + Snake (Monorepo)",
-      "github": "https://github.com/NastMz/voicecmd-monorepo",
+      "id": "oss-react-clean-arch",
+      "title": "React Clean Architecture Template",
+      "github": "https://github.com/NastMz/react-clean-architecture-template",
       "priority": "other"
     }
   ],
