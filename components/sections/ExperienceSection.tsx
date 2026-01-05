@@ -56,7 +56,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
                 delay={200 + (index * 150)}
               >
                 <div className="relative flex items-start space-x-4 md:space-x-6">
-                  <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-foreground border-4 border-primary/20 rounded-full flex items-center justify-center shadow-lg dark:shadow-primary/10 overflow-hidden">
+                  <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-background border-4 border-primary/20 rounded-full flex items-center justify-center shadow-lg dark:shadow-primary/10 overflow-hidden">
                     {job.logo && !failedLogos.has(job.id) ? (
                       <Image 
                         src={job.logo} 
@@ -68,7 +68,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
                         priority={false}
                       />
                     ) : (
-                      <Briefcase className="w-6 h-6 md:w-8 md:h-8 text-background" aria-hidden />
+                      <Briefcase className="w-6 h-6 md:w-8 md:h-8 text-foreground" aria-hidden />
                     )}
                   </div>
 
