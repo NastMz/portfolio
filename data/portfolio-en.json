@@ -307,6 +307,22 @@
   ],
   "experience": [
     {
+      "id": "exp-oss",
+      "title": "Software Engineer — Independent Open Source Research & Development",
+      "company": "Self-employed",
+      "period": "Oct 2025 – Present",
+      "location": "Remote",
+      "color": "border-l-emerald-500",
+      "logo": "/logos/open-source.png",
+      "achievements": [
+        "Focused full-time on the design, evolution, and maintenance of architecture-driven open source projects previously developed alongside professional roles.",
+        "Designed and maintained reusable libraries and frameworks centered on modular backend systems, internal tooling, and DX-oriented patterns.",
+        "Worked across multiple ecosystems (.NET, Python, PHP, React), emphasizing clean boundaries, extensibility, and long-term maintainability.",
+        "Applied production-grade practices including semantic versioning, structured documentation, CI pipelines, and automated release processes.",
+        "Used open source projects as a testbed for architectural exploration, validation of design decisions, and continuous system refinement."
+      ]
+    },
+    {
       "id": "exp-1",
       "title": "Software Engineer / Backend Developer (Consulting)",
       "company": "Tobiro SAS",

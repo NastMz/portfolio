@@ -307,6 +307,22 @@
   ],
   "experience": [
     {
+      "id": "exp-oss",
+      "title": "Ingeniero de Software — Investigación y Desarrollo Open Source (Independiente)",
+      "company": "Trabajo independiente",
+      "period": "Oct 2025 – Presente",
+      "location": "Remoto",
+      "color": "border-l-emerald-500",
+      "logo": "/logos/open-source.png",
+      "achievements": [
+        "Dedicación principal al diseño, evolución y mantenimiento de proyectos open source orientados a arquitectura, previamente desarrollados en paralelo a roles profesionales.",
+        "Desarrollo y mantenimiento de librerías y frameworks reutilizables enfocados en sistemas backend modulares, tooling interno y patrones orientados a la experiencia del desarrollador (DX).",
+        "Trabajo en múltiples ecosistemas tecnológicos (.NET, Python, PHP, React), priorizando límites claros, extensibilidad y mantenibilidad a largo plazo.",
+        "Aplicación de prácticas de nivel productivo como versionado semántico, documentación estructurada, pipelines de CI y automatización de releases.",
+        "Uso de los proyectos open source como laboratorio de validación arquitectónica, exploración de decisiones de diseño y refinamiento continuo de sistemas."
+      ]
+    },
+    {
       "id": "exp-1",
       "title": "Ingeniero de Software / Desarrollador Backend (Consultoría)",
       "company": "Tobiro SAS",
