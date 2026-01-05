@@ -307,11 +307,30 @@
   "experience": [
     {
       "id": "exp-1",
+      "title": "Ingeniero de Software / Desarrollador Backend (Consultoría)",
+      "company": "Tobiro SAS",
+      "period": "Abril 2025 – Septiembre 2025",
+      "location": "Medellín, Antioquia, Colombia · En remoto",
+      "color": "border-l-blue-500",
+      "logo": "/logos/tobiro-sas.png",
+      "achievements": [
+        "Diseñé e implementé un backend monolítico modular usando .NET 8, aplicando Clean Architecture, límites explícitos de módulos e integración basada en contratos.",
+        "Desarrollé un plugin de WinForms como parte de un ecosistema retail más grande, permitiendo validación segura de datos y flujos de trabajo controlados.",
+        "Implementé flujos de autenticación basados en OTP usando AWS SNS, incluyendo validación, reintentos y manejo de fallos.",
+        "Asumí la propiedad del backend principal después de la fase inicial del plugin, liderando decisiones de arquitectura y evolución del sistema.",
+        "Construí mecanismos de actualización automática obligatoria usando GitHub Releases, con descargas en segundo plano, verificación de integridad y despliegue sin interrupciones.",
+        "Integré persistencia relacional y enforqué reglas de dominio dentro de la capa de dominio, evitando modelos anémicos.",
+        "Establecí pipelines de CI/CD con GitHub Actions para versionado, empaquetado y releases automatizados."
+      ]
+    },
+    {
+      "id": "exp-2",
       "title": "Desarrollador Backend → Líder Técnico (.NET)",
       "company": "Enternova SAS",
       "period": "Dic 2024 – Sep 2025 (Tiempo completo)",
       "location": "Bogotá DC, Colombia",
-      "color": "border-l-blue-500",
+      "color": "border-l-cyan-500",
+      "logo": "/logos/enternova-sas.png",
       "achievements": [
         "Lideré esfuerzos de desarrollo backend y proporcioné dirección técnica, mentoría y revisiones de código",
         "Diseñé e implementé servicios backend usando .NET, C# y SQL Server",
@@ -320,12 +339,13 @@
       ]
     },
     {
-      "id": "exp-2",
+      "id": "exp-3",
       "title": "Desarrollador Backend (Freelance / Contrato)",
       "company": "Enternova SAS",
       "period": "Oct 2024 – Dic 2024 (Freelance)",
       "location": "Bogotá DC, Colombia",
       "color": "border-l-green-500",
+      "logo": "/logos/enternova-sas.png",
       "achievements": [
         "Desarrollé APIs backend y herramientas internas usando .NET y SQL Server",
         "Mejoré la confiabilidad del sistema a través de depuración y refactorización",
@@ -333,12 +353,13 @@
       ]
     },
     {
-      "id": "exp-3",
+      "id": "exp-4",
       "title": "Desarrollador Backend (OPS / Contrato)",
       "company": "Ignicion Games",
       "period": "Octubre 2024 – Enero 2025",
       "location": "Villavicencio, Meta, Colombia",
       "color": "border-l-purple-500",
+      "logo": "/logos/ignicion-games.png",
       "achievements": [
         "Construí componentes backend para un sistema de chatbot basado en IA",
         "Implementé microservicios, flujos de mensajería y despliegues basados en Azure",
@@ -346,12 +367,13 @@
       ]
     },
     {
-      "id": "exp-4",
+      "id": "exp-5",
       "title": "Desarrollador Full Stack (Consultoría)",
       "company": "Centro de Enseñanza Automovilística Jmontoya",
       "period": "Enero 2024 – Julio 2024",
       "location": "Villavicencio, Meta, Colombia",
       "color": "border-l-orange-500",
+      "logo": "/logos/jmontoya.png",
       "achievements": [
         "Construí módulos full-stack usando tecnologías web modernas",
         "Diseñé modelos de datos y lógica backend",
@@ -359,12 +381,13 @@
       ]
     },
     {
-      "id": "exp-5",
+      "id": "exp-6",
       "title": "Desarrollador Frontend (Consultoría)",
       "company": "Centro de Enseñanza Automovilística Jmontoya",
       "period": "Octubre 2023 – Enero 2024",
       "location": "Villavicencio, Meta, Colombia",
       "color": "border-l-yellow-500",
+      "logo": "/logos/jmontoya.png",
       "achievements": [
         "Construí componentes UI y módulos frontend con TypeScript/JavaScript",
         "Integré flujos de trabajo de CMS y mejoré la usabilidad",
@@ -372,12 +395,13 @@
       ]
     },
     {
-      "id": "exp-6",
+      "id": "exp-7",
       "title": "Desarrollador Frontend (Consultoría)",
       "company": "TulipannStore",
       "period": "Octubre 2022 – Febrero 2023",
       "location": "Bogotá DC, Colombia",
       "color": "border-l-pink-500",
+      "logo": "/logos/tulipann-store.png",
       "achievements": [
         "Implementé características para usuarios y dashboards de administración",
         "Diseñé flujos de UI y mejoré la UX general",

@@ -307,11 +307,30 @@
   "experience": [
     {
       "id": "exp-1",
+      "title": "Software Engineer / Backend Developer (Consulting)",
+      "company": "Tobiro SAS",
+      "period": "Apr 2025 – Sep 2025 (Full-time)",
+      "location": "Medellín, Antioquia, Colombia · Remote",
+      "color": "border-l-blue-500",
+      "logo": "/logos/tobiro-sas.png",
+      "achievements": [
+        "Designed and implemented a modular monolith backend using .NET 8, applying Clean Architecture, explicit module boundaries, and contract-based integration.",
+        "Developed a WinForms plugin as part of a larger retail ecosystem, enabling secure data validation and controlled user workflows.",
+        "Implemented OTP-based authentication flows using AWS SNS, including validation, retries, and failure handling.",
+        "Took ownership of the core backend after the initial plugin phase, leading architecture decisions and system evolution.",
+        "Built mandatory automatic update mechanisms using GitHub Releases, with background downloads, integrity checks, and seamless rollout.",
+        "Integrated relational persistence and enforced domain rules within the domain layer, avoiding anemic models.",
+        "Established CI/CD pipelines with GitHub Actions for automated versioning, packaging, and releases."
+      ]
+    },
+    {
+      "id": "exp-2",
       "title": "Backend Developer → Technical Lead (.NET)",
       "company": "Enternova SAS",
       "period": "Dec 2024 – Sep 2025 (Full-time)",
       "location": "Bogotá DC, Colombia",
-      "color": "border-l-blue-500",
+      "color": "border-l-cyan-500",
+      "logo": "/logos/enternova-sas.png",
       "achievements": [
         "Led backend development efforts and provided technical direction, mentoring and code reviews",
         "Designed and implemented backend services using .NET, C# and SQL Server",
@@ -320,12 +339,13 @@
       ]
     },
     {
-      "id": "exp-2",
+      "id": "exp-3",
       "title": "Backend Developer (Freelance / Contract)",
       "company": "Enternova SAS",
       "period": "Oct 2024 – Dec 2024 (Freelance)",
       "location": "Bogotá DC, Colombia",
       "color": "border-l-green-500",
+      "logo": "/logos/enternova-sas.png",
       "achievements": [
         "Developed backend APIs and internal tools using .NET and SQL Server",
         "Improved system reliability through debugging and refactoring",
@@ -333,12 +353,13 @@
       ]
     },
     {
-      "id": "exp-3",
+      "id": "exp-4",
       "title": "Backend Developer (OPS / Contract)",
       "company": "Ignicion Games",
       "period": "October 2024 – January 2025",
       "location": "Villavicencio, Meta, Colombia",
       "color": "border-l-purple-500",
+      "logo": "/logos/ignicion-games.png",
       "achievements": [
         "Built backend components for an AI-based chatbot system",
         "Implemented microservices, messaging flows and Azure-based deployments",
@@ -346,12 +367,13 @@
       ]
     },
     {
-      "id": "exp-4",
+      "id": "exp-5",
       "title": "Full Stack Developer (Consulting)",
       "company": "Centro de Enseñanza Automovilística Jmontoya",
       "period": "January 2024 – July 2024",
       "location": "Villavicencio, Meta, Colombia",
       "color": "border-l-orange-500",
+      "logo": "/logos/jmontoya.png",
       "achievements": [
         "Built full-stack modules using modern web technologies",
         "Designed data models and backend logic",
@@ -359,12 +381,13 @@
       ]
     },
     {
-      "id": "exp-5",
+      "id": "exp-6",
       "title": "Frontend Developer (Consulting)",
       "company": "Centro de Enseñanza Automovilística Jmontoya",
       "period": "October 2023 – January 2024",
       "location": "Villavicencio, Meta, Colombia",
       "color": "border-l-yellow-500",
+      "logo": "/logos/jmontoya.png",
       "achievements": [
         "Built UI components and frontend modules with TypeScript/JavaScript",
         "Integrated CMS workflows and improved usability",
@@ -372,12 +395,13 @@
       ]
     },
     {
-      "id": "exp-6",
+      "id": "exp-7",
       "title": "Frontend Developer (Consulting)",
       "company": "TulipannStore",
       "period": "October 2022 – February 2023",
       "location": "Bogotá DC, Colombia",
       "color": "border-l-pink-500",
+      "logo": "/logos/tulipann-store.png",
       "achievements": [
         "Implemented user-facing features and admin dashboards",
         "Designed UI flows and improved overall UX",

@@ -1,8 +1,10 @@
 "use client"
 
+import { useState } from "react"
+import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { CheckCircle, MapPin } from "lucide-react"
+import { CheckCircle, MapPin, Briefcase } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 interface Job {
@@ -13,6 +15,7 @@ interface Job {
   location: string
   achievements?: string[]
   color?: string
+  logo?: string
 }
 
 interface ExperienceSectionProps {
@@ -21,6 +24,11 @@ interface ExperienceSectionProps {
 
 export function ExperienceSection({ experience }: ExperienceSectionProps) {
   const t = useTranslations('Experience')
+  const [failedLogos, setFailedLogos] = useState<Set<string>>(new Set())
+
+  const handleImageError = (jobId: string) => {
+    setFailedLogos(prev => new Set(prev).add(jobId))
+  }
 
   return (
     <section id="experience" className="py-20 md:py-32 relative overflow-hidden bg-background">
@@ -48,8 +56,20 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
                 delay={200 + (index * 150)}
               >
                 <div className="relative flex items-start space-x-4 md:space-x-6">
-                  <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-background border-4 border-primary/20 rounded-full flex items-center justify-center shadow-lg dark:shadow-primary/10">
-                    <div className="w-4 h-4 md:w-6 md:h-6 bg-gradient-to-r from-primary to-secondary rounded-full" />
+                  <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-foreground border-4 border-primary/20 rounded-full flex items-center justify-center shadow-lg dark:shadow-primary/10 overflow-hidden">
+                    {job.logo && !failedLogos.has(job.id) ? (
+                      <Image 
+                        src={job.logo} 
+                        alt={`${job.company} logo`}
+                        width={64}
+                        height={64}
+                        className="w-full h-full object-contain p-1"
+                        onError={() => handleImageError(job.id)}
+                        priority={false}
+                      />
+                    ) : (
+                      <Briefcase className="w-6 h-6 md:w-8 md:h-8 text-background" aria-hidden />
+                    )}
                   </div>
 
                   <Card className={`flex-1 border-l-4 ${job.color || "border-l-primary"} hover:shadow-lg transition-shadow dark:hover:shadow-primary/5 border-border/50`}>
