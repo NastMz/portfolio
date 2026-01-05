@@ -3,9 +3,9 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Code2, Github, Linkedin, Menu, X } from "lucide-react"
+import { Code2, Github, Linkedin, Menu, X, Download } from "lucide-react"
 import Link from "next/link"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 
 import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 
@@ -20,9 +20,22 @@ interface HeaderProps {
 export function Header({ personalInfo }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const t = useTranslations('Nav')
+  const locale = useLocale()
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   const closeMenu = () => setIsMenuOpen(false)
+
+  const cvFileName = locale === 'es' ? 'CV_Kevin_Martinez_ES.pdf' : 'CV_Kevin_Martinez_EN.pdf'
+  const cvPath = `/cv/${cvFileName}`
+
+  const handleDownloadCV = () => {
+    const link = document.createElement('a')
+    link.href = cvPath
+    link.download = cvFileName
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-border/50" style={{ position: 'sticky' }}>
@@ -49,6 +62,15 @@ export function Header({ personalInfo }: HeaderProps) {
           </nav>
           
           <div className="flex flex-1 items-center justify-end space-x-2">
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={handleDownloadCV}
+              className="hidden sm:flex items-center space-x-2 text-xs md:text-sm"
+            >
+              <Download className="h-4 w-4" />
+              <span className="hidden sm:inline">{t('downloadCV')}</span>
+            </Button>
             <LanguageSwitcher />
             <ThemeToggle />
             {personalInfo.github && (
@@ -83,41 +105,55 @@ export function Header({ personalInfo }: HeaderProps) {
         {isMenuOpen && (
           <div className="md:hidden border-t">
             <nav className="flex flex-col space-y-4 p-4">
-              <Link 
-                href="#about" 
-                className="text-sm font-medium transition-colors hover:text-primary py-2"
-                onClick={closeMenu}
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => {
+                  handleDownloadCV()
+                  closeMenu()
+                }}
+                className="w-full flex items-center justify-center space-x-2"
               >
-                {t('about')}
-              </Link>
-              <Link 
-                href="#skills" 
-                className="text-sm font-medium transition-colors hover:text-primary py-2"
-                onClick={closeMenu}
-              >
-                {t('skills')}
-              </Link>
-              <Link 
-                href="#projects" 
-                className="text-sm font-medium transition-colors hover:text-primary py-2"
-                onClick={closeMenu}
-              >
-                {t('projects')}
-              </Link>
-              <Link 
-                href="#experience" 
-                className="text-sm font-medium transition-colors hover:text-primary py-2"
-                onClick={closeMenu}
-              >
-                {t('experience')}
-              </Link>
-              <Link 
-                href="#contact" 
-                className="text-sm font-medium transition-colors hover:text-primary py-2"
-                onClick={closeMenu}
-              >
-                {t('contact')}
-              </Link>
+                <Download className="h-4 w-4" />
+                <span>{t('downloadCV')}</span>
+              </Button>
+              <div className="border-t pt-4">
+                <Link 
+                  href="#about" 
+                  className="text-sm font-medium transition-colors hover:text-primary py-2 block"
+                  onClick={closeMenu}
+                >
+                  {t('about')}
+                </Link>
+                <Link 
+                  href="#skills" 
+                  className="text-sm font-medium transition-colors hover:text-primary py-2 block"
+                  onClick={closeMenu}
+                >
+                  {t('skills')}
+                </Link>
+                <Link 
+                  href="#projects" 
+                  className="text-sm font-medium transition-colors hover:text-primary py-2 block"
+                  onClick={closeMenu}
+                >
+                  {t('projects')}
+                </Link>
+                <Link 
+                  href="#experience" 
+                  className="text-sm font-medium transition-colors hover:text-primary py-2 block"
+                  onClick={closeMenu}
+                >
+                  {t('experience')}
+                </Link>
+                <Link 
+                  href="#contact" 
+                  className="text-sm font-medium transition-colors hover:text-primary py-2 block"
+                  onClick={closeMenu}
+                >
+                  {t('contact')}
+                </Link>
+              </div>
               
               {/* Mobile Social Links */}
               <div className="flex space-x-2 pt-4 border-t">

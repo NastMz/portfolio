@@ -4,7 +4,8 @@
     "skills": "Skills",
     "projects": "Projects",
     "experience": "Experience",
-    "contact": "Contact"
+    "contact": "Contact",
+    "downloadCV": "Download CV"
   },
   "Hero": {
     "greeting": "Hello, I'm",
@@ -23,10 +24,10 @@
       "contact": "Contact me"
     },
     "mobility": {
-        "travel": "Travel",
-        "relocation": "Relocation",
-        "yes": "Yes",
-        "no": "No"
+      "travel": "Travel",
+      "relocation": "Relocation",
+      "yes": "Yes",
+      "no": "No"
     }
   },
   "About": {
@@ -34,25 +35,25 @@
     "description1": "I am a backend engineer specializing in .NET and C#, focused on building APIs, modular backends, and clean architecture. I work with SQL databases and practical DevOps tools like Docker and CI/CD pipelines to deliver reliable systems.",
     "description2": "I care about maintainability, modularity, and clear architecture more than just shipping code. I enjoy code reviews, documentation, and sharing knowledge with teams. I use AI-assisted development tools like Copilot, but I always review and validate the code manually—design and validation remain my responsibility.",
     "badges": {
-        "cleanArch": "Clean Architecture",
-        "backend": "Backend Systems",
-        "dotnet": ".NET & C#",
-        "design": "Systems Design",
-        "ai": "AI-Assisted Development"
+      "cleanArch": "Clean Architecture",
+      "backend": "Backend Systems",
+      "dotnet": ".NET & C#",
+      "design": "Systems Design",
+      "ai": "AI-Assisted Development"
     },
     "cards": {
-        "modular": {
-            "title": "Modular design",
-            "desc": "Systems built for long-term maintainability"
-        },
-        "quality": {
-            "title": "Code quality",
-            "desc": "Testing, reviews, and validation"
-        },
-        "sharing": {
-            "title": "Knowledge sharing",
-            "desc": "Mentoring, documentation, and reviews"
-        }
+      "modular": {
+        "title": "Modular design",
+        "desc": "Systems built for long-term maintainability"
+      },
+      "quality": {
+        "title": "Code quality",
+        "desc": "Testing, reviews, and validation"
+      },
+      "sharing": {
+        "title": "Knowledge sharing",
+        "desc": "Mentoring, documentation, and reviews"
+      }
     }
   },
   "Skills": {
@@ -60,18 +61,18 @@
     "subtitle": "Experience applied in production",
     "all": "All",
     "highlights": {
-        "cleanArch": {
-            "title": "Clean architecture",
-            "desc": "Modular design for maintainable systems"
-        },
-        "systems": {
-            "title": "Systems design",
-            "desc": "Scalable backend architecture"
-        },
-        "dx": {
-            "title": "Developer experience",
-            "desc": "Tools and patterns that make teams faster"
-        }
+      "cleanArch": {
+        "title": "Clean architecture",
+        "desc": "Modular design for maintainable systems"
+      },
+      "systems": {
+        "title": "Systems design",
+        "desc": "Scalable backend architecture"
+      },
+      "dx": {
+        "title": "Developer experience",
+        "desc": "Tools and patterns that make teams faster"
+      }
     }
   },
   "Projects": {

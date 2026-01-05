@@ -4,7 +4,8 @@
     "skills": "Habilidades",
     "projects": "Proyectos",
     "experience": "Experiencia",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "downloadCV": "Descargar CV"
   },
   "Hero": {
     "greeting": "Hola, soy",
@@ -23,10 +24,10 @@
       "contact": "Contáctame"
     },
     "mobility": {
-        "travel": "Viajar",
-        "relocation": "Reubicación",
-        "yes": "Sí",
-        "no": "No"
+      "travel": "Viajar",
+      "relocation": "Reubicación",
+      "yes": "Sí",
+      "no": "No"
     }
   },
   "About": {
@@ -34,25 +35,25 @@
     "description1": "Soy un ingeniero backend especializado en .NET y C#, enfocado en construir APIs, backends modulares y arquitectura limpia. Trabajo con bases de datos SQL y herramientas prácticas de DevOps como Docker y pipelines de CI/CD para entregar sistemas confiables.",
     "description2": "Me importa la mantenibilidad, modularidad y arquitectura clara más que solo enviar código. Disfruto las revisiones de código, la documentación y compartir conocimiento con equipos. Uso herramientas de desarrollo asistidas por IA como Copilot, pero siempre reviso y valido el código manualmente: el diseño y la validación son mi responsabilidad.",
     "badges": {
-        "cleanArch": "Arquitectura Limpia",
-        "backend": "Sistemas Backend",
-        "dotnet": ".NET & C#",
-        "design": "Diseño de Sistemas",
-        "ai": "Desarrollo Asistido por IA"
+      "cleanArch": "Arquitectura Limpia",
+      "backend": "Sistemas Backend",
+      "dotnet": ".NET & C#",
+      "design": "Diseño de Sistemas",
+      "ai": "Desarrollo Asistido por IA"
     },
     "cards": {
-        "modular": {
-            "title": "Diseño modular",
-            "desc": "Sistemas construidos para mantenibilidad a largo plazo"
-        },
-        "quality": {
-            "title": "Calidad de código",
-            "desc": "Pruebas, revisiones y validación"
-        },
-        "sharing": {
-            "title": "Compartir conocimiento",
-            "desc": "Mentoría, documentación y revisiones"
-        }
+      "modular": {
+        "title": "Diseño modular",
+        "desc": "Sistemas construidos para mantenibilidad a largo plazo"
+      },
+      "quality": {
+        "title": "Calidad de código",
+        "desc": "Pruebas, revisiones y validación"
+      },
+      "sharing": {
+        "title": "Compartir conocimiento",
+        "desc": "Mentoría, documentación y revisiones"
+      }
     }
   },
   "Skills": {
@@ -60,18 +61,18 @@
     "subtitle": "Experiencia aplicada en producción",
     "all": "Todos",
     "highlights": {
-        "cleanArch": {
-            "title": "Arquitectura limpia",
-            "desc": "Diseño modular para sistemas mantenibles"
-        },
-        "systems": {
-            "title": "Diseño de sistemas",
-            "desc": "Arquitectura backend escalable"
-        },
-        "dx": {
-            "title": "Experiencia de desarrollador",
-            "desc": "Herramientas y patrones que agilizan equipos"
-        }
+      "cleanArch": {
+        "title": "Arquitectura limpia",
+        "desc": "Diseño modular para sistemas mantenibles"
+      },
+      "systems": {
+        "title": "Diseño de sistemas",
+        "desc": "Arquitectura backend escalable"
+      },
+      "dx": {
+        "title": "Experiencia de desarrollador",
+        "desc": "Herramientas y patrones que agilizan equipos"
+      }
     }
   },
   "Projects": {
