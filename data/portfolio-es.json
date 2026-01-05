@@ -3,12 +3,13 @@
     "name": "Kevin Martínez",
     "title": "Ingeniero Backend enfocado en arquitectura limpia y sistemas confiables",
     "description": "Diseño y construyo APIs en .NET, backends modulares y herramientas para desarrolladores que hacen a los equipos más rápidos y a los sistemas más fáciles de mantener.",
-    "location": "Tunja, Boyacá, Colombia",
+    "location": "Duitama, Boyacá, Colombia",
     "email": "ksmartinez23@outlook.com",
     "phone": "+57 314 4397291",
     "github": "https://github.com/NastMz",
     "linkedin": "https://www.linkedin.com/in/ksmartinez23/",
-    "availability": "Disponible para contratar"
+    "availability": "Disponible para contratar",
+    "profileImage": "/images/profile.jpg"
   },
   "highlights": [
     "Experiencia liderando equipos técnicos y promoviendo mejores prácticas de desarrollo de software",

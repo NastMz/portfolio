@@ -10,7 +10,8 @@ export interface PersonalInfo {
   phone: string
   github: string
   linkedin: string
-  availability: string
+  availability: string,
+  profileImage?: string
   mobility?: {
     travel?: boolean
     relocation?: boolean

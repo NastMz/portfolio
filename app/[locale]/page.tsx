@@ -50,7 +50,7 @@ export default async function Portfolio({
       <Header personalInfo={personalInfo} />
       <main className="prevent-overflow">
         <HeroSection personalInfo={personalInfo} stats={stats} />
-        <AboutSection />
+        <AboutSection profileImage={personalInfo.profileImage} />
         <SkillsSection skillsByCategory={skillsByCategory} />
         <ProjectsSection projects={projects} />
         <ExperienceSection experience={experience} />

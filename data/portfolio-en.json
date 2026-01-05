@@ -3,12 +3,13 @@
     "name": "Kevin Martinez",
     "title": "Backend Engineer focused on clean architecture & reliable systems",
     "description": "I design and build .NET APIs, modular backends and developer tooling that make teams faster and systems easier to maintain.",
-    "location": "Tunja, Boyacá, Colombia",
+    "location": "Duitama, Boyacá, Colombia",
     "email": "ksmartinez23@outlook.com",
     "phone": "+57 314 4397291",
     "github": "https://github.com/NastMz",
     "linkedin": "https://www.linkedin.com/in/ksmartinez23/",
-    "availability": "Available for hire"
+    "availability": "Available for hire",
+    "profileImage": "/images/profile.jpg"
   },
   "highlights": [
     "Experience leading technical teams and promoting software development best practices",
