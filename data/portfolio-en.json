@@ -184,6 +184,26 @@
       ]
     },
     {
+      "id": "vanilla-spa",
+      "title": "Vanilla SPA",
+      "description": "Production-ready Single Page Application architecture with zero dependencies. Demonstrates clean, maintainable SPA patterns using vanilla JavaScript, modern CSS, and the web platform with client-side routing, reactive state management, HTTP caching, and component composition.",
+      "tech": ["JavaScript", "HTML", "CSS", "Vite", "ES Modules"],
+      "categories": {
+        "languages": ["JavaScript"],
+        "frameworks": ["Vanilla JS"],
+        "tools": ["Vite", "ES Modules"],
+        "patterns": ["SPA", "Reactive Store", "Clean Architecture"],
+        "type": "Full-Stack Application"
+      },
+      "github": "https://github.com/NastMz/vanilla-spa",
+      "gradient": "from-yellow-400 to-orange-500",
+      "priority": "key",
+      "metrics": [
+        { "label": "Dependencies", "value": "Zero", "icon": "Package" },
+        { "label": "Architecture", "value": "Clean SPA", "icon": "Layers" }
+      ]
+    },
+    {
       "id": "oss-1",
       "title": "light-query",
       "description": "A set of React hooks for structured data fetching. Provides simpler, maintainable patterns for frontend data flows with improved developer experience.",

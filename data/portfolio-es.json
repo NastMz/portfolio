@@ -184,6 +184,26 @@
       ]
     },
     {
+      "id": "vanilla-spa",
+      "title": "Vanilla SPA",
+      "description": "Arquitectura de Single Page Application lista para producción con cero dependencias. Demuestra patrones limpios y mantenibles de SPA usando JavaScript vanilla, CSS moderno y la plataforma web con enrutamiento del lado del cliente, gestión de estado reactivo, caché HTTP y composición de componentes.",
+      "tech": ["JavaScript", "HTML", "CSS", "Vite", "ES Modules"],
+      "categories": {
+        "languages": ["JavaScript"],
+        "frameworks": ["JavaScript Vanilla"],
+        "tools": ["Vite", "ES Modules"],
+        "patterns": ["SPA", "Reactive Store", "Clean Architecture"],
+        "type": "Aplicación Full-Stack"
+      },
+      "github": "https://github.com/NastMz/vanilla-spa",
+      "gradient": "from-yellow-400 to-orange-500",
+      "priority": "key",
+      "metrics": [
+        { "label": "Dependencias", "value": "Cero", "icon": "Package" },
+        { "label": "Arquitectura", "value": "SPA Limpia", "icon": "Layers" }
+      ]
+    },
+    {
       "id": "oss-1",
       "title": "light-query",
       "description": "Un conjunto de hooks de React para búsqueda de datos estructurados. Proporciona patrones más simples y mantenibles para flujos de datos frontend con una experiencia de desarrollador mejorada.",
