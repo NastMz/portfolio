@@ -6,16 +6,18 @@ import { Badge } from "@/components/ui/badge"
 import { ScrollAnimation } from "@/components/scroll-animation"
 import {
   Server,
-  Calendar,
-  CheckCircle,
   Globe,
-  Activity,
+  Database,
+  GitBranch,
   MapPin,
   Coffee,
   Rocket,
+  Github,
+  Linkedin,
+  Download,
 } from "lucide-react"
 import Link from "next/link"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 
 interface Mobility {
   travel?: boolean
@@ -29,19 +31,37 @@ interface HeroSectionProps {
     description: string
     location: string
     availability: string
+    github?: string
+    linkedin?: string
     mobility?: Mobility
   }
-  stats: {
-    yearsOfExperience: number
-    totalProjects: number
-    totalTechnologies: number
-    publicRepos: number
-  }
+  highlights?: readonly string[]
 }
 
-export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
+export function HeroSection({ personalInfo, highlights = [] }: HeroSectionProps) {
   const t = useTranslations('Hero')
+  const nav = useTranslations('Nav')
+  const locale = useLocale()
   const mobility = personalInfo.mobility
+
+  const cvFileName = locale === 'es' ? 'CV_Kevin_Martinez_ES.pdf' : 'CV_Kevin_Martinez_EN.pdf'
+  const cvPath = `/cv/${cvFileName}`
+
+  const handleDownloadCV = () => {
+    const link = document.createElement('a')
+    link.href = cvPath
+    link.download = cvFileName
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+  const highlightCards = [
+    { icon: Globe, color: "text-blue-600 dark:text-blue-400" },
+    { icon: Database, color: "text-purple-600 dark:text-purple-400" },
+    { icon: GitBranch, color: "text-green-600 dark:text-green-400" },
+    { icon: Github, color: "text-orange-600 dark:text-orange-400" },
+  ] as const
 
   return (
     <section className="relative overflow-hidden">
@@ -68,51 +88,36 @@ export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
             </div>
           </ScrollAnimation>
 
-          {/* Stats Grid */}
-          <ScrollAnimation animation="slideUp" delay={600}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-4xl px-4">
-              {[
-                { 
-                  label: t('stats.experience'), 
-                  value: `${stats.yearsOfExperience}+`, 
-                  icon: Calendar, 
-                  color: "text-blue-600 dark:text-blue-400" 
-                },
-                { 
-                  label: t('stats.projects'), 
-                  value: `${stats.totalProjects}+`, 
-                  icon: CheckCircle, 
-                  color: "text-green-600 dark:text-green-400" 
-                },
-                { 
-                  label: t('stats.tech'), 
-                  value: `${stats.totalTechnologies}+`, 
-                  icon: Globe, 
-                  color: "text-purple-600 dark:text-purple-400" 
-                },
-                { 
-                  label: t('stats.repos'), 
-                  value: `${stats.publicRepos}+`, 
-                  icon: Activity, 
-                  color: "text-orange-600 dark:text-orange-400" 
-                },
-              ].map((stat, index) => (
-                <ScrollAnimation 
-                  key={stat.label} 
-                  animation="scaleIn" 
-                  delay={800 + (index * 100)}
-                >
-                  <Card className="text-center border-0 bg-background/50 backdrop-blur shadow-lg dark:bg-background/20 dark:shadow-primary/5 h-full flex flex-col">
-                  <CardContent className="pt-4 md:pt-6 px-3 md:px-6 flex-1 flex flex-col justify-center">
-                    <stat.icon className={`h-6 w-6 md:h-8 md:w-8 mx-auto mb-2 ${stat.color} flex-shrink-0`} aria-hidden />
-                    <div className="text-xl md:text-2xl font-bold mb-1">{stat.value}</div>
-                    <div className="text-xs md:text-sm text-muted-foreground leading-tight">{stat.label}</div>
-                  </CardContent>
-                  </Card>
-                </ScrollAnimation>
-              ))}
-            </div>
-          </ScrollAnimation>
+          {/* Highlights */}
+          {highlights.length > 0 && (
+            <ScrollAnimation animation="slideUp" delay={600}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 w-full max-w-4xl px-4">
+                {highlights.slice(0, 4).map((highlight, index) => {
+                  const meta = highlightCards[index] ?? highlightCards[0]
+                  const Icon = meta.icon
+
+                  return (
+                    <ScrollAnimation
+                      key={`highlight-${index}`}
+                      animation="scaleIn"
+                      delay={800 + (index * 100)}
+                    >
+                      <Card className="border-0 bg-background/50 backdrop-blur shadow-lg dark:bg-background/20 dark:shadow-primary/5 h-full">
+                        <CardContent className="pt-4 md:pt-6 px-4 md:px-6 flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-background/60 border border-primary/10 flex-shrink-0">
+                            <Icon className={`h-5 w-5 ${meta.color}`} aria-hidden />
+                          </div>
+                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed text-left">
+                            {highlight}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </ScrollAnimation>
+                  )
+                })}
+              </div>
+            </ScrollAnimation>
+          )}
 
           <ScrollAnimation animation="fadeIn" delay={1200}>
             <div className="flex items-center flex-wrap gap-3 md:gap-4 justify-center text-sm text-muted-foreground px-4">
@@ -151,6 +156,36 @@ export function HeroSection({ personalInfo, stats }: HeroSectionProps) {
               </Button>
               <Button variant="outline" size="lg" asChild className="border-primary/20 hover:bg-primary/5 bg-transparent w-full sm:w-auto">
                 <Link href="#contact">{t('actions.contact')}</Link>
+              </Button>
+            </div>
+          </ScrollAnimation>
+
+          <ScrollAnimation animation="fadeIn" delay={1550}>
+            <div className="flex flex-wrap items-center justify-center gap-2 px-4">
+              {personalInfo.github && (
+                <Button variant="outline" size="sm" asChild className="border-primary/20 hover:bg-primary/5 bg-transparent">
+                  <Link href={personalInfo.github} target="_blank" rel="noreferrer noopener">
+                    <Github className="h-4 w-4 mr-2" aria-hidden />
+                    GitHub
+                  </Link>
+                </Button>
+              )}
+              {personalInfo.linkedin && (
+                <Button variant="outline" size="sm" asChild className="border-primary/20 hover:bg-primary/5 bg-transparent">
+                  <Link href={personalInfo.linkedin} target="_blank" rel="noreferrer noopener">
+                    <Linkedin className="h-4 w-4 mr-2" aria-hidden />
+                    LinkedIn
+                  </Link>
+                </Button>
+              )}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleDownloadCV}
+                className="border-primary/20 hover:bg-primary/5 bg-transparent"
+              >
+                <Download className="h-4 w-4 mr-2" aria-hidden />
+                {nav('downloadCV')}
               </Button>
             </div>
           </ScrollAnimation>

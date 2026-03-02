@@ -1,100 +1,100 @@
 {
   "personalInfo": {
-    "name": "Kevin Martínez",
-    "title": "Ingeniero Backend enfocado en arquitectura limpia y sistemas confiables",
-    "description": "Diseño y construyo APIs en .NET, backends modulares y herramientas para desarrolladores que hacen a los equipos más rápidos y a los sistemas más fáciles de mantener.",
-    "location": "Duitama, Boyacá, Colombia",
+    "name": "Kevin Santiago Martinez",
+    "title": "Ingeniero de Software Backend | .NET / C# | APIs | SQL | CI/CD",
+    "description": "Construyo y mantengo APIs/servicios en .NET en producción: integraciones, resolución de incidencias, optimización SQL (EF Core/Dapper) y CI/CD con GitHub Actions + Docker.",
+    "location": "Duitama, Boyacá · Colombia",
     "email": "ksmartinez23@outlook.com",
-    "phone": "+57 314 4397291",
+    "phone": "+57 314 439 7291",
     "github": "https://github.com/NastMz",
     "linkedin": "https://www.linkedin.com/in/ksmartinez23/",
     "availability": "Disponible para contratar",
     "profileImage": "/images/profile.jpg"
   },
   "highlights": [
-    "Experiencia liderando equipos técnicos y promoviendo mejores prácticas de desarrollo de software",
-    "Diseño de arquitecturas limpias, CQRS y DDD para sistemas empresariales",
-    "Implementación de sistemas de actualización automática en aplicaciones de escritorio",
-    "Contribuidor OSS con librerías en .NET, React y PHP"
+    "APIs/servicios .NET en producción: entregas end-to-end, incidencias e integraciones (token/OTP).",
+    "SQL Server/PostgreSQL: EF Core + Dapper, modelado y optimización de consultas.",
+    "CI/CD con GitHub Actions + Docker: build, test y despliegues automatizados.",
+    "Open source: librerías en NuGet/PyPI con docs, releases y versionamiento."
   ],
   "skills": [
     {
       "id": "1",
       "name": "C#",
-      "category": "Core Backend",
-      "experience": "4+ años",
-      "projects": "Sistemas en producción",
+      "category": "Backend (.NET)",
+      "experience": "2+ años",
+      "projects": "APIs y servicios en producción",
       "icon": "⚙️"
     },
     {
       "id": "2",
       "name": ".NET 8 / .NET Core",
-      "category": "Core Backend",
-      "experience": "4+ años",
-      "projects": "Sistemas empresariales y retail",
+      "category": "Backend (.NET)",
+      "experience": "2+ años",
+      "projects": "APIs, workers y tooling",
       "icon": "⚙️"
     },
     {
       "id": "3",
-      "name": "Arquitectura Backend",
-      "category": "Core Backend",
-      "experience": "3+ años construyendo sistemas backend",
-      "projects": "Sistemas modulares",
-      "icon": "🏛️"
+      "name": "ASP.NET Core (Web APIs)",
+      "category": "Backend (.NET)",
+      "experience": "2+ años",
+      "projects": "REST APIs en producción",
+      "icon": "🌐"
     },
     {
       "id": "6",
-      "name": "Diseño de Sistemas",
-      "category": "Core Backend",
-      "experience": "3+ años construyendo sistemas backend",
-      "projects": "Soluciones escalables",
-      "icon": "🏛️"
-    },
-    {
-      "id": "4",
-      "name": "Arquitectura de Software",
-      "category": "Core Backend",
-      "experience": "3+ años construyendo sistemas backend",
-      "projects": "Sistemas empresariales",
-      "icon": "🏛️"
-    },
-    {
-      "id": "5",
-      "name": "Clean Architecture",
-      "category": "Core Backend",
-      "experience": "3+ años construyendo sistemas backend",
-      "projects": "Bases de código mantenibles",
-      "icon": "🏛️"
+      "name": "Testing (xUnit)",
+      "category": "Backend (.NET)",
+      "experience": "1+ años",
+      "projects": "Tests unitarios y de integración",
+      "icon": "✅"
     },
     {
       "id": "7",
       "name": "REST APIs",
-      "category": "Core Backend",
-      "experience": "4+ años",
+      "category": "Backend (.NET)",
+      "experience": "3+ años",
       "projects": "APIs en producción",
       "icon": "🌐"
     },
     {
       "id": "8",
       "name": "SQL",
-      "category": "Core Backend",
-      "experience": "5+ años",
-      "projects": "SQL Server, MySQL, PostgreSQL",
+      "category": "Data (SQL)",
+      "experience": "3+ años",
+      "projects": "SQL Server / PostgreSQL",
       "icon": "🐘"
     },
     {
       "id": "9",
       "name": "Entity Framework Core",
-      "category": "Core Backend",
-      "experience": "4+ años",
+      "category": "Backend (.NET)",
+      "experience": "2+ años",
       "projects": "Acceso a datos y optimización",
       "icon": "🗂️"
+    },
+    {
+      "id": "19",
+      "name": "Dapper",
+      "category": "Backend (.NET)",
+      "experience": "1+ años",
+      "projects": "Acceso a datos en proyectos específicos",
+      "icon": "🗂️"
+    },
+    {
+      "id": "12",
+      "name": "Git",
+      "category": "DevOps & Tooling",
+      "experience": "3+ años",
+      "projects": "Flujos de trabajo, branching y versionamiento",
+      "icon": "🔀"
     },
     {
       "id": "10",
       "name": "GitHub Actions / CI/CD",
       "category": "DevOps & Tooling",
-      "experience": "3+ años",
+      "experience": "1+ años",
       "projects": "Pipelines automatizados",
       "icon": "🔄"
     },
@@ -102,16 +102,24 @@
       "id": "11",
       "name": "Docker",
       "category": "DevOps & Tooling",
-      "experience": "3+ años",
+      "experience": "1+ años",
       "projects": "Aplicaciones contenerizadas",
       "icon": "🐳"
     },
     {
-      "id": "12",
-      "name": "Azure",
+      "id": "20",
+      "name": "Azure DevOps",
       "category": "DevOps & Tooling",
-      "experience": "2+ años",
-      "projects": "Despliegues en la nube",
+      "experience": "1+ años",
+      "projects": "Pipelines y trabajo con equipos",
+      "icon": "🔄"
+    },
+    {
+      "id": "21",
+      "name": "AWS",
+      "category": "DevOps & Tooling",
+      "experience": "1+ años",
+      "projects": "Integraciones puntuales (SNS)",
       "icon": "☁️"
     },
     {
@@ -165,85 +173,9 @@
   ],
   "projects": [
     {
-      "id": "oss-microengine",
-      "title": "MicroEngine",
-      "description": "Proyecto de sistemas modulares impulsado por arquitectura en C# explorando patrones ECS, diseño modular y abstracciones backend. Diseñado como un framework 2D-first, 3D-ready con gestión de escenas y manejo de recursos. Exploración profunda de principios de arquitectura y modularidad.",
-      "tech": ["C#", ".NET", "ECS", "Diseño de Sistemas"],
-      "categories": {
-        "languages": ["C#"],
-        "frameworks": [".NET"],
-        "patterns": ["ECS", "Diseño Modular"],
-        "type": "Arquitectura de Sistemas"
-      },
-      "github": "https://github.com/NastMz/MicroEngine",
-      "gradient": "from-purple-500 to-indigo-600",
-      "priority": "featured",
-      "metrics": [
-        { "label": "Arquitectura", "value": "ECS/Modular", "icon": "Layers" },
-        { "label": "Enfoque", "value": "Diseño de Sistemas", "icon": "Package" }
-      ]
-    },
-    {
-      "id": "vanilla-spa",
-      "title": "Vanilla SPA",
-      "description": "Arquitectura de Single Page Application lista para producción con cero dependencias. Demuestra patrones limpios y mantenibles de SPA usando JavaScript vanilla, CSS moderno y la plataforma web con enrutamiento del lado del cliente, gestión de estado reactivo, caché HTTP y composición de componentes.",
-      "tech": ["JavaScript", "HTML", "CSS", "Vite", "ES Modules"],
-      "categories": {
-        "languages": ["JavaScript"],
-        "frameworks": ["JavaScript Vanilla"],
-        "tools": ["Vite", "ES Modules"],
-        "patterns": ["SPA", "Reactive Store", "Clean Architecture"],
-        "type": "Aplicación Full-Stack"
-      },
-      "github": "https://github.com/NastMz/vanilla-spa",
-      "gradient": "from-yellow-400 to-orange-500",
-      "priority": "key",
-      "metrics": [
-        { "label": "Dependencias", "value": "Cero", "icon": "Package" },
-        { "label": "Arquitectura", "value": "SPA Limpia", "icon": "Layers" }
-      ]
-    },
-    {
-      "id": "oss-1",
-      "title": "light-query",
-      "description": "Un conjunto de hooks de React para búsqueda de datos estructurados. Proporciona patrones más simples y mantenibles para flujos de datos frontend con una experiencia de desarrollador mejorada.",
-      "tech": ["React", "TypeScript", "NPM"],
-      "categories": {
-        "languages": ["TypeScript", "JavaScript"],
-        "frameworks": ["React"],
-        "tools": ["NPM", "Vite"],
-        "type": "Librería Frontend"
-      },
-      "github": "https://github.com/NastMz/light-query",
-      "gradient": "from-sky-500 to-indigo-600",
-      "metrics": [
-        { "label": "DX", "value": "Alto", "icon": "TrendingUp" },
-        { "label": "Actividad", "value": "Activo", "icon": "Activity" }
-      ]
-    },
-    {
-      "id": "oss-3",
-      "title": "SimpleMediator",
-      "description": "Librería CQRS/Mediator ligera para .NET con clara separación de preocupaciones. Sin dependencias externas, ideal para proyectos pequeños a medianos que necesitan estructura sin frameworks pesados.",
-      "tech": [".NET 8", "C#"],
-      "categories": {
-        "languages": ["C#"],
-        "frameworks": [".NET"],
-        "patterns": ["CQRS", "Mediator"],
-        "type": "Librería Backend"
-      },
-      "github": "https://github.com/NastMz/SimpleMediator",
-      "gradient": "from-blue-500 to-cyan-600",
-      "priority": "key",
-      "metrics": [
-        { "label": "Tamaño", "value": "Ligero", "icon": "File" },
-        { "label": "Dependencias", "value": "Cero", "icon": "Package" }
-      ]
-    },
-    {
-      "id": "oss-2",
+      "id": "html2pdf",
       "title": "Html2Pdf",
-      "description": "Motor de generación de PDF basado en plantillas usando RazorLight y PuppeteerSharp. Diseñado para herramientas internas, reportes y flujos de trabajo de automatización con pooling de navegador e inyección de dependencias.",
+      "description": "Librería .NET para generar PDF desde HTML: motor basado en plantillas con RazorLight + PuppeteerSharp, pooling de navegador y DI. Publicada en NuGet para reportes y automatización.",
       "tech": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
       "categories": {
         "languages": ["C#"],
@@ -252,36 +184,38 @@
         "type": "Librería Backend"
       },
       "github": "https://github.com/NastMz/Html2Pdf",
+      "demo": "https://www.nuget.org/packages/Nast.Html2Pdf/",
       "gradient": "from-rose-500 to-orange-600",
-      "priority": "key",
+      "priority": "featured",
       "metrics": [
-        { "label": "Rendimiento", "value": "Óptimo", "icon": "TrendingUp" },
-        { "label": "Uso", "value": "Producción", "icon": "Activity" }
+        { "label": "Rendimiento", "value": "Pooling", "icon": "Zap" },
+        { "label": "Integración", "value": "DI-ready", "icon": "Package" }
       ]
     },
     {
-      "id": "oss-1",
-      "title": "light-query",
-      "description": "Un conjunto de hooks de React para búsqueda de datos estructurados. Proporciona patrones más simples y mantenibles para flujos de datos frontend con una experiencia de desarrollador mejorada.",
-      "tech": ["React", "TypeScript", "NPM"],
+      "id": "simplemediator",
+      "title": "SimpleMediator",
+      "description": "Librería ligera (sin dependencias) para patrón Mediator/CQRS en .NET con commands/queries y handlers. Publicada en NuGet para reducir boilerplate y mantener estructura clara.",
+      "tech": [".NET 8", "C#"],
       "categories": {
-        "languages": ["TypeScript", "JavaScript"],
-        "frameworks": ["React"],
-        "tools": ["NPM", "Vite"],
-        "type": "Librería Frontend"
+        "languages": ["C#"],
+        "frameworks": [".NET"],
+        "patterns": ["CQRS", "Mediator"],
+        "type": "Librería Backend"
       },
-      "github": "https://github.com/NastMz/light-query",
-      "gradient": "from-sky-500 to-indigo-600",
+      "github": "https://github.com/NastMz/SimpleMediator",
+      "demo": "https://www.nuget.org/packages/Nast.SimpleMediator/",
+      "gradient": "from-blue-500 to-cyan-600",
       "priority": "key",
       "metrics": [
-        { "label": "DX", "value": "Alto", "icon": "TrendingUp" },
-        { "label": "Actividad", "value": "Activo", "icon": "Activity" }
+        { "label": "Dependencias", "value": "Cero", "icon": "Package" },
+        { "label": "Enfoque", "value": "CQRS", "icon": "Layers" }
       ]
     },
     {
-      "id": "oss-flask-forge-cli",
+      "id": "flask-forge-cli",
       "title": "Flask Forge CLI",
-      "description": "Herramienta CLI de scaffolding que genera boilerplate de Clean Architecture para proyectos Flask. Incluye capas de dominio/app/infra, inyección de dependencias, configuración de Alembic y herramientas de experiencia de desarrollador.",
+      "description": "CLI para bootstrap de proyectos Flask con estructura lista para correr: comandos, configuración y migraciones. Publicada en PyPI para acelerar el inicio y mantener consistencia.",
       "tech": ["Python", "Flask", "Typer", "Jinja2", "SQLAlchemy", "Alembic"],
       "categories": {
         "languages": ["Python"],
@@ -290,159 +224,92 @@
         "type": "Herramienta CLI"
       },
       "github": "https://github.com/NastMz/flask-forge",
-      "pypi": "https://pypi.org/project/flask-forge-cli/",
+      "demo": "https://pypi.org/project/flask-forge-cli/",
       "gradient": "from-emerald-500 to-lime-600",
       "priority": "key",
       "metrics": [
-        { "label": "DX", "value": "Alto", "icon": "TrendingUp" },
-        { "label": "Scaffolds", "value": "Clean Arch", "icon": "Layers" }
+        { "label": "Entrega", "value": "Scaffold", "icon": "Package" },
+        { "label": "Distribución", "value": "PyPI", "icon": "Globe" }
       ]
     },
     {
-      "id": "oss-4",
+      "id": "mini-php-framework",
       "title": "mini-php-framework",
-      "description": "Framework minimalista construido alrededor de principios de Clean Architecture para PHP. Demuestra consistencia de arquitectura cross-language con enfoque en mantenibilidad y claridad sobre complejidad.",
+      "description": "Micro-framework en PHP para experimentar routing, middleware y una estructura mínima de aplicación. Implementé router, contenedor y persistencia simple (SQLite). Resultado: base ligera y documentada para prototipos.",
       "tech": ["PHP 8.4+", "PSR-4/12/15", "SQLite"],
       "categories": {
         "languages": ["PHP"],
-        "frameworks": ["Framework Propio"],
         "databases": ["SQLite"],
-        "patterns": ["DDD", "CQRS"],
+        "patterns": ["Routing", "Middleware"],
         "type": "Framework Backend"
       },
       "github": "https://github.com/NastMz/mini-php-framework",
+      "demo": "https://packagist.org/packages/miniframework/installer",
       "gradient": "from-amber-500 to-yellow-600",
-      "priority": "key",
+      "priority": "other",
       "metrics": [
-        { "label": "Arquitectura", "value": "Clean Arch", "icon": "Layers" },
-        { "label": "Enfoque", "value": "Mantenibilidad", "icon": "Package" }
+        { "label": "Componentes", "value": "Router/DI", "icon": "Layers" },
+        { "label": "Tamaño", "value": "Ligero", "icon": "File" }
       ]
     },
     {
-      "id": "oss-react-clean-arch",
-      "title": "React Clean Architecture Template",
-      "github": "https://github.com/NastMz/react-clean-architecture-template",
+      "id": "microengine",
+      "title": "MicroEngine",
+      "github": "https://github.com/NastMz/MicroEngine",
       "priority": "other"
     }
   ],
   "experience": [
     {
       "id": "exp-oss",
-      "title": "Ingeniero de Software — Investigación y Desarrollo Open Source (Independiente)",
-      "company": "Trabajo independiente",
-      "period": "Oct 2025 – Presente",
+      "title": "Ingeniero Backend Independiente (.NET)",
+      "company": "Proyectos por contrato y open source",
+      "period": "2025 – Actual",
       "location": "Remoto",
       "color": "border-l-emerald-500",
-      "logo": "/logos/open-source.png",
       "achievements": [
-        "Dedicación principal al diseño, evolución y mantenimiento de proyectos open source orientados a arquitectura, previamente desarrollados en paralelo a roles profesionales.",
-        "Desarrollo y mantenimiento de librerías y frameworks reutilizables enfocados en sistemas backend modulares, tooling interno y patrones orientados a la experiencia del desarrollador (DX).",
-        "Trabajo en múltiples ecosistemas tecnológicos (.NET, Python, PHP, React), priorizando límites claros, extensibilidad y mantenibilidad a largo plazo.",
-        "Aplicación de prácticas de nivel productivo como versionado semántico, documentación estructurada, pipelines de CI y automatización de releases.",
-        "Uso de los proyectos open source como laboratorio de validación arquitectónica, exploración de decisiones de diseño y refinamiento continuo de sistemas."
+        "Desarrollo y mantenimiento de APIs/servicios en .NET, priorizando entregas iterativas y estabilidad en producción.",
+        "Automatización de builds y despliegues con CI/CD (GitHub Actions) y prácticas de versionamiento."
       ]
     },
     {
-      "id": "exp-1",
-      "title": "Ingeniero de Software / Desarrollador Backend (Consultoría)",
+      "id": "exp-tobiro",
+      "title": "Software Engineer (.NET)",
       "company": "Tobiro SAS",
-      "period": "Abr 2025 – Oct 2025",
-      "location": "Medellín, Antioquia, Colombia · En remoto",
+      "period": "2025",
+      "location": "Remoto",
       "color": "border-l-blue-500",
       "logo": "/logos/tobiro-sas.png",
       "achievements": [
-        "Diseñé e implementé un backend monolítico modular usando .NET 8, aplicando Clean Architecture, límites explícitos de módulos e integración basada en contratos.",
-        "Desarrollé un plugin de WinForms como parte de un ecosistema retail más grande, permitiendo validación segura de datos y flujos de trabajo controlados.",
-        "Implementé flujos de autenticación basados en OTP usando AWS SNS, incluyendo validación, reintentos y manejo de fallos.",
-        "Asumí la propiedad del backend principal después de la fase inicial del plugin, liderando decisiones de arquitectura y evolución del sistema.",
-        "Construí mecanismos de actualización automática obligatoria usando GitHub Releases, con descargas en segundo plano, verificación de integridad y despliegue sin interrupciones.",
-        "Integré persistencia relacional y enforqué reglas de dominio dentro de la capa de dominio, evitando modelos anémicos.",
-        "Establecí pipelines de CI/CD con GitHub Actions para versionado, empaquetado y releases automatizados."
+        "Implementación de backend en .NET 8 y desarrollo de componentes para ecosistema retail empresarial.",
+        "Autenticación OTP con AWS SNS y persistencia con EF Core y Dapper.",
+        "Automatización de despliegues mediante GitHub Actions."
       ]
     },
     {
       "id": "exp-2",
-      "title": "Desarrollador Backend → Líder Técnico (.NET)",
-      "company": "Enternova SAS",
-      "period": "Dic 2024 – Sep 2025 (Tiempo completo)",
-      "location": "Bogotá DC, Colombia",
+      "title": "Backend Engineer (.NET)",
+      "company": "EnterNova SAS",
+      "period": "2024 – 2025",
+      "location": "Remoto",
       "color": "border-l-cyan-500",
       "logo": "/logos/enternova-sas.png",
       "achievements": [
-        "Lideré esfuerzos de desarrollo backend y proporcioné dirección técnica, mentoría y revisiones de código",
-        "Diseñé e implementé servicios backend usando .NET, C# y SQL Server",
-        "Definí guías de arquitectura y mejoré la mantenibilidad aplicando una estructura modular por capas",
-        "Integré servicios y optimicé el rendimiento y confiabilidad del sistema"
+        "Desarrollo y mantenimiento de servicios en .NET y SQL Server.",
+        "Optimización de consultas y mejora de rendimiento/estabilidad en producción.",
+        "Responsabilidades de liderazgo técnico: code reviews, estándares y soporte a desarrolladores."
       ]
     },
     {
-      "id": "exp-3",
-      "title": "Desarrollador Backend (Freelance / Contrato)",
-      "company": "Enternova SAS",
-      "period": "Oct 2024 – Dic 2024 (Freelance)",
-      "location": "Bogotá DC, Colombia",
-      "color": "border-l-green-500",
-      "logo": "/logos/enternova-sas.png",
-      "achievements": [
-        "Desarrollé APIs backend y herramientas internas usando .NET y SQL Server",
-        "Mejoré la confiabilidad del sistema a través de depuración y refactorización",
-        "Colaboré con el equipo para transicionar la arquitectura hacia módulos mejor estructurados"
-      ]
-    },
-    {
-      "id": "exp-4",
-      "title": "Desarrollador Backend (OPS / Contrato)",
-      "company": "Ignicion Games",
-      "period": "Oct 2024 – Feb 2025",
-      "location": "Villavicencio, Meta, Colombia",
+      "id": "exp-consulting",
+      "title": "Desarrollador Full Stack / Backend (Consultoría)",
+      "company": "Varios clientes (CEA JMontoya, TulipannStore)",
+      "period": "2022 – 2024",
+      "location": "Remoto",
       "color": "border-l-purple-500",
-      "logo": "/logos/ignicion-games.png",
       "achievements": [
-        "Construí componentes backend para un sistema de chatbot basado en IA",
-        "Implementé microservicios, flujos de mensajería y despliegues basados en Azure",
-        "Mejoré el rendimiento y confiabilidad de componentes distribuidos"
-      ]
-    },
-    {
-      "id": "exp-5",
-      "title": "Desarrollador Full Stack (Consultoría)",
-      "company": "Centro de Enseñanza Automovilística Jmontoya",
-      "period": "Ene 2024 – Ago 2024",
-      "location": "Villavicencio, Meta, Colombia",
-      "color": "border-l-orange-500",
-      "logo": "/logos/jmontoya.png",
-      "achievements": [
-        "Construí módulos full-stack usando tecnologías web modernas",
-        "Diseñé modelos de datos y lógica backend",
-        "Desarrollé dashboards, flujos de trabajo internos y autenticación"
-      ]
-    },
-    {
-      "id": "exp-6",
-      "title": "Desarrollador Frontend (Consultoría)",
-      "company": "Centro de Enseñanza Automovilística Jmontoya",
-      "period": "Sep 2023 – Ene 2024",
-      "location": "Villavicencio, Meta, Colombia",
-      "color": "border-l-yellow-500",
-      "logo": "/logos/jmontoya.png",
-      "achievements": [
-        "Construí componentes UI y módulos frontend con TypeScript/JavaScript",
-        "Integré flujos de trabajo de CMS y mejoré la usabilidad",
-        "Desarrollé páginas web para clientes integradas con Strapi CMS"
-      ]
-    },
-    {
-      "id": "exp-7",
-      "title": "Desarrollador Frontend (Consultoría)",
-      "company": "TulipannStore",
-      "period": "Oct 2022 – Mar 2023",
-      "location": "Bogotá DC, Colombia",
-      "color": "border-l-pink-500",
-      "logo": "/logos/tulipann-store.png",
-      "achievements": [
-        "Implementé características para usuarios y dashboards de administración",
-        "Diseñé flujos de UI y mejoré la UX general",
-        "Desarrollé la plataforma de e-commerce completa incluyendo tienda y panel de administración"
+        "Desarrollo de módulos administrativos, e-commerce y sistemas internos (frontend + backend).",
+        "Diseño de modelos de datos y APIs, soporte a despliegues y mantenimiento correctivo."
       ]
     }
   ],
@@ -450,18 +317,16 @@
     {
       "id": "edu-1",
       "title": "Ingeniería de Sistemas",
-      "institution": "Universidad de Los Llanos",
-      "period": "Febrero 2019 – Diciembre 2024"
+      "institution": "Universidad de los Llanos",
+      "period": "2019 – 2024"
     }
   ],
   "certifications": [
     "Scrum Foundation Professional Certificate (SFPC)",
-    "Cybersecurity Essentials",
-    "Introduction to Cybersecurity",
-    "SICSYB 2024 Presentation"
+    "Cisco Cybersecurity Essentials y Networking"
   ],
   "languages": [
     { "language": "Español", "level": "Nativo" },
-    { "language": "Inglés", "level": "Intermedio" }
+    { "language": "Inglés", "level": "B2" }
   ]
 }

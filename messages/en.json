@@ -2,6 +2,7 @@
   "Nav": {
     "about": "About",
     "skills": "Skills",
+    "languages": "Languages",
     "projects": "Projects",
     "experience": "Experience",
     "contact": "Contact",
@@ -15,7 +16,7 @@
     "description": "Welcome to my portfolio",
     "stats": {
       "experience": "Years of experience",
-      "projects": "Architecture & tooling projects",
+      "projects": "Projects",
       "tech": "Technologies",
       "repos": "Public repos"
     },
@@ -32,27 +33,27 @@
   },
   "About": {
     "title": "About Me",
-    "description1": "I am a backend engineer specializing in .NET and C#, focused on building APIs, modular backends, and clean architecture. I work with SQL databases and practical DevOps tools like Docker and CI/CD pipelines to deliver reliable systems.",
-    "description2": "I care about maintainability, modularity, and clear architecture more than just shipping code. I enjoy code reviews, documentation, and sharing knowledge with teams. I use AI-assisted development tools like Copilot, but I always review and validate the code manually—design and validation remain my responsibility.",
+    "description1": "Backend-focused .NET/C# engineer building and maintaining production APIs and services. I ship features end-to-end, troubleshoot incidents, and improve reliability and performance through incremental changes.",
+    "description2": "Recent work includes external integrations and authentication flows (token/OTP), working with SQL Server/PostgreSQL via EF Core and Dapper. I automate builds and deployments with CI/CD (GitHub Actions + Docker) and take on lead responsibilities when needed: code reviews, standards, and mentoring.",
     "badges": {
-      "cleanArch": "Clean Architecture",
-      "backend": "Backend Systems",
-      "dotnet": ".NET & C#",
-      "design": "Systems Design",
-      "ai": "AI-Assisted Development"
+      "cleanArch": ".NET APIs",
+      "backend": "SQL + EF/Dapper",
+      "dotnet": "CI/CD",
+      "design": "Integrations",
+      "ai": "Code reviews"
     },
     "cards": {
       "modular": {
-        "title": "Modular design",
-        "desc": "Systems built for long-term maintainability"
+        "title": "Production delivery",
+        "desc": "APIs and services ready to operate"
       },
       "quality": {
-        "title": "Code quality",
-        "desc": "Testing, reviews, and validation"
+        "title": "Maintenance & performance",
+        "desc": "Bugs, refactors, and optimization"
       },
       "sharing": {
-        "title": "Knowledge sharing",
-        "desc": "Mentoring, documentation, and reviews"
+        "title": "Teamwork",
+        "desc": "Docs, reviews, and support"
       }
     }
   },
@@ -75,10 +76,14 @@
       }
     }
   },
+  "Languages": {
+    "title": "Languages",
+    "subtitle": "Communication level"
+  },
   "Projects": {
     "title": "Featured Projects",
-    "subtitle": "Some of my recent work",
-    "description": "Systems and libraries built with clean architecture principles",
+    "subtitle": "More projects",
+    "description": "Libraries and tools with public repos (and package/demo links when available).",
     "viewAll": "Other Projects"
   },
   "Experience": {

@@ -18,7 +18,8 @@ import {
   Terminal, 
   Globe, 
   TrendingUp, 
-  Database 
+  Database, 
+  Github
 } from "lucide-react"
 import Link from "next/link"
 import { type Project } from "@/lib/portfolio-data"
@@ -157,15 +158,17 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                             <CardTitle className="group-hover:text-primary transition-colors text-lg md:text-xl">{project.title}</CardTitle>
                             <div className="flex space-x-1 md:space-x-2 flex-shrink-0">
                               {project.github && (
-                                <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-8 w-8 md:h-10 md:w-10" aria-label="View on GitHub">
+                                <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-8 w-10 md:h-10 md:w-12" aria-label="View on GitHub">
                                   <Link href={project.github} target="_blank" rel="noreferrer noopener">
+                                    <Github className="h-3 w-3 md:h-4 md:w-4" />
                                     <ExternalLink className="h-3 w-3 md:h-4 md:w-4" />
                                   </Link>
                                 </Button>
                               )}
                               {project.demo && (
-                                <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-8 w-8 md:h-10 md:w-10" aria-label="Demo">
+                                <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-8 w-10 md:h-10 md:w-12" aria-label="Demo">
                                   <Link href={project.demo} target="_blank" rel="noreferrer noopener">
+                                    <Globe className="h-3 w-3 md:h-4 md:w-4" />
                                     <ExternalLink className="h-3 w-3 md:h-4 md:w-4" />
                                   </Link>
                                 </Button>

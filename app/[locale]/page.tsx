@@ -1,18 +1,17 @@
 import {
+  getHighlights,
   getPersonalInfo,
   getSkillsByCategory,
+  getLanguages,
   getProjects,
   getExperience,
-  getYearsOfExperience,
-  getTotalProjects,
-  getTotalTechnologies,
-  getPublicRepos,
 } from "@/lib/portfolio-data"
 import {
   Header,
   HeroSection,
   AboutSection,
   SkillsSection,
+  LanguagesSection,
   ProjectsSection,
   ExperienceSection,
   ContactSection,
@@ -36,17 +35,11 @@ export default async function Portfolio({
   // Obtener datos del JSON
   // Note: These functions are now synchronous but accept locale
   const personalInfo = getPersonalInfo(locale)
+  const highlights = getHighlights(locale)
   const skillsByCategory = getSkillsByCategory(locale)
+  const languages = getLanguages(locale)
   const projects = getProjects(locale)
   const experience = getExperience(locale)
-
-  // Preparar stats para el HeroSection
-  const stats = {
-    yearsOfExperience: getYearsOfExperience(locale),
-    totalProjects: getTotalProjects(locale),
-    totalTechnologies: getTotalTechnologies(locale),
-    publicRepos: getPublicRepos(locale),
-  }
 
   // Generar structured data
   const profileImage = getProfileImageUrl(personalInfo.profileImage)
@@ -69,9 +62,10 @@ export default async function Portfolio({
       <div className="min-h-screen bg-background transition-colors duration-300 enable-sticky" id="top">
         <Header personalInfo={personalInfo} />
         <main className="prevent-overflow">
-          <HeroSection personalInfo={personalInfo} stats={stats} />
+          <HeroSection personalInfo={personalInfo} highlights={highlights} />
           <AboutSection profileImage={personalInfo.profileImage} />
           <SkillsSection skillsByCategory={skillsByCategory} />
+          <LanguagesSection languages={languages} />
           <ProjectsSection projects={projects} />
           <ExperienceSection experience={experience} />
           <ContactSection personalInfo={personalInfo} />

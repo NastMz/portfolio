@@ -95,6 +95,7 @@ export interface Language {
 
 export interface PortfolioData {
   personalInfo: PersonalInfo
+  highlights?: string[]
   skills: Skill[]
   projects: Project[]
   experience: Experience[]
@@ -111,6 +112,10 @@ export function getPortfolioData(locale: string = defaultLocale): PortfolioData 
 
 export function getPersonalInfo(locale: string = defaultLocale): PersonalInfo {
   return getPortfolioData(locale).personalInfo
+}
+
+export function getHighlights(locale: string = defaultLocale): string[] {
+  return getPortfolioData(locale).highlights ?? []
 }
 
 export function getSkills(locale: string = defaultLocale): Skill[] {

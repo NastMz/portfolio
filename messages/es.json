@@ -2,6 +2,7 @@
   "Nav": {
     "about": "Sobre mí",
     "skills": "Habilidades",
+    "languages": "Idiomas",
     "projects": "Proyectos",
     "experience": "Experiencia",
     "contact": "Contacto",
@@ -15,7 +16,7 @@
     "description": "Bienvenido a mi portafolio",
     "stats": {
       "experience": "Años de experiencia",
-      "projects": "Proyectos de arquitectura",
+      "projects": "Proyectos",
       "tech": "Tecnologías",
       "repos": "Repos públicos"
     },
@@ -32,27 +33,27 @@
   },
   "About": {
     "title": "Sobre Mí",
-    "description1": "Soy un ingeniero backend especializado en .NET y C#, enfocado en construir APIs, backends modulares y arquitectura limpia. Trabajo con bases de datos SQL y herramientas prácticas de DevOps como Docker y pipelines de CI/CD para entregar sistemas confiables.",
-    "description2": "Me importa la mantenibilidad, modularidad y arquitectura clara más que solo enviar código. Disfruto las revisiones de código, la documentación y compartir conocimiento con equipos. Uso herramientas de desarrollo asistidas por IA como Copilot, pero siempre reviso y valido el código manualmente: el diseño y la validación son mi responsabilidad.",
+    "description1": "Ingeniero enfocado en backend con .NET/C#, construyendo y manteniendo APIs y servicios en producción. Entrego funcionalidades end-to-end, resuelvo incidencias y mejoro estabilidad y rendimiento con cambios incrementales.",
+    "description2": "Trabajo integraciones con servicios externos y flujos de autenticación (tokens/OTP), con SQL Server/PostgreSQL usando EF Core y Dapper. Automatizo builds y despliegues con CI/CD (GitHub Actions + Docker) y asumo responsabilidades de liderazgo técnico cuando se requiere: code reviews, estándares y acompañamiento.",
     "badges": {
-      "cleanArch": "Arquitectura Limpia",
-      "backend": "Sistemas Backend",
-      "dotnet": ".NET & C#",
-      "design": "Diseño de Sistemas",
-      "ai": "Desarrollo Asistido por IA"
+      "cleanArch": "APIs .NET",
+      "backend": "SQL + EF/Dapper",
+      "dotnet": "CI/CD (GHA)",
+      "design": "Integraciones",
+      "ai": "Code reviews"
     },
     "cards": {
       "modular": {
-        "title": "Diseño modular",
-        "desc": "Sistemas construidos para mantenibilidad a largo plazo"
+        "title": "Entrega en producción",
+        "desc": "APIs y servicios listos para operar"
       },
       "quality": {
-        "title": "Calidad de código",
-        "desc": "Pruebas, revisiones y validación"
+        "title": "Mantenimiento y performance",
+        "desc": "Bugs, refactors y optimización"
       },
       "sharing": {
-        "title": "Compartir conocimiento",
-        "desc": "Mentoría, documentación y revisiones"
+        "title": "Trabajo en equipo",
+        "desc": "Documentación, revisiones y acompañamiento"
       }
     }
   },
@@ -75,10 +76,14 @@
       }
     }
   },
+  "Languages": {
+    "title": "Idiomas",
+    "subtitle": "Nivel de comunicación"
+  },
   "Projects": {
     "title": "Proyectos Destacados",
-    "subtitle": "Algunos de mis trabajos recientes",
-    "description": "Sistemas y bibliotecas construidos con principios de arquitectura limpia",
+    "subtitle": "Otros proyectos",
+    "description": "Librerías y herramientas con repositorio público (y demo/paquete cuando aplica).",
     "viewAll": "Otros Proyectos"
   },
   "Experience": {

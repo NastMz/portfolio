@@ -56,6 +56,7 @@ export function Header({ personalInfo }: HeaderProps) {
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
             <Link href="#about" className="transition-colors hover:text-primary">{t('about')}</Link>
             <Link href="#skills" className="transition-colors hover:text-primary">{t('skills')}</Link>
+            <Link href="#languages" className="transition-colors hover:text-primary">{t('languages')}</Link>
             <Link href="#projects" className="transition-colors hover:text-primary">{t('projects')}</Link>
             <Link href="#experience" className="transition-colors hover:text-primary">{t('experience')}</Link>
             <Link href="#contact" className="transition-colors hover:text-primary">{t('contact')}</Link>
@@ -131,6 +132,13 @@ export function Header({ personalInfo }: HeaderProps) {
                   onClick={closeMenu}
                 >
                   {t('skills')}
+                </Link>
+                <Link 
+                  href="#languages" 
+                  className="text-sm font-medium transition-colors hover:text-primary py-2 block"
+                  onClick={closeMenu}
+                >
+                  {t('languages')}
                 </Link>
                 <Link 
                   href="#projects" 
