@@ -62,8 +62,10 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   }, [projects])
 
   return (
-    <section id="projects" className="container mx-auto py-16 md:py-24 scroll-offset px-4 lg:px-6">
-      <div className="mx-auto max-w-7xl">
+    <section id="projects" className="relative py-16 md:py-24 scroll-offset px-4 lg:px-6 bg-background overflow-hidden section-transition">
+      <div className="absolute inset-0 bg-grid-pattern text-primary/5" />
+      <div className="relative container mx-auto">
+        <div className="mx-auto max-w-7xl">
         {/* Featured Project */}
         {featuredProject && (
           <ScrollAnimation animation="slideUp" delay={100}>
@@ -87,13 +89,22 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                           </CardDescription>
                         )}
                       </div>
-                      {featuredProject.github && (
-                        <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-10 w-10 md:h-12 md:w-12 flex-shrink-0" aria-label="View on GitHub">
-                          <Link href={featuredProject.github} target="_blank" rel="noreferrer noopener">
-                            <ExternalLink className="h-5 w-5 md:h-6 md:w-6" />
-                          </Link>
-                        </Button>
-                      )}
+                      <div className="flex gap-2 flex-shrink-0">
+                        {featuredProject.github && (
+                          <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-10 w-10 md:h-12 md:w-12" aria-label="View on GitHub">
+                            <Link href={featuredProject.github} target="_blank" rel="noreferrer noopener">
+                              <Github className="h-5 w-5 md:h-6 md:w-6" />
+                            </Link>
+                          </Button>
+                        )}
+                        {featuredProject.demo && (
+                          <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-10 w-10 md:h-12 md:w-12" aria-label="View Demo">
+                            <Link href={featuredProject.demo} target="_blank" rel="noreferrer noopener">
+                              <Globe className="h-5 w-5 md:h-6 md:w-6" />
+                            </Link>
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-4 md:space-y-6">
@@ -160,16 +171,14 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                               {project.github && (
                                 <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-8 w-10 md:h-10 md:w-12" aria-label="View on GitHub">
                                   <Link href={project.github} target="_blank" rel="noreferrer noopener">
-                                    <Github className="h-3 w-3 md:h-4 md:w-4" />
-                                    <ExternalLink className="h-3 w-3 md:h-4 md:w-4" />
+                                    <Github className="h-4 w-4" />
                                   </Link>
                                 </Button>
                               )}
                               {project.demo && (
                                 <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-8 w-10 md:h-10 md:w-12" aria-label="Demo">
                                   <Link href={project.demo} target="_blank" rel="noreferrer noopener">
-                                    <Globe className="h-3 w-3 md:h-4 md:w-4" />
-                                    <ExternalLink className="h-3 w-3 md:h-4 md:w-4" />
+                                    <Globe className="h-4 w-4" />
                                   </Link>
                                 </Button>
                               )}
@@ -227,24 +236,40 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 <h3 className="text-xl md:text-2xl font-bold tracking-tighter mb-2">{t('viewAll')}</h3>
                 <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
               </div>
-              <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {otherProjects.map((project) => (
-                  <Button
-                    key={project.id}
-                    variant="outline"
-                    asChild
-                    className="border-primary/20 hover:bg-primary/5"
-                  >
-                    <Link href={project.github || "#"} target="_blank" rel="noreferrer noopener">
-                      {project.title}
-                      <ExternalLink className="h-3 w-3 md:h-4 md:w-4 ml-2" />
-                    </Link>
-                  </Button>
+                  <Card key={project.id} className="hover:shadow-lg transition-all duration-300 border-border/50 bg-card/50 flex flex-col">
+                    <CardHeader className="pb-2">
+                      <div className="flex items-start justify-between gap-2">
+                        <CardTitle className="text-base md:text-lg">{project.title}</CardTitle>
+                        <div className="flex gap-1">
+                          {project.github && (
+                            <Button variant="ghost" size="icon" asChild className="h-8 w-8 hover:bg-primary/10" aria-label="GitHub">
+                              <Link href={project.github} target="_blank" rel="noreferrer noopener">
+                                <Github className="h-4 w-4" />
+                              </Link>
+                            </Button>
+                          )}
+                          {project.demo && (
+                            <Button variant="ghost" size="icon" asChild className="h-8 w-8 hover:bg-primary/10" aria-label="Demo">
+                              <Link href={project.demo} target="_blank" rel="noreferrer noopener">
+                                <Globe className="h-4 w-4" />
+                              </Link>
+                            </Button>
+                          )}
+                        </div>
+                      </div>
+                      {project.description && (
+                        <CardDescription className="text-xs line-clamp-2">{project.description}</CardDescription>
+                      )}
+                    </CardHeader>
+                  </Card>
                 ))}
               </div>
             </div>
           </ScrollAnimation>
         )}
+        </div>
       </div>
     </section>
   )

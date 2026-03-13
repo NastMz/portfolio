@@ -64,7 +64,8 @@ export function HeroSection({ personalInfo, highlights = [] }: HeroSectionProps)
   ] as const
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-background">
+      <div className="absolute inset-0 bg-grid-pattern text-primary/15" />
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent dark:from-primary/5" />
       <div className="container mx-auto relative py-16 px-4 md:py-24 lg:py-32">
@@ -79,7 +80,7 @@ export function HeroSection({ personalInfo, highlights = [] }: HeroSectionProps)
           </ScrollAnimation>
           <ScrollAnimation animation="slideUp" delay={400}>
             <div className="space-y-3 md:space-y-4">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent px-2">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent px-2 pb-2">
                 {personalInfo.title}
               </h1>
               <p className="mx-auto max-w-[650px] md:max-w-[750px] text-muted-foreground text-base sm:text-lg md:text-xl px-4">

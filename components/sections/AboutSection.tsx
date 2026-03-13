@@ -15,8 +15,9 @@ export function AboutSection({ profileImage }: AboutSectionProps) {
   const t = useTranslations('About')
 
   return (
-    <section id="about" className="container mx-auto py-16 md:py-24 scroll-offset px-4 lg:px-6">
-      <div className="mx-auto max-w-4xl">
+    <section id="about" className="relative py-16 md:py-24 scroll-offset px-4 lg:px-6 bg-background overflow-hidden">
+      <div className="absolute inset-0 bg-dot-pattern text-primary/10" />
+      <div className="container relative mx-auto max-w-4xl">
         <ScrollAnimation animation="slideUp" delay={100}>
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">{t('title')}</h2>

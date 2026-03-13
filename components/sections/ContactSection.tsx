@@ -20,7 +20,9 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
   const t = useTranslations('Contact')
 
   return (
-    <section id="contact" className="container mx-auto py-16 md:py-24 scroll-offset px-4 lg:px-6">
+    <section id="contact" className="relative py-16 md:py-24 scroll-offset px-4 lg:px-6 bg-background overflow-hidden section-transition">
+      <div className="absolute inset-0 bg-grid-pattern text-primary/10" />
+      <div className="container relative mx-auto">
       <div className="mx-auto max-w-2xl text-center">
         <ScrollAnimation animation="slideUp" delay={100}>
           <div className="mb-12 md:mb-16">
@@ -59,6 +61,7 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
 
           </Card>
         </ScrollAnimation>
+        </div>
       </div>
     </section>
   )

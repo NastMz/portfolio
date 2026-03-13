@@ -21,8 +21,9 @@ export function LanguagesSection({ languages }: LanguagesSectionProps) {
   if (!Array.isArray(languages) || languages.length === 0) return null
 
   return (
-    <section id="languages" className="container mx-auto py-16 md:py-24 scroll-offset px-4 lg:px-6">
-      <div className="mx-auto max-w-4xl">
+    <section id="languages" className="relative py-16 md:py-24 scroll-offset px-4 lg:px-6 bg-muted/30 overflow-hidden">
+      <div className="absolute inset-0 bg-dot-pattern text-primary/20 pointer-events-none" />
+      <div className="container relative mx-auto max-w-3xl">
         <ScrollAnimation animation="slideUp" delay={100}>
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">{t("title")}</h2>
@@ -31,23 +32,20 @@ export function LanguagesSection({ languages }: LanguagesSectionProps) {
           </div>
         </ScrollAnimation>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
           {languages.map((lang, index) => (
             <ScrollAnimation key={`${lang.language}-${lang.level}`} animation="scaleIn" delay={200 + (index * 100)}>
-              <Card className="border-border/50 hover:shadow-lg transition-shadow dark:hover:shadow-primary/5">
-                <CardContent className="p-4 flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <LanguagesIcon className="h-5 w-5 text-primary" aria-hidden />
-                    </div>
-                    <div className="min-w-0">
-                      <div className="font-semibold truncate">{lang.language}</div>
-                      <div className="text-sm text-muted-foreground truncate">{lang.level}</div>
-                    </div>
+              <Card className="border-border/50 hover:shadow-xl transition-all duration-300 dark:hover:shadow-primary/5 bg-background/80 backdrop-blur-sm group">
+                <CardContent className="p-6 flex flex-col items-center text-center gap-4">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <LanguagesIcon className="h-8 w-8 text-primary" aria-hidden />
                   </div>
-                  <Badge variant="outline" className="border-primary/20 flex-shrink-0">
-                    {lang.level}
-                  </Badge>
+                  <div className="space-y-1">
+                    <div className="text-xl font-bold">{lang.language}</div>
+                    <Badge variant="secondary" className="bg-primary/5 text-primary border-primary/10">
+                      {lang.level}
+                    </Badge>
+                  </div>
                 </CardContent>
               </Card>
             </ScrollAnimation>

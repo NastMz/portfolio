@@ -1,8 +1,8 @@
 {
   "personalInfo": {
     "name": "Kevin Santiago Martinez",
-    "title": "Backend Software Engineer | .NET / C# | APIs | SQL | CI/CD",
-    "description": "I build and maintain production .NET APIs/services: external integrations, incident troubleshooting, SQL tuning (EF Core/Dapper), and CI/CD automation with GitHub Actions + Docker.",
+    "title": "Software Engineer",
+    "description": "Specialized in designing and building robust .NET APIs, modular backends, and development tools focused on operational efficiency and maintainability of production systems.",
     "location": "Duitama, Boyacá · Colombia",
     "email": "ksmartinez23@outlook.com",
     "phone": "+57 314 439 7291",
@@ -12,17 +12,18 @@
     "profileImage": "/images/profile.jpg"
   },
   "highlights": [
-    "Production .NET APIs/services: end-to-end delivery, incident troubleshooting, and external integrations (token/OTP).",
-    "SQL Server/PostgreSQL: EF Core + Dapper, data modeling, and query optimization.",
-    "CI/CD with GitHub Actions + Docker: automated build, test, and deployments.",
-    "Open source: libraries published to NuGet/PyPI with docs, releases, and versioning."
+    "Design and deployment of high-performance production .NET APIs and services.",
+    "Optimization of persistence and relational data models using EF Core and Dapper.",
+    "Implementation of advanced CI/CD pipelines with GitHub Actions and Docker containerization.",
+    "Development of professional-grade open source libraries and tools published on NuGet/PyPI."
   ],
   "skills": [
     {
       "id": "1",
       "name": "C#",
       "category": "Backend (.NET)",
-      "experience": "2+ years",
+      "experience": "3+ years",
+      "startDate": "2022-01",
       "projects": "Production APIs & services",
       "icon": "⚙️"
     },
@@ -30,7 +31,8 @@
       "id": "2",
       "name": ".NET 8 / .NET Core",
       "category": "Backend (.NET)",
-      "experience": "2+ years",
+      "experience": "3+ years",
+      "startDate": "2022-01",
       "projects": "APIs, workers & tooling",
       "icon": "⚙️"
     },
@@ -38,7 +40,8 @@
       "id": "3",
       "name": "ASP.NET Core (Web APIs)",
       "category": "Backend (.NET)",
-      "experience": "2+ years",
+      "experience": "3+ years",
+      "startDate": "2022-06",
       "projects": "Production REST APIs",
       "icon": "🌐"
     },
@@ -46,7 +49,8 @@
       "id": "6",
       "name": "Testing (xUnit)",
       "category": "Backend (.NET)",
-      "experience": "1+ years",
+      "experience": "2+ years",
+      "startDate": "2023-01",
       "projects": "Unit & integration tests",
       "icon": "✅"
     },
@@ -55,6 +59,7 @@
       "name": "REST APIs",
       "category": "Backend (.NET)",
       "experience": "3+ years",
+      "startDate": "2022-01",
       "projects": "Production APIs",
       "icon": "🌐"
     },
@@ -63,14 +68,16 @@
       "name": "SQL",
       "category": "Data (SQL)",
       "experience": "3+ years",
-      "projects": "SQL Server / PostgreSQL",
+      "startDate": "2022-01",
+      "projects": "SQL Server / PostgreSQL / MySQL",
       "icon": "🐘"
     },
     {
       "id": "9",
       "name": "Entity Framework Core",
       "category": "Backend (.NET)",
-      "experience": "2+ years",
+      "experience": "3+ years",
+      "startDate": "2022-01",
       "projects": "Data access & optimization",
       "icon": "🗂️"
     },
@@ -78,8 +85,9 @@
       "id": "19",
       "name": "Dapper",
       "category": "Backend (.NET)",
-      "experience": "1+ years",
-      "projects": "Data access in specific projects",
+      "experience": "2+ years",
+      "startDate": "2023-06",
+      "projects": "Targeted data access",
       "icon": "🗂️"
     },
     {
@@ -87,6 +95,7 @@
       "name": "Git",
       "category": "DevOps & Tooling",
       "experience": "3+ years",
+      "startDate": "2022-01",
       "projects": "Workflows, branching, and versioning",
       "icon": "🔀"
     },
@@ -94,7 +103,8 @@
       "id": "10",
       "name": "GitHub Actions / CI/CD",
       "category": "DevOps & Tooling",
-      "experience": "1+ years",
+      "experience": "2+ years",
+      "startDate": "2023-01",
       "projects": "Automated pipelines",
       "icon": "🔄"
     },
@@ -102,31 +112,35 @@
       "id": "11",
       "name": "Docker",
       "category": "DevOps & Tooling",
-      "experience": "1+ years",
+      "experience": "2+ years",
+      "startDate": "2023-01",
       "projects": "Containerized applications",
       "icon": "🐳"
     },
     {
       "id": "20",
-      "name": "Azure DevOps",
+      "name": "Azure DevOps / Azure",
       "category": "DevOps & Tooling",
-      "experience": "1+ years",
-      "projects": "Pipelines and team workflows",
+      "experience": "2+ years",
+      "startDate": "2023-01",
+      "projects": "Pipelines and team collaboration",
       "icon": "🔄"
     },
     {
       "id": "21",
       "name": "AWS",
       "category": "DevOps & Tooling",
-      "experience": "1+ years",
-      "projects": "Targeted integrations (SNS)",
+      "experience": "2+ years",
+      "startDate": "2024-01",
+      "projects": "Cloud integrations (SNS)",
       "icon": "☁️"
     },
     {
       "id": "13",
       "name": "TypeScript",
       "category": "Also Used",
-      "experience": "2+ years",
+      "experience": "3+ years",
+      "startDate": "2022-06",
       "projects": "Frontend & tooling",
       "icon": "📘"
     },
@@ -134,7 +148,8 @@
       "id": "14",
       "name": "React",
       "category": "Also Used",
-      "experience": "2+ years",
+      "experience": "3+ years",
+      "startDate": "2022-06",
       "projects": "Frontend projects",
       "icon": "⚛️"
     },
@@ -142,7 +157,8 @@
       "id": "15",
       "name": "Next.js",
       "category": "Also Used",
-      "experience": "2+ years",
+      "experience": "3+ years",
+      "startDate": "2022-06",
       "projects": "Full-stack apps",
       "icon": "⚛️"
     },
@@ -151,6 +167,7 @@
       "name": "Python",
       "category": "Also Used",
       "experience": "3+ years",
+      "startDate": "2022-01",
       "projects": "Scripting & tools",
       "icon": "🐍"
     },
@@ -158,30 +175,23 @@
       "id": "17",
       "name": "PHP",
       "category": "Also Used",
-      "experience": "2+ years",
-      "projects": "Framework projects",
+      "experience": "3+ years",
+      "startDate": "2022-06",
+      "projects": "Framework-based projects",
       "icon": "🐘"
-    },
-    {
-      "id": "18",
-      "name": "Java",
-      "category": "Also Used",
-      "experience": "1+ years",
-      "projects": "Academic projects",
-      "icon": "☕"
     }
   ],
   "projects": [
     {
       "id": "html2pdf",
       "title": "Html2Pdf",
-      "description": ".NET HTML-to-PDF library: template-driven engine with RazorLight + PuppeteerSharp, browser pooling, and DI integration. Published on NuGet for reports and automation workflows.",
+      "description": ".NET library for robust HTML-to-PDF generation: RazorLight-based template engine with PuppeteerSharp and browser pooling for high-performance reporting.",
       "tech": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
       "categories": {
         "languages": ["C#"],
         "frameworks": [".NET"],
         "tools": ["RazorLight", "PuppeteerSharp", "NuGet"],
-        "type": "Backend library"
+        "type": "Backend Library"
       },
       "github": "https://github.com/NastMz/Html2Pdf",
       "demo": "https://www.nuget.org/packages/Nast.Html2Pdf/",
@@ -195,13 +205,13 @@
     {
       "id": "simplemediator",
       "title": "SimpleMediator",
-      "description": "Lightweight (zero-dependency) Mediator/CQRS library for .NET with commands/queries and handlers. Published on NuGet to reduce boilerplate and keep structure clear.",
+      "description": "Lightweight and decoupled Mediator/CQRS pattern implementation for .NET. Optimized to reduce cognitive load and boilerplate in modular architectures.",
       "tech": [".NET 8", "C#"],
       "categories": {
         "languages": ["C#"],
         "frameworks": [".NET"],
         "patterns": ["CQRS", "Mediator"],
-        "type": "Backend library"
+        "type": "Backend Library"
       },
       "github": "https://github.com/NastMz/SimpleMediator",
       "demo": "https://www.nuget.org/packages/Nast.SimpleMediator/",
@@ -209,53 +219,109 @@
       "priority": "key",
       "metrics": [
         { "label": "Dependencies", "value": "Zero", "icon": "Package" },
-        { "label": "Pattern", "value": "CQRS", "icon": "Layers" }
+        { "label": "Focus", "value": "CQRS", "icon": "Layers" }
       ]
     },
     {
       "id": "flask-forge-cli",
       "title": "Flask Forge CLI",
-      "description": "CLI to bootstrap Flask projects with a ready-to-run structure: commands, configuration, and migrations. Published on PyPI to speed up onboarding and improve consistency.",
+      "description": "Automation tool for bootstrapping structured Flask projects. Facilitates the adoption of organized patterns, migration management, and standardized configuration.",
       "tech": ["Python", "Flask", "Typer", "Jinja2", "SQLAlchemy", "Alembic"],
       "categories": {
         "languages": ["Python"],
         "frameworks": ["Flask"],
         "tools": ["Typer", "Jinja2", "SQLAlchemy", "Alembic"],
-        "type": "CLI tool"
+        "type": "CLI Tool"
       },
       "github": "https://github.com/NastMz/flask-forge",
       "demo": "https://pypi.org/project/flask-forge-cli/",
       "gradient": "from-emerald-500 to-lime-600",
       "priority": "key",
       "metrics": [
-        { "label": "Output", "value": "Scaffold", "icon": "Package" },
-        { "label": "Distribution", "value": "PyPI", "icon": "Globe" }
+        { "label": "Delivery", "value": "Scaffold", "icon": "Package" },
+        { "label": "Architecture", "value": "Modular", "icon": "Layers" }
+      ]
+    },
+    {
+      "id": "vanilla-spa",
+      "title": "Vanilla SPA",
+      "description": "Reference architecture for zero-dependency Single Page Applications. Implements native routing, state management, and component composition.",
+      "tech": ["JavaScript", "HTML", "CSS", "Vite", "ES Modules"],
+      "categories": {
+        "languages": ["JavaScript"],
+        "frameworks": ["Vanilla JavaScript"],
+        "tools": ["Vite"],
+        "patterns": ["SPA", "Reactive Store"],
+        "type": "Frontend Framework"
+      },
+      "github": "https://github.com/NastMz/vanilla-spa",
+      "gradient": "from-yellow-400 to-orange-500",
+      "priority": "key",
+      "metrics": [
+        { "label": "Dependencies", "value": "Zero", "icon": "Package" },
+        { "label": "Platform", "value": "Native", "icon": "Globe" }
+      ]
+    },
+    {
+      "id": "light-query",
+      "title": "light-query",
+      "description": "React hooks for structured data management and simplification of API communication flows, focused on improving developer experience.",
+      "tech": ["React", "TypeScript", "NPM"],
+      "categories": {
+        "languages": ["TypeScript"],
+        "frameworks": ["React"],
+        "tools": ["NPM"],
+        "type": "Frontend Library"
+      },
+      "github": "https://github.com/NastMz/light-query",
+      "demo": "https://www.npmjs.com/package/@nastmz/light-query",
+      "gradient": "from-sky-500 to-indigo-600",
+      "priority": "key",
+      "metrics": [
+        { "label": "DX", "value": "High", "icon": "Zap" },
+        { "label": "Usage", "value": "Frontend", "icon": "Activity" }
       ]
     },
     {
       "id": "mini-php-framework",
       "title": "mini-php-framework",
-      "description": "Minimal PHP micro-framework to experiment with routing, middleware, and a small app structure. Implemented a router, a small container, and simple persistence (SQLite). Result: a lightweight, documented base for prototyping.",
+      "description": "Experimental PHP micro-framework integrating routing, middleware, and SQLite persistence under a lightweight and documented structure.",
       "tech": ["PHP 8.4+", "PSR-4/12/15", "SQLite"],
       "categories": {
         "languages": ["PHP"],
         "databases": ["SQLite"],
         "patterns": ["Routing", "Middleware"],
-        "type": "Backend framework"
+        "type": "Backend Framework"
       },
       "github": "https://github.com/NastMz/mini-php-framework",
       "demo": "https://packagist.org/packages/miniframework/installer",
       "gradient": "from-amber-500 to-yellow-600",
       "priority": "other",
       "metrics": [
-        { "label": "Components", "value": "Router/DI", "icon": "Layers" },
-        { "label": "Size", "value": "Small", "icon": "File" }
+        { "label": "Architecture", "value": "Clean", "icon": "Layers" },
+        { "label": "Size", "value": "Minimal", "icon": "File" }
       ]
     },
     {
       "id": "microengine",
       "title": "MicroEngine",
+      "description": "C# research project focused on modular system design and exploration of component-based architectures and resource management.",
+      "tech": ["C#", ".NET", "ECS"],
+      "categories": {
+        "languages": ["C#"],
+        "frameworks": [".NET"],
+        "patterns": ["ECS", "Modular Design"]
+      },
       "github": "https://github.com/NastMz/MicroEngine",
+      "gradient": "from-purple-500 to-indigo-600",
+      "priority": "other"
+    },
+    {
+      "id": "react-clean-arch",
+      "title": "React Clean Architecture",
+      "description": "Base template for React applications that promotes separation of concerns and decoupling of business logic from the UI.",
+      "tech": ["React", "TypeScript", "Clean Architecture"],
+      "github": "https://github.com/NastMz/react-clean-architecture-template",
       "priority": "other"
     }
   ],
@@ -263,13 +329,14 @@
     {
       "id": "exp-oss",
       "title": "Independent Backend Engineer (.NET)",
-      "company": "Contract and open-source work",
+      "company": "Research & Development",
       "period": "2025 – Present",
       "location": "Remote",
       "color": "border-l-emerald-500",
+      "logo": "/logos/open-source.png",
       "achievements": [
-        "Build and maintain .NET APIs/services, focusing on iterative delivery and production stability.",
-        "CI/CD automation (GitHub Actions), release workflows, and versioning practices."
+        "Development and maintenance of .NET APIs and services, prioritizing operational stability and iterative delivery.",
+        "Automation of deployment flows and versioning practices to ensure consistency in distributed libraries."
       ]
     },
     {
@@ -279,10 +346,11 @@
       "period": "2025",
       "location": "Remote",
       "color": "border-l-blue-500",
+      "logo": "/logos/tobiro-sas.png",
       "achievements": [
-        "Implemented .NET 8 backend services and components for an enterprise retail ecosystem.",
-        "OTP authentication with AWS SNS and persistence with EF Core and Dapper.",
-        "Deployment automation using GitHub Actions."
+        "Development of .NET 8 backend services and technical components for a high-demand enterprise retail ecosystem.",
+        "Design of secure authentication flows using AWS SNS and integration of optimized SQL Server persistence.",
+        "Implementation of deployment automation and software update cycles using GitHub Actions."
       ]
     },
     {
@@ -294,35 +362,38 @@
       "color": "border-l-cyan-500",
       "logo": "/logos/enternova-sas.png",
       "achievements": [
-        "Built and maintained .NET services with SQL Server.",
-        "Query optimization and production reliability/performance improvements.",
-        "Lead responsibilities: code reviews, standards, and developer support."
+        "Construction and technical support of critical .NET and SQL Server-based services with a focus on high availability.",
+        "Data performance optimization and business logic refactoring to improve system scalability.",
+        "Collaboration in defining technical standards and code reviews focused on software quality."
       ]
     },
     {
       "id": "exp-consulting",
       "title": "Full Stack / Backend Developer (Consulting)",
-      "company": "Multiple clients (CEA JMontoya, TulipannStore)",
+      "company": "CEA JMontoya, TulipannStore",
       "period": "2022 – 2024",
       "location": "Remote",
       "color": "border-l-purple-500",
+      "logo": "/logos/jmontoya.png",
       "achievements": [
-        "Delivered admin modules, e-commerce features, and internal systems (frontend + backend).",
-        "Data modeling, API implementation, deployments support, and corrective maintenance."
+        "Delivery of administrative modules, e-commerce platforms, and internal systems on demand.",
+        "Relational data modeling and implementation of robust APIs to ensure successful integrations.",
+        "Corrective maintenance and ongoing technical support for integrated platforms."
       ]
     }
   ],
   "education": [
     {
       "id": "edu-1",
-      "title": "B.Sc. Systems Engineering",
+      "title": "Systems Engineering",
       "institution": "Universidad de los Llanos",
       "period": "2019 – 2024"
     }
   ],
   "certifications": [
     "Scrum Foundation Professional Certificate (SFPC)",
-    "Cisco Cybersecurity Essentials and Networking"
+    "Cisco Cybersecurity Essentials and Networking",
+    "Introduction to Cybersecurity"
   ],
   "languages": [
     { "language": "Spanish", "level": "Native" },

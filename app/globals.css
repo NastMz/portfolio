@@ -45,6 +45,36 @@ body {
     position: relative;
     overflow: visible;
   }
+
+  /* Section Background Patterns */
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: rgb(148, 163, 184); /* slate-400 */
+    opacity: 0.18;
+  }
+  
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, currentColor 1px, transparent 1px),
+                      linear-gradient(to bottom, currentColor 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: rgb(148, 163, 184); /* slate-400 */
+    opacity: 0.15;
+  }
+
+  .dark .bg-dot-pattern {
+    color: hsl(var(--primary));
+    opacity: 0.05;
+  }
+  
+  .dark .bg-grid-pattern {
+    color: hsl(var(--primary));
+    opacity: 0.03;
+  }
+
+  .section-transition {
+    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+  }
 }
 
 @layer base {

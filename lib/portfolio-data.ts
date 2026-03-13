@@ -26,6 +26,7 @@ export interface Skill {
   experience: string
   projects: string
   icon: string
+  startDate?: string
 }
 
 export type IconName =
@@ -79,6 +80,7 @@ export interface Experience {
   location: string
   achievements?: string[]
   color?: string
+  logo?: string
 }
 
 export interface Education {
@@ -142,14 +144,38 @@ export function getLanguages(locale: string = defaultLocale): Language[] {
   return getPortfolioData(locale).languages
 }
 
-// Organizar skills por categoría
+// Organizar skills por categoría y calcular experiencia dinámica
 export function getSkillsByCategory(locale: string = defaultLocale): Record<string, Skill[]> {
-  const skills = getSkills(locale)
+  const skills = getSkills(locale).map(skill => {
+    if (skill.startDate) {
+      const years = calculateYearsOfExperience(skill.startDate);
+      return {
+        ...skill,
+        experience: locale === 'es' ? `${years}+ años` : `${years}+ years`
+      };
+    }
+    return skill;
+  });
+
   return skills.reduce((acc, skill) => {
     if (!acc[skill.category]) acc[skill.category] = []
     acc[skill.category].push(skill)
     return acc
   }, {} as Record<string, Skill[]>)
+}
+
+function calculateYearsOfExperience(startDateStr: string): number {
+  const startDate = new Date(startDateStr);
+  const currentDate = new Date();
+  
+  let years = currentDate.getFullYear() - startDate.getFullYear();
+  const monthDiff = currentDate.getMonth() - startDate.getMonth();
+  
+  if (monthDiff < 0 || (monthDiff === 0 && currentDate.getDate() < startDate.getDate())) {
+    years--;
+  }
+  
+  return Math.max(0, years);
 }
 
 // Calculate dynamic stats

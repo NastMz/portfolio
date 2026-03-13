@@ -33,27 +33,27 @@
   },
   "About": {
     "title": "Sobre Mí",
-    "description1": "Ingeniero enfocado en backend con .NET/C#, construyendo y manteniendo APIs y servicios en producción. Entrego funcionalidades end-to-end, resuelvo incidencias y mejoro estabilidad y rendimiento con cambios incrementales.",
-    "description2": "Trabajo integraciones con servicios externos y flujos de autenticación (tokens/OTP), con SQL Server/PostgreSQL usando EF Core y Dapper. Automatizo builds y despliegues con CI/CD (GitHub Actions + Docker) y asumo responsabilidades de liderazgo técnico cuando se requiere: code reviews, estándares y acompañamiento.",
+    "description1": "Soy un ingeniero backend especializado en .NET y C#, enfocado en construir APIs, backends modulares y arquitectura limpia. Entrego sistemas confiables, resuelvo incidencias en producción y mejoro el rendimiento mediante cambios incrementales y bien estructurados.",
+    "description2": "Me importa la mantenibilidad, la modularidad y el diseño claro sobre el simple hecho de 'lanzar' código. Tengo experiencia liderando equipos técnicos, realizando revisiones de código y estableciendo estándares de arquitectura. Automatizo flujos con CI/CD (GitHub Actions + Docker) y utilizo herramientas asistidas por IA como apoyo, manteniendo siempre la responsabilidad total sobre el diseño y la validación del sistema.",
     "badges": {
-      "cleanArch": "APIs .NET",
-      "backend": "SQL + EF/Dapper",
-      "dotnet": "CI/CD (GHA)",
-      "design": "Integraciones",
-      "ai": "Code reviews"
+      "cleanArch": "Arquitectura Limpia",
+      "backend": "Sistemas Backend",
+      "dotnet": ".NET & C#",
+      "design": "Diseño de Sistemas",
+      "ai": "Liderazgo Técnico"
     },
     "cards": {
       "modular": {
-        "title": "Entrega en producción",
-        "desc": "APIs y servicios listos para operar"
+        "title": "Diseño modular",
+        "desc": "Sistemas construidos para mantenibilidad a largo plazo"
       },
       "quality": {
-        "title": "Mantenimiento y performance",
-        "desc": "Bugs, refactors y optimización"
+        "title": "Calidad y Estabilidad",
+        "desc": "Resolución de incidencias y optimización en producción"
       },
       "sharing": {
-        "title": "Trabajo en equipo",
-        "desc": "Documentación, revisiones y acompañamiento"
+        "title": "Liderazgo y Mentoría",
+        "desc": "Revisiones de código, estándares y soporte a equipos"
       }
     }
   },
@@ -82,8 +82,8 @@
   },
   "Projects": {
     "title": "Proyectos Destacados",
-    "subtitle": "Otros proyectos",
-    "description": "Librerías y herramientas con repositorio público (y demo/paquete cuando aplica).",
+    "subtitle": "Obras y herramientas recientes",
+    "description": "Sistemas y librerías construidos con principios de arquitectura limpia y listos para producción.",
     "viewAll": "Otros Proyectos"
   },
   "Experience": {

@@ -33,27 +33,27 @@
   },
   "About": {
     "title": "About Me",
-    "description1": "Backend-focused .NET/C# engineer building and maintaining production APIs and services. I ship features end-to-end, troubleshoot incidents, and improve reliability and performance through incremental changes.",
-    "description2": "Recent work includes external integrations and authentication flows (token/OTP), working with SQL Server/PostgreSQL via EF Core and Dapper. I automate builds and deployments with CI/CD (GitHub Actions + Docker) and take on lead responsibilities when needed: code reviews, standards, and mentoring.",
+    "description1": "I am a backend engineer specializing in .NET and C#, focused on building APIs, modular backends, and clean architecture. I deliver reliable systems, resolve production incidents, and improve performance through incremental, well-structured changes.",
+    "description2": "I care about maintainability, modularity, and clear design over just 'shipping' code. I have experience leading technical teams, performing code reviews, and establishing architectural standards. I automate workflows with CI/CD (GitHub Actions + Docker) and use AI-assisted tools for support, while always maintaining full responsibility for system design and validation.",
     "badges": {
-      "cleanArch": ".NET APIs",
-      "backend": "SQL + EF/Dapper",
-      "dotnet": "CI/CD",
-      "design": "Integrations",
-      "ai": "Code reviews"
+      "cleanArch": "Clean Architecture",
+      "backend": "Backend Systems",
+      "dotnet": ".NET & C#",
+      "design": "Systems Design",
+      "ai": "Technical Lead"
     },
     "cards": {
       "modular": {
-        "title": "Production delivery",
-        "desc": "APIs and services ready to operate"
+        "title": "Modular design",
+        "desc": "Systems built for long-term maintainability"
       },
       "quality": {
-        "title": "Maintenance & performance",
-        "desc": "Bugs, refactors, and optimization"
+        "title": "Quality & Stability",
+        "desc": "Production incident resolution and optimization"
       },
       "sharing": {
-        "title": "Teamwork",
-        "desc": "Docs, reviews, and support"
+        "title": "Leadership & Mentoring",
+        "desc": "Code reviews, standards, and team support"
       }
     }
   },
@@ -82,8 +82,8 @@
   },
   "Projects": {
     "title": "Featured Projects",
-    "subtitle": "More projects",
-    "description": "Libraries and tools with public repos (and package/demo links when available).",
+    "subtitle": "Recent works and tools",
+    "description": "Systems and libraries built with clean architecture principles and ready for production.",
     "viewAll": "Other Projects"
   },
   "Experience": {

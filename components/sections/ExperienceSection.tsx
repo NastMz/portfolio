@@ -31,9 +31,10 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
   }
 
   return (
-    <section id="experience" className="py-20 md:py-32 relative overflow-hidden bg-background">
+    <section id="experience" className="relative py-20 md:py-32 overflow-hidden bg-muted/30 section-transition">
+      <div className="absolute inset-0 bg-dot-pattern text-primary/10" />
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/50 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/50 to-muted/20" />
       <div className="absolute top-1/4 -right-64 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -left-64 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
 
