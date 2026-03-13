@@ -185,7 +185,7 @@
     {
       "id": "html2pdf",
       "title": "Html2Pdf",
-      "description": "Librería .NET para la generación desasistida de PDF desde HTML: motor basado en plantillas Liquid con PuppeteerSharp y mecanismos de pooling de navegador para alto rendimiento.",
+      "description": "Librería .NET para la generación desasistida de PDF desde HTML: motor basado en plantillas RazorLight con PuppeteerSharp y mecanismos de pooling de navegador para alto rendimiento.",
       "tech": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
       "categories": {
         "languages": ["C#"],
