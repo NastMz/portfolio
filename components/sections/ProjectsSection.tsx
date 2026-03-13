@@ -50,12 +50,12 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const t = useTranslations('Projects')
   
   // Separate projects by priority
-  const { featuredProject, keyProjects, otherProjects } = useMemo(() => {
-    const featured = projects.find(p => p.priority === "featured")
+  const { featuredProjects, keyProjects, otherProjects } = useMemo(() => {
+    const featured = projects.filter(p => p.priority === "featured")
     const key = projects.filter(p => p.priority === "key")
     const other = projects.filter(p => p.priority === "other")
     return {
-      featuredProject: featured,
+      featuredProjects: featured,
       keyProjects: key,
       otherProjects: other
     }
@@ -66,81 +66,83 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
       <div className="absolute inset-0 bg-grid-pattern text-primary/5" />
       <div className="relative container mx-auto">
         <div className="mx-auto max-w-7xl">
-        {/* Featured Project */}
-        {featuredProject && (
-          <ScrollAnimation animation="slideUp" delay={100}>
-            <div className="mb-16 md:mb-20">
+        {/* Featured Projects */}
+        {featuredProjects.length > 0 && (
+          <div className="mb-16 md:mb-20">
+            <ScrollAnimation animation="slideUp" delay={100}>
               <div className="text-center mb-8 md:mb-12">
                 <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">{t('title')}</h2>
                 <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
               </div>
-              <div className="max-w-4xl mx-auto">
-                <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 dark:hover:shadow-primary/10 border-border/50">
-                  <div className={`h-3 bg-gradient-to-r ${featuredProject.gradient || "from-primary to-secondary"}`} />
-                  <CardHeader className="pb-4 md:pb-6">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <CardTitle className="group-hover:text-primary transition-colors text-2xl md:text-3xl mb-3">
-                          {featuredProject.title}
+            </ScrollAnimation>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+              {featuredProjects.map((project, index) => (
+                <ScrollAnimation key={project.id} animation="slideUp" delay={100 + (index * 100)}>
+                  <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 dark:hover:shadow-primary/10 border-border/50 h-full flex flex-col">
+                    <div className={`h-3 bg-gradient-to-r ${project.gradient || "from-primary to-secondary"}`} />
+                    <CardHeader className="pb-4 md:pb-6 flex-shrink-0">
+                      <div className="flex items-center justify-between gap-4 mb-3">
+                        <CardTitle className="group-hover:text-primary transition-colors text-2xl md:text-3xl">
+                          {project.title}
                         </CardTitle>
-                        {featuredProject.description && (
-                          <CardDescription className="text-base md:text-lg leading-relaxed">
-                            {featuredProject.description}
-                          </CardDescription>
-                        )}
+                        <div className="flex gap-2 flex-shrink-0">
+                          {project.github && (
+                            <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10 h-10 w-10 md:h-12 md:w-12" aria-label="View on GitHub">
+                              <Link href={project.github} target="_blank" rel="noreferrer noopener">
+                                <Github className="h-5 w-5 md:h-6 md:w-6" />
+                              </Link>
+                            </Button>
+                          )}
+                          {project.demo && (
+                            <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10 h-10 w-10 md:h-12 md:w-12" aria-label="View Demo">
+                              <Link href={project.demo} target="_blank" rel="noreferrer noopener">
+                                <Globe className="h-5 w-5 md:h-6 md:w-6" />
+                              </Link>
+                            </Button>
+                          )}
+                        </div>
                       </div>
-                      <div className="flex gap-2 flex-shrink-0">
-                        {featuredProject.github && (
-                          <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-10 w-10 md:h-12 md:w-12" aria-label="View on GitHub">
-                            <Link href={featuredProject.github} target="_blank" rel="noreferrer noopener">
-                              <Github className="h-5 w-5 md:h-6 md:w-6" />
-                            </Link>
-                          </Button>
-                        )}
-                        {featuredProject.demo && (
-                          <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-10 w-10 md:h-12 md:w-12" aria-label="View Demo">
-                            <Link href={featuredProject.demo} target="_blank" rel="noreferrer noopener">
-                              <Globe className="h-5 w-5 md:h-6 md:w-6" />
-                            </Link>
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 md:space-y-6">
-                    {Array.isArray(featuredProject.tech) && featuredProject.tech.length > 0 && (
-                      <div className="flex flex-wrap gap-2">
-                        {featuredProject.tech.map((tech) => (
-                          <Badge 
-                            key={`${featuredProject.id}-${tech}`} 
-                            variant="outline" 
-                            className="text-sm border-primary/20 hover:bg-primary/5"
-                          >
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                    )}
-                    {Array.isArray(featuredProject.metrics) && featuredProject.metrics.length > 0 && (
-                      <div className="grid grid-cols-2 gap-4 md:gap-6 pt-4 md:pt-6 border-t border-border/50">
-                        {featuredProject.metrics.map((metric) => {
-                          // Safe cast because we know the data might have icons relevant to the map
-                          const Icon = metric.icon && IconMap[metric.icon as IconName] ? IconMap[metric.icon as IconName] : Activity
-                          return (
-                            <div key={`${featuredProject.id}-${metric.label}`} className="text-center">
-                              <Icon className="h-5 w-5 md:h-6 md:w-6 mx-auto mb-2 text-muted-foreground" aria-hidden />
-                              <div className="text-base md:text-lg font-semibold">{metric.value}</div>
-                              <div className="text-sm text-muted-foreground">{metric.label}</div>
-                            </div>
-                          )
-                        })}
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              </div>
+                      {project.description && (
+                        <CardDescription className="text-base md:text-lg leading-relaxed">
+                          {project.description}
+                        </CardDescription>
+                      )}
+                    </CardHeader>
+                    <CardContent className="space-y-4 md:space-y-6 flex-grow flex flex-col">
+                      {Array.isArray(project.tech) && project.tech.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {project.tech.map((tech) => (
+                            <Badge 
+                              key={`${project.id}-${tech}`} 
+                              variant="outline" 
+                              className="text-sm border-primary/20 hover:bg-primary/5"
+                            >
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
+                      )}
+                      {Array.isArray(project.metrics) && project.metrics.length > 0 && (
+                        <div className="grid grid-cols-2 gap-4 md:gap-6 pt-4 md:pt-6 border-t border-border/50 mt-auto">
+                          {project.metrics.map((metric) => {
+                            // Safe cast because we know the data might have icons relevant to the map
+                            const Icon = metric.icon && IconMap[metric.icon as IconName] ? IconMap[metric.icon as IconName] : Activity
+                            return (
+                              <div key={`${project.id}-${metric.label}`} className="text-center">
+                                <Icon className="h-5 w-5 md:h-6 md:w-6 mx-auto mb-2 text-muted-foreground" aria-hidden />
+                                <div className="text-base md:text-lg font-semibold">{metric.value}</div>
+                                <div className="text-sm text-muted-foreground">{metric.label}</div>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                </ScrollAnimation>
+              ))}
             </div>
-          </ScrollAnimation>
+          </div>
         )}
 
         {/* Key Architecture Projects */}
@@ -165,18 +167,18 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                       <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 dark:hover:shadow-primary/10 border-border/50 h-full flex flex-col">
                         <div className={`h-2 bg-gradient-to-r ${gradient}`} />
                         <CardHeader className="pb-3 md:pb-4 flex-shrink-0">
-                          <div className="flex items-start justify-between gap-2">
+                          <div className="flex items-center justify-between gap-2">
                             <CardTitle className="group-hover:text-primary transition-colors text-lg md:text-xl">{project.title}</CardTitle>
                             <div className="flex space-x-1 md:space-x-2 flex-shrink-0">
                               {project.github && (
-                                <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-8 w-10 md:h-10 md:w-12" aria-label="View on GitHub">
+                                <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10 h-8 w-10 md:h-10 md:w-12" aria-label="View on GitHub">
                                   <Link href={project.github} target="_blank" rel="noreferrer noopener">
                                     <Github className="h-4 w-4" />
                                   </Link>
                                 </Button>
                               )}
                               {project.demo && (
-                                <Button variant="ghost" size="icon" asChild className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-primary/10 h-8 w-10 md:h-10 md:w-12" aria-label="Demo">
+                                <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10 h-8 w-10 md:h-10 md:w-12" aria-label="Demo">
                                   <Link href={project.demo} target="_blank" rel="noreferrer noopener">
                                     <Globe className="h-4 w-4" />
                                   </Link>
@@ -238,7 +240,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               </div>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {otherProjects.map((project) => (
-                  <Card key={project.id} className="hover:shadow-lg transition-all duration-300 border-border/50 bg-card/50 flex flex-col">
+                  <Card key={project.id} className="hover:shadow-lg transition-all duration-300 dark:hover:shadow-primary/10 border-border/50 bg-card/50 flex flex-col">
                     <CardHeader className="pb-2">
                       <div className="flex items-start justify-between gap-2">
                         <CardTitle className="text-base md:text-lg">{project.title}</CardTitle>

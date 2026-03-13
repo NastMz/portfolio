@@ -216,7 +216,7 @@
       "github": "https://github.com/NastMz/SimpleMediator",
       "demo": "https://www.nuget.org/packages/Nast.SimpleMediator/",
       "gradient": "from-blue-500 to-cyan-600",
-      "priority": "key",
+      "priority": "featured",
       "metrics": [
         { "label": "Dependencias", "value": "Cero", "icon": "Package" },
         { "label": "Enfoque", "value": "CQRS", "icon": "Layers" }
