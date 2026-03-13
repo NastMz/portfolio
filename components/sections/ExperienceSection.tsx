@@ -13,6 +13,7 @@ interface Job {
   company: string
   period: string
   location: string
+  companyLocation?: string
   achievements?: string[]
   color?: string
   logo?: string
@@ -78,7 +79,14 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
                         <div className="flex-1 min-w-0">
                           <CardTitle className="text-lg md:text-xl">{job.title}</CardTitle>
-                          <CardDescription className="text-sm md:text-base font-medium text-primary">{job.company}</CardDescription>
+                          <CardDescription className="text-sm md:text-base font-medium text-primary">
+                            {job.company}
+                            {job.companyLocation && (
+                              <span className="text-muted-foreground font-normal ml-2">
+                                • {job.companyLocation}
+                              </span>
+                            )}
+                          </CardDescription>
                         </div>
                         <div className="text-left sm:text-right text-xs md:text-sm text-muted-foreground flex-shrink-0">
                           <div className="font-medium">{job.period}</div>

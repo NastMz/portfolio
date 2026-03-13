@@ -78,6 +78,7 @@ export interface Experience {
   company: string
   period: string
   location: string
+  companyLocation?: string
   achievements?: string[]
   color?: string
   logo?: string

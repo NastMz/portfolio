@@ -332,6 +332,7 @@
       "company": "Research & Development",
       "period": "2025 – Present",
       "location": "Remote",
+      "companyLocation": "Duitama, Boyacá",
       "color": "border-l-emerald-500",
       "logo": "/logos/open-source.png",
       "achievements": [
@@ -345,6 +346,7 @@
       "company": "Tobiro SAS",
       "period": "2025",
       "location": "Remote",
+      "companyLocation": "Medellín, Antioquia",
       "color": "border-l-blue-500",
       "logo": "/logos/tobiro-sas.png",
       "achievements": [
@@ -359,6 +361,7 @@
       "company": "EnterNova SAS",
       "period": "2024 – 2025",
       "location": "Remote",
+      "companyLocation": "Bogotá, DC",
       "color": "border-l-cyan-500",
       "logo": "/logos/enternova-sas.png",
       "achievements": [
@@ -373,6 +376,7 @@
       "company": "CEA JMontoya, TulipannStore",
       "period": "2022 – 2024",
       "location": "Remote",
+      "companyLocation": "Villavicencio, Meta",
       "color": "border-l-purple-500",
       "logo": "/logos/jmontoya.png",
       "achievements": [
