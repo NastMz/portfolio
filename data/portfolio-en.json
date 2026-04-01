@@ -255,6 +255,7 @@
         "type": "Frontend Framework"
       },
       "github": "https://github.com/NastMz/vanilla-spa",
+      "demo": "https://vanilla-spa-indol.vercel.app/",
       "gradient": "from-yellow-400 to-orange-500",
       "priority": "key",
       "metrics": [
