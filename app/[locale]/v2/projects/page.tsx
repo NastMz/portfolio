@@ -1,18 +1,15 @@
 import { setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { type Locale } from '@/i18n/config'
-import { getRouteVersionPolicy } from '@/lib/site-config'
-import { V1PortfolioPage } from '@/features/v1/pages/V1PortfolioPage'
 import { V2PortfolioPage } from '@/features/v2/pages/V2PortfolioPage'
 import { resolveRequestLocale } from '@/lib/locale-routing'
 
-export default async function Portfolio({
-  params
+export default async function V2ProjectsRoute({
+  params,
 }: {
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-
   const requestLocale = resolveRequestLocale(locale)
 
   if (!requestLocale) {
@@ -21,11 +18,5 @@ export default async function Portfolio({
 
   setRequestLocale(requestLocale)
 
-  const policy = getRouteVersionPolicy()
-
-  if (policy.rootVersion === 'v2') {
-    return <V2PortfolioPage locale={requestLocale as Locale} />
-  }
-
-  return <V1PortfolioPage locale={requestLocale as Locale} />
+  return <V2PortfolioPage locale={requestLocale as Locale} />
 }

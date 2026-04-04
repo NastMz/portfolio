@@ -1,0 +1,53 @@
+{
+  "hero": {
+    "eyebrow": "Portafolio v2",
+    "title": "Ingeniería backend con foco operativo",
+    "subtitle": "Diseño y entrego sistemas .NET resilientes con arquitectura limpia, calidad medible y estrategias de rollback rápidas.",
+    "primaryCta": {
+      "label": "Ver proyectos seleccionados",
+      "href": "#projects"
+    },
+    "secondaryCta": {
+      "label": "Contactarme",
+      "href": "#contact"
+    }
+  },
+  "summary": {
+    "title": "Mentalidad orientada a producción",
+    "paragraphs": [
+      "Trabajo en dominios de APIs y backend donde la disponibilidad, la responsabilidad clara y los límites mantenibles importan tanto como la velocidad de entrega.",
+      "Mi proceso combina disciplina arquitectónica con ejecución práctica: contratos, telemetría, compuertas de validación y planes de release controlados."
+    ]
+  },
+  "projects": {
+    "title": "Trabajo de ingeniería destacado",
+    "items": [
+      {
+        "id": "html2pdf",
+        "title": "Html2Pdf",
+        "description": "Librería .NET para convertir HTML a PDF con plantillas, pooling de navegador y configuración amigable para DI.",
+        "href": "https://github.com/NastMz/Html2Pdf",
+        "stack": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"]
+      },
+      {
+        "id": "simplemediator",
+        "title": "SimpleMediator",
+        "description": "Paquete Mediator/CQRS de bajo boilerplate orientado a arquitectura modular y menor acoplamiento.",
+        "href": "https://github.com/NastMz/SimpleMediator",
+        "stack": [".NET 8", "C#", "CQRS", "Mediator"]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Construyamos sistemas confiables",
+    "description": "Si necesitás arquitectura y delivery backend con estándares claros de calidad, podemos colaborar.",
+    "cta": {
+      "label": "Enviar correo",
+      "href": "mailto:ksmartinez23@outlook.com"
+    }
+  },
+  "seo": {
+    "title": "Kevin Martinez | Portafolio v2",
+    "description": "Portafolio v2 de Kevin Martinez: ingeniería backend, arquitectura modular y entregas productivas."
+  }
+}

@@ -1,0 +1,51 @@
+:root {
+  --v2-color-bg: #050816;
+  --v2-color-surface: #0e1329;
+  --v2-color-surface-strong: #151d3d;
+  --v2-color-border: #27325f;
+  --v2-color-text: #f3f6ff;
+  --v2-color-text-muted: #b8c1e8;
+  --v2-color-brand: #6f8cff;
+  --v2-color-brand-strong: #4d6dff;
+  --v2-focus-ring: 0 0 0 3px rgba(111, 140, 255, 0.55);
+
+  --v2-type-display: 2.35rem;
+  --v2-type-title: 1.55rem;
+  --v2-type-body: 1rem;
+  --v2-line-height: 1.6;
+
+  --v2-space-1: 0.25rem;
+  --v2-space-2: 0.5rem;
+  --v2-space-3: 0.75rem;
+  --v2-space-4: 1rem;
+  --v2-space-6: 1.5rem;
+  --v2-space-8: 2rem;
+  --v2-space-12: 3rem;
+
+  --v2-motion-duration: 200ms;
+  --v2-motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --v2-motion-duration: 0ms;
+    --v2-motion-ease: linear;
+  }
+}
+
+.v2-route {
+  background: var(--v2-color-bg);
+  color: var(--v2-color-text);
+  min-height: 100vh;
+}
+
+.v2-container {
+  margin-inline: auto;
+  max-width: 72rem;
+  padding-inline: var(--v2-space-6);
+}
+
+.v2-focusable:focus-visible {
+  box-shadow: var(--v2-focus-ring);
+  outline: none;
+}

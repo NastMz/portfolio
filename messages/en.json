@@ -121,5 +121,14 @@
   "Footer": {
     "reserved": "All rights reserved.",
     "builtWith": "Built with Next.js, Tailwind CSS and ☕ © {year}"
+  },
+  "V2": {
+    "localeSwitch": "Switch locale",
+    "projectLink": "Open project",
+    "nav": {
+      "summary": "Summary",
+      "projects": "Projects",
+      "contact": "Contact"
+    }
   }
 }

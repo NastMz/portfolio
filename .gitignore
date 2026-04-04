@@ -22,6 +22,15 @@ yarn-error.log*
 # vercel
 .vercel
 
+# agent tooling artifacts
+.atl/
+sdd/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# test and coverage
+test-results/
+coverage/
+reports/

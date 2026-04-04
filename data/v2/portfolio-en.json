@@ -1,0 +1,53 @@
+{
+  "hero": {
+    "eyebrow": "Portfolio v2",
+    "title": "Backend engineering with operational focus",
+    "subtitle": "I design and ship resilient .NET systems with clean architecture, measurable quality gates, and fast rollback strategies.",
+    "primaryCta": {
+      "label": "See selected projects",
+      "href": "#projects"
+    },
+    "secondaryCta": {
+      "label": "Get in touch",
+      "href": "#contact"
+    }
+  },
+  "summary": {
+    "title": "Production-first mindset",
+    "paragraphs": [
+      "I work on API and backend domains where uptime, clear ownership, and maintainable boundaries matter as much as feature speed.",
+      "My process combines architecture discipline with practical delivery: contracts, telemetry, validation gates, and controlled release plans."
+    ]
+  },
+  "projects": {
+    "title": "Featured engineering work",
+    "items": [
+      {
+        "id": "html2pdf",
+        "title": "Html2Pdf",
+        "description": "Template-driven HTML to PDF library for .NET with browser pooling and dependency-injection friendly setup.",
+        "href": "https://github.com/NastMz/Html2Pdf",
+        "stack": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"]
+      },
+      {
+        "id": "simplemediator",
+        "title": "SimpleMediator",
+        "description": "Low-boilerplate Mediator/CQRS package focused on modular architecture and reduced coupling.",
+        "href": "https://github.com/NastMz/SimpleMediator",
+        "stack": [".NET 8", "C#", "CQRS", "Mediator"]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Let’s build reliable systems",
+    "description": "If you need backend architecture and delivery with clear quality standards, we can collaborate.",
+    "cta": {
+      "label": "Send an email",
+      "href": "mailto:ksmartinez23@outlook.com"
+    }
+  },
+  "seo": {
+    "title": "Kevin Martinez | Portfolio v2",
+    "description": "Portfolio v2 of Kevin Martinez: backend engineering, modular architecture, and production-grade delivery."
+  }
+}

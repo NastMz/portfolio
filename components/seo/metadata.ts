@@ -1,12 +1,21 @@
 import { Metadata } from 'next'
-import { siteConfig, getProfileImageUrl } from '@/lib/site-config'
+import {
+  siteConfig,
+  getProfileImageUrl,
+  getCanonicalUrl,
+  getLocalizedAlternates,
+  getRouteVersionPolicy,
+  type PortfolioVersion,
+} from '@/lib/site-config'
+import type { Locale } from '@/i18n/config'
 
 export interface MetadataParams {
-  locale: string
+  locale: Locale
   title: string
   description: string
   image?: string
   noindex?: boolean
+  version?: PortfolioVersion
 }
 
 export function generateMetadata(params: MetadataParams): Metadata {
@@ -16,9 +25,30 @@ export function generateMetadata(params: MetadataParams): Metadata {
     description,
     image = getProfileImageUrl(),
     noindex = false,
+    version = 'v1',
   } = params
 
-  const url = `${siteConfig.baseUrl}/${locale}`
+  const policy = getRouteVersionPolicy()
+
+  const effectiveNoIndex =
+    noindex ||
+    (version === 'v2' && policy.rootVersion === 'v1') ||
+    (version === 'v1' && policy.rootVersion === 'v2') ||
+    version === 'legacy'
+
+  const shouldCanonicalizeToRoot =
+    policy.rootVersion === 'v2' && (version === 'v2' || version === 'legacy')
+
+  const canonicalVersion: PortfolioVersion = version === 'legacy' ? 'v2' : version
+  const canonicalUrl = shouldCanonicalizeToRoot
+    ? `${siteConfig.baseUrl}/${locale}`
+    : getCanonicalUrl(locale, canonicalVersion)
+
+  const alternateVersion: PortfolioVersion = shouldCanonicalizeToRoot
+    ? 'v1'
+    : version === 'v2'
+      ? 'v2'
+      : 'v1'
 
   return {
     title,
@@ -34,11 +64,14 @@ export function generateMetadata(params: MetadataParams): Metadata {
     authors: [{ name: 'Kevin Martinez' }],
     creator: 'Kevin Martinez',
     publisher: 'Kevin Martinez',
-    robots: noindex ? 'noindex, nofollow' : 'index, follow',
+    robots: {
+      index: !effectiveNoIndex,
+      follow: !effectiveNoIndex,
+    },
     openGraph: {
       type: 'website',
       locale,
-      url,
+      url: canonicalUrl,
       title,
       description,
       images: [
@@ -57,17 +90,15 @@ export function generateMetadata(params: MetadataParams): Metadata {
       images: [image],
     },
     alternates: {
-      languages: {
-        en: `${siteConfig.baseUrl}/en`,
-        es: `${siteConfig.baseUrl}/es`,
-        'x-default': `${siteConfig.baseUrl}/en`,
-      },
+      canonical: canonicalUrl,
+      languages: getLocalizedAlternates(alternateVersion),
     },
   }
 }
 
 export function generateStructuredData(params: {
-  locale: string
+  locale: Locale
+  version?: 'v1' | 'v2'
   name: string
   title: string
   description: string
@@ -76,9 +107,15 @@ export function generateStructuredData(params: {
   github: string
   linkedin: string
   location: string
+  projects?: Array<{
+    name: string
+    description: string
+    url: string
+  }>
 }) {
   const {
     locale,
+    version = 'v1',
     name,
     title,
     description,
@@ -87,9 +124,10 @@ export function generateStructuredData(params: {
     github,
     linkedin,
     location,
+    projects = [],
   } = params
 
-  return {
+  const personData = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name,
@@ -103,5 +141,29 @@ export function generateStructuredData(params: {
       '@type': 'Place',
       name: location,
     },
+  }
+
+  if (version === 'v1') {
+    return personData
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      personData,
+      {
+        '@type': 'ItemList',
+        itemListElement: projects.map((project, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'CreativeWork',
+            name: project.name,
+            description: project.description,
+            url: project.url,
+          },
+        })),
+      },
+    ],
   }
 }
