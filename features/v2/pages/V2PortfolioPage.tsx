@@ -96,6 +96,7 @@ interface V2CaseStudyEntry {
 
 interface V2ArtifactEntry {
   id: string
+  track: string
   name: string
   type: string
   status: string
@@ -181,6 +182,7 @@ interface V2MessagesShape {
     buildLogLabel: string
     systemComponentsLabel: string
     systemComponentsAlias?: string
+    trackLabel: string
     typeLabel: string
     statusLabel: string
     detailsLabel: string
@@ -676,6 +678,15 @@ function DecisionLogSection({ copy }: { copy: V2MessagesShape['decisionLog'] }) 
 }
 
 function ArtifactsSection({ copy }: { copy: V2MessagesShape['artifacts'] }) {
+  const groupedItems = copy.items.reduce<Map<string, V2ArtifactEntry[]>>((groups, item) => {
+    const currentItems = groups.get(item.track) ?? []
+
+    currentItems.push(item)
+    groups.set(item.track, currentItems)
+
+    return groups
+  }, new Map())
+
   return (
     <section className="px-8 md:px-16 py-24 bg-[#0d0d0d] border-b border-zinc-800/30 scroll-mt-28" id="build-log">
       <div className="max-w-6xl mx-auto">
@@ -698,82 +709,90 @@ function ArtifactsSection({ copy }: { copy: V2MessagesShape['artifacts'] }) {
             </span>
           </div>
 
-          {copy.items.map((item) => (
-            <article key={item.id} className="px-6 md:px-8 py-8 border-b border-zinc-800/80 last:border-b-0">
-              <div className="flex flex-wrap items-center gap-3 mb-4">
-                <span className="font-label text-[10px] text-primary tracking-widest">[{item.id}]</span>
-                <span className="bg-zinc-800 text-zinc-300 font-label text-[9px] px-2 py-0.5 uppercase">
-                  {copy.typeLabel}: {item.type}
-                </span>
-                <span className="bg-zinc-800 text-zinc-300 font-label text-[9px] px-2 py-0.5 uppercase">
-                  {copy.statusLabel}: {item.status}
-                </span>
+          {Array.from(groupedItems.entries()).map(([track, items]) => (
+            <div key={track} className="border-b border-zinc-800/80 last:border-b-0">
+              <div className="px-6 md:px-8 py-4 border-b border-zinc-800/80 bg-zinc-950/60">
+                <span className="font-label text-[10px] text-primary tracking-[0.2em] uppercase">{copy.trackLabel}: {track}</span>
               </div>
 
-              <h4 className="font-headline text-2xl font-bold mb-2">{item.name}</h4>
-              <p className="font-body text-zinc-400 mb-6 max-w-4xl">{item.description}</p>
-
-              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8">
-                <div>
-                  <div className="font-label text-[10px] text-zinc-500 uppercase mb-2">{copy.detailsLabel}</div>
-                  <ul className="space-y-2">
-                    {item.details.map((detail) => (
-                      <li key={`${item.id}-${detail}`} className="font-body text-sm text-zinc-500 before:content-['>'] before:text-primary before:mr-2">
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <div className="font-label text-[10px] text-zinc-500 uppercase mb-2">{copy.stackLabel}</div>
-                    <p className="font-label text-[10px] text-zinc-300 uppercase tracking-wider">{item.stack.join(' · ')}</p>
+              {items.map((item, index) => (
+                <article key={item.id} className={`px-6 md:px-8 py-8 ${index < items.length - 1 ? 'border-b border-zinc-800/80' : ''}`}>
+                  <div className="flex flex-wrap items-center gap-3 mb-4">
+                    <span className="font-label text-[10px] text-primary tracking-widest">[{item.id}]</span>
+                    <span className="bg-zinc-800 text-zinc-300 font-label text-[9px] px-2 py-0.5 uppercase">
+                      {copy.typeLabel}: {item.type}
+                    </span>
+                    <span className="bg-zinc-800 text-zinc-300 font-label text-[9px] px-2 py-0.5 uppercase">
+                      {copy.statusLabel}: {item.status}
+                    </span>
                   </div>
 
-                  <div className="border-t border-zinc-800 pt-4">
-                    <div className="font-label text-[10px] text-zinc-500 uppercase mb-1">{copy.distributionLabel}</div>
-                    {item.distributionHref ? (
-                      <a
-                        className="inline-flex items-center gap-2 font-label text-[10px] text-primary uppercase tracking-wider border border-primary/30 px-3 py-2 hover:bg-primary/10"
-                        data-cursor="cta"
-                        href={item.distributionHref}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        <span>{item.distributionLabel ?? item.distribution}</span>
-                        <span aria-hidden="true">↗</span>
-                      </a>
-                    ) : (
-                      <p className="font-label text-[10px] text-primary uppercase tracking-wider">{item.distribution}</p>
-                    )}
-                  </div>
+                  <h4 className="font-headline text-2xl font-bold mb-2">{item.name}</h4>
+                  <p className="font-body text-zinc-400 mb-6 max-w-4xl">{item.description}</p>
 
-                  <div className="border-t border-zinc-800 pt-4">
-                    <div className="font-label text-[10px] text-zinc-500 uppercase mb-1">{copy.repoLabel}</div>
-                    {item.repoHref ? (
-                      <a
-                        className="inline-flex items-center gap-2 font-label text-[10px] text-zinc-200 uppercase tracking-wider border border-zinc-700 px-3 py-2 hover:border-primary/30 hover:text-primary"
-                        data-cursor="cta"
-                        href={item.repoHref}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        <span>{item.name}</span>
-                        <span aria-hidden="true">↗</span>
-                      </a>
-                    ) : (
-                      <p className="font-label text-[10px] text-zinc-400 uppercase tracking-wider">—</p>
-                    )}
-                  </div>
+                  <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8">
+                    <div>
+                      <div className="font-label text-[10px] text-zinc-500 uppercase mb-2">{copy.detailsLabel}</div>
+                      <ul className="space-y-2">
+                        {item.details.map((detail) => (
+                          <li key={`${item.id}-${detail}`} className="font-body text-sm text-zinc-500 before:content-['>'] before:text-primary before:mr-2">
+                            {detail}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                  <div className="border-t border-zinc-800 pt-4">
-                    <div className="font-label text-[10px] text-zinc-500 uppercase mb-1">{copy.intentLabel}</div>
-                    <p className="font-body text-sm text-zinc-400">{item.intent}</p>
+                    <div className="space-y-4">
+                      <div>
+                        <div className="font-label text-[10px] text-zinc-500 uppercase mb-2">{copy.stackLabel}</div>
+                        <p className="font-label text-[10px] text-zinc-300 uppercase tracking-wider">{item.stack.join(' · ')}</p>
+                      </div>
+
+                      <div className="border-t border-zinc-800 pt-4">
+                        <div className="font-label text-[10px] text-zinc-500 uppercase mb-1">{copy.distributionLabel}</div>
+                        {item.distributionHref ? (
+                          <a
+                            className="inline-flex items-center gap-2 font-label text-[10px] text-primary uppercase tracking-wider border border-primary/30 px-3 py-2 hover:bg-primary/10"
+                            data-cursor="cta"
+                            href={item.distributionHref}
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            <span>{item.distributionLabel ?? item.distribution}</span>
+                            <span aria-hidden="true">↗</span>
+                          </a>
+                        ) : (
+                          <p className="font-label text-[10px] text-zinc-400 uppercase tracking-wider">{item.distribution}</p>
+                        )}
+                      </div>
+
+                      <div className="border-t border-zinc-800 pt-4">
+                        <div className="font-label text-[10px] text-zinc-500 uppercase mb-1">{copy.repoLabel}</div>
+                        {item.repoHref ? (
+                          <a
+                            className="inline-flex items-center gap-2 font-label text-[10px] text-zinc-200 uppercase tracking-wider border border-zinc-700 px-3 py-2 hover:border-primary/30 hover:text-primary"
+                            data-cursor="cta"
+                            href={item.repoHref}
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            <span>{item.name}</span>
+                            <span aria-hidden="true">↗</span>
+                          </a>
+                        ) : (
+                          <p className="font-label text-[10px] text-zinc-400 uppercase tracking-wider">—</p>
+                        )}
+                      </div>
+
+                      <div className="border-t border-zinc-800 pt-4">
+                        <div className="font-label text-[10px] text-zinc-500 uppercase mb-1">{copy.intentLabel}</div>
+                        <p className="font-body text-sm text-zinc-400">{item.intent}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </article>
+                </article>
+              ))}
+            </div>
           ))}
         </div>
       </div>

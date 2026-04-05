@@ -137,11 +137,11 @@
     },
     "sidebar": {
       "monitorTitle": "[SYSTEM_MONITOR]",
-      "monitorItems": [
-        { "label": "ROLE:", "value": "SOFTWARE ENGINEER", "valueClassName": "text-primary" },
-        { "label": "FOCUS:", "value": "BACKEND / SYSTEMS", "valueClassName": "text-white" },
-        { "label": "SPECIALTY:", "value": "ARCHITECTURE", "valueClassName": "text-white" }
-      ],
+        "monitorItems": [
+          { "label": "ROLE:", "value": "SOFTWARE ENGINEER", "valueClassName": "text-primary" },
+          { "label": "FOCUS:", "value": "BACKEND / SYSTEMS / TOOLING", "valueClassName": "text-white" },
+          { "label": "SPECIALTY:", "value": "ARCHITECTURE", "valueClassName": "text-white" }
+        ],
       "nav": [
         { "label": "[OVERVIEW] // Overview", "href": "#overview" },
         { "label": "[SYSTEM_COMPONENTS] // Systems", "href": "#systems" },
@@ -159,17 +159,18 @@
     },
     "hero": {
       "eyebrow": "[IDENTITY_VERIFIED]",
-      "signals": [
-        "[REAL WORLD BACKEND]",
-        "[USED IN PRODUCTION]"
-      ],
+        "signals": [
+          "[REAL WORLD BACKEND]",
+          "[USED IN PRODUCTION]",
+          "[FULL STACK WHEN NEEDED]"
+        ],
       "title": "Kevin Martínez",
       "titleMuted": "Software Engineer",
       "subtitlePrefix": "I design systems for",
       "subtitleHighlight": "when things stop being simple.",
       "quote": "Scaling isn't the problem. Uncontrolled complexity is.",
-      "plainStatement": "Backend Engineer specialized in .NET, APIs, and system architecture.",
-      "description": "I build backend systems that have to survive real constraints: production traffic, legacy decisions, data consistency, and operational maintenance. Most systems don't fail because of scale alone; they fail when complexity grows without control.",
+        "plainStatement": "Software Engineer primarily focused on backend, systems design, tooling, and architecture on top of .NET.",
+        "description": "I build software that has to survive real constraints: production traffic, integrations, legacy decisions, data consistency, and operational maintenance. My primary focus is backend, systems, and architecture, but I also cover React frontend work, tooling, CI/CD, and Python services when the problem calls for it.",
       "primaryCta": "VIEW_LOGS",
       "secondaryCta": "INITIATE_CONTACT",
       "cvCta": "DOWNLOAD_CV",
@@ -188,7 +189,7 @@
       ],
       "paragraphs": [
         "Backend, Architecture, and decision making under constraints. I don't build for hypothetical scale; I build for predictable evolution.",
-        "I work on systems that are already running in production or will be. That means dealing with constraints, legacy decisions, and real business impact.",
+          "I work on systems that are already running in production or will be. That means dealing with constraints, legacy decisions, real business impact, and covering multiple layers when needed: backend, data, delivery, tooling, and React UI.",
         "Architecture is not about drawing boxes, it is about controlling how complexity evolves over time."
       ],
       "modeBadge": "[MODE: OPINIONATED]",
@@ -236,63 +237,89 @@
     "caseStudies": {
       "title": "Case Studies",
       "subtitle": "[EXPANDABLE_ARCHIVE]",
-      "alias": "// REAL SYSTEM DECISIONS",
-      "footerHint": "/* expand() to inspect rationale */",
+      "alias": "// REAL SYSTEMS, REAL DECISIONS",
+      "footerHint": "/* expand() to inspect constraints, decisions, and outcomes */",
       "toggleHint": "expand case",
       "items": [
         {
           "id": "CS-001",
-          "title": "Re-architecting for 10x Load",
-          "summary": "From a growing monolith to a modular system with controlled complexity.",
-          "problem": "System complexity increased without clear boundaries, affecting maintainability and evolution.",
-          "decision": "Move to modular monolith with contract-based communication.",
+          "title": "From Clean Architecture to a modular monolith in a multi-tenant CRM",
+          "summary": "Architectural evolution of a business backend that stopped being simple.",
+          "problem": "The CRM backend had to support customer management, companies, operations, and integration with a retail ecosystem. The initial base worked, but domain growth and new integrations started to strain navigation, coupling, and maintainability.",
+          "decision": "Evolve from a classic Clean Architecture baseline into a modular backend with explicit module contracts, CQRS, and domain events, prioritizing controlled growth over premature distribution.",
           "tags": [
+            "C#",
+            ".NET 8",
+            ".NET 10",
             "MODULAR_MONOLITH",
             "CQRS",
-            "DOMAIN_EVENTS"
+            "DOMAIN_EVENTS",
+            "MULTI_TENANT"
           ],
           "status": "[PRODUCTION SYSTEM]",
           "statusClass": "bg-primary"
         },
         {
           "id": "CS-002",
-          "title": "OTP Authentication with AWS",
-          "summary": "Decoupling authentication flow using SNS and external services.",
-          "problem": "Tight coupling between authentication logic and core system.",
-          "decision": "Externalized OTP via AWS SNS with retry and validation flows.",
+          "title": "Company onboarding orchestration with distributed consistency",
+          "summary": "Reliable company creation flow coordinating multiple systems with compensating actions.",
+          "problem": "Creating a company was not a simple database operation. The flow had to generate credentials, create the user in AWS Cognito, persist the local user, create the company, and trigger credential delivery. If any step failed, the platform could end up in an inconsistent state, such as a Cognito user with no associated company.",
+          "decision": "An orchestrated saga was implemented to execute each step in order, persist workflow state, and apply compensating actions on failure. The operation was protected against duplicate retries, and credential delivery was decoupled from the main flow through asynchronous processing.",
           "tags": [
-            "AWS",
-            "SNS",
-            "AUTH",
-            "DECOUPLING"
+            "SAGA",
+            "ORCHESTRATION",
+            "AWS_COGNITO",
+            "OUTBOX",
+            "EVENT_DRIVEN",
+            "CONSISTENCY",
+            "IDEMPOTENCY"
           ],
-          "status": "[REAL WORLD BACKEND]",
+          "status": "[PRODUCTION SYSTEM]",
           "statusClass": "bg-primary"
         },
         {
           "id": "CS-003",
-          "title": "Automated Update System (WinForms)",
-          "summary": "Forced updates with background download and integrity validation.",
-          "problem": "Clients running outdated versions causing inconsistencies.",
-          "decision": "Background updater with checksum validation and mandatory updates.",
+          "title": "Mandatory updates for a production WinForms plugin",
+          "summary": "Controlled version delivery with integrity validation and release automation.",
+          "problem": "Clients running outdated versions created operational inconsistencies and increased support cost. The system needed an update strategy that was reliable, automated, and hard to bypass.",
+          "decision": "Build an automatic mandatory update system with background downloads, hash validation, and GitHub Actions / releases support, preserving operational continuity and version control.",
           "tags": [
-            "DESKTOP",
-            "UPDATES",
-            "DEVOPS"
+            "WINFORMS",
+            "AUTO_UPDATES",
+            "GITHUB_ACTIONS",
+            "DEVOPS",
+            "DESKTOP"
           ],
-          "status": "[USED IN PRODUCTION]",
+          "status": "[REAL WORLD DESKTOP]",
           "statusClass": "bg-primary"
+        },
+        {
+          "id": "CS-004",
+          "title": "Forced microservices rewrite without real context",
+          "summary": "A case where architecture was defined before the problem was understood.",
+          "problem": "A legacy PHP system had to be replaced entirely with a new .NET solution. The initial decision was to move directly into a microservices architecture without validating whether the system context actually required it.",
+          "decision": "A full rewrite based on microservices was chosen from the start, introducing multiple services, distributed communication, and higher operational complexity without a stable functional base.",
+          "tags": [
+            "MICROSERVICES",
+            "LEGACY",
+            "ARCHITECTURE",
+            "ANTI_PATTERN",
+            "REAL_WORLD"
+          ],
+          "status": "[ARCHITECTURE MISALIGNMENT]",
+          "statusClass": "bg-error"
         }
       ]
     },
     "artifacts": {
       "title": "ARTIFACTS",
       "subtitle": "[BUILD_LOG]",
-      "alias": "// PROJECTS & LIBRARIES",
+      "alias": "// PROJECTS, LIBRARIES, AND TOOLING",
       "inventoryLabel": "INVENTORY",
       "buildLogLabel": "BUILD_LOG",
       "systemComponentsLabel": "SYSTEM COMPONENTS",
-      "systemComponentsAlias": "// SYSTEMS I'VE BUILT",
+      "systemComponentsAlias": "// COMPONENTS I'VE BUILT",
+      "trackLabel": "TRACK",
       "typeLabel": "TYPE",
       "statusLabel": "STATUS",
       "detailsLabel": "TECHNICAL_DETAILS",
@@ -300,136 +327,235 @@
       "distributionLabel": "DISTRIBUTION",
       "repoLabel": "REPO",
       "intentLabel": "INTENT",
-      "items": [
-        {
-          "id": "PRJ-001",
-          "name": "Html2Pdf",
-          "type": "BACKEND_LIBRARY",
-          "status": "ACTIVE",
-          "description": ".NET library for deterministic HTML to PDF generation in service workflows.",
-          "details": [
-            "RazorLight templates compiled for stable document rendering.",
-            "PuppeteerSharp browser pool reduces startup overhead in batch exports.",
-            "DI-ready integration for API and worker processes."
-          ],
-          "stack": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
-          "distribution": "NuGet / Nast.Html2Pdf",
-          "distributionHref": "https://www.nuget.org/packages/Nast.Html2Pdf",
-          "distributionLabel": "OPEN_NUGET",
-          "repoHref": "https://github.com/NastMz/Html2Pdf",
-          "intent": "Standardize PDF output as an infrastructure component instead of project-specific scripts."
-        },
-        {
-          "id": "PRJ-002",
-          "name": "SimpleMediator",
-          "type": "BACKEND_LIBRARY",
-          "status": "ACTIVE",
-          "description": "Mediator/CQRS kernel focused on explicit handlers and low operational footprint.",
-          "details": [
-            "Zero external dependencies to keep adoption and upgrades predictable.",
-            "Command/query separation encourages bounded use cases.",
-            "Pipeline abstraction allows cross-cutting concerns without framework lock-in."
-          ],
-          "stack": [".NET 8", "C#", "CQRS", "Mediator"],
-          "distribution": "NuGet / Nast.SimpleMediator",
-          "distributionHref": "https://www.nuget.org/packages/Nast.SimpleMediator",
-          "distributionLabel": "OPEN_NUGET",
-          "repoHref": "https://github.com/NastMz/SimpleMediator",
-          "intent": "Keep domain orchestration explicit while minimizing framework-driven boilerplate."
-        },
-        {
-          "id": "PRJ-003",
-          "name": "Flask Forge CLI",
-          "type": "CLI_TOOL",
-          "status": "ACTIVE",
-          "description": "CLI scaffold for repeatable Flask project initialization with modular defaults.",
-          "details": [
-            "Template-driven generation for folders, modules, and baseline configuration.",
-            "Migration tooling prewired with SQLAlchemy and Alembic conventions.",
-            "Typer command layer simplifies command extension by team workflows."
-          ],
-          "stack": ["Python", "Flask", "Typer", "Jinja2", "SQLAlchemy", "Alembic"],
-          "distribution": "PyPI / flask-forge-cli",
-          "distributionHref": "https://pypi.org/project/flask-forge-cli/",
-          "distributionLabel": "OPEN_PYPI",
-          "repoHref": "https://github.com/NastMz/flask-forge-cli",
-          "intent": "Reduce setup variance and enforce a documented starting architecture for Flask services."
-        }
-      ]
+        "items": [
+          {
+            "id": "PRJ-001",
+            "track": "CORE",
+            "name": "Html2Pdf",
+            "type": "LIBRERIA_BACKEND",
+            "status": "PUBLISHED",
+            "description": ".NET library for turning HTML into PDF when a backend needs repeatable document generation without duplicating rendering logic per project.",
+            "details": [
+              "Solves document generation from HTML templates without rebuilding rendering pipelines in every system.",
+              "Uses RazorLight and PuppeteerSharp to keep output consistent for reports, receipts, and operational documents.",
+              "Fits service flows, jobs, or batch processes where PDF is a cross-cutting capability instead of an isolated feature."
+            ],
+            "stack": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
+            "distribution": "NuGet / Html2Pdf",
+            "distributionHref": "https://www.nuget.org/packages/Nast.Html2Pdf",
+            "distributionLabel": "OPEN_NUGET",
+            "repoHref": "https://github.com/NastMz/Html2Pdf",
+            "intent": "Turn PDF generation into reusable backend infrastructure for systems that produce documents under business rules."
+          },
+          {
+            "id": "PRJ-002",
+            "track": "CORE",
+            "name": "SimpleMediator",
+            "type": "LIBRERIA_BACKEND",
+            "status": "PUBLISHED",
+            "description": "Lightweight Mediator/CQRS implementation for .NET for systems that need command/query separation without paying for ornamental complexity.",
+            "details": [
+              "Solves common boilerplate in .NET applications built around handlers, requests, and simple composition.",
+              "Exists to keep write/read boundaries explicit without depending on heavier packages when the problem does not justify them.",
+              "Used in modular backends, business APIs, and internal libraries where structural clarity matters more than endless extension points."
+            ],
+            "stack": [".NET 8", "C#", "CQRS", "Mediator"],
+            "distribution": "NuGet / SimpleMediator",
+            "distributionHref": "https://www.nuget.org/packages/Nast.SimpleMediator",
+            "distributionLabel": "OPEN_NUGET",
+            "repoHref": "https://github.com/NastMz/SimpleMediator",
+            "intent": "Reduce accidental overhead in small and medium CQRS implementations while keeping the structure explicit."
+          },
+          {
+            "id": "PRJ-003",
+            "track": "CORE",
+            "name": "Flask Forge CLI",
+            "type": "HERRAMIENTA_CLI",
+            "status": "PUBLISHED",
+            "description": "CLI for bootstrapping Flask projects when Python is the right runtime for a service or developer tool and the starting point must stay consistent.",
+            "details": [
+              "Solves repetitive project setup by generating structure, conventions, and baseline configuration ready to evolve.",
+              "Exists to avoid inconsistent manual setup and to shorten the path from idea to working service.",
+              "Used for small APIs, internal utilities, or tools where Python/Flask fits the problem better than forcing the primary stack everywhere."
+            ],
+            "stack": ["Python", "Flask", "Typer", "Jinja2", "SQLAlchemy", "Alembic"],
+            "distribution": "PyPI / flask-forge-cli",
+            "distributionHref": "https://pypi.org/project/flask-forge-cli/",
+            "distributionLabel": "OPEN_PYPI",
+            "repoHref": "https://github.com/NastMz/flask-forge",
+            "intent": "Standardize the starting point of Flask projects and make setup a repeatable operation."
+          },
+          {
+            "id": "PRJ-004",
+            "track": "CORE",
+            "name": "light-query",
+            "type": "FRONTEND_LIBRARY",
+            "status": "PUBLISHED",
+            "description": "React hooks library for remote data flows with a small API and a deliberate focus on reducing integration noise.",
+            "details": [
+              "Wraps fetch, loading states, and basic synchronization so components do not repeat transport plumbing.",
+              "Keeps the surface area intentionally small for teams that want control without adopting a heavier caching runtime.",
+              "Fits React frontends where clarity of integration matters more than maximizing abstraction coverage."
+            ],
+            "stack": ["React", "TypeScript", "NPM"],
+            "distribution": "NPM / @nastmz/light-query",
+            "distributionHref": "https://www.npmjs.com/package/@nastmz/light-query",
+            "distributionLabel": "OPEN_NPM",
+            "repoHref": "https://github.com/NastMz/light-query",
+            "intent": "Simplify API consumption in React without hiding the actual data flow or adding accidental complexity."
+          },
+          {
+            "id": "PRJ-005",
+            "track": "EXPERIMENTAL",
+            "name": "Vanilla SPA",
+            "type": "FRONTEND_FRAMEWORK",
+            "status": "PUBLIC_EXPLORATION",
+            "description": "Dependency-free SPA architecture used to test routing, state, and UI composition on top of browser-native APIs.",
+            "details": [
+              "Measures how much runtime a framework is actually buying compared with an organized native baseline.",
+              "Implements routing, a reactive store, and component composition with ES Modules and minimal tooling.",
+              "Has a public deployment, but the main role is frontend architecture exploration rather than general production adoption."
+            ],
+            "stack": ["JavaScript", "HTML", "CSS", "Vite", "ES Modules"],
+            "distribution": "DEPLOY / VERCEL",
+            "distributionHref": "https://vanilla-spa-indol.vercel.app/",
+            "distributionLabel": "OPEN_DEMO",
+            "repoHref": "https://github.com/NastMz/vanilla-spa",
+            "intent": "Explore how far a real SPA can be pushed with native primitives before introducing a framework."
+          },
+          {
+            "id": "PRJ-006",
+            "track": "EXPERIMENTAL",
+            "name": "mini-php-framework",
+            "type": "BACKEND_FRAMEWORK",
+            "status": "PUBLIC_EXPLORATION",
+            "description": "PHP micro-framework for exploring a minimal core with routing, middleware, and SQLite persistence under PSR conventions.",
+            "details": [
+              "Isolates the basics of a request pipeline without starting from a full framework stack.",
+              "Uses PSR standards to preserve interoperability while testing a deliberately small and explicit base.",
+              "Has Packagist distribution, but its role is to investigate lightweight framework decisions rather than package a closed platform."
+            ],
+            "stack": ["PHP 8.4+", "PSR-4/12/15", "SQLite"],
+            "distribution": "PACKAGIST / miniframework/installer",
+            "distributionHref": "https://packagist.org/packages/miniframework/installer",
+            "distributionLabel": "OPEN_PACKAGIST",
+            "repoHref": "https://github.com/NastMz/mini-php-framework",
+            "intent": "Test the minimum viable set of backend framework decisions to understand the real cost of abstraction in PHP."
+          }
+        ]
     },
     "decisionLog": {
       "title": "Decision Log",
       "alias": "// ARCHITECTURAL DECISIONS",
       "storeLabel": "[LOG_STORE: PERMANENT]",
       "tradeoffLabel": "[TRADE-OFF]",
-      "footerHint": "/* better a monolith than a mess */",
+      "footerHint": "/* explicit decisions beat implicit complexity */",
       "items": [
         {
           "id": "DL-001",
           "statusClass": "bg-primary",
           "status": "[STATUS: ACCEPTED]",
-          "context": "[CONTEXT: DOMAIN_MODEL]",
-          "title": "CQRS for Domain Evolution",
-          "body": "One model was slowing down both feature work and reporting. Splitting reads from writes protected critical rules without hurting queries.",
-          "tradeoff": "COMPLEXITY ↑ / DOMAIN CLARITY ↑"
+          "context": "[CONTEXT: ARCHITECTURE]",
+          "title": "Modular monolith before premature microservices",
+          "body": "As the system grew, the real need was to control boundaries and internal navigation, not to distribute problems across the network. Explicit modularity was prioritized before physical extraction.",
+          "tradeoff": "IMMEDIATE_DISTRIBUTION ↓ / COMPLEXITY_CONTROL ↑"
         },
         {
           "id": "DL-002",
-          "statusClass": "bg-error",
-          "status": "[STATUS: DEPRECATED]",
-          "context": "[CONTEXT: DATA_ACCESS]",
-          "title": "Shared DB Access",
-          "body": "Letting modules touch the same tables felt fast, but it hid dependencies and made local changes unsafe.",
-          "tradeoff": "SPEED ↓ / SAFETY ↑"
+          "statusClass": "bg-primary",
+          "status": "[STATUS: ACCEPTED]",
+          "context": "[CONTEXT: DOMAIN_MODEL]",
+          "title": "CQRS to isolate domain evolution",
+          "body": "The same model no longer served equally well for business rule writes and operational reads. Separating reads and writes made domain changes safer.",
+          "tradeoff": "STRUCTURAL_COMPLEXITY ↑ / DOMAIN_CLARITY ↑"
         },
         {
           "id": "DL-003",
-          "statusClass": "bg-tertiary-container",
-          "status": "[STATUS: ACCEPTED]",
-          "context": "[CONTEXT: ARCHITECTURE]",
-          "title": "Contract-Based Modules",
-          "body": "Each module needed boundaries people could actually trust. Contracts make the allowed integration points explicit.",
-          "tradeoff": "UPFRONT DESIGN COST ↑ / COUPLING ↓"
+          "statusClass": "bg-error",
+          "status": "[STATUS: DEPRECATED]",
+          "context": "[CONTEXT: DATA_ACCESS]",
+          "title": "Shared data access across modules",
+          "body": "Sharing tables or bypassing module boundaries looked practical, but it hid dependencies and made local changes unsafe.",
+          "tradeoff": "LOCAL_SPEED ↓ / SYSTEM_SAFETY ↑"
         },
         {
           "id": "DL-004",
           "statusClass": "bg-tertiary-container",
+          "status": "[STATUS: ACCEPTED]",
+          "context": "[CONTEXT: DISTRIBUTED_FLOW]",
+          "title": "Orchestrated saga for onboarding with multiple side effects",
+          "body": "When creating a company touches identity, database state, and notifications, a local transaction is no longer enough. Explicit orchestration, compensations, and idempotency were prioritized over accidental consistency.",
+          "tradeoff": "ORCHESTRATION_COMPLEXITY ↑ / BUSINESS_CONSISTENCY ↑"
+        },
+        {
+          "id": "DL-005",
+          "statusClass": "bg-tertiary-container",
           "status": "[STATUS: EVALUATING]",
           "context": "[CONTEXT: OBSERVABILITY]",
-          "title": "OpenTelemetry Adoption",
-          "body": "Right now every service explains failures differently. Standard traces and metrics would shorten debugging under pressure.",
-          "tradeoff": "SETUP COST ↑ / DEBUGGING ↓"
+          "title": "OpenTelemetry as a common observability language",
+          "body": "When each component explains failures differently, diagnostics under pressure become expensive. Unifying traces and metrics improves system readability.",
+          "tradeoff": "SETUP_COST ↑ / DIAGNOSTIC_TIME ↓"
         }
       ]
     },
     "stack": {
       "title": "Stack Protocols",
       "alias": "// TECHNOLOGIES & TOOLS",
-      "footerHint": "/* evaluate_stack() returned 0 errors */",
+      "footerHint": "/* the stack follows the problem, not the vendor */",
       "items": [
         {
-          "id": "stack-runtime",
-          "category": "[RUNTIMES]",
+          "id": "stack-primary",
+          "category": "[CORE_RUNTIME]",
           "name": "C# / .NET",
-          "detail": "Primary environment for backend systems and architectural design"
+          "detail": "Primary environment for backend, APIs, and system design with focus on structural clarity and controlled evolution."
         },
         {
-          "id": "stack-persistence",
-          "category": "[PERSISTENCE]",
-          "name": "PostgreSQL / MySQL",
-          "detail": "Relational systems with focus on data modeling and query optimization"
+          "id": "stack-data",
+          "category": "[DATA]",
+          "name": "SQL Server / PostgreSQL / MySQL",
+          "detail": "Relational modeling, query optimization, and support for production systems across different operational contexts."
         },
         {
-          "id": "stack-state",
-          "category": "[STATE]",
-          "name": "Redis",
-          "detail": "Cache used deliberately, not as a workaround for bad design"
+          "id": "stack-access",
+          "category": "[ACCESS_LAYER]",
+          "name": "EF Core / Dapper",
+          "detail": "A balance between productivity and control depending on the access pattern and the level of precision the system needs."
         },
         {
-          "id": "stack-orchestration",
-          "category": "[ORCHESTRATION]",
+          "id": "stack-cloud-aws",
+          "category": "[CLOUD]",
           "name": "AWS",
-          "detail": "Used for authentication, messaging and infrastructure support"
+          "detail": "Use of SNS, Cognito, S3, and SES for messaging, authentication, and infrastructure support in distributed flows."
+        },
+        {
+          "id": "stack-cloud-azure",
+          "category": "[CLOUD]",
+          "name": "Azure",
+          "detail": "Use of Azure DevOps, Application Insights, SQL Server, PostgreSQL, Cosmos DB, Virtual Machines, App Service, and API Management in enterprise environments and real delivery cycles."
+        },
+        {
+          "id": "stack-devops",
+          "category": "[DELIVERY]",
+          "name": "GitHub Actions / Azure DevOps / Docker",
+          "detail": "Automation of builds, deployments, and version control in production, with focus on repeatability and operational continuity."
+        },
+        {
+          "id": "stack-observability",
+          "category": "[OBSERVABILITY]",
+          "name": "OpenTelemetry / Application Insights",
+          "detail": "Tracing and monitoring for technical diagnosis in distributed systems and environments with multiple integrations."
+        },
+        {
+          "id": "stack-frontend",
+          "category": "[FRONTEND]",
+          "name": "React / Next.js",
+          "detail": "Real frontend and full stack experience for building complete solutions when the context requires going all the way to the interface layer."
+        },
+        {
+          "id": "stack-alt",
+          "category": "[ALTERNATIVE_RUNTIME]",
+          "name": "Python / Django / Flask",
+          "detail": "Used in tooling, APIs, and scenarios where the problem or team requires going beyond the main stack without losing technical consistency."
         }
       ]
     },
@@ -442,36 +568,54 @@
           "borderClass": "border-l border-primary/30",
           "markerClass": "bg-primary",
           "tagClass": "text-primary/50",
-          "title": "\"Microservices aren't free.\"",
-          "tag": "They don't remove complexity, they relocate it.",
-          "body": "If a team still struggles with one monolith, splitting it usually adds coordination, network, and ops cost without fixing the core issue."
+          "title": "\"Microservices do not fix a poorly designed system.\"",
+          "tag": "They only distribute the cost of bad decisions.",
+          "body": "If a team still does not control boundaries, data, and dependencies inside a monolith, splitting it into services adds coordination, network overhead, and more failure points."
         },
         {
           "id": "N-002",
           "borderClass": "border-l border-zinc-800",
           "markerClass": "bg-zinc-800",
           "tagClass": "text-zinc-600",
-          "title": "\"Architecture is deciding what to leave out.\"",
-          "tag": "Every abstraction has a cost.",
-          "body": "A strong system improves by removing unnecessary pieces, not by collecting patterns for their own sake."
+          "title": "\"Architecture is not drawing boxes.\"",
+          "tag": "It is deciding which complexity is worth paying for.",
+          "body": "A lot of diagrams look fine until production happens. Useful architecture shows up when changes are still possible months later."
         },
         {
           "id": "N-003",
           "borderClass": "border-l border-primary/20",
           "markerClass": "bg-primary/80",
           "tagClass": "text-primary/40",
-          "title": "\"Clean Architecture is not enough.\"",
-          "tag": "Structure without boundaries is still fragile.",
-          "body": "Nice layers help, but if modules can still leak into each other the system remains fragile."
+          "title": "\"Clean Architecture alone will not save you.\"",
+          "tag": "Neat folders do not replace real boundaries.",
+          "body": "You can have very clean layers and still be trapped in a fragile system if everything ends up knowing too much about everything else."
         },
         {
           "id": "N-004",
           "borderClass": "border-l border-zinc-700",
           "markerClass": "bg-zinc-700",
           "tagClass": "text-zinc-500",
-          "title": "\"Most systems fail silently.\"",
-          "tag": "Not with crashes, but with complexity.",
-          "body": "A system can stay online and still decay until every change becomes slow, risky, and expensive."
+          "title": "\"Most systems do not die in a crash.\"",
+          "tag": "They die when every change becomes slow and expensive.",
+          "body": "Software can stay online for months while losing maintainability, clarity, and speed of evolution. That deterioration is also failure."
+        },
+        {
+          "id": "N-005",
+          "borderClass": "border-l border-primary/20",
+          "markerClass": "bg-primary/70",
+          "tagClass": "text-primary/40",
+          "title": "\"The stack matters less than the ability to use it with judgment.\"",
+          "tag": "Technology without judgment only changes the type of problem.",
+          "body": "I am not interested in defending tools like a religion. I care about choosing them according to constraints, costs, and system shape."
+        },
+        {
+          "id": "N-006",
+          "borderClass": "border-l border-primary/30",
+          "markerClass": "bg-primary",
+          "tagClass": "text-primary/50",
+          "title": "\"Knowing a language is not the same as solving problems.\"",
+          "tag": "Technology ≠ judgment.",
+          "body": "You can master a framework and still not understand how to build a system. Tools change; modeling, boundaries, and evolution problems do not. If your value depends on one specific technology, it is fragile. Judgment is what actually scales across contexts."
         }
       ]
     },
