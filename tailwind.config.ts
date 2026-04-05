@@ -122,9 +122,9 @@ const config: Config = {
 			sm: 'calc(var(--radius) - 4px)'
 		},
 		fontFamily: {
-			headline: ['Space Grotesk', 'sans-serif'],
-			body: ['Inter', 'sans-serif'],
-			label: ['JetBrains Mono', 'monospace'],
+			headline: ['var(--font-space-grotesk)', 'sans-serif'],
+			body: ['var(--font-inter)', 'sans-serif'],
+			label: ['var(--font-jetbrains-mono)', 'monospace'],
 		},
 		keyframes: {
   			'accordion-down': {
