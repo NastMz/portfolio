@@ -2,6 +2,8 @@ import { getMessages } from 'next-intl/server'
 import type { Locale } from '@/i18n/config'
 import type { V2RouteKey } from '@/features/v2/content/sections'
 import { V2ContactTerminalForm, type V2ContactTerminalFormCopy } from '@/features/v2/ui/V2ContactTerminalForm'
+import { V2BootOverlay } from '@/features/v2/ui/V2BootOverlay'
+import { V2BootReplayTitle } from '@/features/v2/ui/V2BootReplayTitle'
 import { V2CustomCursor } from '@/features/v2/ui/V2CustomCursor'
 
 interface V2PortfolioPageProps {
@@ -310,7 +312,7 @@ function resolveCanonicalNav(items: V2NavLink[]): V2NavLink[] {
 function TopBar({ copy, localeSwitchCode, localeSwitchHref }: { copy: V2TopBarCopy; localeSwitchCode: string; localeSwitchHref: string }) {
   return (
     <header className="bg-[#0E0E0E] text-[#FF7CF5] font-headline tracking-tight text-sm uppercase flex justify-between items-center w-full px-6 py-4 max-w-full fixed top-0 z-50 border-b border-zinc-800/30">
-      <div className="font-label font-bold text-[#FF7CF5] tracking-tighter text-[10px] md:text-base">{copy.title}</div>
+      <V2BootReplayTitle label={copy.title} />
       <nav aria-label="V2 main navigation" className="hidden md:flex gap-8">
         {copy.nav.map((item, index) => (
           <a
@@ -887,37 +889,39 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
 
   return (
     <div className="v2-route v2-faithful bg-grid selection:bg-primary selection:text-on-primary relative" data-locale={locale} id="top">
-      <V2CustomCursor />
-      <div className="interference-line top-1/4 -left-1/2" />
-      <div className="interference-line top-3/4 -left-1/4" />
+      <V2BootOverlay>
+        <V2CustomCursor />
+        <div className="interference-line top-1/4 -left-1/2" />
+        <div className="interference-line top-3/4 -left-1/4" />
 
-      <div className="fixed top-24 right-8 z-50 pointer-events-none hidden lg:block">
-        <div className="bg-surface-container border border-primary/20 p-2 font-label text-[10px]">
-          <div className="text-zinc-600 mb-1">{copy.floatingPanel.label}</div>
-          <div className="text-primary font-bold">{copy.floatingPanel.value}</div>
+        <div className="fixed top-24 right-8 z-50 pointer-events-none hidden lg:block">
+          <div className="bg-surface-container border border-primary/20 p-2 font-label text-[10px]">
+            <div className="text-zinc-600 mb-1">{copy.floatingPanel.label}</div>
+            <div className="text-primary font-bold">{copy.floatingPanel.value}</div>
+          </div>
         </div>
-      </div>
 
-      <TopBar copy={copy.topBar} localeSwitchHref={localeSwitchHref} localeSwitchCode={localeSwitchCode} />
-      <Sidebar brandTitle={copy.hero.title} copy={{ ...copy.sidebar, nav: canonicalNav }} />
-      <MobileBottomNav items={canonicalNav} />
+        <TopBar copy={copy.topBar} localeSwitchHref={localeSwitchHref} localeSwitchCode={localeSwitchCode} />
+        <Sidebar brandTitle={copy.hero.title} copy={{ ...copy.sidebar, nav: canonicalNav }} />
+        <MobileBottomNav items={canonicalNav} />
 
-      <main className="pt-24 pb-[calc(7rem+env(safe-area-inset-bottom))] md:ml-64 md:pb-24 relative z-10" id="main-content">
-        <div className="scroll-mt-28" id="overview" />
-        <HeroSection copy={copy.hero} cvHref={cvHref} />
-        <AboutSection copy={copy.about} />
-        <CorePrinciplesSection items={copy.principles.items} title={copy.principles.title} />
-        <div className="scroll-mt-28" id="systems" />
-        <CaseStudiesSection copy={copy.caseStudies} />
-        <ArtifactsSection copy={copy.artifacts} />
-        <DecisionLogSection copy={copy.decisionLog} />
-        <div className="scroll-mt-28" id="stack" />
-        <StackEvaluationSection copy={copy.stack} />
-        <NotesSection copy={copy.notes} />
-        <ContactSection copy={copy.contact} />
-      </main>
+        <main className="pt-24 pb-[calc(7rem+env(safe-area-inset-bottom))] md:ml-64 md:pb-24 relative z-10" id="main-content">
+          <div className="scroll-mt-28" id="overview" />
+          <HeroSection copy={copy.hero} cvHref={cvHref} />
+          <AboutSection copy={copy.about} />
+          <CorePrinciplesSection items={copy.principles.items} title={copy.principles.title} />
+          <div className="scroll-mt-28" id="systems" />
+          <CaseStudiesSection copy={copy.caseStudies} />
+          <ArtifactsSection copy={copy.artifacts} />
+          <DecisionLogSection copy={copy.decisionLog} />
+          <div className="scroll-mt-28" id="stack" />
+          <StackEvaluationSection copy={copy.stack} />
+          <NotesSection copy={copy.notes} />
+          <ContactSection copy={copy.contact} />
+        </main>
 
-      <Footer copy={copy.footer} />
+        <Footer copy={copy.footer} />
+      </V2BootOverlay>
     </div>
   )
 }
