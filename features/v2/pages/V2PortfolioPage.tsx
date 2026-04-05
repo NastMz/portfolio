@@ -1,5 +1,6 @@
 import type { Locale } from '@/i18n/config'
 import type { V2RouteKey } from '@/features/v2/content/sections'
+import { V2ContactTerminalForm } from '@/features/v2/ui/V2ContactTerminalForm'
 
 interface V2PortfolioPageProps {
   locale: Locale
@@ -49,25 +50,37 @@ function Sidebar() {
 
       <div className="flex-1">
         <a className="bg-[#FF7CF5] text-[#580058] p-4 md:p-3 flex items-center gap-4 transition-none" href="#hero">
-          <span className="material-symbols-outlined text-lg">terminal</span>
+          <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6l6 6-6 6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+            <path d="M12 18h8" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+          </svg>
           <span className="hidden md:inline">[OVERVIEW]</span>
         </a>
         <a className="text-zinc-600 p-4 md:p-3 flex items-center gap-4 hover:bg-zinc-800 hover:text-[#FF7CF5] transition-none" href="#identity">
-          <span className="material-symbols-outlined text-lg">dns</span>
+          <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="12" cy="6" rx="6" ry="2.5" stroke="currentColor" strokeWidth="1.6" />
+            <path d="M6 6v8c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V6" stroke="currentColor" strokeWidth="1.6" />
+            <path d="M6 10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5" stroke="currentColor" strokeWidth="1.6" />
+          </svg>
           <span className="hidden md:inline">[NETWORK]</span>
         </a>
         <a
           className="text-zinc-600 p-4 md:p-3 flex items-center gap-4 hover:bg-zinc-800 hover:text-[#FF7CF5] transition-none"
           href="#decision-log"
         >
-          <span className="material-symbols-outlined text-lg">memory</span>
+          <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect height="8" rx="1.2" stroke="currentColor" strokeWidth="1.6" width="12" x="6" y="8" />
+            <path d="M9 5v3M15 5v3M9 16v3M15 16v3M4 10h2M4 14h2M18 10h2M18 14h2" stroke="currentColor" strokeLinecap="round" strokeWidth="1.6" />
+          </svg>
           <span className="hidden md:inline">[RESOURCES]</span>
         </a>
         <a
           className="text-zinc-600 p-4 md:p-3 flex items-center gap-4 hover:bg-zinc-800 hover:text-[#FF7CF5] transition-none"
           href="#stack-evaluation"
         >
-          <span className="material-symbols-outlined text-lg">code</span>
+          <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 8l-4 4 4 4M15 8l4 4-4 4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+          </svg>
           <span className="hidden md:inline">[SHELL]</span>
         </a>
       </div>
@@ -83,9 +96,12 @@ function Sidebar() {
           </div>
           <div className="text-[8px] text-zinc-700 mt-2 font-label">LATEST_LOG: 200 OK - /api/health</div>
         </div>
-        <button className="w-full bg-zinc-800 text-zinc-400 py-2 text-[10px] hidden md:block hover:text-primary transition-none mb-4">
+        <a
+          className="w-full bg-zinc-800 text-zinc-400 py-2 text-[10px] hidden md:block hover:text-primary transition-none mb-4 text-center"
+          href="#contact"
+        >
           [INITIATE_CONTACT]
-        </button>
+        </a>
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2 text-zinc-700">
             <span className="material-symbols-outlined text-sm">info</span>
@@ -99,7 +115,7 @@ function Sidebar() {
 
 function HeroSection() {
   return (
-    <section className="px-8 md:px-16 py-12 border-b border-zinc-800/20" id="hero">
+    <section className="px-8 md:px-16 py-12 border-b border-zinc-800/20 scroll-mt-28" id="hero">
       <div className="max-w-5xl">
         <div className="font-label text-primary text-sm mb-4 tracking-[0.2em] uppercase">[IDENTITY_VERIFIED]</div>
         <h1 className="font-headline text-5xl md:text-8xl font-bold tracking-tighter mb-4">
@@ -118,10 +134,12 @@ function HeroSection() {
           which complexity is worth paying for.&quot;
         </p>
         <div className="flex flex-wrap gap-4 items-center">
-          <button className="bg-primary text-on-primary px-8 py-4 font-label text-sm font-bold glitch-hover">VIEW_LOGS</button>
-          <button className="border border-outline-variant/30 text-primary px-8 py-4 font-label text-sm font-bold hover:bg-primary/10 transition-none">
+          <a className="bg-primary text-on-primary px-8 py-4 font-label text-sm font-bold glitch-hover inline-flex" href="#decision-log">
+            VIEW_LOGS
+          </a>
+          <a className="border border-outline-variant/30 text-primary px-8 py-4 font-label text-sm font-bold hover:bg-primary/10 transition-none inline-flex" href="#contact">
             INITIATE_CONTACT
-          </button>
+          </a>
           <div className="ml-4 font-label text-[10px] text-zinc-700 hidden lg:block">{'/* latency_sensitive: true */'}</div>
         </div>
       </div>
@@ -132,7 +150,7 @@ function HeroSection() {
 function IdentitySection() {
   return (
     <section
-      className="grid grid-cols-1 lg:grid-cols-12 px-8 md:px-16 py-24 gap-12 items-start border-b border-zinc-800/20 bg-surface-container-low/50 relative"
+      className="grid grid-cols-1 lg:grid-cols-12 px-8 md:px-16 py-24 gap-12 items-start border-b border-zinc-800/20 bg-surface-container-low/50 relative scroll-mt-28"
       id="identity"
     >
       <div className="lg:col-span-5 lg:-translate-x-4">
@@ -169,7 +187,7 @@ function IdentitySection() {
 
 function CorePrinciplesSection() {
   return (
-    <section className="px-8 md:px-16 py-32 relative" id="core-principles">
+    <section className="px-8 md:px-16 py-32 relative scroll-mt-28" id="core-principles">
       <div className="absolute right-0 top-1/4 h-[1px] w-64 bg-primary/20 rotate-45 pointer-events-none" />
       <div className="font-label text-primary text-xs mb-16 tracking-widest text-center">[CORE_MANIFESTO]</div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
@@ -253,7 +271,7 @@ function FeaturedCaseStudySection() {
 
 function DecisionLogSection() {
   return (
-    <section className="px-8 md:px-16 py-32 bg-black scanline-magenta border-b border-zinc-900" id="decision-log">
+    <section className="px-8 md:px-16 py-32 bg-black scanline-magenta border-b border-zinc-900 scroll-mt-28" id="decision-log">
       <div className="flex items-center justify-between mb-12">
         <h3 className="font-headline text-3xl font-bold">Decision Log</h3>
         <div className="h-[1px] flex-1 bg-primary/20 mx-8" />
@@ -312,7 +330,7 @@ function DecisionLogSection() {
 
 function StackEvaluationSection() {
   return (
-    <section className="px-8 md:px-16 py-24 bg-surface-container-low/30" id="stack-evaluation">
+    <section className="px-8 md:px-16 py-24 bg-surface-container-low/30 scroll-mt-28" id="stack-evaluation">
       <div className="font-label text-center text-primary text-xs mb-16 tracking-[0.3em] uppercase">[STACK_EVALUATION_PROTOCOLS]</div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-zinc-800/40">
         {[
@@ -373,32 +391,12 @@ function NotesSection() {
 
 function ContactSection() {
   return (
-    <section className="px-8 md:px-16 py-32 bg-surface-container-lowest flex flex-col items-center text-center" id="contact">
+    <section className="px-8 md:px-16 py-32 bg-surface-container-lowest flex flex-col items-center text-center scroll-mt-28" id="contact">
       <div className="w-full max-w-2xl">
         <div className="font-label text-primary text-xs mb-6 tracking-[0.5em] uppercase">[INITIATE_HANDSHAKE]</div>
         <h3 className="font-headline text-4xl md:text-6xl font-bold mb-8">Ready to scale without the drama?</h3>
         <p className="font-body text-zinc-500 mb-12">If you need systems that remain maintainable as they grow, we should talk.</p>
-        <form className="space-y-4">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-1 relative group">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-label">&gt;</span>
-              <input
-                className="w-full bg-surface-container border border-outline-variant/20 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs"
-                placeholder="IDENTITY"
-                type="text"
-              />
-            </div>
-            <div className="flex-1 relative group">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-label">$</span>
-                <input
-                  className="w-full bg-surface-container border border-outline-variant/20 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs"
-                  placeholder="ENDPOINT_ADDRESS"
-                  type="email"
-                />
-              </div>
-          </div>
-          <button className="w-full bg-primary text-on-primary py-5 font-headline font-bold text-xl glitch-hover">SEND_MESSAGE</button>
-        </form>
+        <V2ContactTerminalForm />
       </div>
     </section>
   )
@@ -406,42 +404,23 @@ function ContactSection() {
 
 function Footer() {
   return (
-    <footer className="bg-[#0E0E0E] text-[#FF7CF5] font-label text-[10px] uppercase w-full px-8 py-12 flex flex-col md:flex-row justify-between items-center md:items-end border-t border-zinc-800/20 relative z-10">
+    <footer className="bg-[#0E0E0E] text-[#FF7CF5] font-label text-[10px] uppercase w-full px-8 py-12 flex flex-col md:flex-row justify-between items-center md:items-end border-t border-zinc-800/20 relative z-10 scroll-mt-28" id="footer">
       <div className="mb-8 md:mb-0">
         <div className="text-[#FF7CF5] font-bold mb-2">KEVIN_MARTINEZ_PORTFOLIO</div>
         <div className="text-zinc-700">[BUILD_2024.11] // ALL_RIGHTS_RESERVED</div>
       </div>
       <div className="flex gap-8">
-        <a className="text-zinc-700 hover:text-[#FF7CF5] transition-none" href="#">
+        <a className="text-zinc-700 hover:text-[#FF7CF5] transition-none" href="#footer">
           LICENSE
         </a>
-        <a className="text-zinc-700 hover:text-[#FF7CF5] transition-none" href="#">
+        <a className="text-zinc-700 hover:text-[#FF7CF5] transition-none" href="#core-principles">
           DOCS
         </a>
-        <a className="text-zinc-700 hover:text-[#FF7CF5] transition-none" href="#">
+        <a className="text-zinc-700 hover:text-[#FF7CF5] transition-none" href="#decision-log">
           SECURITY_LOGS
         </a>
       </div>
     </footer>
-  )
-}
-
-function MobileBottomNav() {
-  return (
-    <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-low border-t border-zinc-800/50 flex justify-around py-4 z-50">
-      <a className="text-primary flex flex-col items-center" href="#hero">
-        <span className="material-symbols-outlined">terminal</span>
-      </a>
-      <a className="text-zinc-500 flex flex-col items-center" href="#identity">
-        <span className="material-symbols-outlined">dns</span>
-      </a>
-      <a className="text-zinc-500 flex flex-col items-center" href="#decision-log">
-        <span className="material-symbols-outlined">memory</span>
-      </a>
-      <a className="text-zinc-500 flex flex-col items-center" href="#stack-evaluation">
-        <span className="material-symbols-outlined">code</span>
-      </a>
-    </nav>
   )
 }
 
@@ -473,7 +452,6 @@ export async function V2PortfolioPage({ locale }: V2PortfolioPageProps) {
       </main>
 
       <Footer />
-      <MobileBottomNav />
     </div>
   )
 }
