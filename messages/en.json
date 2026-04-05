@@ -134,7 +134,8 @@
       ],
       "nav": [
         { "label": "ARCHIVE // Overview", "href": "#overview" },
-        { "label": "BUILD_LOG // Systems", "href": "#systems" },
+        { "label": "BUILD_LOG // Case Studies", "href": "#systems" },
+        { "label": "COMPONENTS // Projects & Libraries", "href": "#artifacts" },
         { "label": "LOGS // Decisions", "href": "#decision-log" },
         { "label": "STACK // Technologies", "href": "#stack" },
         { "label": "TERMINAL // Contact", "href": "#contact" }
@@ -148,10 +149,12 @@
           { "label": "SPECIALTY:", "value": "ARCHITECTURE", "valueClassName": "text-white" }
         ],
       "nav": [
-        { "label": "[OVERVIEW] // Overview", "href": "#overview" },
-        { "label": "[SYSTEM_COMPONENTS] // Systems", "href": "#systems" },
-        { "label": "[RESOURCES] // Decisions", "href": "#decision-log" },
-        { "label": "[SHELL] // Stack", "href": "#stack" }
+        { "label": "[ARCHIVE] // Overview", "href": "#overview" },
+        { "label": "[BUILD_LOG] // Case Studies", "href": "#systems" },
+        { "label": "[COMPONENTS] // Projects & Libraries", "href": "#artifacts" },
+        { "label": "[LOGS] // Decisions", "href": "#decision-log" },
+        { "label": "[STACK] // Technologies", "href": "#stack" },
+        { "label": "[TERMINAL] // Contact", "href": "#contact" }
       ],
       "throughputTitle": "[THROUGHPUT_METRICS]",
       "throughputLatestLog": "LATEST_LOG: 200 OK - /api/health",
@@ -184,7 +187,7 @@
       "quote": "Scaling isn't the problem. Uncontrolled complexity is.",
         "plainStatement": "Software Engineer primarily focused on backend, systems design, tooling, and architecture on top of .NET.",
         "description": "I build software that has to survive real constraints: production traffic, integrations, legacy decisions, data consistency, and operational maintenance. My primary focus is backend, systems, and architecture, but I also cover React frontend work, tooling, CI/CD, and Python services when the problem calls for it.",
-      "primaryCta": "VIEW_LOGS",
+      "primaryCta": "CASE_STUDIES",
       "secondaryCta": "INITIATE_CONTACT",
       "cvCta": "DOWNLOAD_CV",
       "codeHint": "/* latency_sensitive: true */"

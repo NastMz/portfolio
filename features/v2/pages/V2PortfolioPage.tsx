@@ -20,7 +20,7 @@ interface V2NavLink {
   href: string
 }
 
-type V2NavAnchor = '#overview' | '#systems' | '#decision-log' | '#stack' | '#contact'
+type V2NavAnchor = '#overview' | '#systems' | '#artifacts' | '#decision-log' | '#stack' | '#contact'
 
 interface ParsedNavLabel {
   technical: string
@@ -161,7 +161,7 @@ interface V2FloatingPanelCopy {
   value: string
 }
 
-const canonicalNavAnchors: V2NavAnchor[] = ['#overview', '#systems', '#decision-log', '#stack', '#contact']
+const canonicalNavAnchors: V2NavAnchor[] = ['#overview', '#systems', '#artifacts', '#decision-log', '#stack', '#contact']
 
 interface V2MessagesShape {
   topBar: V2TopBarCopy
@@ -282,6 +282,16 @@ function renderNavIcon(href: V2NavAnchor, className = 'h-5 w-5') {
     return (
       <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M4 8h16M4 12h16M4 16h16" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+      </svg>
+    )
+  }
+
+  if (href === '#artifacts') {
+    return (
+      <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 7.5h14v4H5z" stroke="currentColor" strokeWidth="1.6" />
+        <path d="M5 12.5h14V17H5z" stroke="currentColor" strokeWidth="1.6" />
+        <path d="M9 5.5h6" stroke="currentColor" strokeLinecap="round" strokeWidth="1.6" />
       </svg>
     )
   }
@@ -422,7 +432,7 @@ function MobileBottomNav({ items }: { items: V2NavLink[] }) {
       aria-label="V2 mobile navigation"
       className="fixed inset-x-0 bottom-0 z-50 border-t border-zinc-800/40 bg-[#0b0b0b]/95 px-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pt-2 backdrop-blur md:hidden"
     >
-      <ul className="grid grid-cols-5 gap-1">
+        <ul className="grid grid-cols-6 gap-1">
         {items.map((item, index) => (
           <li key={`${item.href}-${item.label}`}>
             <a
@@ -471,7 +481,7 @@ function HeroSection({ copy, cvHref }: { copy: V2HeroCopy; cvHref: string }) {
         {copy.plainStatement ? <p className="font-label text-zinc-300 text-sm uppercase tracking-[0.18em] mb-4">{copy.plainStatement}</p> : null}
         <p className="font-body text-lg text-zinc-500 mb-12 max-w-xl border-l-2 border-primary/20 pl-6 py-2">{copy.description}</p>
         <div className="flex flex-wrap gap-4 items-center">
-          <a className="bg-primary text-on-primary px-8 py-4 font-label text-sm font-bold glitch-hover inline-flex" data-cursor="cta" href="#decision-log">
+          <a className="bg-primary text-on-primary px-8 py-4 font-label text-sm font-bold glitch-hover inline-flex" data-cursor="cta" href="#systems">
             {copy.primaryCta}
           </a>
           <a
@@ -694,7 +704,7 @@ function ArtifactsSection({ copy }: { copy: V2MessagesShape['artifacts'] }) {
   }, new Map())
 
   return (
-    <section className="px-8 md:px-16 py-24 bg-[#0d0d0d] border-b border-zinc-800/30 scroll-mt-28" id="build-log">
+    <section className="px-8 md:px-16 py-24 bg-[#0d0d0d] border-b border-zinc-800/30 scroll-mt-28" id="artifacts">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-wrap items-center gap-4 mb-12">
           <div>
@@ -906,7 +916,7 @@ function Footer({ copy }: { copy: V2FooterCopy }) {
 export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2PortfolioPageProps) {
   const messages = await getMessages()
   const copy = resolveV2MessagesShape(messages)
-  const canonicalNav = resolveCanonicalNav(copy.topBar.nav)
+  const canonicalSidebarNav = resolveCanonicalNav(copy.sidebar.nav)
   const targetLocale: Locale = locale === 'en' ? 'es' : 'en'
   const localeSwitchHref = `/${targetLocale}${routePathByKey[routeKey]}`
   const localeSwitchCode = targetLocale.toUpperCase()
@@ -930,8 +940,8 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
         </div>
 
         <TopBar copy={copy.topBar} localeSwitchHref={localeSwitchHref} localeSwitchCode={localeSwitchCode} />
-        <Sidebar brandTitle={copy.hero.title} copy={{ ...copy.sidebar, nav: canonicalNav }} />
-        <MobileBottomNav items={canonicalNav} />
+        <Sidebar brandTitle={copy.hero.title} copy={{ ...copy.sidebar, nav: canonicalSidebarNav }} />
+        <MobileBottomNav items={canonicalSidebarNav} />
 
         <main className="pt-24 pb-[calc(7rem+env(safe-area-inset-bottom))] md:ml-64 md:pb-24 relative z-10" id="main-content">
           <div className="scroll-mt-28" id="overview" />

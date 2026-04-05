@@ -133,8 +133,9 @@
         "[PING_STATUS: OPERATIVO]"
       ],
       "nav": [
-        { "label": "ARCHIVO // Resumen", "href": "#overview" },
-        { "label": "BUILD_LOG // Sistemas", "href": "#systems" },
+        { "label": "ARCHIVE // Resumen", "href": "#overview" },
+        { "label": "BUILD_LOG // Case Studies", "href": "#systems" },
+        { "label": "COMPONENTS // Proyectos y librerías", "href": "#artifacts" },
         { "label": "LOGS // Decisiones", "href": "#decision-log" },
         { "label": "STACK // Tecnologías", "href": "#stack" },
         { "label": "TERMINAL // Contacto", "href": "#contact" }
@@ -148,10 +149,12 @@
           { "label": "SPECIALTY:", "value": "ARCHITECTURE", "valueClassName": "text-white" }
         ],
       "nav": [
-        { "label": "[RESUMEN] // Resumen", "href": "#overview" },
-        { "label": "[SYSTEM_COMPONENTS] // Sistemas", "href": "#systems" },
-        { "label": "[RECURSOS] // Decisiones", "href": "#decision-log" },
-        { "label": "[SHELL] // Tecnologías", "href": "#stack" }
+        { "label": "[ARCHIVE] // Resumen", "href": "#overview" },
+        { "label": "[BUILD_LOG] // Case Studies", "href": "#systems" },
+        { "label": "[COMPONENTS] // Proyectos y librerías", "href": "#artifacts" },
+        { "label": "[LOGS] // Decisiones", "href": "#decision-log" },
+        { "label": "[STACK] // Tecnologías", "href": "#stack" },
+        { "label": "[TERMINAL] // Contacto", "href": "#contact" }
       ],
       "throughputTitle": "[THROUGHPUT_METRICS]",
       "throughputLatestLog": "LATEST_LOG: 200 OK - /api/health",
@@ -184,7 +187,7 @@
       "quote": "Escalar no es el problema. La complejidad fuera de control sí.",
         "plainStatement": "Software Engineer con foco principal en backend, systems design, tooling y arquitectura sobre .NET.",
         "description": "Construyo software que tiene que sobrevivir restricciones reales: tráfico productivo, integraciones, decisiones heredadas, consistencia de datos y mantenimiento operativo. Mi foco principal está en backend, sistemas y arquitectura, pero también cubro frontend con React, tooling, CI/CD y servicios en Python cuando el problema lo pide.",
-      "primaryCta": "VER_LOGS",
+      "primaryCta": "CASE_STUDIES",
       "secondaryCta": "INICIAR_CONTACTO",
       "cvCta": "DESCARGAR_CV",
       "codeHint": "/* latency_sensitive: true */"
