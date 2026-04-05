@@ -124,7 +124,7 @@
   },
   "V2": {
     "topBar": {
-      "title": "[SYS_CORE: v4.02]",
+      "title": "[SYS_CORE: v23.07]",
       "localeSwitchPrefix": "IDIOMA",
       "ping": "[PING_STATUS: OPERATIVO]",
       "nav": [
@@ -152,7 +152,7 @@
       "throughputTitle": "[THROUGHPUT_METRICS]",
       "throughputLatestLog": "LATEST_LOG: 200 OK - /api/health",
       "contactAction": "[INICIAR_CONTACTO]",
-      "version": "[v4.02.0]"
+      "version": "[v23.07.0]"
     },
     "floatingPanel": {
       "label": "NIVEL_ANTI_HUMO",
@@ -168,6 +168,7 @@
       "description": "La mayoría de los sistemas no se rompen por escala. Se rompen cuando nadie controla cómo crece la complejidad. \"La arquitectura es el arte de decidir qué complejidad vale la pena pagar.\"",
       "primaryCta": "VER_LOGS",
       "secondaryCta": "INICIAR_CONTACTO",
+      "cvCta": "DESCARGAR_CV",
       "codeHint": "/* latency_sensitive: true */"
     },
     "about": {

@@ -46,6 +46,7 @@ interface V2HeroCopy {
   description: string
   primaryCta: string
   secondaryCta: string
+  cvCta: string
   codeHint: string
 }
 
@@ -338,7 +339,7 @@ function Sidebar({ copy }: { copy: V2SidebarCopy }) {
   )
 }
 
-function HeroSection({ copy }: { copy: V2HeroCopy }) {
+function HeroSection({ copy, cvHref }: { copy: V2HeroCopy; cvHref: string }) {
   return (
     <section className="px-8 md:px-16 py-12 border-b border-zinc-800/20 scroll-mt-28" id="hero">
       <div className="max-w-5xl">
@@ -360,6 +361,14 @@ function HeroSection({ copy }: { copy: V2HeroCopy }) {
           </a>
           <a className="border border-outline-variant/30 text-primary px-8 py-4 font-label text-sm font-bold hover:bg-primary/10 transition-none inline-flex" href="#contact">
             {copy.secondaryCta}
+          </a>
+          <a
+            className="border border-primary/40 text-zinc-200 px-8 py-4 font-label text-sm font-bold hover:bg-primary/10 transition-none inline-flex"
+            download
+            href={cvHref}
+            target="_blank"
+          >
+            {copy.cvCta}
           </a>
           <div className="ml-4 font-label text-[10px] text-zinc-700 hidden lg:block">{copy.codeHint}</div>
         </div>
@@ -678,6 +687,7 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
   const targetLocale: Locale = locale === 'en' ? 'es' : 'en'
   const localeSwitchHref = `/${targetLocale}${routePathByKey[routeKey]}`
   const localeSwitchLabel = `${copy.topBar.localeSwitchPrefix}: ${targetLocale.toUpperCase()}`
+  const cvHref = locale === 'es' ? '/cv/CV_Kevin_Martinez_ES.pdf' : '/cv/CV_Kevin_Martinez_EN.pdf'
 
   return (
     <div className="v2-route v2-faithful bg-grid selection:bg-primary selection:text-on-primary relative" data-locale={locale} id="top">
@@ -695,7 +705,7 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
       <Sidebar copy={copy.sidebar} />
 
       <main className="ml-16 md:ml-64 pt-24 pb-24 relative z-10" id="main-content">
-        <HeroSection copy={copy.hero} />
+        <HeroSection copy={copy.hero} cvHref={cvHref} />
         <AboutSection copy={copy.about} />
         <CorePrinciplesSection items={copy.principles.items} title={copy.principles.title} />
         <CaseStudiesSection copy={copy.caseStudies} />

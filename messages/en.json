@@ -124,7 +124,7 @@
   },
   "V2": {
     "topBar": {
-      "title": "[SYS_CORE: v4.02]",
+      "title": "[SYS_CORE: v23.07]",
       "localeSwitchPrefix": "LANG",
       "ping": "[PING_STATUS: OPERATIONAL]",
       "nav": [
@@ -152,7 +152,7 @@
       "throughputTitle": "[THROUGHPUT_METRICS]",
       "throughputLatestLog": "LATEST_LOG: 200 OK - /api/health",
       "contactAction": "[INITIATE_CONTACT]",
-      "version": "[v4.02.0]"
+      "version": "[v23.07.0]"
     },
     "floatingPanel": {
       "label": "HYPE_RESISTANCE_LEVEL",
@@ -168,6 +168,7 @@
       "description": "Most systems don't break at scale. They break when no one controls how complexity grows. \"Architecture is the art of deciding which complexity is worth paying for.\"",
       "primaryCta": "VIEW_LOGS",
       "secondaryCta": "INITIATE_CONTACT",
+      "cvCta": "DOWNLOAD_CV",
       "codeHint": "/* latency_sensitive: true */"
     },
     "about": {
