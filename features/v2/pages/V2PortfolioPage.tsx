@@ -2,6 +2,7 @@ import { getMessages } from 'next-intl/server'
 import type { Locale } from '@/i18n/config'
 import type { V2RouteKey } from '@/features/v2/content/sections'
 import { V2ContactTerminalForm, type V2ContactTerminalFormCopy } from '@/features/v2/ui/V2ContactTerminalForm'
+import { V2CustomCursor } from '@/features/v2/ui/V2CustomCursor'
 
 interface V2PortfolioPageProps {
   locale: Locale
@@ -330,6 +331,7 @@ function Sidebar({ copy }: { copy: V2SidebarCopy }) {
         </div>
         <a
           className="w-full bg-zinc-800 text-zinc-300 py-2 text-[10px] hidden md:block hover:text-primary transition-none mb-4 text-center"
+          data-cursor="cta"
           href="#contact"
         >
           {copy.contactAction}
@@ -362,14 +364,19 @@ function HeroSection({ copy, cvHref }: { copy: V2HeroCopy; cvHref: string }) {
         </div>
         <p className="font-body text-lg text-zinc-500 mb-12 max-w-xl border-l-2 border-primary/20 pl-6 py-2">{copy.description}</p>
         <div className="flex flex-wrap gap-4 items-center">
-          <a className="bg-primary text-on-primary px-8 py-4 font-label text-sm font-bold glitch-hover inline-flex" href="#decision-log">
+          <a className="bg-primary text-on-primary px-8 py-4 font-label text-sm font-bold glitch-hover inline-flex" data-cursor="cta" href="#decision-log">
             {copy.primaryCta}
           </a>
-          <a className="border border-outline-variant/30 text-primary px-8 py-4 font-label text-sm font-bold hover:bg-primary/10 transition-none inline-flex" href="#contact">
+          <a
+            className="border border-outline-variant/30 text-primary px-8 py-4 font-label text-sm font-bold hover:bg-primary/10 transition-none inline-flex"
+            data-cursor="cta"
+            href="#contact"
+          >
             {copy.secondaryCta}
           </a>
           <a
             className="border border-primary/40 text-zinc-200 px-8 py-4 font-label text-sm font-bold hover:bg-primary/10 transition-none inline-flex"
+            data-cursor="cta"
             download
             href={cvHref}
             target="_blank"
@@ -710,6 +717,7 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
 
   return (
     <div className="v2-route v2-faithful bg-grid selection:bg-primary selection:text-on-primary relative" data-locale={locale} id="top">
+      <V2CustomCursor />
       <div className="interference-line top-1/4 -left-1/2" />
       <div className="interference-line top-3/4 -left-1/4" />
 
