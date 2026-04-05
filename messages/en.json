@@ -127,6 +127,11 @@
       "title": "[SYS_CORE: v23.07]",
       "localeSwitchPrefix": "LANG",
       "ping": "[PING_STATUS: OPERATIONAL]",
+      "pingStates": [
+        "[PING_STATUS: ACTIVE]",
+        "[PING_STATUS: STABLE]",
+        "[PING_STATUS: OPERATIONAL]"
+      ],
       "nav": [
         { "label": "ARCHIVE // Overview", "href": "#overview" },
         { "label": "BUILD_LOG // Systems", "href": "#systems" },
@@ -150,6 +155,14 @@
       ],
       "throughputTitle": "[THROUGHPUT_METRICS]",
       "throughputLatestLog": "LATEST_LOG: 200 OK - /api/health",
+      "throughputLogs": [
+        "LATEST_LOG: 200 OK - /api/health",
+        "LATEST_LOG: EVENT BUS ACK - portfolio.rendered",
+        "LATEST_LOG: MODULE CACHE HIT - hero.surface",
+        "LATEST_LOG: RETRY SCHEDULED - contact.dispatch#02",
+        "LATEST_LOG: 204 NO_CONTENT - /api/presence",
+        "LATEST_LOG: WORKER SYNCED - locale.en"
+      ],
       "contactAction": "[INITIATE_CONTACT]",
       "version": "[v23.07.0]"
     },
@@ -635,7 +648,12 @@
         "feedback": {
           "identityRequired": "ERROR::IDENTITY_REQUIRED",
           "endpointInvalid": "ERROR::ENDPOINT_ADDRESS_INVALID",
-          "success": "HANDSHAKE_OK::LAUNCHING_MAIL_CLIENT"
+          "successSequence": [
+            "> payload_received",
+            "> processing...",
+            "> message_queued",
+            "> status: accepted"
+          ]
         },
         "mail": {
           "subjectPrefix": "V2_HANDSHAKE",

@@ -1,8 +1,9 @@
 'use client'
 
-import { type FormEvent, useState } from 'react'
+import { type FormEvent, useEffect, useRef, useState } from 'react'
 
-type FeedbackType = 'error' | 'success'
+const SUCCESS_SEQUENCE_STEP_MS = 250
+const SUCCESS_SEQUENCE_COMPLETE_DELAY_MS = 100
 
 export interface V2ContactTerminalFormCopy {
   bootLine: string
@@ -16,7 +17,7 @@ export interface V2ContactTerminalFormCopy {
   feedback: {
     identityRequired: string
     endpointInvalid: string
-    success: string
+    successSequence: string[]
   }
   mail: {
     subjectPrefix: string
@@ -39,10 +40,28 @@ function encodeMailtoValue(value: string): string {
 export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
   const [identity, setIdentity] = useState('')
   const [endpointAddress, setEndpointAddress] = useState('')
-  const [feedback, setFeedback] = useState<{ type: FeedbackType; message: string } | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [feedback, setFeedback] = useState<
+    | { type: 'error'; message: string }
+    | { type: 'success'; messages: string[] }
+    | null
+  >(null)
+  const timeoutRefs = useRef<number[]>([])
+
+  useEffect(() => {
+    return () => {
+      timeoutRefs.current.forEach((timeoutId) => window.clearTimeout(timeoutId))
+    }
+  }, [])
+
+  function clearScheduledSequence() {
+    timeoutRefs.current.forEach((timeoutId) => window.clearTimeout(timeoutId))
+    timeoutRefs.current = []
+  }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    clearScheduledSequence()
 
     const normalizedIdentity = identity.trim()
     const normalizedEndpoint = endpointAddress.trim()
@@ -57,8 +76,6 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
       return
     }
 
-    setFeedback({ type: 'success', message: copy.feedback.success })
-
     const subject = `[${copy.mail.subjectPrefix}] ${normalizedIdentity}`
     const body = [
       `[${copy.mail.contextLabel}: v2-contact-handshake]`,
@@ -70,7 +87,34 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
     ].join('\n')
 
     const mailtoHref = `mailto:ksmartinez23@outlook.com?subject=${encodeMailtoValue(subject)}&body=${encodeMailtoValue(body)}`
-    window.location.href = mailtoHref
+    const sequence = copy.feedback.successSequence
+
+    setIsSubmitting(true)
+    setFeedback({ type: 'success', messages: [sequence[0]] })
+
+    sequence.slice(1).forEach((message, index) => {
+      const timeoutId = window.setTimeout(() => {
+        setFeedback((current) => {
+          if (current?.type !== 'success') {
+            return current
+          }
+
+          return {
+            type: 'success',
+            messages: [...current.messages, message],
+          }
+        })
+      }, SUCCESS_SEQUENCE_STEP_MS * (index + 1))
+
+      timeoutRefs.current.push(timeoutId)
+    })
+
+    const launchTimeoutId = window.setTimeout(() => {
+      setIsSubmitting(false)
+      window.location.href = mailtoHref
+    }, SUCCESS_SEQUENCE_STEP_MS * (sequence.length - 1) + SUCCESS_SEQUENCE_COMPLETE_DELAY_MS)
+
+    timeoutRefs.current.push(launchTimeoutId)
   }
 
   return (
@@ -134,12 +178,20 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
         </div>
 
         {feedback ? (
-          <p className={`font-label text-[10px] uppercase tracking-widest ${feedback.type === 'error' ? 'text-error' : 'text-primary'}`} role="status">
-            [{feedback.message}]
-          </p>
+          feedback.type === 'error' ? (
+            <p className="font-label text-[10px] uppercase tracking-widest text-error" role="status">
+              [{feedback.message}]
+            </p>
+          ) : (
+            <div className="space-y-1 font-label text-[10px] uppercase tracking-widest text-primary" role="status" aria-live="polite">
+              {feedback.messages.map((message) => (
+                <p key={message}>[{message}]</p>
+              ))}
+            </div>
+          )
         ) : null}
 
-        <button className="w-full bg-primary text-on-primary py-5 font-headline font-bold text-xl glitch-hover" type="submit">
+        <button className="w-full bg-primary text-on-primary py-5 font-headline font-bold text-xl glitch-hover disabled:cursor-not-allowed disabled:opacity-90" disabled={isSubmitting} type="submit">
           {copy.submitLabel}
         </button>
 

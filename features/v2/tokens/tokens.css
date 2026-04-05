@@ -52,6 +52,37 @@
   display: none;
 }
 
+.v2-hover-trace {
+  position: fixed;
+  right: 0.5rem;
+  bottom: calc(6.25rem + env(safe-area-inset-bottom));
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--v2-trace-fade-duration, 140ms) linear;
+}
+
+.v2-hover-trace__message {
+  display: inline-block;
+  max-width: min(30rem, calc(100vw - 2rem));
+  color: rgba(255, 255, 255, 0.42);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.v2-hover-trace[data-phase='typing'],
+.v2-hover-trace[data-phase='holding'],
+.v2-hover-trace[data-phase='fading'] {
+  opacity: 1;
+}
+
+.v2-hover-trace[data-phase='fading'] {
+  opacity: 0;
+}
+
 .v2-boot-overlay {
   position: fixed;
   inset: 0;
@@ -293,6 +324,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .v2-hover-trace__message {
+    animation: none;
+    width: auto;
+  }
+
   .v2-boot-overlay,
   .v2-boot-overlay__line {
     animation: none;

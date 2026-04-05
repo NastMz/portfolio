@@ -5,6 +5,10 @@ import { V2ContactTerminalForm, type V2ContactTerminalFormCopy } from '@/feature
 import { V2BootOverlay } from '@/features/v2/ui/V2BootOverlay'
 import { V2BootReplayTitle } from '@/features/v2/ui/V2BootReplayTitle'
 import { V2CustomCursor } from '@/features/v2/ui/V2CustomCursor'
+import { V2HoverTrace } from '@/features/v2/ui/V2HoverTrace'
+import { V2HypeResistanceMetric } from '@/features/v2/ui/V2HypeResistanceMetric'
+import { V2SidebarRotatingLog } from '@/features/v2/ui/V2SidebarRotatingLog'
+import { V2SystemStateDrift } from '@/features/v2/ui/V2SystemStateDrift'
 
 interface V2PortfolioPageProps {
   locale: Locale
@@ -33,6 +37,7 @@ interface V2TopBarCopy {
   title: string
   nav: V2NavLink[]
   ping: string
+  pingStates?: string[]
   localeSwitchPrefix: string
 }
 
@@ -42,6 +47,7 @@ interface V2SidebarCopy {
   nav: V2NavLink[]
   throughputTitle: string
   throughputLatestLog: string
+  throughputLogs?: string[]
   contactAction: string
   version: string
 }
@@ -341,7 +347,7 @@ function TopBar({ copy, localeSwitchCode, localeSwitchHref }: { copy: V2TopBarCo
           <span aria-hidden="true">⇄</span>
           {localeSwitchCode}
         </a>
-        <span>{copy.ping}</span>
+        <V2SystemStateDrift initialState={copy.ping} states={copy.pingStates} />
       </div>
     </header>
   )
@@ -397,7 +403,7 @@ function Sidebar({ copy, brandTitle }: { copy: V2SidebarCopy; brandTitle: string
           <div className="h-1 bg-zinc-800 w-full mb-1">
             <div className="h-full bg-zinc-500 bar-anim bar-anim-slow bar-anim-offset" />
           </div>
-          <div className="text-[8px] text-zinc-500 mt-2 font-label">{copy.throughputLatestLog}</div>
+          <V2SidebarRotatingLog initialLog={copy.throughputLatestLog} logs={copy.throughputLogs} />
         </div>
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2 text-zinc-500">
@@ -910,13 +916,16 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
     <div className="v2-route v2-faithful bg-grid selection:bg-primary selection:text-on-primary relative" data-locale={locale} id="top">
       <V2BootOverlay>
         <V2CustomCursor />
+        <V2HoverTrace />
         <div className="interference-line top-1/4 -left-1/2" />
         <div className="interference-line top-3/4 -left-1/4" />
 
         <div className="fixed top-24 right-8 z-50 pointer-events-none hidden lg:block">
           <div className="bg-surface-container border border-primary/20 p-2 font-label text-[10px]">
             <div className="text-zinc-600 mb-1">{copy.floatingPanel.label}</div>
-            <div className="text-primary font-bold">{copy.floatingPanel.value}</div>
+            <div className="text-primary font-bold">
+              <V2HypeResistanceMetric />
+            </div>
           </div>
         </div>
 
