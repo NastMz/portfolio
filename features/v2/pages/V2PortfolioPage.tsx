@@ -343,10 +343,14 @@ function TopBar({ copy, localeSwitchCode, localeSwitchHref }: { copy: V2TopBarCo
   )
 }
 
-function Sidebar({ copy }: { copy: V2SidebarCopy }) {
+function Sidebar({ copy, brandTitle }: { copy: V2SidebarCopy; brandTitle: string }) {
   return (
     <aside className="bg-[#0b0b0b] text-[#FF7CF5] font-label text-[9px] uppercase tracking-wider fixed left-0 top-0 hidden h-full w-16 md:flex md:w-64 flex-col z-40 pt-20 border-r border-zinc-800/30">
       <div className="px-4 mb-8 hidden md:block">
+        <div className="mb-5 border border-zinc-800 bg-black/40 px-3 py-3">
+          <div className="text-[8px] tracking-[0.24em] text-zinc-600 mb-1">[ACTIVE_PORTFOLIO]</div>
+          <div className="font-headline text-sm text-primary tracking-tight">[{brandTitle.replace(/\s+/g, '_').toUpperCase()}]</div>
+        </div>
         <div className="font-bold text-primary mb-4">{copy.monitorTitle}</div>
         <div className="space-y-1 text-zinc-400">
           {copy.monitorItems.map((item) => (
@@ -384,10 +388,10 @@ function Sidebar({ copy }: { copy: V2SidebarCopy }) {
         <div className="mb-4">
           <div className="text-zinc-500 text-[8px] mb-2">{copy.throughputTitle}</div>
           <div className="h-1 bg-zinc-800 w-full mb-1">
-            <div className="h-full bg-primary bar-anim" />
+            <div className="h-full bg-primary bar-anim bar-anim-fast" />
           </div>
           <div className="h-1 bg-zinc-800 w-full mb-1">
-            <div className="h-full bg-zinc-500 w-1/2" />
+            <div className="h-full bg-zinc-500 bar-anim bar-anim-slow bar-anim-offset" />
           </div>
           <div className="text-[8px] text-zinc-500 mt-2 font-label">{copy.throughputLatestLog}</div>
         </div>
@@ -522,13 +526,13 @@ function CorePrinciplesSection({ title, items }: { title: string; items: V2Princ
     <section className="px-8 md:px-16 py-32 relative scroll-mt-28" id="core-principles">
       <div className="absolute right-0 top-1/4 h-[1px] w-64 bg-primary/20 rotate-45 pointer-events-none" />
       <div className="font-label text-primary text-xs mb-16 tracking-widest text-center">{title}</div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 items-stretch md:grid-cols-2 2xl:grid-cols-4">
         {items.map((item) => (
           <div
             key={item.id}
             className={
               item.isCritical
-                ? 'bg-[#1a1919] p-12 border-2 border-primary relative shadow-[0_0_40px_rgba(255,124,245,0.15)] md:-translate-y-8 md:scale-105 z-20'
+                ? 'bg-[#1a1919] p-12 border-2 border-primary relative shadow-[0_0_40px_rgba(255,124,245,0.15)] 2xl:-translate-y-8 2xl:scale-105 z-20'
                 : 'bg-surface-container p-8 border border-outline-variant/10 relative'
             }
           >
@@ -539,15 +543,13 @@ function CorePrinciplesSection({ title, items }: { title: string; items: V2Princ
               {item.title}
             </h4>
             <p className={item.isCritical ? 'font-body text-md text-zinc-200 leading-relaxed' : 'font-body text-sm text-zinc-500 leading-relaxed'}>{item.description}</p>
-            {item.isCritical ? (
-              <>
-                <div className="mt-8 h-[2px] w-full bg-primary/40" />
-                <div className="mt-4 font-label text-[10px] text-primary flex justify-between">
-                  <span>{item.priorityLabel}</span>
-                  <span className="italic">{item.hint}</span>
-                </div>
-              </>
-            ) : null}
+            <>
+              <div className={item.isCritical ? 'mt-8 h-[2px] w-full bg-primary/40' : 'mt-6 h-px w-full bg-zinc-800'} />
+              <div className={item.isCritical ? 'mt-4 font-label text-[10px] text-primary flex justify-between gap-4' : 'mt-4 font-label text-[10px] text-zinc-600 flex justify-between gap-4'}>
+                <span>{item.priorityLabel}</span>
+                <span className="italic text-right">{item.hint}</span>
+              </div>
+            </>
           </div>
         ))}
       </div>
@@ -897,7 +899,7 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
       </div>
 
       <TopBar copy={copy.topBar} localeSwitchHref={localeSwitchHref} localeSwitchCode={localeSwitchCode} />
-      <Sidebar copy={{ ...copy.sidebar, nav: canonicalNav }} />
+      <Sidebar brandTitle={copy.hero.title} copy={{ ...copy.sidebar, nav: canonicalNav }} />
       <MobileBottomNav items={canonicalNav} />
 
       <main className="pt-24 pb-[calc(7rem+env(safe-area-inset-bottom))] md:ml-64 md:pb-24 relative z-10" id="main-content">

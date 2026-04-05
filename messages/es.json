@@ -128,11 +128,11 @@
       "localeSwitchPrefix": "IDIOMA",
       "ping": "[PING_STATUS: OPERATIVO]",
       "nav": [
-        { "label": "ARCHIVO // Overview", "href": "#overview" },
-        { "label": "BUILD_LOG // Systems", "href": "#systems" },
-        { "label": "LOGS // Decisions", "href": "#decision-log" },
-        { "label": "STACK // Technologies", "href": "#stack" },
-        { "label": "TERMINAL // Contact", "href": "#contact" }
+        { "label": "ARCHIVO // Resumen", "href": "#overview" },
+        { "label": "BUILD_LOG // Sistemas", "href": "#systems" },
+        { "label": "LOGS // Decisiones", "href": "#decision-log" },
+        { "label": "STACK // Tecnologías", "href": "#stack" },
+        { "label": "TERMINAL // Contacto", "href": "#contact" }
       ]
     },
     "sidebar": {
@@ -143,10 +143,10 @@
         { "label": "SPECIALTY:", "value": "ARCHITECTURE", "valueClassName": "text-white" }
       ],
       "nav": [
-        { "label": "[RESUMEN] // Overview", "href": "#overview" },
-        { "label": "[SYSTEM_COMPONENTS] // Systems", "href": "#systems" },
-        { "label": "[RECURSOS] // Decisions", "href": "#decision-log" },
-        { "label": "[SHELL] // Stack", "href": "#stack" }
+        { "label": "[RESUMEN] // Resumen", "href": "#overview" },
+        { "label": "[SYSTEM_COMPONENTS] // Sistemas", "href": "#systems" },
+        { "label": "[RECURSOS] // Decisiones", "href": "#decision-log" },
+        { "label": "[SHELL] // Tecnologías", "href": "#stack" }
       ],
       "throughputTitle": "[THROUGHPUT_METRICS]",
       "throughputLatestLog": "LATEST_LOG: 200 OK - /api/health",
@@ -201,7 +201,9 @@
           "id": "principle-domain",
           "indexLabel": "01",
           "title": "Dominio antes que Framework",
-          "description": "Los frameworks son detalles de implementación. La lógica de negocio no debería depender de ellos. Si cambiar de framework rompe tu sistema, entonces nunca estuvo bien diseñado."
+          "description": "Los frameworks son detalles de implementación. La lógica de negocio no debería depender de ellos. Si cambiar de framework rompe tu sistema, entonces nunca estuvo bien diseñado.",
+          "priorityLabel": "[PRIORIDAD: MEDIA]",
+          "hint": "/* el dominio manda */"
         },
         {
           "id": "principle-boundaries",
@@ -216,7 +218,18 @@
           "id": "principle-simplicity",
           "indexLabel": "03",
           "title": "Simplicidad antes que Complejidad",
-          "description": "Microservicios no son una solución, son un costo. Si un monolito no es modular, distribuirlo solo amplifica el problema."
+          "description": "Microservicios no son una solución, son un costo. Si un monolito no es modular, distribuirlo solo amplifica el problema.",
+          "priorityLabel": "[PRIORIDAD: MEDIA]",
+          "hint": "/* menos piezas, más control */"
+        },
+        {
+          "id": "principle-overabstraction",
+          "indexLabel": "04",
+          "title": "Claridad antes que Sobreabstracción",
+          "description": "No toda abstracción mejora un sistema. Cuando solo esconde código explícito, suele agregar capas, indirección y costo mental sin resolver un problema real.",
+          "isCritical": true,
+          "priorityLabel": "[PRIORIDAD: ALTA]",
+          "hint": "/* menos magia, más control */"
         }
       ]
     },

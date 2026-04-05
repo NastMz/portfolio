@@ -201,7 +201,9 @@
           "id": "principle-domain",
           "indexLabel": "01",
           "title": "Domain over Framework",
-          "description": "Frameworks are implementation details. Business logic should not depend on them. If changing a framework breaks your system, the system was never properly designed."
+          "description": "Frameworks are implementation details. Business logic should not depend on them. If changing a framework breaks your system, the system was never properly designed.",
+          "priorityLabel": "[PRIORITY: MEDIUM]",
+          "hint": "/* domain leads */"
         },
         {
           "id": "principle-boundaries",
@@ -216,7 +218,18 @@
           "id": "principle-simplicity",
           "indexLabel": "03",
           "title": "Simplicity before Complexity",
-          "description": "Microservices are not a solution, they are a cost. If a monolith is not modular, distributing it will only amplify the problem."
+          "description": "Microservices are not a solution, they are a cost. If a monolith is not modular, distributing it will only amplify the problem.",
+          "priorityLabel": "[PRIORITY: MEDIUM]",
+          "hint": "/* fewer pieces, more control */"
+        },
+        {
+          "id": "principle-overabstraction",
+          "indexLabel": "04",
+          "title": "Clarity over Over-Abstraction",
+          "description": "Not every abstraction improves a system. When it only hides explicit code, it usually adds layers, indirection, and cognitive cost without solving a real problem.",
+          "isCritical": true,
+          "priorityLabel": "[PRIORITY: HIGH]",
+          "hint": "/* less magic, more control */"
         }
       ]
     },

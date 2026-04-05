@@ -310,6 +310,18 @@
   animation: barGrow 2s ease-in-out infinite alternate;
 }
 
+.bar-anim-fast {
+  animation-duration: 1.6s;
+}
+
+.bar-anim-slow {
+  animation-duration: 2.8s;
+}
+
+.bar-anim-offset {
+  animation-delay: 1.35s;
+}
+
 @keyframes barGrow {
   0% {
     width: 30%;
