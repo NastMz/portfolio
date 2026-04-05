@@ -6,5 +6,5 @@ interface V2ContactPageProps {
 }
 
 export async function V2ContactPage({ locale }: V2ContactPageProps) {
-  return <V2PortfolioPage locale={locale} routeKey="home" />
+  return <V2PortfolioPage locale={locale} routeKey="contact" />
 }

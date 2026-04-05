@@ -4,13 +4,34 @@ import { type FormEvent, useState } from 'react'
 
 type FeedbackType = 'error' | 'success'
 
+export interface V2ContactTerminalFormCopy {
+  identityPlaceholder: string
+  endpointPlaceholder: string
+  submitLabel: string
+  feedback: {
+    identityRequired: string
+    endpointInvalid: string
+    success: string
+  }
+  mail: {
+    subjectPrefix: string
+    contextLabel: string
+    payloadLabel: string
+    defaultMessage: string
+  }
+}
+
+interface V2ContactTerminalFormProps {
+  copy: V2ContactTerminalFormCopy
+}
+
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 function encodeMailtoValue(value: string): string {
   return encodeURIComponent(value)
 }
 
-export function V2ContactTerminalForm() {
+export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
   const [identity, setIdentity] = useState('')
   const [endpointAddress, setEndpointAddress] = useState('')
   const [feedback, setFeedback] = useState<{ type: FeedbackType; message: string } | null>(null)
@@ -22,25 +43,25 @@ export function V2ContactTerminalForm() {
     const normalizedEndpoint = endpointAddress.trim()
 
     if (!normalizedIdentity) {
-      setFeedback({ type: 'error', message: 'ERROR::IDENTITY_REQUIRED' })
+      setFeedback({ type: 'error', message: copy.feedback.identityRequired })
       return
     }
 
     if (!EMAIL_REGEX.test(normalizedEndpoint)) {
-      setFeedback({ type: 'error', message: 'ERROR::ENDPOINT_ADDRESS_INVALID' })
+      setFeedback({ type: 'error', message: copy.feedback.endpointInvalid })
       return
     }
 
-    setFeedback({ type: 'success', message: 'HANDSHAKE_OK::LAUNCHING_MAIL_CLIENT' })
+    setFeedback({ type: 'success', message: copy.feedback.success })
 
-    const subject = `[V2_HANDSHAKE] ${normalizedIdentity}`
+    const subject = `[${copy.mail.subjectPrefix}] ${normalizedIdentity}`
     const body = [
-      '[TERMINAL_CONTEXT: v2-contact-handshake]',
+      `[${copy.mail.contextLabel}: v2-contact-handshake]`,
       `IDENTITY=${normalizedIdentity}`,
       `ENDPOINT_ADDRESS=${normalizedEndpoint}`,
       '',
-      '[MESSAGE_PAYLOAD]',
-      'Hola Kevin, vengo desde el terminal de contacto v2.',
+      `[${copy.mail.payloadLabel}]`,
+      copy.mail.defaultMessage,
     ].join('\n')
 
     const mailtoHref = `mailto:ksmartinez23@outlook.com?subject=${encodeMailtoValue(subject)}&body=${encodeMailtoValue(body)}`
@@ -57,7 +78,7 @@ export function V2ContactTerminalForm() {
             className="w-full bg-surface-container border border-outline-variant/20 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs"
             name="identity"
             onChange={(event) => setIdentity(event.target.value)}
-            placeholder="IDENTITY"
+            placeholder={copy.identityPlaceholder}
             type="text"
             value={identity}
           />
@@ -69,7 +90,7 @@ export function V2ContactTerminalForm() {
             className="w-full bg-surface-container border border-outline-variant/20 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs"
             name="endpointAddress"
             onChange={(event) => setEndpointAddress(event.target.value)}
-            placeholder="ENDPOINT_ADDRESS"
+            placeholder={copy.endpointPlaceholder}
             type="email"
             value={endpointAddress}
           />
@@ -82,7 +103,9 @@ export function V2ContactTerminalForm() {
         </p>
       ) : null}
 
-      <button className="w-full bg-primary text-on-primary py-5 font-headline font-bold text-xl glitch-hover" type="submit">SEND_MESSAGE</button>
+      <button className="w-full bg-primary text-on-primary py-5 font-headline font-bold text-xl glitch-hover" type="submit">
+        {copy.submitLabel}
+      </button>
     </form>
   )
 }

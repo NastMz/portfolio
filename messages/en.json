@@ -123,40 +123,237 @@
     "builtWith": "Built with Next.js, Tailwind CSS and ☕ © {year}"
   },
   "V2": {
-    "localeSwitch": "Switch locale",
-    "projectLink": "Open project",
-    "routes": {
-      "home": "Home",
-      "projects": "Projects",
-      "contact": "Contact"
+    "topBar": {
+      "title": "[SYS_CORE: v4.02]",
+      "localeSwitchPrefix": "LANG",
+      "ping": "[PING_STATUS: OPERATIONAL]",
+      "nav": [
+        { "label": "ARCHIVE", "href": "#hero" },
+        { "label": "LOGS", "href": "#decision-log" },
+        { "label": "STACK", "href": "#stack-evaluation" },
+        { "label": "TERMINAL", "href": "#contact" }
+      ]
     },
-    "routeLabels": {
-      "home": "Route: Home",
-      "projects": "Route: Projects",
-      "contact": "Route: Contact"
+    "sidebar": {
+      "monitorTitle": "[SYSTEM_MONITOR]",
+      "monitorItems": [
+        { "label": "SYS.STATUS:", "value": "ACTIVE", "valueClassName": "text-primary" },
+        { "label": "ARCH.MODE:", "value": "MODULAR", "valueClassName": "text-white" },
+        { "label": "STATE:", "value": "PROD_READY", "valueClassName": "text-white" }
+      ],
+      "nav": [
+        { "label": "[OVERVIEW]", "href": "#hero" },
+        { "label": "[NETWORK]", "href": "#identity" },
+        { "label": "[RESOURCES]", "href": "#decision-log" },
+        { "label": "[SHELL]", "href": "#stack-evaluation" }
+      ],
+      "throughputTitle": "[THROUGHPUT_METRICS]",
+      "throughputLatestLog": "LATEST_LOG: 200 OK - /api/health",
+      "contactAction": "[INITIATE_CONTACT]",
+      "version": "[v4.02.0]"
     },
-    "labels": {
-      "sectionIndex": "Section index",
-      "availability": "Availability",
-      "challenge": "Challenge",
-      "approach": "Approach",
-      "outcome": "Outcome"
+    "floatingPanel": {
+      "label": "HYPE_RESISTANCE_LEVEL",
+      "value": "99.98% [NOMINAL]"
     },
-    "nav": {
-      "home": "Home",
-      "projects": "Projects",
-      "contact": "Contact"
+    "hero": {
+      "eyebrow": "[IDENTITY_VERIFIED]",
+      "title": "Kevin Martínez",
+      "titleMuted": "Systems Architect",
+      "subtitlePrefix": "I design systems for",
+      "subtitleHighlight": "when things stop being simple.",
+      "quote": "Scaling isn't the problem. Uncontrolled complexity is.",
+      "description": "Most systems don't break at scale. They break when no one controls how complexity grows. \"Architecture is the art of deciding which complexity is worth paying for.\"",
+      "primaryCta": "VIEW_LOGS",
+      "secondaryCta": "INITIATE_CONTACT",
+      "codeHint": "/* latency_sensitive: true */"
     },
-    "sectionNav": {
-      "hero": "Hero",
-      "identity": "Identity",
-      "principles": "Principles",
-      "projects": "Projects",
-      "caseStudy": "Case study",
-      "decisionLog": "Decision log",
-      "stackProtocols": "Stack protocols",
-      "notes": "Notes",
-      "contact": "Contact"
+    "identity": {
+      "fileLabel": "[FILE: IDENTITY_LOG]",
+      "title": "Practical Architecture",
+      "watermark": "ARCH",
+      "avoidTitle": "[WHAT_I_AVOID]",
+      "avoidItems": [
+        "RESUME-DRIVEN DEVELOPMENT",
+        "DISTRIBUTED MONOLITHS",
+        "BLINDLY FOLLOWING MANIFESTOS",
+        "OVER-ENGINEERED ABSTRACTIONS"
+      ],
+      "leadPrefix": "Backend, Architecture, and Decision Making under constraints. I don't build for hypothetical scale; I build for",
+      "leadEmphasis": "predictable evolution",
+      "body": "I work on systems that are already running in production or will be. That means dealing with constraints, legacy decisions, and real business impact. Architecture is not about drawing boxes, it is about controlling how complexity evolves over time.",
+      "modeBadge": "[MODE: OPINIONATED]",
+      "stanceBadge": "[STANCE: ANTI_HYPE]"
+    },
+    "principles": {
+      "title": "[CORE_MANIFESTO]",
+      "items": [
+        {
+          "id": "principle-domain",
+          "indexLabel": "01",
+          "title": "Domain over Framework",
+          "description": "Frameworks are implementation details. Business logic should not depend on them. If changing a framework breaks your system, the system was never properly designed."
+        },
+        {
+          "id": "principle-boundaries",
+          "indexLabel": "02_CRITICAL",
+          "title": "Boundaries over Coupling",
+          "description": "Shared databases are the original sin of system design. Without clear ownership and contracts, modularity is just an illusion.",
+          "isCritical": true,
+          "priorityLabel": "[PRIORITY: HIGH]",
+          "hint": "/* explicit > implicit */"
+        },
+        {
+          "id": "principle-simplicity",
+          "indexLabel": "03",
+          "title": "Simplicity before Complexity",
+          "description": "Microservices are not a solution, they are a cost. If a monolith is not modular, distributing it will only amplify the problem."
+        }
+      ]
+    },
+    "caseStudy": {
+      "tag": "[CASE_STUDY: 082]",
+      "title": "Re-architecting for 10x Load",
+      "points": [
+        {
+          "label": "The Problem",
+          "text": "A CRM backend handling business operations and integrations started hitting architectural limits as the system grew in complexity and usage."
+        },
+        {
+          "label": "The Decisions",
+          "text": "Evolved from a traditional Clean Architecture monolith into a modular monolith with explicit contracts between modules to reduce coupling and enable controlled growth."
+        }
+      ],
+      "stack": [
+        "C# / .NET 8 / .NET 10",
+        "MySQL / Amazon RDS",
+        "Dapper / EF Core",
+        "Docker",
+        "AWS (Cognito, SNS, S3, SES)"
+      ],
+      "imageAlt": "Server racks in a dark data center",
+      "resultLabel": "RESULT_REPORT",
+      "resultTitle": "SYSTEM READY FOR CONTROLLED SCALING",
+      "resultDescription": "(Improved maintainability, reduced coupling, better observability)"
+    },
+    "decisionLog": {
+      "title": "Decision Log",
+      "storeLabel": "[LOG_STORE: PERMANENT]",
+      "tradeoffLabel": "[TRADE-OFF]",
+      "footerHint": "/* better a monolith than a mess */",
+      "items": [
+        {
+          "id": "decision-cqrs",
+          "statusClass": "bg-primary",
+          "status": "[STATUS: ACCEPTED]",
+          "context": "[CONTEXT: DOMAIN_MODEL]",
+          "title": "CQRS for Domain Evolution",
+          "body": "Separated read and write models to better encapsulate business rules and allow independent evolution.",
+          "tradeoff": "COMPLEXITY ↑ / DOMAIN CLARITY ↑"
+        },
+        {
+          "id": "decision-cross-module",
+          "statusClass": "bg-error",
+          "status": "[STATUS: DEPRECATED]",
+          "context": "[CONTEXT: DATA_ACCESS]",
+          "title": "Direct Cross-Module Access",
+          "body": "Modules accessing each other's data directly caused hidden coupling and fragile behavior.",
+          "tradeoff": "SHORT-TERM SPEED ↓ / LONG-TERM STABILITY ↑"
+        },
+        {
+          "id": "decision-contract-boundaries",
+          "statusClass": "bg-tertiary-container",
+          "status": "[STATUS: ACCEPTED]",
+          "context": "[CONTEXT: ARCHITECTURE]",
+          "title": "Contract-Based Module Boundaries",
+          "body": "Introduced explicit contracts to isolate modules and prevent dependency leakage.",
+          "tradeoff": "UPFRONT DESIGN COST ↑ / COUPLING ↓"
+        }
+      ]
+    },
+    "stack": {
+      "title": "[STACK_EVALUATION_PROTOCOLS]",
+      "footerHint": "/* evaluate_stack() returned 0 errors */",
+      "items": [
+        {
+          "id": "stack-runtime",
+          "category": "[RUNTIMES]",
+          "name": "C# / .NET",
+          "detail": "Primary environment for backend systems and architectural design"
+        },
+        {
+          "id": "stack-persistence",
+          "category": "[PERSISTENCE]",
+          "name": "PostgreSQL / MySQL",
+          "detail": "Relational systems with focus on data modeling and query optimization"
+        },
+        {
+          "id": "stack-state",
+          "category": "[STATE]",
+          "name": "Redis",
+          "detail": "Cache used deliberately, not as a workaround for bad design"
+        },
+        {
+          "id": "stack-orchestration",
+          "category": "[ORCHESTRATION]",
+          "name": "AWS",
+          "detail": "Used for authentication, messaging and infrastructure support"
+        }
+      ]
+    },
+    "notes": {
+      "title": "Buffer Overflow",
+      "subtitle": "// OPINIONS",
+      "items": [
+        {
+          "id": "notes-microservices",
+          "borderClass": "border-l border-primary/30",
+          "markerClass": "bg-primary",
+          "tagClass": "text-primary/50",
+          "title": "\"Microservices aren't free.\"",
+          "tag": "They don't remove complexity, they relocate it.",
+          "body": "The cost of coordination, network latency, and operational overhead is often ignored. If a team cannot manage a monolith, splitting it will not solve the problem."
+        },
+        {
+          "id": "notes-architecture",
+          "borderClass": "border-l border-zinc-800",
+          "markerClass": "bg-zinc-800",
+          "tagClass": "text-zinc-600",
+          "title": "\"Architecture is deciding what to leave out.\"",
+          "tag": "Every abstraction has a cost.",
+          "body": "Good systems are not defined by how many patterns they use, but by how many unnecessary ones they avoid."
+        }
+      ]
+    },
+    "contact": {
+      "eyebrow": "[INITIATE_HANDSHAKE]",
+      "title": "Ready to scale without the drama?",
+      "description": "If you need systems that remain maintainable as they grow, we should talk.",
+      "form": {
+        "identityPlaceholder": "IDENTITY",
+        "endpointPlaceholder": "ENDPOINT_ADDRESS",
+        "submitLabel": "SEND_MESSAGE",
+        "feedback": {
+          "identityRequired": "ERROR::IDENTITY_REQUIRED",
+          "endpointInvalid": "ERROR::ENDPOINT_ADDRESS_INVALID",
+          "success": "HANDSHAKE_OK::LAUNCHING_MAIL_CLIENT"
+        },
+        "mail": {
+          "subjectPrefix": "V2_HANDSHAKE",
+          "contextLabel": "TERMINAL_CONTEXT",
+          "payloadLabel": "MESSAGE_PAYLOAD",
+          "defaultMessage": "Hi Kevin, reaching out from the v2 contact terminal."
+        }
+      }
+    },
+    "footer": {
+      "title": "KEVIN_MARTINEZ_PORTFOLIO",
+      "build": "[BUILD_2024.11] // ALL_RIGHTS_RESERVED",
+      "links": [
+        { "label": "LICENSE", "href": "#footer" },
+        { "label": "DOCS", "href": "#core-principles" },
+        { "label": "SECURITY_LOGS", "href": "#decision-log" }
+      ]
     }
   }
 }
