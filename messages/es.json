@@ -129,6 +129,7 @@
       "ping": "[PING_STATUS: OPERATIVO]",
       "nav": [
         { "label": "ARCHIVO", "href": "#hero" },
+        { "label": "BUILD_LOG", "href": "#build-log" },
         { "label": "LOGS", "href": "#decision-log" },
         { "label": "STACK", "href": "#stack-evaluation" },
         { "label": "TERMINAL", "href": "#contact" }
@@ -144,6 +145,7 @@
       "nav": [
         { "label": "[RESUMEN]", "href": "#hero" },
         { "label": "[NETWORK]", "href": "#identity" },
+        { "label": "[SYSTEM_COMPONENTS]", "href": "#build-log" },
         { "label": "[RECURSOS]", "href": "#decision-log" },
         { "label": "[SHELL]", "href": "#stack-evaluation" }
       ],
@@ -260,6 +262,66 @@
           ],
           "status": "[STATUS: PRODUCTION]",
           "statusClass": "bg-tertiary-container"
+        }
+      ]
+    },
+    "artifacts": {
+      "title": "ARTIFACTS",
+      "subtitle": "[BUILD_LOG]",
+      "inventoryLabel": "INVENTARIO",
+      "buildLogLabel": "BUILD_LOG",
+      "systemComponentsLabel": "SYSTEM_COMPONENTS",
+      "typeLabel": "TIPO",
+      "statusLabel": "ESTADO",
+      "detailsLabel": "DETALLES_TECNICOS",
+      "stackLabel": "COMPONENTES",
+      "distributionLabel": "DISTRIBUCION",
+      "intentLabel": "PROPOSITO",
+      "items": [
+        {
+          "id": "PRJ-001",
+          "name": "Html2Pdf",
+          "type": "LIBRERIA_BACKEND",
+          "status": "ACTIVO",
+          "description": "Librería .NET para generar PDF desde HTML de forma determinística en flujos de servicio.",
+          "details": [
+            "Plantillas RazorLight compiladas para render estable de documentos.",
+            "Pool de navegador con PuppeteerSharp para reducir sobrecarga en exportaciones por lote.",
+            "Integración DI-ready para APIs y procesos worker."
+          ],
+          "stack": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
+          "distribution": "NuGet / Nast.Html2Pdf",
+          "intent": "Estandarizar la salida PDF como componente de infraestructura y no como scripts aislados por proyecto."
+        },
+        {
+          "id": "PRJ-002",
+          "name": "SimpleMediator",
+          "type": "LIBRERIA_BACKEND",
+          "status": "ACTIVO",
+          "description": "Núcleo Mediator/CQRS orientado a handlers explícitos y bajo costo operativo.",
+          "details": [
+            "Cero dependencias externas para mantener adopción y upgrades previsibles.",
+            "Separación de commands/queries para casos de uso acotados.",
+            "Abstracción de pipeline para concerns transversales sin lock-in de framework."
+          ],
+          "stack": [".NET 8", "C#", "CQRS", "Mediator"],
+          "distribution": "NuGet / Nast.SimpleMediator",
+          "intent": "Mantener la orquestación de dominio explícita minimizando boilerplate guiado por framework."
+        },
+        {
+          "id": "PRJ-003",
+          "name": "Flask Forge CLI",
+          "type": "HERRAMIENTA_CLI",
+          "status": "ACTIVO",
+          "description": "CLI de scaffolding para inicializar proyectos Flask de forma repetible con defaults modulares.",
+          "details": [
+            "Generación por templates de carpetas, módulos y configuración base.",
+            "Tooling de migraciones preconfigurado con convenciones SQLAlchemy y Alembic.",
+            "Capa de comandos con Typer para extender flujos de equipo sin fricción."
+          ],
+          "stack": ["Python", "Flask", "Typer", "Jinja2", "SQLAlchemy", "Alembic"],
+          "distribution": "PyPI / flask-forge-cli",
+          "intent": "Reducir variabilidad de setup e imponer una arquitectura inicial documentada para servicios Flask."
         }
       ]
     },

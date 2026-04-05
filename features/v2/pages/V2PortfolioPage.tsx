@@ -81,6 +81,18 @@ interface V2CaseStudyEntry {
   statusClass?: string
 }
 
+interface V2ArtifactEntry {
+  id: string
+  name: string
+  type: string
+  status: string
+  description: string
+  details: string[]
+  stack: string[]
+  distribution: string
+  intent: string
+}
+
 interface V2DecisionItem {
   id: string
   statusClass: string
@@ -140,6 +152,20 @@ interface V2MessagesShape {
     subtitle: string
     footerHint: string
     items: V2CaseStudyEntry[]
+  }
+  artifacts: {
+    title: string
+    subtitle: string
+    inventoryLabel: string
+    buildLogLabel: string
+    systemComponentsLabel: string
+    typeLabel: string
+    statusLabel: string
+    detailsLabel: string
+    stackLabel: string
+    distributionLabel: string
+    intentLabel: string
+    items: V2ArtifactEntry[]
   }
   decisionLog: {
     title: string
@@ -209,6 +235,50 @@ function TopBar({ copy, localeSwitchLabel, localeSwitchHref }: { copy: V2TopBarC
 }
 
 function Sidebar({ copy }: { copy: V2SidebarCopy }) {
+  const renderIcon = (index: number) => {
+    if (index === 0) {
+      return (
+        <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 6l6 6-6 6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+          <path d="M12 18h8" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+        </svg>
+      )
+    }
+
+    if (index === 1) {
+      return (
+        <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="12" cy="6" rx="6" ry="2.5" stroke="currentColor" strokeWidth="1.6" />
+          <path d="M6 6v8c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V6" stroke="currentColor" strokeWidth="1.6" />
+          <path d="M6 10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5" stroke="currentColor" strokeWidth="1.6" />
+        </svg>
+      )
+    }
+
+    if (index === 2) {
+      return (
+        <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 8h16M4 12h16M4 16h16" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+        </svg>
+      )
+    }
+
+    if (index === 3) {
+      return (
+        <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect height="8" rx="1.2" stroke="currentColor" strokeWidth="1.6" width="12" x="6" y="8" />
+          <path d="M9 5v3M15 5v3M9 16v3M15 16v3M4 10h2M4 14h2M18 10h2M18 14h2" stroke="currentColor" strokeLinecap="round" strokeWidth="1.6" />
+        </svg>
+      )
+    }
+
+    return (
+      <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 8l-4 4 4 4M15 8l4 4-4 4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+      </svg>
+    )
+  }
+
   return (
     <aside className="bg-[#0b0b0b] text-[#FF7CF5] font-label text-[9px] uppercase tracking-wider fixed left-0 top-0 h-full w-16 md:w-64 flex flex-col z-40 pt-20 border-r border-zinc-800/30">
       <div className="px-4 mb-8 hidden md:block">
@@ -224,40 +294,20 @@ function Sidebar({ copy }: { copy: V2SidebarCopy }) {
       </div>
 
       <div className="flex-1">
-        <a className="bg-[#FF7CF5] text-[#580058] p-4 md:p-3 flex items-center gap-4 transition-none" href={copy.nav[0]?.href ?? '#hero'}>
-          <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 6l6 6-6 6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-            <path d="M12 18h8" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
-          </svg>
-          <span className="hidden md:inline">{copy.nav[0]?.label}</span>
-        </a>
-        <a className="text-zinc-600 p-4 md:p-3 flex items-center gap-4 hover:bg-zinc-800 hover:text-[#FF7CF5] transition-none" href={copy.nav[1]?.href ?? '#identity'}>
-          <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="12" cy="6" rx="6" ry="2.5" stroke="currentColor" strokeWidth="1.6" />
-            <path d="M6 6v8c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V6" stroke="currentColor" strokeWidth="1.6" />
-            <path d="M6 10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5" stroke="currentColor" strokeWidth="1.6" />
-          </svg>
-          <span className="hidden md:inline">{copy.nav[1]?.label}</span>
-        </a>
-        <a
-          className="text-zinc-600 p-4 md:p-3 flex items-center gap-4 hover:bg-zinc-800 hover:text-[#FF7CF5] transition-none"
-          href={copy.nav[2]?.href ?? '#decision-log'}
-        >
-          <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <rect height="8" rx="1.2" stroke="currentColor" strokeWidth="1.6" width="12" x="6" y="8" />
-            <path d="M9 5v3M15 5v3M9 16v3M15 16v3M4 10h2M4 14h2M18 10h2M18 14h2" stroke="currentColor" strokeLinecap="round" strokeWidth="1.6" />
-          </svg>
-          <span className="hidden md:inline">{copy.nav[2]?.label}</span>
-        </a>
-        <a
-          className="text-zinc-600 p-4 md:p-3 flex items-center gap-4 hover:bg-zinc-800 hover:text-[#FF7CF5] transition-none"
-          href={copy.nav[3]?.href ?? '#stack-evaluation'}
-        >
-          <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 8l-4 4 4 4M15 8l4 4-4 4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-          </svg>
-          <span className="hidden md:inline">{copy.nav[3]?.label}</span>
-        </a>
+        {copy.nav.map((item, index) => (
+          <a
+            key={`${item.href}-${item.label}`}
+            className={
+              index === 0
+                ? 'bg-[#FF7CF5] text-[#580058] p-4 md:p-3 flex items-center gap-4 transition-none'
+                : 'text-zinc-600 p-4 md:p-3 flex items-center gap-4 hover:bg-zinc-800 hover:text-[#FF7CF5] transition-none'
+            }
+            href={item.href}
+          >
+            {renderIcon(index)}
+            <span className="hidden md:inline">{item.label}</span>
+          </a>
+        ))}
       </div>
 
       <div className="mt-auto p-4 border-t border-zinc-800/20 bg-black/40">
@@ -478,6 +528,75 @@ function DecisionLogSection({ copy }: { copy: V2MessagesShape['decisionLog'] }) 
   )
 }
 
+function ArtifactsSection({ copy }: { copy: V2MessagesShape['artifacts'] }) {
+  return (
+    <section className="px-8 md:px-16 py-24 bg-[#0d0d0d] border-b border-zinc-800/30 scroll-mt-28" id="build-log">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-wrap items-center gap-4 mb-12">
+          <h3 className="font-headline text-3xl md:text-4xl font-bold">{copy.title}</h3>
+          <div className="h-[1px] flex-1 bg-primary/20 min-w-20" />
+          <div className="font-label text-[10px] text-zinc-500 tracking-widest uppercase">{copy.subtitle}</div>
+        </div>
+
+        <div className="border border-zinc-800 bg-black/40">
+          <div className="px-6 md:px-8 py-4 border-b border-zinc-800 flex flex-wrap items-center gap-x-6 gap-y-2">
+            <span className="font-label text-[10px] text-primary tracking-[0.2em] uppercase">{copy.inventoryLabel}</span>
+            <span className="font-label text-[10px] text-zinc-500 tracking-widest uppercase">{copy.buildLogLabel}</span>
+            <span className="font-label text-[10px] text-zinc-600 tracking-widest uppercase">{copy.systemComponentsLabel}</span>
+          </div>
+
+          {copy.items.map((item) => (
+            <article key={item.id} className="px-6 md:px-8 py-8 border-b border-zinc-800/80 last:border-b-0">
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <span className="font-label text-[10px] text-primary tracking-widest">[{item.id}]</span>
+                <span className="bg-zinc-800 text-zinc-300 font-label text-[9px] px-2 py-0.5 uppercase">
+                  {copy.typeLabel}: {item.type}
+                </span>
+                <span className="bg-zinc-800 text-zinc-300 font-label text-[9px] px-2 py-0.5 uppercase">
+                  {copy.statusLabel}: {item.status}
+                </span>
+              </div>
+
+              <h4 className="font-headline text-2xl font-bold mb-2">{item.name}</h4>
+              <p className="font-body text-zinc-400 mb-6 max-w-4xl">{item.description}</p>
+
+              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8">
+                <div>
+                  <div className="font-label text-[10px] text-zinc-500 uppercase mb-2">{copy.detailsLabel}</div>
+                  <ul className="space-y-2">
+                    {item.details.map((detail) => (
+                      <li key={`${item.id}-${detail}`} className="font-body text-sm text-zinc-500 before:content-['>'] before:text-primary before:mr-2">
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <div className="font-label text-[10px] text-zinc-500 uppercase mb-2">{copy.stackLabel}</div>
+                    <p className="font-label text-[10px] text-zinc-300 uppercase tracking-wider">{item.stack.join(' · ')}</p>
+                  </div>
+
+                  <div className="border-t border-zinc-800 pt-4">
+                    <div className="font-label text-[10px] text-zinc-500 uppercase mb-1">{copy.distributionLabel}</div>
+                    <p className="font-label text-[10px] text-primary uppercase tracking-wider">{item.distribution}</p>
+                  </div>
+
+                  <div className="border-t border-zinc-800 pt-4">
+                    <div className="font-label text-[10px] text-zinc-500 uppercase mb-1">{copy.intentLabel}</div>
+                    <p className="font-body text-sm text-zinc-400">{item.intent}</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function StackEvaluationSection({ copy }: { copy: V2MessagesShape['stack'] }) {
   return (
     <section className="px-8 md:px-16 py-24 bg-surface-container-low/30 scroll-mt-28" id="stack-evaluation">
@@ -580,6 +699,7 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
         <AboutSection copy={copy.about} />
         <CorePrinciplesSection items={copy.principles.items} title={copy.principles.title} />
         <CaseStudiesSection copy={copy.caseStudies} />
+        <ArtifactsSection copy={copy.artifacts} />
         <DecisionLogSection copy={copy.decisionLog} />
         <StackEvaluationSection copy={copy.stack} />
         <NotesSection copy={copy.notes} />
