@@ -42,7 +42,7 @@ function Sidebar() {
             <span>ARCH.MODE:</span> <span className="text-white">MODULAR</span>
           </div>
           <div className="flex justify-between">
-            <span>STATE:</span> <span className="text-white">PROD-READY</span>
+            <span>STATE:</span> <span className="text-white">PROD_READY</span>
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@ function Sidebar() {
           <div className="h-1 bg-zinc-900 w-full mb-1">
             <div className="h-full bg-zinc-700 w-1/2" />
           </div>
-          <div className="text-[8px] text-zinc-700 mt-2 font-label">LATEST_LOG: 200 OK - /api/v1/health</div>
+          <div className="text-[8px] text-zinc-700 mt-2 font-label">LATEST_LOG: 200 OK - /api/health</div>
         </div>
         <button className="w-full bg-zinc-800 text-zinc-400 py-2 text-[10px] hidden md:block hover:text-primary transition-none mb-4">
           [INITIATE_CONTACT]
@@ -103,7 +103,7 @@ function HeroSection() {
       <div className="max-w-5xl">
         <div className="font-label text-primary text-sm mb-4 tracking-[0.2em] uppercase">[IDENTITY_VERIFIED]</div>
         <h1 className="font-headline text-5xl md:text-8xl font-bold tracking-tighter mb-4">
-          ALEX REED — <span className="text-white/20">Systems Architect</span>
+          Kevin Martínez — <span className="text-white/20">Systems Architect</span>
         </h1>
         <div className="mb-10">
           <h2 className="font-headline text-2xl md:text-4xl text-zinc-400 mb-2 max-w-3xl leading-tight">
@@ -114,7 +114,8 @@ function HeroSection() {
           </p>
         </div>
         <p className="font-body text-lg text-zinc-500 mb-12 max-w-xl border-l-2 border-primary/20 pl-6 py-2">
-          &quot;Architecture is the art of deciding which complexity is worth paying for.&quot;
+          Most systems don’t break at scale. They break when no one controls how complexity grows. &quot;Architecture is the art of deciding
+          which complexity is worth paying for.&quot;
         </p>
         <div className="flex flex-wrap gap-4 items-center">
           <button className="bg-primary text-on-primary px-8 py-4 font-label text-sm font-bold glitch-hover">VIEW_LOGS</button>
@@ -154,10 +155,8 @@ function IdentitySection() {
           <span className="text-primary italic">predictable evolution</span>.
         </p>
         <p className="font-body text-zinc-400">
-          In a landscape obsessed with the latest hype, I find solace in the boring, the reliable, and the maintainable. Architecture
-          isn&apos;t about drawing boxes; it&apos;s about deciding which technical debt is worth incurring today to ship tomorrow.{' '}
-          <span className="font-label text-[11px] text-zinc-600 italic">{'/* better a monolith than a mess */'}</span> My focus is on
-          systems-thinking.
+          I work on systems that are already running in production or will be. That means dealing with constraints, legacy decisions,
+          and real business impact. Architecture is not about drawing boxes, it is about controlling how complexity evolves over time.
         </p>
         <div className="flex gap-4">
           <div className="bg-surface-container px-3 py-1 border border-outline-variant/20 font-label text-[10px] text-zinc-500">[MODE: OPINIONATED]</div>
@@ -178,16 +177,16 @@ function CorePrinciplesSection() {
           <div className="absolute top-0 right-0 p-2 font-label text-[10px] text-zinc-700">01</div>
           <h4 className="font-headline text-xl font-bold mb-4 text-zinc-200">Domain over Framework</h4>
           <p className="font-body text-sm text-zinc-500 leading-relaxed">
-            Frameworks are implementation details. Your business logic shouldn&apos;t know they exist. I build core logic that lives longer
-            than the seasonal JS library trend.
+            Frameworks are implementation details. Business logic should not depend on them. If changing a framework breaks your
+            system, the system was never properly designed.
           </p>
         </div>
         <div className="bg-[#1a1919] p-12 border-2 border-primary relative shadow-[0_0_40px_rgba(255,124,245,0.15)] md:-translate-y-8 md:scale-105 z-20">
           <div className="absolute top-0 right-0 p-3 font-label text-[10px] text-primary">02_CRITICAL</div>
           <h4 className="font-headline text-2xl font-bold mb-6 text-primary">Boundaries over Coupling</h4>
           <p className="font-body text-md text-zinc-200 leading-relaxed">
-            Shared databases are the original sin of system design. I enforce boundaries at the contract level to ensure modularity
-            isn&apos;t just a word on a slide.
+            Shared databases are the original sin of system design. Without clear ownership and contracts, modularity is just an
+            illusion.
           </p>
           <div className="mt-8 h-[2px] w-full bg-primary/40" />
           <div className="mt-4 font-label text-[10px] text-primary flex justify-between">
@@ -199,8 +198,8 @@ function CorePrinciplesSection() {
           <div className="absolute top-0 right-0 p-2 font-label text-[10px] text-zinc-700">03</div>
           <h4 className="font-headline text-xl font-bold mb-4 text-zinc-200">Simplicity before Complexity</h4>
           <p className="font-body text-sm text-zinc-500 leading-relaxed">
-            Microservices aren&apos;t free. If your monolith isn&apos;t modular, your microservices will be a distributed nightmare. Start simple,
-            split later.
+            Microservices are not a solution, they are a cost. If a monolith is not modular, distributing it will only amplify the
+            problem.
           </p>
         </div>
       </div>
@@ -218,16 +217,15 @@ function FeaturedCaseStudySection() {
             <h3 className="font-headline text-4xl md:text-5xl font-bold mb-6">Re-architecting for 10x Load</h3>
             <div className="space-y-6 text-zinc-400 font-body">
               <p>
-                <span className="text-zinc-100 font-bold">The Problem:</span> A legacy PHP monolith hitting the ceiling of its Postgres
-                connection pool and blocking IO on every request during peak market hours.
+                <span className="text-zinc-100 font-bold">The Problem:</span> A CRM backend handling business operations and integrations
+                started hitting architectural limits as the system grew in complexity and usage.
               </p>
               <p>
-                <span className="text-zinc-100 font-bold">The Decisions:</span> Transitioned to a{' '}
-                <span className="text-primary italic">Modular Monolith</span> in Go. Why? To avoid the network latency of microservices
-                while preparing for physical extraction.
+                <span className="text-zinc-100 font-bold">The Decisions:</span> Evolved from a traditional Clean Architecture monolith into
+                a modular monolith with explicit contracts between modules to reduce coupling and enable controlled growth.
               </p>
               <div className="flex flex-wrap gap-2 mt-4">
-                {['GO', 'POSTGRESQL', 'REDIS', 'NATS'].map((item) => (
+                {['C# / .NET 8 / .NET 10', 'MySQL / Amazon RDS', 'Dapper / EF Core', 'Docker', 'AWS (Cognito, SNS, S3, SES)'].map((item) => (
                   <span key={item} className="px-3 py-1 bg-surface-container-highest border border-zinc-700 font-label text-[10px]">
                     {item}
                   </span>
@@ -242,9 +240,9 @@ function FeaturedCaseStudySection() {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_hZH3MLDnliSgX-7GCloVm0k9-aQ75LWgtQJd0PfQfhfYKprp5l4Ua4602afm2RNhDlSt_THqdI1a3gMsmjzkrSaekLcj4FeKsLTEKwc92JPoygaFiU4WM7SMOahWHCCEE7y1BZvBsopMP02RYREUXzKav8YuotNRmTGEFrHfH7-7JVlaHHRHYlxsmFeXbIGxOdKQBxfhexFRydhkb1OCMS6O184BwabrNcBFpIn5fyf39P_Rgxd343DhPqgglPyr5s-T75-qeKvH"
             />
             <div className="absolute bottom-8 left-8 bg-black/80 p-6 border-l-4 border-primary backdrop-blur-md">
-              <div className="font-label text-[10px] text-primary mb-2">METRIC_REPORT</div>
-              <div className="text-3xl font-headline font-bold text-white tracking-tighter">99.99% UPTIME</div>
-              <div className="text-xs text-zinc-500 font-label italic mt-1">(Real production logs, not a sanitized demo)</div>
+              <div className="font-label text-[10px] text-primary mb-2">RESULT_REPORT</div>
+              <div className="text-3xl font-headline font-bold text-white tracking-tighter">SYSTEM READY FOR CONTROLLED SCALING</div>
+              <div className="text-xs text-zinc-500 font-label italic mt-1">(Improved maintainability, reduced coupling, better observability)</div>
             </div>
           </div>
         </div>
@@ -266,26 +264,26 @@ function DecisionLogSection() {
           {
             statusClass: 'bg-primary',
             status: '[STATUS: ACCEPTED]',
-            context: '[CONTEXT: FINANCIAL COMPLIANCE]',
-            title: 'CQRS for Auditability',
-            body: 'Separating reads from writes to enable an immutable audit log.',
-            tradeoff: 'WRITE COMPLEXITY ↑ / AUDITABILITY ↑',
+            context: '[CONTEXT: DOMAIN_MODEL]',
+            title: 'CQRS for Domain Evolution',
+            body: 'Separated read and write models to better encapsulate business rules and allow independent evolution.',
+            tradeoff: 'COMPLEXITY ↑ / DOMAIN CLARITY ↑',
           },
           {
             statusClass: 'bg-error',
             status: '[STATUS: DEPRECATED]',
-            context: '[CONTEXT: DATA_INTEGRITY]',
-            title: 'Direct DB Access (Legacy)',
-            body: 'Bypassing service layers. Replaced with gRPC interfaces.',
-            tradeoff: 'DEVELOPMENT SPEED ↓ / SYSTEM SAFETY ↑',
+            context: '[CONTEXT: DATA_ACCESS]',
+            title: 'Direct Cross-Module Access',
+            body: 'Modules accessing each other\'s data directly caused hidden coupling and fragile behavior.',
+            tradeoff: 'SHORT-TERM SPEED ↓ / LONG-TERM STABILITY ↑',
           },
           {
             statusClass: 'bg-tertiary-container',
-            status: '[STATUS: EVALUATING]',
-            context: '[CONTEXT: API_GOVERNANCE]',
-            title: 'Contract-First Design',
-            body: 'Generating client SDKs and server stubs from OpenAPI specs.',
-            tradeoff: 'INITIAL OVERHEAD ↑ / INTERFACE DRIFT 0',
+            status: '[STATUS: ACCEPTED]',
+            context: '[CONTEXT: ARCHITECTURE]',
+            title: 'Contract-Based Module Boundaries',
+            body: 'Introduced explicit contracts to isolate modules and prevent dependency leakage.',
+            tradeoff: 'UPFRONT DESIGN COST ↑ / COUPLING ↓',
           },
         ].map((item) => (
           <div
@@ -318,10 +316,14 @@ function StackEvaluationSection() {
       <div className="font-label text-center text-primary text-xs mb-16 tracking-[0.3em] uppercase">[STACK_EVALUATION_PROTOCOLS]</div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-zinc-800/40">
         {[
-          { category: '[RUNTIMES]', name: 'Go', detail: 'High-throughput services' },
-          { category: '[PERSISTENCE]', name: 'Postgres', detail: 'Source of truth (not a dumping ground)' },
-          { category: '[STATE]', name: 'Redis', detail: 'Cache, not a crutch' },
-          { category: '[ORCHESTRATION]', name: 'Kubernetes', detail: 'Only when scale justifies the overhead' },
+          { category: '[RUNTIMES]', name: 'C# / .NET', detail: 'Primary environment for backend systems and architectural design' },
+          {
+            category: '[PERSISTENCE]',
+            name: 'PostgreSQL / MySQL',
+            detail: 'Relational systems with focus on data modeling and query optimization',
+          },
+          { category: '[STATE]', name: 'Redis', detail: 'Cache used deliberately, not as a workaround for bad design' },
+          { category: '[ORCHESTRATION]', name: 'AWS', detail: 'Used for authentication, messaging and infrastructure support' },
         ].map((item) => (
           <div
             key={item.name}
@@ -350,21 +352,18 @@ function NotesSection() {
         <div className="relative pl-12 border-l border-primary/30">
           <div className="absolute -left-1.5 top-0 w-3 h-3 bg-primary" />
           <h4 className="font-headline text-xl font-bold mb-2">&quot;Microservices aren&apos;t free.&quot;</h4>
-          <p className="font-label text-[10px] text-primary/50 mb-4 uppercase tracking-tighter">They just move the cost somewhere else.</p>
+          <p className="font-label text-[10px] text-primary/50 mb-4 uppercase tracking-tighter">They don’t remove complexity, they relocate it.</p>
           <p className="font-body text-zinc-400 leading-relaxed">
-            The cognitive load of managing 50 repositories is rarely worth it for a team of 10. We optimize for the wrong things
-            because &quot;at scale&quot; sounds cooler than &quot;it works on one server.&quot;
+            The cost of coordination, network latency, and operational overhead is often ignored. If a team cannot manage a monolith,
+            splitting it will not solve the problem.
           </p>
         </div>
         <div className="relative pl-12 border-l border-zinc-800">
           <div className="absolute -left-1.5 top-0 w-3 h-3 bg-zinc-800" />
-          <h4 className="font-headline text-xl font-bold mb-2">&quot;Strategic omission is an architectural skill.&quot;</h4>
-          <p className="font-label text-[10px] text-zinc-600 mb-4 uppercase tracking-tighter">
-            Architecture is deciding which complexity is worth it.
-          </p>
+          <h4 className="font-headline text-xl font-bold mb-2">&quot;Architecture is deciding what to leave out.&quot;</h4>
+          <p className="font-label text-[10px] text-zinc-600 mb-4 uppercase tracking-tighter">Every abstraction has a cost.</p>
           <p className="font-body text-zinc-400 leading-relaxed">
-            Every abstraction is a liability. Every third-party service is a point of failure. Good architecture is knowing when to say
-            &quot;no&quot; to a feature that complicates the mental model.
+            Good systems are not defined by how many patterns they use, but by how many unnecessary ones they avoid.
           </p>
         </div>
       </div>
@@ -378,9 +377,7 @@ function ContactSection() {
       <div className="w-full max-w-2xl">
         <div className="font-label text-primary text-xs mb-6 tracking-[0.5em] uppercase">[INITIATE_HANDSHAKE]</div>
         <h3 className="font-headline text-4xl md:text-6xl font-bold mb-8">Ready to scale without the drama?</h3>
-        <p className="font-body text-zinc-500 mb-12">
-          No recruiters for web3 startups, please. If you need systems that survive the real world, let&apos;s talk.
-        </p>
+        <p className="font-body text-zinc-500 mb-12">If you need systems that remain maintainable as they grow, we should talk.</p>
         <form className="space-y-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative group">
@@ -393,12 +390,12 @@ function ContactSection() {
             </div>
             <div className="flex-1 relative group">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-label">$</span>
-              <input
-                className="w-full bg-surface-container border border-outline-variant/20 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs"
-                placeholder="ENPOINT_ADDRESS"
-                type="email"
-              />
-            </div>
+                <input
+                  className="w-full bg-surface-container border border-outline-variant/20 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs"
+                  placeholder="ENDPOINT_ADDRESS"
+                  type="email"
+                />
+              </div>
           </div>
           <button className="w-full bg-primary text-on-primary py-5 font-headline font-bold text-xl glitch-hover">SEND_MESSAGE</button>
         </form>
@@ -411,7 +408,7 @@ function Footer() {
   return (
     <footer className="bg-[#0E0E0E] text-[#FF7CF5] font-label text-[10px] uppercase w-full px-8 py-12 flex flex-col md:flex-row justify-between items-center md:items-end border-t border-zinc-800/20 relative z-10">
       <div className="mb-8 md:mb-0">
-        <div className="text-[#FF7CF5] font-bold mb-2">ALEX_REED_PORTFOLIO</div>
+        <div className="text-[#FF7CF5] font-bold mb-2">KEVIN_MARTINEZ_PORTFOLIO</div>
         <div className="text-zinc-700">[BUILD_2024.11] // ALL_RIGHTS_RESERVED</div>
       </div>
       <div className="flex gap-8">
