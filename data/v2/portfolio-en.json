@@ -1,26 +1,49 @@
 {
   "hero": {
-    "eyebrow": "Portfolio v2",
-    "title": "Backend engineering with operational focus",
-    "subtitle": "I design and ship resilient .NET systems with clean architecture, measurable quality gates, and fast rollback strategies.",
+    "eyebrow": "Ops-ready portfolio v2",
+    "title": "Backend engineering with operational discipline",
+    "subtitle": "I design and ship resilient .NET systems with architecture contracts, quality gates, and rollback plans that work under pressure.",
     "primaryCta": {
-      "label": "See selected projects",
+      "label": "Inspect project cases",
       "href": "#projects"
     },
     "secondaryCta": {
-      "label": "Get in touch",
+      "label": "Open contact protocol",
       "href": "#contact"
     }
   },
-  "summary": {
-    "title": "Production-first mindset",
+  "identity": {
+    "title": "Identity / role",
+    "role": "Backend Engineer (.NET)",
+    "location": "Duitama, Boyacá · Colombia",
     "paragraphs": [
-      "I work on API and backend domains where uptime, clear ownership, and maintainable boundaries matter as much as feature speed.",
-      "My process combines architecture discipline with practical delivery: contracts, telemetry, validation gates, and controlled release plans."
-    ]
+      "I work on API and backend domains where uptime, ownership, and maintainable boundaries matter as much as feature speed.",
+      "My delivery model is architecture-first: define contracts, monitor the system, enforce quality checks, and release with an explicit rollback path."
+    ],
+    "availability": "Open to backend architecture and platform reliability engagements"
   },
+  "principles": [
+    {
+      "id": "contract-first",
+      "title": "Contract-first development",
+      "statement": "Every module starts with explicit input/output contracts to keep changes local and testable.",
+      "signal": "signal: contract"
+    },
+    {
+      "id": "observable-by-default",
+      "title": "Observable by default",
+      "statement": "Telemetry and diagnostics are part of the feature definition, not an afterthought.",
+      "signal": "signal: telemetry"
+    },
+    {
+      "id": "rollback-safety",
+      "title": "Rollback-ready releases",
+      "statement": "Delivery plans include rollout checks, non-regression gates, and fast recovery paths.",
+      "signal": "signal: resilience"
+    }
+  ],
   "projects": {
-    "title": "Featured engineering work",
+    "title": "Project inventory",
     "items": [
       {
         "id": "html2pdf",
@@ -38,16 +61,95 @@
       }
     ]
   },
+  "caseStudy": {
+    "title": "Case study: controlled rollout for portfolio v2",
+    "context": "A coexistence rollout where v1 remains canonical while v2 is exposed safely.",
+    "challenge": "Ship a radically different route and UI system without breaking SEO policy, accessibility, or performance budgets.",
+    "approach": [
+      "Centralize content validation in a typed schema and fail fast on locale parity.",
+      "Compose route pages from one manifest-driven section model.",
+      "Harden rollout with metadata, a11y, and performance guard tests."
+    ],
+    "outcome": [
+      "v1 remains stable while v2 evolves independently.",
+      "Route-level specialization without duplicated contracts.",
+      "Non-regression checks provide release confidence."
+    ]
+  },
+  "decisionLog": [
+    {
+      "id": "route-manifest",
+      "title": "Adopt route composition manifests",
+      "context": "Hardcoded per-route JSX drifted quickly and duplicated logic.",
+      "decision": "Use a single typed section model and per-route manifests for composition.",
+      "tradeoff": "Higher upfront typing effort, but deterministic consistency across routes."
+    },
+    {
+      "id": "server-composition",
+      "title": "Keep composition server-side",
+      "context": "Client toggling would send unnecessary payload and add hydration complexity.",
+      "decision": "Render only route-allowed sections in server components.",
+      "tradeoff": "Slightly more route wiring, but stronger SEO semantics and lower runtime complexity."
+    }
+  ],
+  "stackProtocols": [
+    {
+      "id": "validation-gate",
+      "title": "Schema gate",
+      "intent": "content",
+      "rules": [
+        "Parse locale JSON with zod",
+        "Fail on missing required fields",
+        "Block release when EN/ES parity breaks"
+      ]
+    },
+    {
+      "id": "quality-gate",
+      "title": "Quality gate",
+      "intent": "delivery",
+      "rules": [
+        "Run metadata policy tests",
+        "Run route parity e2e checks",
+        "Run performance gate script"
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-1",
+      "title": "Architecture before implementation",
+      "body": "The fastest code path is usually the most expensive one to maintain. We define contracts first."
+    },
+    {
+      "id": "note-2",
+      "title": "AI is an execution tool",
+      "body": "AI helps with speed, but responsibility for architecture, verification, and release decisions stays human."
+    }
+  ],
   "contact": {
-    "title": "Let’s build reliable systems",
-    "description": "If you need backend architecture and delivery with clear quality standards, we can collaborate.",
+    "title": "Contact protocol",
+    "description": "If you need backend architecture and delivery with explicit quality standards, let’s work together.",
+    "channels": [
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/ksmartinez23/"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/NastMz"
+      }
+    ],
     "cta": {
-      "label": "Send an email",
+      "label": "Send email",
       "href": "mailto:ksmartinez23@outlook.com"
     }
   },
   "seo": {
     "title": "Kevin Martinez | Portfolio v2",
     "description": "Portfolio v2 of Kevin Martinez: backend engineering, modular architecture, and production-grade delivery."
+  },
+  "systemChrome": {
+    "topBarTitle": "OPS / BACKEND NARRATIVE",
+    "sideNavTitle": "Route sections"
   }
 }

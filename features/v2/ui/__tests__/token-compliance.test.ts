@@ -1,7 +1,19 @@
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
-import { Button, Card, Nav, SectionShell } from '@/features/v2/ui'
+import {
+  Button,
+  Card,
+  DecisionCard,
+  DocCard,
+  MetricPanel,
+  Nav,
+  SectionShell,
+  SignalBadge,
+  SystemSideNav,
+  SystemTopBar,
+  TerminalInput,
+} from '@/features/v2/ui'
 
 const tokenRegex = /var\(--([a-z0-9-]+)\)/gi
 
@@ -15,6 +27,18 @@ describe('v2 token compliance in UI primitives', () => {
     const markup = [
       renderToStaticMarkup(createElement(Button, null, 'Primary')),
       renderToStaticMarkup(createElement(Card, null, 'Card content')),
+      renderToStaticMarkup(createElement(DocCard, { title: 'Doc card' }, 'Doc body')),
+      renderToStaticMarkup(
+        createElement(DecisionCard, {
+          title: 'Decision',
+          context: 'Context',
+          decision: 'Decision made',
+          tradeoff: 'Tradeoff accepted',
+        }),
+      ),
+      renderToStaticMarkup(createElement(SignalBadge, null, 'signal: info')),
+      renderToStaticMarkup(createElement(TerminalInput, { label: 'Availability', value: 'Open' })),
+      renderToStaticMarkup(createElement(MetricPanel, { label: 'delivery', value: 'Quality gate', detail: 'metadata · e2e' })),
       renderToStaticMarkup(
         createElement(Nav, {
           locale: 'en',
@@ -32,11 +56,28 @@ describe('v2 token compliance in UI primitives', () => {
           'Child',
         ),
       ),
+      renderToStaticMarkup(
+        createElement(SystemSideNav, {
+          title: 'Sections',
+          items: [{ label: 'Hero', href: '#hero' }],
+        }),
+      ),
+      renderToStaticMarkup(
+        createElement(SystemTopBar, {
+          title: 'OPS',
+          routeLabel: 'Route: Home',
+          localeSwitchLabel: 'Switch locale',
+          localeHref: '/es/v2',
+          links: [{ label: 'Home', href: '/en/v2' }],
+        }),
+      ),
     ].join('\n')
 
     const tokens = extractTokenNames(markup)
 
     expect(tokens.length).toBeGreaterThan(0)
     expect(tokens.every((token) => token.startsWith('v2-'))).toBe(true)
+    expect(markup).not.toContain('rounded-full')
+    expect(markup).not.toContain('rounded-md')
   })
 })

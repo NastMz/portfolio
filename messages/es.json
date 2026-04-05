@@ -125,9 +125,37 @@
   "V2": {
     "localeSwitch": "Cambiar idioma",
     "projectLink": "Abrir proyecto",
-    "nav": {
-      "summary": "Resumen",
+    "routes": {
+      "home": "Inicio",
       "projects": "Proyectos",
+      "contact": "Contacto"
+    },
+    "routeLabels": {
+      "home": "Ruta: Inicio",
+      "projects": "Ruta: Proyectos",
+      "contact": "Ruta: Contacto"
+    },
+    "labels": {
+      "sectionIndex": "Índice de secciones",
+      "availability": "Disponibilidad",
+      "challenge": "Desafío",
+      "approach": "Enfoque",
+      "outcome": "Resultado"
+    },
+    "nav": {
+      "home": "Inicio",
+      "projects": "Proyectos",
+      "contact": "Contacto"
+    },
+    "sectionNav": {
+      "hero": "Hero",
+      "identity": "Identidad",
+      "principles": "Principios",
+      "projects": "Proyectos",
+      "caseStudy": "Caso de estudio",
+      "decisionLog": "Registro de decisiones",
+      "stackProtocols": "Protocolos de stack",
+      "notes": "Notas",
       "contact": "Contacto"
     }
   }

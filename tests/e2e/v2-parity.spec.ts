@@ -33,23 +33,19 @@ const localeCases = [
     locale: 'en',
     path: '/en/v2',
     labels: {
-      summary: 'Summary',
-      projects: 'Projects',
-      contact: 'Contact',
-      switchLocale: 'Switch locale',
+      archive: 'ARCHIVE',
+      logs: 'LOGS',
+      stack: 'STACK',
     },
-    oppositePath: '/es/v2',
   },
   {
     locale: 'es',
     path: '/es/v2',
     labels: {
-      summary: 'Resumen',
-      projects: 'Proyectos',
-      contact: 'Contacto',
-      switchLocale: 'Cambiar idioma',
+      archive: 'ARCHIVE',
+      logs: 'LOGS',
+      stack: 'STACK',
     },
-    oppositePath: '/en/v2',
   },
 ] as const
 
@@ -58,26 +54,37 @@ test.describe('v2 i18n interaction and accessibility parity', () => {
     test(`${localeCase.locale}: keyboard nav and focus-visible are present`, async ({ page }) => {
       await page.goto(localeCase.path)
 
-      await expect(page.getByRole('navigation', { name: 'V2 main navigation' })).toBeVisible()
-      await expect(page.getByRole('link', { name: localeCase.labels.summary, exact: true })).toBeVisible()
-      await expect(page.getByRole('link', { name: localeCase.labels.projects, exact: true })).toBeVisible()
-      await expect(page.getByRole('link', { name: localeCase.labels.contact, exact: true })).toBeVisible()
+      const topNav = page.getByRole('navigation', { name: 'V2 main navigation' })
+
+      await expect(topNav).toBeVisible()
+      await expect(topNav.getByRole('link', { name: localeCase.labels.archive, exact: true })).toBeVisible()
+      await expect(topNav.getByRole('link', { name: localeCase.labels.logs, exact: true })).toBeVisible()
+      await expect(topNav.getByRole('link', { name: localeCase.labels.stack, exact: true })).toBeVisible()
+      await expect(page.locator('main#main-content')).toBeVisible()
 
       await page.keyboard.press('Tab')
-      await expect(page.getByRole('link', { name: localeCase.labels.summary, exact: true })).toBeFocused()
+      await expect(topNav.getByRole('link', { name: localeCase.labels.archive, exact: true })).toBeFocused()
 
-      const focusStyle = await page.getByRole('link', { name: localeCase.labels.summary, exact: true }).evaluate((node) => {
+      const focusStyle = await topNav.getByRole('link', { name: localeCase.labels.archive, exact: true }).evaluate((node) => {
         return window.getComputedStyle(node).boxShadow
       })
 
       expect(focusStyle).not.toBe('none')
     })
 
-    test(`${localeCase.locale}: locale switch preserves /v2`, async ({ page }) => {
-      await page.goto(localeCase.path)
+    test(`${localeCase.locale}: /projects and /contact preserve full faithful composition`, async ({ page }) => {
+      const projectsPath = localeCase.path.replace('/v2', '/v2/projects')
+      const contactPath = localeCase.path.replace('/v2', '/v2/contact')
 
-      await page.getByRole('link', { name: localeCase.labels.switchLocale }).click()
-      await expect(page).toHaveURL(new RegExp(`${localeCase.oppositePath}$`))
+      await page.goto(projectsPath)
+      await expect(page.locator('#projects')).toBeVisible()
+      await expect(page.locator('#case-study')).toBeVisible()
+      await expect(page.locator('#contact')).toBeVisible()
+
+      await page.goto(contactPath)
+      await expect(page.locator('#contact')).toBeVisible()
+      await expect(page.locator('#notes')).toBeVisible()
+      await expect(page.locator('#projects')).toBeVisible()
     })
 
     test(`${localeCase.locale}: v2 tokens drive key surfaces and text contrast is compliant`, async ({ page }) => {
@@ -95,12 +102,8 @@ test.describe('v2 i18n interaction and accessibility parity', () => {
         return window.getComputedStyle(node).backgroundColor
       })
 
-      const headerTokenClasses = await page.getByRole('navigation', { name: 'V2 main navigation' }).evaluate((node) => {
+      const caseStudyClasses = await page.locator('#case-study').evaluate((node) => {
         return (node.parentElement as HTMLElement).className
-      })
-
-      const cardTokenClasses = await page.locator('#projects article').first().evaluate((node) => {
-        return (node as HTMLElement).className
       })
 
       const resolvedTokenColors = await page.evaluate((tokens) => {
@@ -122,12 +125,13 @@ test.describe('v2 i18n interaction and accessibility parity', () => {
       }, tokenValues)
 
       expect(routeBackground).toBe(resolvedTokenColors.bg)
-      expect(headerTokenClasses).toContain('--v2-color-border')
-      expect(cardTokenClasses).toContain('--v2-color-surface')
-      expect(cardTokenClasses).toContain('--v2-color-border')
+      expect(caseStudyClasses).toContain('bg-surface-container-lowest')
 
       const routeText = await page.locator('.v2-route h1').first().evaluate((node) => window.getComputedStyle(node).color)
-      const mutedText = await page.getByRole('link', { name: localeCase.labels.summary, exact: true }).evaluate((node) => {
+      const mutedText = await page
+        .getByRole('navigation', { name: 'V2 main navigation' })
+        .getByRole('link', { name: localeCase.labels.archive, exact: true })
+        .evaluate((node) => {
         return window.getComputedStyle(node).color
       })
       const routeBgRgb = parseRgb(routeBackground)

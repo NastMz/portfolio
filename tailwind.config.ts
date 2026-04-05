@@ -8,6 +8,7 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./features/**/*.{js,ts,jsx,tsx,mdx}",
     "*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
@@ -19,9 +20,53 @@ const config: Config = {
   		},
   	},
   	extend: {
-  		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+		colors: {
+			outline: '#777575',
+			'on-secondary-container': '#e0c5fe',
+			'on-error-container': '#ffb2b9',
+			'primary-dim': '#ff51fa',
+			'on-tertiary-fixed': '#003840',
+			'primary-container': '#ff5af9',
+			'inverse-surface': '#fcf8f8',
+			'surface-dim': '#0e0e0e',
+			'outline-variant': '#494847',
+			'on-tertiary': '#005762',
+			'secondary-fixed': '#e1c7ff',
+			'primary-fixed-dim': '#ff1cfe',
+			'surface-container': '#1a1919',
+			error: '#ff6e84',
+			'primary-fixed': '#ff5af9',
+			'on-secondary-fixed-variant': '#5c4777',
+			'on-primary': '#580058',
+			'surface-bright': '#2c2c2c',
+			'on-background': '#ffffff',
+			'secondary-fixed-dim': '#d3b9f1',
+			'on-tertiary-fixed-variant': '#005762',
+			'on-tertiary-container': '#004d57',
+			'surface-container-highest': '#262626',
+			'on-surface-variant': '#adaaaa',
+			'surface-container-high': '#201f1f',
+			surface: '#0e0e0e',
+			'tertiary-dim': '#00d4ec',
+			'on-primary-fixed': '#000000',
+			'on-secondary': '#4b3765',
+			'on-secondary-fixed': '#3f2b58',
+			'surface-tint': '#ff7cf5',
+			'surface-variant': '#262626',
+			'tertiary-fixed-dim': '#00d4ec',
+			'on-error': '#490013',
+			tertiary: '#81ecff',
+			'error-dim': '#d73357',
+			'secondary-container': '#523d6c',
+			'surface-container-low': '#131313',
+			'tertiary-container': '#00e3fd',
+			'on-primary-fixed-variant': '#540054',
+			'inverse-on-surface': '#565554',
+			'surface-container-lowest': '#000000',
+			'tertiary-fixed': '#00e3fd',
+			'on-surface': '#ffffff',
+			background: 'hsl(var(--background))',
+			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -71,12 +116,17 @@ const config: Config = {
   				ring: 'hsl(var(--sidebar-ring))'
   			}
   		},
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		},
-  		keyframes: {
+		borderRadius: {
+			lg: 'var(--radius)',
+			md: 'calc(var(--radius) - 2px)',
+			sm: 'calc(var(--radius) - 4px)'
+		},
+		fontFamily: {
+			headline: ['Space Grotesk', 'sans-serif'],
+			body: ['Inter', 'sans-serif'],
+			label: ['JetBrains Mono', 'monospace'],
+		},
+		keyframes: {
   			'accordion-down': {
   				from: {
   					height: '0'

@@ -8,6 +8,7 @@ import {
   type PortfolioVersion,
 } from '@/lib/site-config'
 import type { Locale } from '@/i18n/config'
+import { defaultLocale, locales } from '@/i18n/config'
 
 export interface MetadataParams {
   locale: Locale
@@ -16,6 +17,7 @@ export interface MetadataParams {
   image?: string
   noindex?: boolean
   version?: PortfolioVersion
+  routePath?: `/${string}`
 }
 
 export function generateMetadata(params: MetadataParams): Metadata {
@@ -26,6 +28,7 @@ export function generateMetadata(params: MetadataParams): Metadata {
     image = getProfileImageUrl(),
     noindex = false,
     version = 'v1',
+    routePath,
   } = params
 
   const policy = getRouteVersionPolicy()
@@ -42,13 +45,22 @@ export function generateMetadata(params: MetadataParams): Metadata {
   const canonicalVersion: PortfolioVersion = version === 'legacy' ? 'v2' : version
   const canonicalUrl = shouldCanonicalizeToRoot
     ? `${siteConfig.baseUrl}/${locale}`
-    : getCanonicalUrl(locale, canonicalVersion)
+    : routePath
+      ? `${siteConfig.baseUrl}/${locale}${routePath}`
+      : getCanonicalUrl(locale, canonicalVersion)
 
   const alternateVersion: PortfolioVersion = shouldCanonicalizeToRoot
     ? 'v1'
     : version === 'v2'
       ? 'v2'
       : 'v1'
+
+  const localizedRouteAlternates = routePath
+    ? {
+        ...Object.fromEntries(locales.map((localeOption) => [localeOption, `${siteConfig.baseUrl}/${localeOption}${routePath}`])),
+        'x-default': `${siteConfig.baseUrl}/${defaultLocale}${routePath}`,
+      }
+    : undefined
 
   return {
     title,
@@ -91,7 +103,9 @@ export function generateMetadata(params: MetadataParams): Metadata {
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: getLocalizedAlternates(alternateVersion),
+      languages: shouldCanonicalizeToRoot
+        ? getLocalizedAlternates(alternateVersion)
+        : localizedRouteAlternates ?? getLocalizedAlternates(alternateVersion),
     },
   }
 }
