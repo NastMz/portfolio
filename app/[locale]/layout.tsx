@@ -1,6 +1,4 @@
 import type { Metadata, Viewport } from 'next'
-import '../globals.css'
-import '@/features/v2/tokens/tokens.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from "@/components/ui/sonner"
 import {NextIntlClientProvider} from 'next-intl';
@@ -87,20 +85,16 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={requestLocale} suppressHydrationWarning>
-      <body>
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster />
-          </ThemeProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        {children}
+        <Toaster />
+      </ThemeProvider>
+    </NextIntlClientProvider>
   )
 }

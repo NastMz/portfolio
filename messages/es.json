@@ -447,8 +447,10 @@
       "title": "¿Listo para escalar sin drama?",
       "description": "Si necesitás sistemas que sigan siendo mantenibles mientras crecen, hablemos.",
       "form": {
-        "identityPlaceholder": "IDENTIDAD",
-        "endpointPlaceholder": "ENDPOINT_ADDRESS",
+        "identityLabel": "IDENTITY",
+        "endpointLabel": "ENDPOINT_ADDRESS",
+        "identityPlaceholder": "John Doe",
+        "endpointPlaceholder": "john.doe@email.com",
         "submitLabel": "ENVIAR_MENSAJE",
         "feedback": {
           "identityRequired": "ERROR::IDENTITY_REQUIRED",

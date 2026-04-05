@@ -447,8 +447,10 @@
       "title": "Ready to scale without the drama?",
       "description": "If you need systems that remain maintainable as they grow, we should talk.",
       "form": {
-        "identityPlaceholder": "IDENTITY",
-        "endpointPlaceholder": "ENDPOINT_ADDRESS",
+        "identityLabel": "IDENTITY",
+        "endpointLabel": "ENDPOINT_ADDRESS",
+        "identityPlaceholder": "John Doe",
+        "endpointPlaceholder": "john.doe@email.com",
         "submitLabel": "SEND_MESSAGE",
         "feedback": {
           "identityRequired": "ERROR::IDENTITY_REQUIRED",

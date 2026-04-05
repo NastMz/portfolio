@@ -5,6 +5,8 @@ import { type FormEvent, useState } from 'react'
 type FeedbackType = 'error' | 'success'
 
 export interface V2ContactTerminalFormCopy {
+  identityLabel: string
+  endpointLabel: string
   identityPlaceholder: string
   endpointPlaceholder: string
   submitLabel: string
@@ -71,29 +73,41 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
   return (
     <form className="space-y-4" noValidate onSubmit={handleSubmit}>
       <div className="flex flex-col md:flex-row gap-4">
-        <div className="flex-1 relative group">
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-label">&gt;</span>
-          <input
-            aria-invalid={feedback?.type === 'error' && !identity.trim()}
-            className="w-full bg-surface-container border border-outline-variant/20 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs"
-            name="identity"
-            onChange={(event) => setIdentity(event.target.value)}
-            placeholder={copy.identityPlaceholder}
-            type="text"
-            value={identity}
-          />
+        <div className="flex-1 group">
+          <label className="block font-label text-[10px] text-zinc-500 tracking-widest uppercase mb-2" htmlFor="contact-identity">
+            {copy.identityLabel}
+          </label>
+          <div className="relative">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-label">&gt;</span>
+            <input
+              id="contact-identity"
+              aria-invalid={feedback?.type === 'error' && !identity.trim()}
+              className="w-full bg-surface-container border border-outline-variant/20 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs"
+              name="identity"
+              onChange={(event) => setIdentity(event.target.value)}
+              placeholder={copy.identityPlaceholder}
+              type="text"
+              value={identity}
+            />
+          </div>
         </div>
-        <div className="flex-1 relative group">
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-label">$</span>
-          <input
-            aria-invalid={feedback?.type === 'error' && endpointAddress.trim().length > 0 && !EMAIL_REGEX.test(endpointAddress.trim())}
-            className="w-full bg-surface-container border border-outline-variant/20 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs"
-            name="endpointAddress"
-            onChange={(event) => setEndpointAddress(event.target.value)}
-            placeholder={copy.endpointPlaceholder}
-            type="email"
-            value={endpointAddress}
-          />
+        <div className="flex-1 group">
+          <label className="block font-label text-[10px] text-zinc-500 tracking-widest uppercase mb-2" htmlFor="contact-endpoint">
+            {copy.endpointLabel}
+          </label>
+          <div className="relative">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-label">$</span>
+            <input
+              id="contact-endpoint"
+              aria-invalid={feedback?.type === 'error' && endpointAddress.trim().length > 0 && !EMAIL_REGEX.test(endpointAddress.trim())}
+              className="w-full bg-surface-container border border-outline-variant/20 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs"
+              name="endpointAddress"
+              onChange={(event) => setEndpointAddress(event.target.value)}
+              placeholder={copy.endpointPlaceholder}
+              type="email"
+              value={endpointAddress}
+            />
+          </div>
         </div>
       </div>
 

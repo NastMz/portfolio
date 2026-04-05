@@ -284,7 +284,7 @@ function Sidebar({ copy }: { copy: V2SidebarCopy }) {
     <aside className="bg-[#0b0b0b] text-[#FF7CF5] font-label text-[9px] uppercase tracking-wider fixed left-0 top-0 h-full w-16 md:w-64 flex flex-col z-40 pt-20 border-r border-zinc-800/30">
       <div className="px-4 mb-8 hidden md:block">
         <div className="font-bold text-primary mb-4">{copy.monitorTitle}</div>
-        <div className="space-y-1 text-zinc-500">
+        <div className="space-y-1 text-zinc-400">
           {copy.monitorItems.map((item) => (
             <div key={item.label} className="flex justify-between">
               <span>{item.label}</span>
@@ -301,7 +301,7 @@ function Sidebar({ copy }: { copy: V2SidebarCopy }) {
             className={
               index === 0
                 ? 'bg-[#FF7CF5] text-[#580058] p-4 md:p-3 flex items-center gap-4 transition-none'
-                : 'text-zinc-600 p-4 md:p-3 flex items-center gap-4 hover:bg-zinc-800 hover:text-[#FF7CF5] transition-none'
+                : 'text-zinc-400 p-4 md:p-3 flex items-center gap-4 hover:bg-zinc-800 hover:text-[#FF7CF5] transition-none'
             }
             href={item.href}
           >
@@ -313,23 +313,23 @@ function Sidebar({ copy }: { copy: V2SidebarCopy }) {
 
       <div className="mt-auto p-4 border-t border-zinc-800/20 bg-black/40">
         <div className="hidden md:block mb-4">
-          <div className="text-zinc-600 text-[8px] mb-2">{copy.throughputTitle}</div>
-          <div className="h-1 bg-zinc-900 w-full mb-1">
+          <div className="text-zinc-500 text-[8px] mb-2">{copy.throughputTitle}</div>
+          <div className="h-1 bg-zinc-800 w-full mb-1">
             <div className="h-full bg-primary bar-anim" />
           </div>
-          <div className="h-1 bg-zinc-900 w-full mb-1">
-            <div className="h-full bg-zinc-700 w-1/2" />
+          <div className="h-1 bg-zinc-800 w-full mb-1">
+            <div className="h-full bg-zinc-500 w-1/2" />
           </div>
-          <div className="text-[8px] text-zinc-700 mt-2 font-label">{copy.throughputLatestLog}</div>
+          <div className="text-[8px] text-zinc-500 mt-2 font-label">{copy.throughputLatestLog}</div>
         </div>
         <a
-          className="w-full bg-zinc-800 text-zinc-400 py-2 text-[10px] hidden md:block hover:text-primary transition-none mb-4 text-center"
+          className="w-full bg-zinc-800 text-zinc-300 py-2 text-[10px] hidden md:block hover:text-primary transition-none mb-4 text-center"
           href="#contact"
         >
           {copy.contactAction}
         </a>
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2 text-zinc-700">
+          <div className="flex items-center gap-2 text-zinc-500">
             <span className="material-symbols-outlined text-sm">info</span>
             <span className="hidden md:inline">{copy.version}</span>
           </div>
@@ -664,15 +664,28 @@ function ContactSection({ copy }: { copy: V2ContactCopy }) {
 }
 
 function Footer({ copy }: { copy: V2FooterCopy }) {
+  const buildStamp = new Intl.DateTimeFormat('en-CA', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
+    .format(new Date())
+    .replace(/-/g, '.')
+
+  const dynamicBuild = copy.build.replace(/\[BUILD_[^\]]+\]/, `[BUILD_${buildStamp}]`)
+
   return (
-    <footer className="bg-[#0E0E0E] text-[#FF7CF5] font-label text-[10px] uppercase w-full px-8 py-12 flex flex-col md:flex-row justify-between items-center md:items-end border-t border-zinc-800/20 relative z-10 scroll-mt-28" id="footer">
+    <footer
+      className="bg-[#0E0E0E] text-[#FF7CF5] font-label text-[10px] uppercase w-[calc(100%-4rem)] md:w-[calc(100%-16rem)] ml-16 md:ml-64 px-8 py-12 flex flex-col md:flex-row justify-between items-center md:items-end border-t border-zinc-800/20 relative z-20 scroll-mt-28"
+      id="footer"
+    >
       <div className="mb-8 md:mb-0">
         <div className="text-[#FF7CF5] font-bold mb-2">{copy.title}</div>
-        <div className="text-zinc-700">{copy.build}</div>
+        <div className="text-zinc-500">{dynamicBuild}</div>
       </div>
       <div className="flex gap-8">
         {copy.links.map((item) => (
-          <a key={item.href} className="text-zinc-700 hover:text-[#FF7CF5] transition-none" href={item.href}>
+          <a key={item.href} className="text-zinc-400 hover:text-[#FF7CF5] transition-none" href={item.href}>
             {item.label}
           </a>
         ))}
