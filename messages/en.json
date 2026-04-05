@@ -226,11 +226,12 @@
       "subtitle": "[EXPANDABLE_ARCHIVE]",
       "alias": "// REAL SYSTEM DECISIONS",
       "footerHint": "/* expand() to inspect rationale */",
+      "toggleHint": "expand case",
       "items": [
         {
           "id": "CS-001",
           "title": "Re-architecting for 10x Load",
-          "summary": "[PRODUCTION SYSTEM] From a growing monolith to a modular system with controlled complexity.",
+          "summary": "From a growing monolith to a modular system with controlled complexity.",
           "problem": "System complexity increased without clear boundaries, affecting maintainability and evolution.",
           "decision": "Move to modular monolith with contract-based communication.",
           "tags": [
@@ -244,7 +245,7 @@
         {
           "id": "CS-002",
           "title": "OTP Authentication with AWS",
-          "summary": "[REAL WORLD BACKEND] Decoupling authentication flow using SNS and external services.",
+          "summary": "Decoupling authentication flow using SNS and external services.",
           "problem": "Tight coupling between authentication logic and core system.",
           "decision": "Externalized OTP via AWS SNS with retry and validation flows.",
           "tags": [
@@ -259,7 +260,7 @@
         {
           "id": "CS-003",
           "title": "Automated Update System (WinForms)",
-          "summary": "[USED IN PRODUCTION] Forced updates with background download and integrity validation.",
+          "summary": "Forced updates with background download and integrity validation.",
           "problem": "Clients running outdated versions causing inconsistencies.",
           "decision": "Background updater with checksum validation and mandatory updates.",
           "tags": [
@@ -268,7 +269,7 @@
             "DEVOPS"
           ],
           "status": "[USED IN PRODUCTION]",
-          "statusClass": "bg-tertiary-container"
+          "statusClass": "bg-primary"
         }
       ]
     },
@@ -285,6 +286,7 @@
       "detailsLabel": "TECHNICAL_DETAILS",
       "stackLabel": "STACK",
       "distributionLabel": "DISTRIBUTION",
+      "repoLabel": "REPO",
       "intentLabel": "INTENT",
       "items": [
         {
@@ -300,6 +302,9 @@
           ],
           "stack": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
           "distribution": "NuGet / Nast.Html2Pdf",
+          "distributionHref": "https://www.nuget.org/packages/Nast.Html2Pdf",
+          "distributionLabel": "OPEN_NUGET",
+          "repoHref": "https://github.com/NastMz/Html2Pdf",
           "intent": "Standardize PDF output as an infrastructure component instead of project-specific scripts."
         },
         {
@@ -315,6 +320,9 @@
           ],
           "stack": [".NET 8", "C#", "CQRS", "Mediator"],
           "distribution": "NuGet / Nast.SimpleMediator",
+          "distributionHref": "https://www.nuget.org/packages/Nast.SimpleMediator",
+          "distributionLabel": "OPEN_NUGET",
+          "repoHref": "https://github.com/NastMz/SimpleMediator",
           "intent": "Keep domain orchestration explicit while minimizing framework-driven boilerplate."
         },
         {
@@ -330,6 +338,9 @@
           ],
           "stack": ["Python", "Flask", "Typer", "Jinja2", "SQLAlchemy", "Alembic"],
           "distribution": "PyPI / flask-forge-cli",
+          "distributionHref": "https://pypi.org/project/flask-forge-cli/",
+          "distributionLabel": "OPEN_PYPI",
+          "repoHref": "https://github.com/NastMz/flask-forge-cli",
           "intent": "Reduce setup variance and enforce a documented starting architecture for Flask services."
         }
       ]
@@ -347,7 +358,7 @@
           "status": "[STATUS: ACCEPTED]",
           "context": "[CONTEXT: DOMAIN_MODEL]",
           "title": "CQRS for Domain Evolution",
-          "body": "Separated read and write models to better encapsulate business rules and allow independent evolution.",
+          "body": "One model was slowing down both feature work and reporting. Splitting reads from writes protected critical rules without hurting queries.",
           "tradeoff": "COMPLEXITY ↑ / DOMAIN CLARITY ↑"
         },
         {
@@ -356,7 +367,7 @@
           "status": "[STATUS: DEPRECATED]",
           "context": "[CONTEXT: DATA_ACCESS]",
           "title": "Shared DB Access",
-          "body": "Direct access across modules created hidden coupling.",
+          "body": "Letting modules touch the same tables felt fast, but it hid dependencies and made local changes unsafe.",
           "tradeoff": "SPEED ↓ / SAFETY ↑"
         },
         {
@@ -365,7 +376,7 @@
           "status": "[STATUS: ACCEPTED]",
           "context": "[CONTEXT: ARCHITECTURE]",
           "title": "Contract-Based Modules",
-          "body": "Defined strict interfaces between modules.",
+          "body": "Each module needed boundaries people could actually trust. Contracts make the allowed integration points explicit.",
           "tradeoff": "UPFRONT DESIGN COST ↑ / COUPLING ↓"
         },
         {
@@ -374,7 +385,7 @@
           "status": "[STATUS: EVALUATING]",
           "context": "[CONTEXT: OBSERVABILITY]",
           "title": "OpenTelemetry Adoption",
-          "body": "Standardizing traces and metrics across services.",
+          "body": "Right now every service explains failures differently. Standard traces and metrics would shorten debugging under pressure.",
           "tradeoff": "SETUP COST ↑ / DEBUGGING ↓"
         }
       ]
@@ -421,7 +432,7 @@
           "tagClass": "text-primary/50",
           "title": "\"Microservices aren't free.\"",
           "tag": "They don't remove complexity, they relocate it.",
-          "body": "The cost of coordination, network latency, and operational overhead is often ignored. If a team cannot manage a monolith, splitting it will not solve the problem."
+          "body": "If a team still struggles with one monolith, splitting it usually adds coordination, network, and ops cost without fixing the core issue."
         },
         {
           "id": "N-002",
@@ -430,7 +441,7 @@
           "tagClass": "text-zinc-600",
           "title": "\"Architecture is deciding what to leave out.\"",
           "tag": "Every abstraction has a cost.",
-          "body": "Good systems are not defined by how many patterns they use, but by how many unnecessary ones they avoid."
+          "body": "A strong system improves by removing unnecessary pieces, not by collecting patterns for their own sake."
         },
         {
           "id": "N-003",
@@ -439,7 +450,7 @@
           "tagClass": "text-primary/40",
           "title": "\"Clean Architecture is not enough.\"",
           "tag": "Structure without boundaries is still fragile.",
-          "body": "Layers alone don’t prevent coupling."
+          "body": "Nice layers help, but if modules can still leak into each other the system remains fragile."
         },
         {
           "id": "N-004",
@@ -448,7 +459,7 @@
           "tagClass": "text-zinc-500",
           "title": "\"Most systems fail silently.\"",
           "tag": "Not with crashes, but with complexity.",
-          "body": "The system keeps running, but becomes unmaintainable."
+          "body": "A system can stay online and still decay until every change becomes slow, risky, and expensive."
         }
       ]
     },
@@ -457,10 +468,13 @@
       "title": "Ready to scale without the drama?",
       "description": "If you need systems that remain maintainable as they grow, we should talk.",
       "form": {
+        "bootLine": "[boot] contact terminal ready :: secure handshake available",
+        "helperLine": "fill identity and endpoint to launch your mail client with the payload preloaded",
         "identityLabel": "IDENTITY",
         "endpointLabel": "ENDPOINT_ADDRESS",
         "identityPlaceholder": "John Doe",
         "endpointPlaceholder": "john.doe@email.com",
+        "submitHint": "the terminal opens your mail client with subject and context preloaded",
         "submitLabel": "SEND_MESSAGE",
         "feedback": {
           "identityRequired": "ERROR::IDENTITY_REQUIRED",
@@ -479,9 +493,8 @@
       "title": "KEVIN_MARTINEZ_PORTFOLIO",
       "build": "[BUILD_2024.11] // ALL_RIGHTS_RESERVED",
       "links": [
-        { "label": "LICENSE", "href": "#footer" },
-        { "label": "DOCS", "href": "#core-principles" },
-        { "label": "SECURITY_LOGS", "href": "#decision-log" }
+        { "label": "LINKEDIN", "href": "https://www.linkedin.com/in/ksmartinez23/" },
+        { "label": "GITHUB", "href": "https://github.com/NastMz" }
       ]
     }
   }

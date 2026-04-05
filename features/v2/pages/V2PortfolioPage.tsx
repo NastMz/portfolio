@@ -94,6 +94,9 @@ interface V2ArtifactEntry {
   details: string[]
   stack: string[]
   distribution: string
+  distributionHref?: string
+  distributionLabel?: string
+  repoHref?: string
   intent: string
 }
 
@@ -156,6 +159,7 @@ interface V2MessagesShape {
     subtitle: string
     alias?: string
     footerHint: string
+    toggleHint: string
     items: V2CaseStudyEntry[]
   }
   artifacts: {
@@ -171,6 +175,7 @@ interface V2MessagesShape {
     detailsLabel: string
     stackLabel: string
     distributionLabel: string
+    repoLabel: string
     intentLabel: string
     items: V2ArtifactEntry[]
   }
@@ -496,31 +501,53 @@ function CaseStudiesSection({ copy }: { copy: V2MessagesShape['caseStudies'] }) 
           {copy.items.map((item, index) => (
             <details key={item.id} className="bg-[#111111] border border-zinc-800 open:border-primary/30 group" open={index === 0}>
               <summary className="list-none p-6 md:p-8 cursor-pointer">
-                <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <span className="font-label text-[10px] text-primary tracking-widest">[{item.id}]</span>
-                  <span className={`${item.statusClass ?? 'bg-zinc-700'} text-black font-label text-[9px] px-2 py-0.5 w-fit font-bold`}>{item.status}</span>
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                      <span className="font-label text-[10px] text-primary tracking-widest">[{item.id}]</span>
+                      <span className={`${item.statusClass ?? 'bg-zinc-700'} text-black font-label text-[9px] px-2 py-0.5 w-fit font-bold`}>
+                        {item.status}
+                      </span>
+                    </div>
+                    <h4 className="font-headline text-2xl font-bold mb-2 group-hover:text-primary">{item.title}</h4>
+                    <p className="font-body text-zinc-400 max-w-3xl">{item.summary}</p>
+                  </div>
+                  <div className="flex items-center gap-3 border border-zinc-800 bg-black/40 px-3 py-2 text-zinc-400 group-hover:border-primary/30 group-hover:text-primary">
+                    <span className="font-label text-[9px] uppercase tracking-[0.24em]">{copy.toggleHint}</span>
+                    <svg
+                      aria-hidden="true"
+                      className="h-4 w-4 transition-transform duration-300 ease-out group-open:rotate-180"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M6 9l6 6 6-6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+                    </svg>
+                  </div>
                 </div>
-                <h4 className="font-headline text-2xl font-bold mb-2 group-hover:text-primary">{item.title}</h4>
-                <p className="font-body text-zinc-400">{item.summary}</p>
               </summary>
 
-              <div className="px-6 md:px-8 pb-8 border-t border-zinc-800/70">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
-                  <div>
-                    <div className="font-label text-[10px] text-zinc-400 mb-2 uppercase">PROBLEM</div>
-                    <p className="font-body text-sm text-zinc-500">{item.problem}</p>
+              <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-open:grid-rows-[1fr]">
+                <div className="overflow-hidden">
+                  <div className="px-6 md:px-8 pb-8 border-t border-zinc-800/70">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+                      <div>
+                        <div className="font-label text-[10px] text-zinc-400 mb-2 uppercase">PROBLEM</div>
+                        <p className="font-body text-sm text-zinc-500">{item.problem}</p>
+                      </div>
+                      <div>
+                        <div className="font-label text-[10px] text-zinc-400 mb-2 uppercase">DECISION</div>
+                        <p className="font-body text-sm text-zinc-500">{item.decision}</p>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mt-6">
+                      {item.tags.map((tag) => (
+                        <span key={`${item.id}-${tag}`} className="px-3 py-1 bg-surface-container-highest border border-zinc-700 font-label text-[10px] uppercase">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-label text-[10px] text-zinc-400 mb-2 uppercase">DECISION</div>
-                    <p className="font-body text-sm text-zinc-500">{item.decision}</p>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-2 mt-6">
-                  {item.tags.map((tag) => (
-                    <span key={`${item.id}-${tag}`} className="px-3 py-1 bg-surface-container-highest border border-zinc-700 font-label text-[10px] uppercase">
-                      {tag}
-                    </span>
-                  ))}
                 </div>
               </div>
             </details>
@@ -631,7 +658,38 @@ function ArtifactsSection({ copy }: { copy: V2MessagesShape['artifacts'] }) {
 
                   <div className="border-t border-zinc-800 pt-4">
                     <div className="font-label text-[10px] text-zinc-500 uppercase mb-1">{copy.distributionLabel}</div>
-                    <p className="font-label text-[10px] text-primary uppercase tracking-wider">{item.distribution}</p>
+                    {item.distributionHref ? (
+                      <a
+                        className="inline-flex items-center gap-2 font-label text-[10px] text-primary uppercase tracking-wider border border-primary/30 px-3 py-2 hover:bg-primary/10"
+                        data-cursor="cta"
+                        href={item.distributionHref}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <span>{item.distributionLabel ?? item.distribution}</span>
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    ) : (
+                      <p className="font-label text-[10px] text-primary uppercase tracking-wider">{item.distribution}</p>
+                    )}
+                  </div>
+
+                  <div className="border-t border-zinc-800 pt-4">
+                    <div className="font-label text-[10px] text-zinc-500 uppercase mb-1">{copy.repoLabel}</div>
+                    {item.repoHref ? (
+                      <a
+                        className="inline-flex items-center gap-2 font-label text-[10px] text-zinc-200 uppercase tracking-wider border border-zinc-700 px-3 py-2 hover:border-primary/30 hover:text-primary"
+                        data-cursor="cta"
+                        href={item.repoHref}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <span>{item.name}</span>
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    ) : (
+                      <p className="font-label text-[10px] text-zinc-400 uppercase tracking-wider">—</p>
+                    )}
                   </div>
 
                   <div className="border-t border-zinc-800 pt-4">
@@ -730,7 +788,13 @@ function Footer({ copy }: { copy: V2FooterCopy }) {
       </div>
       <div className="flex gap-8">
         {copy.links.map((item) => (
-          <a key={item.href} className="text-zinc-400 hover:text-[#FF7CF5] transition-none" href={item.href}>
+          <a
+            key={item.href}
+            className="text-zinc-400 hover:text-[#FF7CF5] transition-none"
+            href={item.href}
+            rel="noreferrer"
+            target="_blank"
+          >
             {item.label}
           </a>
         ))}

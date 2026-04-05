@@ -226,11 +226,12 @@
       "subtitle": "[ARCHIVO_EXPANDIBLE]",
       "alias": "// DECISIONES SOBRE SISTEMAS REALES",
       "footerHint": "/* expand() para inspeccionar fundamentos */",
+      "toggleHint": "expandir caso",
       "items": [
         {
           "id": "CS-001",
           "title": "Re-arquitectura para 10x de carga",
-          "summary": "[PRODUCTION SYSTEM] De monolito en crecimiento a sistema modular con complejidad controlada.",
+          "summary": "De monolito en crecimiento a sistema modular con complejidad controlada.",
           "problem": "La complejidad del sistema creció sin límites claros, afectando mantenibilidad y evolución.",
           "decision": "Migrar a monolito modular con comunicación basada en contratos.",
           "tags": [
@@ -244,7 +245,7 @@
         {
           "id": "CS-002",
           "title": "Autenticación OTP con AWS",
-          "summary": "[REAL WORLD BACKEND] Desacople del flujo de autenticación usando SNS y servicios externos.",
+          "summary": "Desacople del flujo de autenticación usando SNS y servicios externos.",
           "problem": "Acoplamiento fuerte entre la lógica de autenticación y el sistema core.",
           "decision": "Externalizar OTP vía AWS SNS con flujos de reintento y validación.",
           "tags": [
@@ -259,7 +260,7 @@
         {
           "id": "CS-003",
           "title": "Sistema Automatizado de Actualizaciones (WinForms)",
-          "summary": "[USED IN PRODUCTION] Actualizaciones forzadas con descarga en segundo plano y validación de integridad.",
+          "summary": "Actualizaciones forzadas con descarga en segundo plano y validación de integridad.",
           "problem": "Clientes ejecutando versiones desactualizadas generaban inconsistencias.",
           "decision": "Updater en segundo plano con validación por checksum y actualizaciones obligatorias.",
           "tags": [
@@ -268,7 +269,7 @@
             "DEVOPS"
           ],
           "status": "[USED IN PRODUCTION]",
-          "statusClass": "bg-tertiary-container"
+          "statusClass": "bg-primary"
         }
       ]
     },
@@ -285,6 +286,7 @@
       "detailsLabel": "DETALLES_TECNICOS",
       "stackLabel": "COMPONENTES",
       "distributionLabel": "DISTRIBUCION",
+      "repoLabel": "REPO",
       "intentLabel": "PROPOSITO",
       "items": [
         {
@@ -300,6 +302,9 @@
           ],
           "stack": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
           "distribution": "NuGet / Nast.Html2Pdf",
+          "distributionHref": "https://www.nuget.org/packages/Nast.Html2Pdf",
+          "distributionLabel": "ABRIR_NUGET",
+          "repoHref": "https://github.com/NastMz/Html2Pdf",
           "intent": "Estandarizar la salida PDF como componente de infraestructura y no como scripts aislados por proyecto."
         },
         {
@@ -315,6 +320,9 @@
           ],
           "stack": [".NET 8", "C#", "CQRS", "Mediator"],
           "distribution": "NuGet / Nast.SimpleMediator",
+          "distributionHref": "https://www.nuget.org/packages/Nast.SimpleMediator",
+          "distributionLabel": "ABRIR_NUGET",
+          "repoHref": "https://github.com/NastMz/SimpleMediator",
           "intent": "Mantener la orquestación de dominio explícita minimizando boilerplate guiado por framework."
         },
         {
@@ -330,6 +338,9 @@
           ],
           "stack": ["Python", "Flask", "Typer", "Jinja2", "SQLAlchemy", "Alembic"],
           "distribution": "PyPI / flask-forge-cli",
+          "distributionHref": "https://pypi.org/project/flask-forge-cli/",
+          "distributionLabel": "ABRIR_PYPI",
+          "repoHref": "https://github.com/NastMz/flask-forge-cli",
           "intent": "Reducir variabilidad de setup e imponer una arquitectura inicial documentada para servicios Flask."
         }
       ]
@@ -347,7 +358,7 @@
           "status": "[STATUS: ACCEPTED]",
           "context": "[CONTEXT: DOMAIN_MODEL]",
           "title": "CQRS para evolución del dominio",
-          "body": "Separar modelos de lectura y escritura para encapsular mejor las reglas de negocio y permitir evolución independiente.",
+          "body": "El mismo modelo hacía lentos los cambios. Separar lectura y escritura aisló reglas críticas sin frenar consultas.",
           "tradeoff": "COMPLEJIDAD ↑ / CLARIDAD_DE_DOMINIO ↑"
         },
         {
@@ -356,7 +367,7 @@
           "status": "[STATUS: DEPRECATED]",
           "context": "[CONTEXT: DATA_ACCESS]",
           "title": "Acceso compartido a base de datos",
-          "body": "El acceso directo entre módulos creó acoplamiento oculto.",
+          "body": "Compartir tablas entre módulos parecía rápido, pero escondía dependencias y rompía cambios locales.",
           "tradeoff": "VELOCIDAD ↓ / SEGURIDAD ↑"
         },
         {
@@ -365,7 +376,7 @@
           "status": "[STATUS: ACCEPTED]",
           "context": "[CONTEXT: ARCHITECTURE]",
           "title": "Módulos basados en contratos",
-          "body": "Definición de interfaces estrictas entre módulos.",
+          "body": "Cada módulo necesitaba límites entendibles. Los contratos hacen visible qué se puede usar y qué no.",
           "tradeoff": "COSTO_DE_DISEÑO_INICIAL ↑ / ACOPLAMIENTO ↓"
         },
         {
@@ -374,7 +385,7 @@
           "status": "[STATUS: EVALUATING]",
           "context": "[CONTEXT: OBSERVABILITY]",
           "title": "Adopción de OpenTelemetry",
-          "body": "Estandarizar trazas y métricas a través de servicios.",
+          "body": "Hoy cada servicio explica fallos distinto. Unificar trazas y métricas acelera diagnóstico bajo presión.",
           "tradeoff": "COSTO_DE_SETUP ↑ / DEBUGGING ↓"
         }
       ]
@@ -421,7 +432,7 @@
           "tagClass": "text-primary/50",
           "title": "\"Los microservicios no son gratis.\"",
           "tag": "No eliminan complejidad, la mudan de lugar.",
-          "body": "El costo de coordinación, latencia de red y sobrecarga operativa suele ignorarse. Si un equipo no puede manejar un monolito, partirlo no va a resolver el problema."
+          "body": "Si el equipo todavía no controla un monolito, repartirlo suma coordinación, red y operaciones sin arreglar la base."
         },
         {
           "id": "N-002",
@@ -430,7 +441,7 @@
           "tagClass": "text-zinc-600",
           "title": "\"Arquitectura es decidir qué dejar afuera.\"",
           "tag": "Toda abstracción tiene un costo.",
-          "body": "Los buenos sistemas no se definen por cuántos patrones usan, sino por cuántos innecesarios evitan."
+          "body": "Un sistema mejora cuando evita piezas innecesarias, no cuando colecciona patrones por moda."
         },
         {
           "id": "N-003",
@@ -439,7 +450,7 @@
           "tagClass": "text-primary/40",
           "title": "\"Clean Architecture no alcanza.\"",
           "tag": "Estructura sin límites sigue siendo frágil.",
-          "body": "Las capas por sí solas no evitan el acoplamiento."
+          "body": "Ordenar carpetas ayuda, pero si los módulos se invaden entre sí el sistema sigue siendo frágil."
         },
         {
           "id": "N-004",
@@ -448,7 +459,7 @@
           "tagClass": "text-zinc-500",
           "title": "\"La mayoría de los sistemas fallan en silencio.\"",
           "tag": "No con crashes, sino con complejidad.",
-          "body": "El sistema sigue corriendo, pero se vuelve inmantenible."
+          "body": "El sistema puede seguir online y aun así degradarse hasta que cada cambio sale demasiado caro."
         }
       ]
     },
@@ -457,10 +468,13 @@
       "title": "¿Listo para escalar sin drama?",
       "description": "Si necesitás sistemas que sigan siendo mantenibles mientras crecen, hablemos.",
       "form": {
+        "bootLine": "[boot] contact terminal ready :: secure handshake available",
+        "helperLine": "completá identidad y endpoint para abrir el cliente de correo con el payload cargado",
         "identityLabel": "IDENTITY",
         "endpointLabel": "ENDPOINT_ADDRESS",
         "identityPlaceholder": "John Doe",
         "endpointPlaceholder": "john.doe@email.com",
+        "submitHint": "el terminal abre tu mail client con asunto y contexto precargados",
         "submitLabel": "ENVIAR_MENSAJE",
         "feedback": {
           "identityRequired": "ERROR::IDENTITY_REQUIRED",
@@ -479,9 +493,8 @@
       "title": "KEVIN_MARTINEZ_PORTFOLIO",
       "build": "[BUILD_2024.11] // TODOS_LOS_DERECHOS_RESERVADOS",
       "links": [
-        { "label": "LICENSE", "href": "#footer" },
-        { "label": "DOCS", "href": "#core-principles" },
-        { "label": "SECURITY_LOGS", "href": "#decision-log" }
+        { "label": "LINKEDIN", "href": "https://www.linkedin.com/in/ksmartinez23/" },
+        { "label": "GITHUB", "href": "https://github.com/NastMz" }
       ]
     }
   }
