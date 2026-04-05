@@ -39,11 +39,13 @@ interface V2SidebarCopy {
 
 interface V2HeroCopy {
   eyebrow: string
+  signals?: string[]
   title: string
   titleMuted: string
   subtitlePrefix: string
   subtitleHighlight: string
   quote: string
+  plainStatement?: string
   description: string
   primaryCta: string
   secondaryCta: string
@@ -152,15 +154,18 @@ interface V2MessagesShape {
   caseStudies: {
     title: string
     subtitle: string
+    alias?: string
     footerHint: string
     items: V2CaseStudyEntry[]
   }
   artifacts: {
     title: string
     subtitle: string
+    alias?: string
     inventoryLabel: string
     buildLogLabel: string
     systemComponentsLabel: string
+    systemComponentsAlias?: string
     typeLabel: string
     statusLabel: string
     detailsLabel: string
@@ -171,6 +176,7 @@ interface V2MessagesShape {
   }
   decisionLog: {
     title: string
+    alias?: string
     storeLabel: string
     tradeoffLabel: string
     footerHint: string
@@ -178,6 +184,7 @@ interface V2MessagesShape {
   }
   stack: {
     title: string
+    alias?: string
     footerHint: string
     items: V2StackItem[]
   }
@@ -352,6 +359,15 @@ function HeroSection({ copy, cvHref }: { copy: V2HeroCopy; cvHref: string }) {
     <section className="px-8 md:px-16 py-12 border-b border-zinc-800/20 scroll-mt-28" id="hero">
       <div className="max-w-5xl">
         <div className="font-label text-primary text-sm mb-4 tracking-[0.2em] uppercase">{copy.eyebrow}</div>
+        {copy.signals?.length ? (
+          <div className="mb-4 flex flex-wrap gap-2">
+            {copy.signals.map((signal) => (
+              <span key={signal} className="bg-zinc-800 text-zinc-200 font-label text-[9px] px-2 py-1 uppercase tracking-widest">
+                {signal}
+              </span>
+            ))}
+          </div>
+        ) : null}
         <h1 className="font-headline text-5xl md:text-8xl font-bold tracking-tighter mb-4">
           {copy.title} — <span className="text-white/20">{copy.titleMuted}</span>
         </h1>
@@ -362,6 +378,7 @@ function HeroSection({ copy, cvHref }: { copy: V2HeroCopy; cvHref: string }) {
           </h2>
           <p className="font-label text-primary/60 text-lg uppercase tracking-tight italic">&quot;{copy.quote}&quot;</p>
         </div>
+        {copy.plainStatement ? <p className="font-label text-zinc-300 text-sm uppercase tracking-[0.18em] mb-4">{copy.plainStatement}</p> : null}
         <p className="font-body text-lg text-zinc-500 mb-12 max-w-xl border-l-2 border-primary/20 pl-6 py-2">{copy.description}</p>
         <div className="flex flex-wrap gap-4 items-center">
           <a className="bg-primary text-on-primary px-8 py-4 font-label text-sm font-bold glitch-hover inline-flex" data-cursor="cta" href="#decision-log">
@@ -467,7 +484,10 @@ function CaseStudiesSection({ copy }: { copy: V2MessagesShape['caseStudies'] }) 
     <section className="px-8 md:px-16 py-24 bg-surface-container-lowest border-y border-zinc-800/30" id="projects">
       <div className="max-w-6xl mx-auto" id="case-study">
         <div className="flex items-center justify-between mb-12">
-          <h3 className="font-headline text-3xl md:text-4xl font-bold">{copy.title}</h3>
+          <div>
+            <h3 className="font-headline text-3xl md:text-4xl font-bold">{copy.title}</h3>
+            {copy.alias ? <div className="font-label text-[10px] text-zinc-500 tracking-widest uppercase mt-2">{copy.alias}</div> : null}
+          </div>
           <div className="h-[1px] flex-1 bg-primary/20 mx-8" />
           <div className="font-label text-zinc-600 text-xs tracking-widest uppercase">{copy.subtitle}</div>
         </div>
@@ -519,7 +539,10 @@ function DecisionLogSection({ copy }: { copy: V2MessagesShape['decisionLog'] }) 
   return (
     <section className="px-8 md:px-16 py-32 bg-black scanline-magenta border-b border-zinc-900 scroll-mt-28" id="decision-log">
       <div className="flex items-center justify-between mb-12">
-        <h3 className="font-headline text-3xl font-bold">{copy.title}</h3>
+        <div>
+          <h3 className="font-headline text-3xl font-bold">{copy.title}</h3>
+          {copy.alias ? <div className="font-label text-[10px] text-zinc-500 tracking-widest uppercase mt-2">{copy.alias}</div> : null}
+        </div>
         <div className="h-[1px] flex-1 bg-primary/20 mx-8" />
         <div className="font-label text-zinc-600 text-xs tracking-widest uppercase">{copy.storeLabel}</div>
       </div>
@@ -555,7 +578,10 @@ function ArtifactsSection({ copy }: { copy: V2MessagesShape['artifacts'] }) {
     <section className="px-8 md:px-16 py-24 bg-[#0d0d0d] border-b border-zinc-800/30 scroll-mt-28" id="build-log">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-wrap items-center gap-4 mb-12">
-          <h3 className="font-headline text-3xl md:text-4xl font-bold">{copy.title}</h3>
+          <div>
+            <h3 className="font-headline text-3xl md:text-4xl font-bold">{copy.title}</h3>
+            {copy.alias ? <div className="font-label text-[10px] text-zinc-500 tracking-widest uppercase mt-2">{copy.alias}</div> : null}
+          </div>
           <div className="h-[1px] flex-1 bg-primary/20 min-w-20" />
           <div className="font-label text-[10px] text-zinc-500 tracking-widest uppercase">{copy.subtitle}</div>
         </div>
@@ -564,7 +590,10 @@ function ArtifactsSection({ copy }: { copy: V2MessagesShape['artifacts'] }) {
           <div className="px-6 md:px-8 py-4 border-b border-zinc-800 flex flex-wrap items-center gap-x-6 gap-y-2">
             <span className="font-label text-[10px] text-primary tracking-[0.2em] uppercase">{copy.inventoryLabel}</span>
             <span className="font-label text-[10px] text-zinc-500 tracking-widest uppercase">{copy.buildLogLabel}</span>
-            <span className="font-label text-[10px] text-zinc-600 tracking-widest uppercase">{copy.systemComponentsLabel}</span>
+            <span className="font-label text-[10px] text-zinc-600 tracking-widest uppercase">
+              {copy.systemComponentsLabel}
+              {copy.systemComponentsAlias ? <span className="block text-zinc-700">{copy.systemComponentsAlias}</span> : null}
+            </span>
           </div>
 
           {copy.items.map((item) => (
@@ -622,7 +651,10 @@ function ArtifactsSection({ copy }: { copy: V2MessagesShape['artifacts'] }) {
 function StackEvaluationSection({ copy }: { copy: V2MessagesShape['stack'] }) {
   return (
     <section className="px-8 md:px-16 py-24 bg-surface-container-low/30 scroll-mt-28" id="stack-evaluation">
-      <div className="font-label text-center text-primary text-xs mb-16 tracking-[0.3em] uppercase">{copy.title}</div>
+      <div className="mb-16 text-center">
+        <div className="font-label text-primary text-xs tracking-[0.3em] uppercase">{copy.title}</div>
+        {copy.alias ? <div className="font-label text-[10px] text-zinc-500 tracking-widest uppercase mt-2">{copy.alias}</div> : null}
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-zinc-800/40">
         {copy.items.map((item) => (
           <div

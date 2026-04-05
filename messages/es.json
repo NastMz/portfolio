@@ -138,9 +138,9 @@
     "sidebar": {
       "monitorTitle": "[SYSTEM_MONITOR]",
       "monitorItems": [
-        { "label": "SYS.STATUS:", "value": "ACTIVO", "valueClassName": "text-primary" },
-        { "label": "ARCH.MODE:", "value": "MODULAR", "valueClassName": "text-white" },
-        { "label": "STATE:", "value": "PROD_READY", "valueClassName": "text-white" }
+        { "label": "ROLE:", "value": "SOFTWARE ENGINEER", "valueClassName": "text-primary" },
+        { "label": "FOCUS:", "value": "BACKEND / SYSTEMS", "valueClassName": "text-white" },
+        { "label": "SPECIALTY:", "value": "ARCHITECTURE", "valueClassName": "text-white" }
       ],
       "nav": [
         { "label": "[RESUMEN]", "href": "#hero" },
@@ -160,12 +160,17 @@
     },
     "hero": {
       "eyebrow": "[IDENTIDAD_VERIFICADA]",
+      "signals": [
+        "[REAL WORLD BACKEND]",
+        "[USED IN PRODUCTION]"
+      ],
       "title": "Kevin Martínez",
       "titleMuted": "Ingeniero de Software",
       "subtitlePrefix": "Diseño sistemas para",
       "subtitleHighlight": "cuando todo deja de ser simple.",
       "quote": "Escalar no es el problema. La complejidad fuera de control sí.",
-      "description": "La mayoría de los sistemas no se rompen por escala. Se rompen cuando nadie controla cómo crece la complejidad. \"La arquitectura es el arte de decidir qué complejidad vale la pena pagar.\"",
+      "plainStatement": "Backend Engineer especializado en .NET, APIs y arquitectura de sistemas.",
+      "description": "Construyo sistemas backend que tienen que sobrevivir restricciones reales: tráfico productivo, decisiones heredadas, consistencia de datos y mantenimiento operativo. La mayoría de los sistemas no falla solo por escala; falla cuando la complejidad crece sin control.",
       "primaryCta": "VER_LOGS",
       "secondaryCta": "INICIAR_CONTACTO",
       "cvCta": "DESCARGAR_CV",
@@ -217,14 +222,15 @@
       ]
     },
     "caseStudies": {
-      "title": "Casos de Estudio",
+      "title": "Case Studies",
       "subtitle": "[ARCHIVO_EXPANDIBLE]",
+      "alias": "// DECISIONES SOBRE SISTEMAS REALES",
       "footerHint": "/* expand() para inspeccionar fundamentos */",
       "items": [
         {
           "id": "CS-001",
           "title": "Re-arquitectura para 10x de carga",
-          "summary": "De monolito en crecimiento a sistema modular con complejidad controlada.",
+          "summary": "[PRODUCTION SYSTEM] De monolito en crecimiento a sistema modular con complejidad controlada.",
           "problem": "La complejidad del sistema creció sin límites claros, afectando mantenibilidad y evolución.",
           "decision": "Migrar a monolito modular con comunicación basada en contratos.",
           "tags": [
@@ -232,13 +238,13 @@
             "CQRS",
             "DOMAIN_EVENTS"
           ],
-          "status": "[STATUS: PRODUCTION]",
+          "status": "[PRODUCTION SYSTEM]",
           "statusClass": "bg-primary"
         },
         {
           "id": "CS-002",
           "title": "Autenticación OTP con AWS",
-          "summary": "Desacople del flujo de autenticación usando SNS y servicios externos.",
+          "summary": "[REAL WORLD BACKEND] Desacople del flujo de autenticación usando SNS y servicios externos.",
           "problem": "Acoplamiento fuerte entre la lógica de autenticación y el sistema core.",
           "decision": "Externalizar OTP vía AWS SNS con flujos de reintento y validación.",
           "tags": [
@@ -247,13 +253,13 @@
             "AUTH",
             "DECOUPLING"
           ],
-          "status": "[STATUS: PRODUCTION]",
+          "status": "[REAL WORLD BACKEND]",
           "statusClass": "bg-primary"
         },
         {
           "id": "CS-003",
           "title": "Sistema Automatizado de Actualizaciones (WinForms)",
-          "summary": "Actualizaciones forzadas con descarga en segundo plano y validación de integridad.",
+          "summary": "[USED IN PRODUCTION] Actualizaciones forzadas con descarga en segundo plano y validación de integridad.",
           "problem": "Clientes ejecutando versiones desactualizadas generaban inconsistencias.",
           "decision": "Updater en segundo plano con validación por checksum y actualizaciones obligatorias.",
           "tags": [
@@ -261,7 +267,7 @@
             "UPDATES",
             "DEVOPS"
           ],
-          "status": "[STATUS: PRODUCTION]",
+          "status": "[USED IN PRODUCTION]",
           "statusClass": "bg-tertiary-container"
         }
       ]
@@ -269,9 +275,11 @@
     "artifacts": {
       "title": "ARTIFACTS",
       "subtitle": "[BUILD_LOG]",
+      "alias": "// PROYECTOS Y LIBRERÍAS",
       "inventoryLabel": "INVENTARIO",
       "buildLogLabel": "BUILD_LOG",
-      "systemComponentsLabel": "SYSTEM_COMPONENTS",
+      "systemComponentsLabel": "SYSTEM COMPONENTS",
+      "systemComponentsAlias": "// SISTEMAS QUE CONSTRUÍ",
       "typeLabel": "TIPO",
       "statusLabel": "ESTADO",
       "detailsLabel": "DETALLES_TECNICOS",
@@ -327,7 +335,8 @@
       ]
     },
     "decisionLog": {
-      "title": "Registro de Decisiones",
+      "title": "Decision Log",
+      "alias": "// REGISTRO DE DECISIONES",
       "storeLabel": "[LOG_STORE: PERMANENT]",
       "tradeoffLabel": "[TRADE-OFF]",
       "footerHint": "/* mejor monolito que un quilombo */",
@@ -371,7 +380,8 @@
       ]
     },
     "stack": {
-      "title": "[STACK_EVALUATION_PROTOCOLS]",
+      "title": "Stack Protocols",
+      "alias": "// TECNOLOGÍAS Y HERRAMIENTAS",
       "footerHint": "/* evaluate_stack() devolvió 0 errores */",
       "items": [
         {

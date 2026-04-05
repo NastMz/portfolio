@@ -138,9 +138,9 @@
     "sidebar": {
       "monitorTitle": "[SYSTEM_MONITOR]",
       "monitorItems": [
-        { "label": "SYS.STATUS:", "value": "ACTIVE", "valueClassName": "text-primary" },
-        { "label": "ARCH.MODE:", "value": "MODULAR", "valueClassName": "text-white" },
-        { "label": "STATE:", "value": "PROD_READY", "valueClassName": "text-white" }
+        { "label": "ROLE:", "value": "SOFTWARE ENGINEER", "valueClassName": "text-primary" },
+        { "label": "FOCUS:", "value": "BACKEND / SYSTEMS", "valueClassName": "text-white" },
+        { "label": "SPECIALTY:", "value": "ARCHITECTURE", "valueClassName": "text-white" }
       ],
       "nav": [
         { "label": "[OVERVIEW]", "href": "#hero" },
@@ -160,12 +160,17 @@
     },
     "hero": {
       "eyebrow": "[IDENTITY_VERIFIED]",
+      "signals": [
+        "[REAL WORLD BACKEND]",
+        "[USED IN PRODUCTION]"
+      ],
       "title": "Kevin Martínez",
       "titleMuted": "Software Engineer",
       "subtitlePrefix": "I design systems for",
       "subtitleHighlight": "when things stop being simple.",
       "quote": "Scaling isn't the problem. Uncontrolled complexity is.",
-      "description": "Most systems don't break at scale. They break when no one controls how complexity grows. \"Architecture is the art of deciding which complexity is worth paying for.\"",
+      "plainStatement": "Backend Engineer specialized in .NET, APIs, and system architecture.",
+      "description": "I build backend systems that have to survive real constraints: production traffic, legacy decisions, data consistency, and operational maintenance. Most systems don't fail because of scale alone; they fail when complexity grows without control.",
       "primaryCta": "VIEW_LOGS",
       "secondaryCta": "INITIATE_CONTACT",
       "cvCta": "DOWNLOAD_CV",
@@ -219,12 +224,13 @@
     "caseStudies": {
       "title": "Case Studies",
       "subtitle": "[EXPANDABLE_ARCHIVE]",
+      "alias": "// REAL SYSTEM DECISIONS",
       "footerHint": "/* expand() to inspect rationale */",
       "items": [
         {
           "id": "CS-001",
           "title": "Re-architecting for 10x Load",
-          "summary": "From growing monolith to modular system with controlled complexity.",
+          "summary": "[PRODUCTION SYSTEM] From a growing monolith to a modular system with controlled complexity.",
           "problem": "System complexity increased without clear boundaries, affecting maintainability and evolution.",
           "decision": "Move to modular monolith with contract-based communication.",
           "tags": [
@@ -232,13 +238,13 @@
             "CQRS",
             "DOMAIN_EVENTS"
           ],
-          "status": "[STATUS: PRODUCTION]",
+          "status": "[PRODUCTION SYSTEM]",
           "statusClass": "bg-primary"
         },
         {
           "id": "CS-002",
           "title": "OTP Authentication with AWS",
-          "summary": "Decoupling authentication flow using SNS and external services.",
+          "summary": "[REAL WORLD BACKEND] Decoupling authentication flow using SNS and external services.",
           "problem": "Tight coupling between authentication logic and core system.",
           "decision": "Externalized OTP via AWS SNS with retry and validation flows.",
           "tags": [
@@ -247,13 +253,13 @@
             "AUTH",
             "DECOUPLING"
           ],
-          "status": "[STATUS: PRODUCTION]",
+          "status": "[REAL WORLD BACKEND]",
           "statusClass": "bg-primary"
         },
         {
           "id": "CS-003",
           "title": "Automated Update System (WinForms)",
-          "summary": "Forced updates with background download and integrity validation.",
+          "summary": "[USED IN PRODUCTION] Forced updates with background download and integrity validation.",
           "problem": "Clients running outdated versions causing inconsistencies.",
           "decision": "Background updater with checksum validation and mandatory updates.",
           "tags": [
@@ -261,7 +267,7 @@
             "UPDATES",
             "DEVOPS"
           ],
-          "status": "[STATUS: PRODUCTION]",
+          "status": "[USED IN PRODUCTION]",
           "statusClass": "bg-tertiary-container"
         }
       ]
@@ -269,9 +275,11 @@
     "artifacts": {
       "title": "ARTIFACTS",
       "subtitle": "[BUILD_LOG]",
+      "alias": "// PROJECTS & LIBRARIES",
       "inventoryLabel": "INVENTORY",
       "buildLogLabel": "BUILD_LOG",
-      "systemComponentsLabel": "SYSTEM_COMPONENTS",
+      "systemComponentsLabel": "SYSTEM COMPONENTS",
+      "systemComponentsAlias": "// SYSTEMS I'VE BUILT",
       "typeLabel": "TYPE",
       "statusLabel": "STATUS",
       "detailsLabel": "TECHNICAL_DETAILS",
@@ -328,6 +336,7 @@
     },
     "decisionLog": {
       "title": "Decision Log",
+      "alias": "// ARCHITECTURAL DECISIONS",
       "storeLabel": "[LOG_STORE: PERMANENT]",
       "tradeoffLabel": "[TRADE-OFF]",
       "footerHint": "/* better a monolith than a mess */",
@@ -371,7 +380,8 @@
       ]
     },
     "stack": {
-      "title": "[STACK_EVALUATION_PROTOCOLS]",
+      "title": "Stack Protocols",
+      "alias": "// TECHNOLOGIES & TOOLS",
       "footerHint": "/* evaluate_stack() returned 0 errors */",
       "items": [
         {
