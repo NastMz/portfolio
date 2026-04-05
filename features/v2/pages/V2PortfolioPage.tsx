@@ -598,7 +598,9 @@ function CaseStudiesSection({ copy }: { copy: V2MessagesShape['caseStudies'] }) 
                   <div>
                     <div className="flex flex-wrap items-center gap-3 mb-4">
                       <span className="font-label text-[10px] text-primary tracking-widest">[{item.id}]</span>
-                      <span className={`${item.statusClass ?? 'bg-zinc-700'} text-black font-label text-[9px] px-2 py-0.5 w-fit font-bold`}>
+                      <span
+                        className={`${item.statusClass ?? 'bg-zinc-700'} ${item.statusClass === 'bg-error' ? 'text-white' : 'text-black'} font-label text-[9px] px-2 py-0.5 w-fit font-bold`}
+                      >
                         {item.status}
                       </span>
                     </div>
