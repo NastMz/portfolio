@@ -14,6 +14,13 @@ interface V2NavLink {
   href: string
 }
 
+type V2NavAnchor = '#overview' | '#systems' | '#decision-log' | '#stack' | '#contact'
+
+interface ParsedNavLabel {
+  technical: string
+  human?: string
+}
+
 interface V2StatusItem {
   label: string
   value: string
@@ -145,6 +152,8 @@ interface V2FloatingPanelCopy {
   value: string
 }
 
+const canonicalNavAnchors: V2NavAnchor[] = ['#overview', '#systems', '#decision-log', '#stack', '#contact']
+
 interface V2MessagesShape {
   topBar: V2TopBarCopy
   sidebar: V2SidebarCopy
@@ -219,6 +228,85 @@ function resolveV2MessagesShape(messages: unknown): V2MessagesShape {
   return payload.V2
 }
 
+function parseNavLabel(label: string): ParsedNavLabel {
+  const [technical, human] = label.split('//').map((part) => part.trim())
+
+  return {
+    technical,
+    human: human && human.length > 0 ? `// ${human}` : undefined,
+  }
+}
+
+function renderNavLabel(label: string, className?: string, humanClassName?: string) {
+  const parsed = parseNavLabel(label)
+
+  return (
+    <span className={className}>
+      <span className="block">{parsed.technical}</span>
+      {parsed.human ? <span className={`block normal-case tracking-normal ${humanClassName ?? 'text-zinc-500'}`}>{parsed.human}</span> : null}
+    </span>
+  )
+}
+
+function renderNavIcon(href: V2NavAnchor, className = 'h-5 w-5') {
+  if (href === '#overview') {
+    return (
+      <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 6l6 6-6 6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+        <path d="M12 18h8" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+      </svg>
+    )
+  }
+
+  if (href === '#systems') {
+    return (
+      <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="12" cy="6" rx="6" ry="2.5" stroke="currentColor" strokeWidth="1.6" />
+        <path d="M6 6v8c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V6" stroke="currentColor" strokeWidth="1.6" />
+        <path d="M6 10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5" stroke="currentColor" strokeWidth="1.6" />
+      </svg>
+    )
+  }
+
+  if (href === '#decision-log') {
+    return (
+      <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 8h16M4 12h16M4 16h16" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+      </svg>
+    )
+  }
+
+  if (href === '#stack') {
+    return (
+      <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <rect height="8" rx="1.2" stroke="currentColor" strokeWidth="1.6" width="12" x="6" y="8" />
+        <path d="M9 5v3M15 5v3M9 16v3M15 16v3M4 10h2M4 14h2M18 10h2M18 14h2" stroke="currentColor" strokeLinecap="round" strokeWidth="1.6" />
+      </svg>
+    )
+  }
+
+  return (
+    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 6h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M8.5 10.5h7M8.5 13.5H13" stroke="currentColor" strokeLinecap="round" strokeWidth="1.6" />
+    </svg>
+  )
+}
+
+function resolveCanonicalNav(items: V2NavLink[]): V2NavLink[] {
+  const byHref = new Map(items.map((item) => [item.href, item]))
+
+  return canonicalNavAnchors.map((href) => {
+    const item = byHref.get(href)
+
+    if (!item) {
+      throw new Error(`Missing canonical V2 navigation item for ${href}`)
+    }
+
+    return item
+  })
+}
+
 function TopBar({ copy, localeSwitchCode, localeSwitchHref }: { copy: V2TopBarCopy; localeSwitchCode: string; localeSwitchHref: string }) {
   return (
     <header className="bg-[#0E0E0E] text-[#FF7CF5] font-headline tracking-tight text-sm uppercase flex justify-between items-center w-full px-6 py-4 max-w-full fixed top-0 z-50 border-b border-zinc-800/30">
@@ -229,12 +317,13 @@ function TopBar({ copy, localeSwitchCode, localeSwitchHref }: { copy: V2TopBarCo
             key={item.href}
             className={
               index === 0
-                ? 'text-[#FF7CF5] border-b-0 font-bold hover:bg-[#FF7CF5]/10 transition-none px-2 py-1'
-                : 'text-zinc-500 hover:text-zinc-200 hover:bg-[#FF7CF5]/10 transition-none px-2 py-1'
+                ? 'text-[#FF7CF5] border-b-0 font-bold hover:bg-[#FF7CF5]/10 transition-none px-2 py-1 flex flex-col'
+                : 'text-zinc-500 hover:text-zinc-200 hover:bg-[#FF7CF5]/10 transition-none px-2 py-1 flex flex-col'
             }
             href={item.href}
+            title={item.label}
           >
-            {item.label}
+            {renderNavLabel(item.label, 'leading-tight', 'text-zinc-600 text-[10px]')}
           </a>
         ))}
       </nav>
@@ -255,52 +344,8 @@ function TopBar({ copy, localeSwitchCode, localeSwitchHref }: { copy: V2TopBarCo
 }
 
 function Sidebar({ copy }: { copy: V2SidebarCopy }) {
-  const renderIcon = (index: number) => {
-    if (index === 0) {
-      return (
-        <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 6l6 6-6 6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-          <path d="M12 18h8" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
-        </svg>
-      )
-    }
-
-    if (index === 1) {
-      return (
-        <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="12" cy="6" rx="6" ry="2.5" stroke="currentColor" strokeWidth="1.6" />
-          <path d="M6 6v8c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V6" stroke="currentColor" strokeWidth="1.6" />
-          <path d="M6 10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5" stroke="currentColor" strokeWidth="1.6" />
-        </svg>
-      )
-    }
-
-    if (index === 2) {
-      return (
-        <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 8h16M4 12h16M4 16h16" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
-        </svg>
-      )
-    }
-
-    if (index === 3) {
-      return (
-        <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <rect height="8" rx="1.2" stroke="currentColor" strokeWidth="1.6" width="12" x="6" y="8" />
-          <path d="M9 5v3M15 5v3M9 16v3M15 16v3M4 10h2M4 14h2M18 10h2M18 14h2" stroke="currentColor" strokeLinecap="round" strokeWidth="1.6" />
-        </svg>
-      )
-    }
-
-    return (
-      <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 8l-4 4 4 4M15 8l4 4-4 4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-      </svg>
-    )
-  }
-
   return (
-    <aside className="bg-[#0b0b0b] text-[#FF7CF5] font-label text-[9px] uppercase tracking-wider fixed left-0 top-0 h-full w-16 md:w-64 flex flex-col z-40 pt-20 border-r border-zinc-800/30">
+    <aside className="bg-[#0b0b0b] text-[#FF7CF5] font-label text-[9px] uppercase tracking-wider fixed left-0 top-0 hidden h-full w-16 md:flex md:w-64 flex-col z-40 pt-20 border-r border-zinc-800/30">
       <div className="px-4 mb-8 hidden md:block">
         <div className="font-bold text-primary mb-4">{copy.monitorTitle}</div>
         <div className="space-y-1 text-zinc-400">
@@ -319,19 +364,24 @@ function Sidebar({ copy }: { copy: V2SidebarCopy }) {
             key={`${item.href}-${item.label}`}
             className={
               index === 0
-                ? 'bg-[#FF7CF5] text-[#580058] p-4 md:p-3 flex items-center gap-4 transition-none'
-                : 'text-zinc-400 p-4 md:p-3 flex items-center gap-4 hover:bg-zinc-800 hover:text-[#FF7CF5] transition-none'
+                ? 'bg-[#FF7CF5] text-[#580058] p-3 md:p-3 flex flex-col justify-center items-center gap-1 md:flex-row md:justify-start md:items-center md:gap-4 transition-none min-h-16'
+                : 'text-zinc-400 p-3 md:p-3 flex flex-col justify-center items-center gap-1 md:flex-row md:justify-start md:items-center md:gap-4 hover:bg-zinc-800 hover:text-[#FF7CF5] transition-none min-h-16'
             }
             href={item.href}
+            title={item.label}
           >
-            {renderIcon(index)}
-            <span className="hidden md:inline">{item.label}</span>
+            {renderNavIcon(item.href as V2NavAnchor)}
+            {renderNavLabel(
+              item.label,
+              'text-[7px] leading-[1.05] text-center md:text-left md:text-[9px] md:leading-tight',
+              index === 0 ? 'text-[#580058]/80 text-[6px] md:text-[8px]' : 'text-zinc-500 text-[6px] md:text-[8px]'
+            )}
           </a>
         ))}
       </div>
 
       <div className="mt-auto p-4 border-t border-zinc-800/20 bg-black/40">
-        <div className="hidden md:block mb-4">
+        <div className="mb-4">
           <div className="text-zinc-500 text-[8px] mb-2">{copy.throughputTitle}</div>
           <div className="h-1 bg-zinc-800 w-full mb-1">
             <div className="h-full bg-primary bar-anim" />
@@ -341,21 +391,42 @@ function Sidebar({ copy }: { copy: V2SidebarCopy }) {
           </div>
           <div className="text-[8px] text-zinc-500 mt-2 font-label">{copy.throughputLatestLog}</div>
         </div>
-        <a
-          className="w-full bg-zinc-800 text-zinc-300 py-2 text-[10px] hidden md:block hover:text-primary transition-none mb-4 text-center"
-          data-cursor="cta"
-          href="#contact"
-        >
-          {copy.contactAction}
-        </a>
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2 text-zinc-500">
             <span className="material-symbols-outlined text-sm">info</span>
-            <span className="hidden md:inline">{copy.version}</span>
+            <span>{copy.version}</span>
           </div>
         </div>
       </div>
     </aside>
+  )
+}
+
+function MobileBottomNav({ items }: { items: V2NavLink[] }) {
+  return (
+    <nav
+      aria-label="V2 mobile navigation"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-zinc-800/40 bg-[#0b0b0b]/95 px-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pt-2 backdrop-blur md:hidden"
+    >
+      <ul className="grid grid-cols-5 gap-1">
+        {items.map((item, index) => (
+          <li key={`${item.href}-${item.label}`}>
+            <a
+              className={
+                index === 0
+                  ? 'flex min-h-[4.5rem] flex-col items-center justify-center gap-1 border border-primary/40 bg-primary/10 px-1 py-2 text-primary transition-none'
+                  : 'flex min-h-[4.5rem] flex-col items-center justify-center gap-1 border border-zinc-800 bg-black/30 px-1 py-2 text-zinc-400 transition-none hover:border-primary/30 hover:text-primary'
+              }
+              href={item.href}
+              title={item.label}
+            >
+              {renderNavIcon(item.href as V2NavAnchor, 'h-4 w-4')}
+              {renderNavLabel(item.label, 'text-[7px] leading-none text-center', index === 0 ? 'text-primary/70 text-[6px]' : 'text-zinc-500 text-[6px]')}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   )
 }
 
@@ -779,7 +850,7 @@ function Footer({ copy }: { copy: V2FooterCopy }) {
 
   return (
     <footer
-      className="bg-[#0E0E0E] text-[#FF7CF5] font-label text-[10px] uppercase w-[calc(100%-4rem)] md:w-[calc(100%-16rem)] ml-16 md:ml-64 px-8 py-12 flex flex-col md:flex-row justify-between items-center md:items-end border-t border-zinc-800/20 relative z-20 scroll-mt-28"
+      className="bg-[#0E0E0E] text-[#FF7CF5] font-label text-[10px] uppercase w-full md:w-[calc(100%-16rem)] md:ml-64 px-8 py-12 pb-[calc(7rem+env(safe-area-inset-bottom))] md:pb-12 flex flex-col md:flex-row justify-between items-center md:items-end border-t border-zinc-800/20 relative z-20 scroll-mt-28"
       id="footer"
     >
       <div className="mb-8 md:mb-0">
@@ -806,6 +877,7 @@ function Footer({ copy }: { copy: V2FooterCopy }) {
 export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2PortfolioPageProps) {
   const messages = await getMessages()
   const copy = resolveV2MessagesShape(messages)
+  const canonicalNav = resolveCanonicalNav(copy.topBar.nav)
   const targetLocale: Locale = locale === 'en' ? 'es' : 'en'
   const localeSwitchHref = `/${targetLocale}${routePathByKey[routeKey]}`
   const localeSwitchCode = targetLocale.toUpperCase()
@@ -825,15 +897,19 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
       </div>
 
       <TopBar copy={copy.topBar} localeSwitchHref={localeSwitchHref} localeSwitchCode={localeSwitchCode} />
-      <Sidebar copy={copy.sidebar} />
+      <Sidebar copy={{ ...copy.sidebar, nav: canonicalNav }} />
+      <MobileBottomNav items={canonicalNav} />
 
-      <main className="ml-16 md:ml-64 pt-24 pb-24 relative z-10" id="main-content">
+      <main className="pt-24 pb-[calc(7rem+env(safe-area-inset-bottom))] md:ml-64 md:pb-24 relative z-10" id="main-content">
+        <div className="scroll-mt-28" id="overview" />
         <HeroSection copy={copy.hero} cvHref={cvHref} />
         <AboutSection copy={copy.about} />
         <CorePrinciplesSection items={copy.principles.items} title={copy.principles.title} />
+        <div className="scroll-mt-28" id="systems" />
         <CaseStudiesSection copy={copy.caseStudies} />
         <ArtifactsSection copy={copy.artifacts} />
         <DecisionLogSection copy={copy.decisionLog} />
+        <div className="scroll-mt-28" id="stack" />
         <StackEvaluationSection copy={copy.stack} />
         <NotesSection copy={copy.notes} />
         <ContactSection copy={copy.contact} />

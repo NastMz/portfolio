@@ -36,6 +36,10 @@ const localeCases = [
       archive: 'ARCHIVE',
       logs: 'LOGS',
       stack: 'STACK',
+      overview: 'Overview',
+      systems: 'Systems',
+      decisions: 'Decisions',
+      contact: 'Contact',
     },
   },
   {
@@ -45,6 +49,10 @@ const localeCases = [
       archive: 'ARCHIVE',
       logs: 'LOGS',
       stack: 'STACK',
+      overview: 'Overview',
+      systems: 'Systems',
+      decisions: 'Decisions',
+      contact: 'Contact',
     },
   },
 ] as const
@@ -85,6 +93,23 @@ test.describe('v2 i18n interaction and accessibility parity', () => {
       await expect(page.locator('#contact')).toBeVisible()
       await expect(page.locator('#notes')).toBeVisible()
       await expect(page.locator('#projects')).toBeVisible()
+    })
+
+    test(`${localeCase.locale}: mobile uses bottom navigation with canonical anchors`, async ({ page }) => {
+      await page.setViewportSize({ width: 393, height: 852 })
+      await page.goto(localeCase.path)
+
+      const mobileNav = page.getByRole('navigation', { name: 'V2 mobile navigation' })
+      const desktopNav = page.getByRole('navigation', { name: 'V2 main navigation' })
+
+      await expect(mobileNav).toBeVisible()
+      await expect(desktopNav).toBeHidden()
+      await expect(mobileNav.locator('a')).toHaveCount(5)
+      await expect(mobileNav.getByRole('link', { name: new RegExp(localeCase.labels.overview, 'i') })).toHaveAttribute('href', '#overview')
+      await expect(mobileNav.getByRole('link', { name: new RegExp(localeCase.labels.systems, 'i') })).toHaveAttribute('href', '#systems')
+      await expect(mobileNav.getByRole('link', { name: new RegExp(localeCase.labels.decisions, 'i') })).toHaveAttribute('href', '#decision-log')
+      await expect(mobileNav.getByRole('link', { name: localeCase.labels.stack, exact: false })).toHaveAttribute('href', '#stack')
+      await expect(mobileNav.getByRole('link', { name: new RegExp(localeCase.labels.contact, 'i') })).toHaveAttribute('href', '#contact')
     })
 
     test(`${localeCase.locale}: v2 tokens drive key surfaces and text contrast is compliant`, async ({ page }) => {
