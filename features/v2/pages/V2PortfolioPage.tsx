@@ -206,10 +206,10 @@ function resolveV2MessagesShape(messages: unknown): V2MessagesShape {
   return payload.V2
 }
 
-function TopBar({ copy, localeSwitchLabel, localeSwitchHref }: { copy: V2TopBarCopy; localeSwitchLabel: string; localeSwitchHref: string }) {
+function TopBar({ copy, localeSwitchCode, localeSwitchHref }: { copy: V2TopBarCopy; localeSwitchCode: string; localeSwitchHref: string }) {
   return (
     <header className="bg-[#0E0E0E] text-[#FF7CF5] font-headline tracking-tight text-sm uppercase flex justify-between items-center w-full px-6 py-4 max-w-full fixed top-0 z-50 border-b border-zinc-800/30">
-      <div className="font-label font-bold text-[#FF7CF5] tracking-tighter text-xl">{copy.title}</div>
+      <div className="font-label font-bold text-[#FF7CF5] tracking-tighter text-[10px] md:text-base">{copy.title}</div>
       <nav aria-label="V2 main navigation" className="hidden md:flex gap-8">
         {copy.nav.map((item, index) => (
           <a
@@ -226,8 +226,14 @@ function TopBar({ copy, localeSwitchLabel, localeSwitchHref }: { copy: V2TopBarC
         ))}
       </nav>
       <div className="flex items-center gap-3 text-xs font-label">
-        <a className="text-primary hover:text-[#FF7CF5] transition-none" href={localeSwitchHref}>
-          {localeSwitchLabel}
+        <a
+          aria-label="Switch language"
+          className="inline-flex items-center gap-1 border border-primary/40 px-2 py-1 text-primary bg-zinc-900 hover:bg-[#FF7CF5]/10 hover:text-[#FF7CF5] transition-none"
+          href={localeSwitchHref}
+          title="Switch language"
+        >
+          <span aria-hidden="true">⇄</span>
+          {localeSwitchCode}
         </a>
         <span>{copy.ping}</span>
       </div>
@@ -699,7 +705,7 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
   const copy = resolveV2MessagesShape(messages)
   const targetLocale: Locale = locale === 'en' ? 'es' : 'en'
   const localeSwitchHref = `/${targetLocale}${routePathByKey[routeKey]}`
-  const localeSwitchLabel = `${copy.topBar.localeSwitchPrefix}: ${targetLocale.toUpperCase()}`
+  const localeSwitchCode = targetLocale.toUpperCase()
   const cvHref = locale === 'es' ? '/cv/CV_Kevin_Martinez_ES.pdf' : '/cv/CV_Kevin_Martinez_EN.pdf'
 
   return (
@@ -714,7 +720,7 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
         </div>
       </div>
 
-      <TopBar copy={copy.topBar} localeSwitchHref={localeSwitchHref} localeSwitchLabel={localeSwitchLabel} />
+      <TopBar copy={copy.topBar} localeSwitchHref={localeSwitchHref} localeSwitchCode={localeSwitchCode} />
       <Sidebar copy={copy.sidebar} />
 
       <main className="ml-16 md:ml-64 pt-24 pb-24 relative z-10" id="main-content">
