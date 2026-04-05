@@ -49,15 +49,13 @@ interface V2HeroCopy {
   codeHint: string
 }
 
-interface V2IdentityCopy {
+interface V2AboutCopy {
   fileLabel: string
   title: string
   watermark: string
   avoidTitle: string
   avoidItems: string[]
-  leadPrefix: string
-  leadEmphasis: string
-  body: string
+  paragraphs: string[]
   modeBadge: string
   stanceBadge: string
 }
@@ -72,20 +70,15 @@ interface V2PrincipleCopy {
   hint?: string
 }
 
-interface V2CaseStudyPoint {
-  label: string
-  text: string
-}
-
-interface V2CaseStudyCopy {
-  tag: string
+interface V2CaseStudyEntry {
+  id: string
   title: string
-  points: V2CaseStudyPoint[]
-  stack: string[]
-  imageAlt: string
-  resultLabel: string
-  resultTitle: string
-  resultDescription: string
+  summary: string
+  problem: string
+  decision: string
+  tags: string[]
+  status: string
+  statusClass?: string
 }
 
 interface V2DecisionItem {
@@ -137,12 +130,17 @@ interface V2MessagesShape {
   topBar: V2TopBarCopy
   sidebar: V2SidebarCopy
   hero: V2HeroCopy
-  identity: V2IdentityCopy
+  about: V2AboutCopy
   principles: {
     title: string
     items: V2PrincipleCopy[]
   }
-  caseStudy: V2CaseStudyCopy
+  caseStudies: {
+    title: string
+    subtitle: string
+    footerHint: string
+    items: V2CaseStudyEntry[]
+  }
   decisionLog: {
     title: string
     storeLabel: string
@@ -320,7 +318,7 @@ function HeroSection({ copy }: { copy: V2HeroCopy }) {
   )
 }
 
-function IdentitySection({ copy }: { copy: V2IdentityCopy }) {
+function AboutSection({ copy }: { copy: V2AboutCopy }) {
   return (
     <section
       className="grid grid-cols-1 lg:grid-cols-12 px-8 md:px-16 py-24 gap-12 items-start border-b border-zinc-800/20 bg-surface-container-low/50 relative scroll-mt-28"
@@ -340,10 +338,11 @@ function IdentitySection({ copy }: { copy: V2IdentityCopy }) {
         </div>
       </div>
       <div className="lg:col-span-7 space-y-6">
-        <p className="font-body text-xl text-zinc-300 leading-relaxed">
-          {copy.leadPrefix} <span className="text-primary italic">{copy.leadEmphasis}</span>.
-        </p>
-        <p className="font-body text-zinc-400">{copy.body}</p>
+        {copy.paragraphs.map((paragraph, index) => (
+          <p key={`${index}-${paragraph.slice(0, 24)}`} className={index === 0 ? 'font-body text-xl text-zinc-300 leading-relaxed' : 'font-body text-zinc-400'}>
+            {paragraph}
+          </p>
+        ))}
         <div className="flex gap-4">
           <div className="bg-surface-container px-3 py-1 border border-outline-variant/20 font-label text-[10px] text-zinc-500">{copy.modeBadge}</div>
           <div className="bg-surface-container px-3 py-1 border border-outline-variant/20 font-label text-[10px] text-zinc-500">{copy.stanceBadge}</div>
@@ -391,41 +390,53 @@ function CorePrinciplesSection({ title, items }: { title: string; items: V2Princ
   )
 }
 
-function FeaturedCaseStudySection({ copy }: { copy: V2CaseStudyCopy }) {
+function CaseStudiesSection({ copy }: { copy: V2MessagesShape['caseStudies'] }) {
   return (
     <section className="px-8 md:px-16 py-24 bg-surface-container-lowest border-y border-zinc-800/30" id="projects">
       <div className="max-w-6xl mx-auto" id="case-study">
-        <div className="flex flex-col lg:flex-row gap-16">
-          <div className="lg:w-1/2">
-            <div className="font-label text-primary text-xs mb-4 tracking-widest">{copy.tag}</div>
-            <h3 className="font-headline text-4xl md:text-5xl font-bold mb-6">{copy.title}</h3>
-            <div className="space-y-6 text-zinc-400 font-body">
-              {copy.points.map((point) => (
-                <p key={point.label}>
-                  <span className="text-zinc-100 font-bold">{point.label}:</span> {point.text}
-                </p>
-              ))}
-              <div className="flex flex-wrap gap-2 mt-4">
-                {copy.stack.map((item) => (
-                  <span key={item} className="px-3 py-1 bg-surface-container-highest border border-zinc-700 font-label text-[10px]">
-                    {item}
-                  </span>
-                ))}
+        <div className="flex items-center justify-between mb-12">
+          <h3 className="font-headline text-3xl md:text-4xl font-bold">{copy.title}</h3>
+          <div className="h-[1px] flex-1 bg-primary/20 mx-8" />
+          <div className="font-label text-zinc-600 text-xs tracking-widest uppercase">{copy.subtitle}</div>
+        </div>
+
+        <div className="space-y-4">
+          {copy.items.map((item, index) => (
+            <details key={item.id} className="bg-[#111111] border border-zinc-800 open:border-primary/30 group" open={index === 0}>
+              <summary className="list-none p-6 md:p-8 cursor-pointer">
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <span className="font-label text-[10px] text-primary tracking-widest">[{item.id}]</span>
+                  <span className={`${item.statusClass ?? 'bg-zinc-700'} text-black font-label text-[9px] px-2 py-0.5 w-fit font-bold`}>{item.status}</span>
+                </div>
+                <h4 className="font-headline text-2xl font-bold mb-2 group-hover:text-primary">{item.title}</h4>
+                <p className="font-body text-zinc-400">{item.summary}</p>
+              </summary>
+
+              <div className="px-6 md:px-8 pb-8 border-t border-zinc-800/70">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+                  <div>
+                    <div className="font-label text-[10px] text-zinc-400 mb-2 uppercase">PROBLEM</div>
+                    <p className="font-body text-sm text-zinc-500">{item.problem}</p>
+                  </div>
+                  <div>
+                    <div className="font-label text-[10px] text-zinc-400 mb-2 uppercase">DECISION</div>
+                    <p className="font-body text-sm text-zinc-500">{item.decision}</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-6">
+                  {item.tags.map((tag) => (
+                    <span key={`${item.id}-${tag}`} className="px-3 py-1 bg-surface-container-highest border border-zinc-700 font-label text-[10px] uppercase">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="lg:w-1/2 relative bg-surface-container border border-outline-variant/10 p-4">
-            <img
-              alt={copy.imageAlt}
-              className="grayscale opacity-50 hover:grayscale-0 transition-all duration-500 w-full h-[400px] object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_hZH3MLDnliSgX-7GCloVm0k9-aQ75LWgtQJd0PfQfhfYKprp5l4Ua4602afm2RNhDlSt_THqdI1a3gMsmjzkrSaekLcj4FeKsLTEKwc92JPoygaFiU4WM7SMOahWHCCEE7y1BZvBsopMP02RYREUXzKav8YuotNRmTGEFrHfH7-7JVlaHHRHYlxsmFeXbIGxOdKQBxfhexFRydhkb1OCMS6O184BwabrNcBFpIn5fyf39P_Rgxd343DhPqgglPyr5s-T75-qeKvH"
-            />
-            <div className="absolute bottom-8 left-8 bg-black/80 p-6 border-l-4 border-primary backdrop-blur-md">
-              <div className="font-label text-[10px] text-primary mb-2">{copy.resultLabel}</div>
-              <div className="text-3xl font-headline font-bold text-white tracking-tighter">{copy.resultTitle}</div>
-              <div className="text-xs text-zinc-500 font-label italic mt-1">{copy.resultDescription}</div>
-            </div>
-          </div>
+            </details>
+          ))}
+        </div>
+
+        <div className="mt-8 text-center">
+          <span className="font-label text-[10px] text-zinc-800 italic">{copy.footerHint}</span>
         </div>
       </div>
     </section>
@@ -446,6 +457,7 @@ function DecisionLogSection({ copy }: { copy: V2MessagesShape['decisionLog'] }) 
             key={item.id}
             className="bg-[#111111] p-8 border border-zinc-800 hover:border-primary/30 transition-all group relative overflow-hidden flex flex-col h-full"
           >
+            <div className="font-label text-[10px] text-primary tracking-widest mb-3">[{item.id}]</div>
             <div className="flex flex-col gap-2 mb-4">
               <div className={`${item.statusClass} text-black font-label text-[9px] px-2 py-0.5 w-fit font-bold`}>{item.status}</div>
               <div className="bg-zinc-800 text-zinc-300 font-label text-[9px] px-2 py-0.5 w-fit">{item.context}</div>
@@ -499,6 +511,7 @@ function NotesSection({ copy }: { copy: V2MessagesShape['notes'] }) {
         {copy.items.map((item) => (
           <div key={item.id} className={`relative pl-12 ${item.borderClass}`}>
             <div className={`absolute -left-1.5 top-0 w-3 h-3 ${item.markerClass}`} />
+            <div className="font-label text-[10px] text-primary tracking-widest mb-2">[{item.id}]</div>
             <h4 className="font-headline text-xl font-bold mb-2">{item.title}</h4>
             <p className={`font-label text-[10px] mb-4 uppercase tracking-tighter ${item.tagClass}`}>{item.tag}</p>
             <p className="font-body text-zinc-400 leading-relaxed">{item.body}</p>
@@ -564,9 +577,9 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
 
       <main className="ml-16 md:ml-64 pt-24 pb-24 relative z-10" id="main-content">
         <HeroSection copy={copy.hero} />
-        <IdentitySection copy={copy.identity} />
+        <AboutSection copy={copy.about} />
         <CorePrinciplesSection items={copy.principles.items} title={copy.principles.title} />
-        <FeaturedCaseStudySection copy={copy.caseStudy} />
+        <CaseStudiesSection copy={copy.caseStudies} />
         <DecisionLogSection copy={copy.decisionLog} />
         <StackEvaluationSection copy={copy.stack} />
         <NotesSection copy={copy.notes} />

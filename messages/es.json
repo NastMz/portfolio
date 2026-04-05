@@ -168,7 +168,7 @@
       "secondaryCta": "INICIAR_CONTACTO",
       "codeHint": "/* latency_sensitive: true */"
     },
-    "identity": {
+    "about": {
       "fileLabel": "[FILE: IDENTITY_LOG]",
       "title": "Arquitectura Práctica",
       "watermark": "ARCH",
@@ -179,9 +179,11 @@
         "SEGUIR MANIFIESTOS A CIEGAS",
         "ABSTRACCIONES SOBRE-INGENIERIZADAS"
       ],
-      "leadPrefix": "Backend, Arquitectura y toma de decisiones bajo restricciones. No construyo para una escala hipotética; construyo para",
-      "leadEmphasis": "evolución predecible",
-      "body": "Trabajo sobre sistemas que ya están en producción o van a estarlo. Eso implica restricciones, decisiones heredadas e impacto real de negocio. Arquitectura no es dibujar cajas, es controlar cómo evoluciona la complejidad con el tiempo.",
+      "paragraphs": [
+        "Backend, Arquitectura y toma de decisiones bajo restricciones. No construyo para una escala hipotética; construyo para evolución predecible.",
+        "Trabajo sobre sistemas que ya están en producción o van a estarlo. Eso implica restricciones, decisiones heredadas e impacto real de negocio.",
+        "Arquitectura no es dibujar cajas, es controlar cómo evoluciona la complejidad con el tiempo."
+      ],
       "modeBadge": "[MODO: OPINIONATED]",
       "stanceBadge": "[POSTURA: ANTI_HYPE]"
     },
@@ -211,30 +213,55 @@
         }
       ]
     },
-    "caseStudy": {
-      "tag": "[CASE_STUDY: 082]",
-      "title": "Re-arquitectura para 10x de carga",
-      "points": [
+    "caseStudies": {
+      "title": "Casos de Estudio",
+      "subtitle": "[ARCHIVO_EXPANDIBLE]",
+      "footerHint": "/* expand() para inspeccionar fundamentos */",
+      "items": [
         {
-          "label": "El problema",
-          "text": "Un backend CRM que soportaba operaciones e integraciones empezó a tocar límites arquitectónicos a medida que crecía la complejidad y el uso."
+          "id": "CS-001",
+          "title": "Re-arquitectura para 10x de carga",
+          "summary": "De monolito en crecimiento a sistema modular con complejidad controlada.",
+          "problem": "La complejidad del sistema creció sin límites claros, afectando mantenibilidad y evolución.",
+          "decision": "Migrar a monolito modular con comunicación basada en contratos.",
+          "tags": [
+            "MODULAR_MONOLITH",
+            "CQRS",
+            "DOMAIN_EVENTS"
+          ],
+          "status": "[STATUS: PRODUCTION]",
+          "statusClass": "bg-primary"
         },
         {
-          "label": "Las decisiones",
-          "text": "Evolución desde un monolito de Clean Architecture tradicional hacia un monolito modular con contratos explícitos entre módulos para reducir acoplamiento y crecer de forma controlada."
+          "id": "CS-002",
+          "title": "Autenticación OTP con AWS",
+          "summary": "Desacople del flujo de autenticación usando SNS y servicios externos.",
+          "problem": "Acoplamiento fuerte entre la lógica de autenticación y el sistema core.",
+          "decision": "Externalizar OTP vía AWS SNS con flujos de reintento y validación.",
+          "tags": [
+            "AWS",
+            "SNS",
+            "AUTH",
+            "DECOUPLING"
+          ],
+          "status": "[STATUS: PRODUCTION]",
+          "statusClass": "bg-primary"
+        },
+        {
+          "id": "CS-003",
+          "title": "Sistema Automatizado de Actualizaciones (WinForms)",
+          "summary": "Actualizaciones forzadas con descarga en segundo plano y validación de integridad.",
+          "problem": "Clientes ejecutando versiones desactualizadas generaban inconsistencias.",
+          "decision": "Updater en segundo plano con validación por checksum y actualizaciones obligatorias.",
+          "tags": [
+            "DESKTOP",
+            "UPDATES",
+            "DEVOPS"
+          ],
+          "status": "[STATUS: PRODUCTION]",
+          "statusClass": "bg-tertiary-container"
         }
-      ],
-      "stack": [
-        "C# / .NET 8 / .NET 10",
-        "MySQL / Amazon RDS",
-        "Dapper / EF Core",
-        "Docker",
-        "AWS (Cognito, SNS, S3, SES)"
-      ],
-      "imageAlt": "Racks de servidores en un datacenter oscuro",
-      "resultLabel": "RESULT_REPORT",
-      "resultTitle": "SISTEMA LISTO PARA ESCALA CONTROLADA",
-      "resultDescription": "(Mejor mantenibilidad, menor acoplamiento, mejor observabilidad)"
+      ]
     },
     "decisionLog": {
       "title": "Registro de Decisiones",
@@ -243,7 +270,7 @@
       "footerHint": "/* mejor monolito que un quilombo */",
       "items": [
         {
-          "id": "decision-cqrs",
+          "id": "DL-001",
           "statusClass": "bg-primary",
           "status": "[STATUS: ACCEPTED]",
           "context": "[CONTEXT: DOMAIN_MODEL]",
@@ -252,22 +279,31 @@
           "tradeoff": "COMPLEJIDAD ↑ / CLARIDAD_DE_DOMINIO ↑"
         },
         {
-          "id": "decision-cross-module",
+          "id": "DL-002",
           "statusClass": "bg-error",
           "status": "[STATUS: DEPRECATED]",
           "context": "[CONTEXT: DATA_ACCESS]",
-          "title": "Acceso directo entre módulos",
-          "body": "Cuando los módulos acceden directo a la data de otros, aparece acoplamiento oculto y comportamiento frágil.",
-          "tradeoff": "VELOCIDAD_CORTO_PLAZO ↓ / ESTABILIDAD_LARGO_PLAZO ↑"
+          "title": "Acceso compartido a base de datos",
+          "body": "El acceso directo entre módulos creó acoplamiento oculto.",
+          "tradeoff": "VELOCIDAD ↓ / SEGURIDAD ↑"
         },
         {
-          "id": "decision-contract-boundaries",
+          "id": "DL-003",
           "statusClass": "bg-tertiary-container",
           "status": "[STATUS: ACCEPTED]",
           "context": "[CONTEXT: ARCHITECTURE]",
-          "title": "Límites modulares basados en contratos",
-          "body": "Introducir contratos explícitos para aislar módulos y evitar fuga de dependencias.",
+          "title": "Módulos basados en contratos",
+          "body": "Definición de interfaces estrictas entre módulos.",
           "tradeoff": "COSTO_DE_DISEÑO_INICIAL ↑ / ACOPLAMIENTO ↓"
+        },
+        {
+          "id": "DL-004",
+          "statusClass": "bg-tertiary-container",
+          "status": "[STATUS: EVALUATING]",
+          "context": "[CONTEXT: OBSERVABILITY]",
+          "title": "Adopción de OpenTelemetry",
+          "body": "Estandarizar trazas y métricas a través de servicios.",
+          "tradeoff": "COSTO_DE_SETUP ↑ / DEBUGGING ↓"
         }
       ]
     },
@@ -306,7 +342,7 @@
       "subtitle": "// OPINIONES",
       "items": [
         {
-          "id": "notes-microservices",
+          "id": "N-001",
           "borderClass": "border-l border-primary/30",
           "markerClass": "bg-primary",
           "tagClass": "text-primary/50",
@@ -315,13 +351,31 @@
           "body": "El costo de coordinación, latencia de red y sobrecarga operativa suele ignorarse. Si un equipo no puede manejar un monolito, partirlo no va a resolver el problema."
         },
         {
-          "id": "notes-architecture",
+          "id": "N-002",
           "borderClass": "border-l border-zinc-800",
           "markerClass": "bg-zinc-800",
           "tagClass": "text-zinc-600",
           "title": "\"Arquitectura es decidir qué dejar afuera.\"",
           "tag": "Toda abstracción tiene un costo.",
           "body": "Los buenos sistemas no se definen por cuántos patrones usan, sino por cuántos innecesarios evitan."
+        },
+        {
+          "id": "N-003",
+          "borderClass": "border-l border-primary/20",
+          "markerClass": "bg-primary/80",
+          "tagClass": "text-primary/40",
+          "title": "\"Clean Architecture no alcanza.\"",
+          "tag": "Estructura sin límites sigue siendo frágil.",
+          "body": "Las capas por sí solas no evitan el acoplamiento."
+        },
+        {
+          "id": "N-004",
+          "borderClass": "border-l border-zinc-700",
+          "markerClass": "bg-zinc-700",
+          "tagClass": "text-zinc-500",
+          "title": "\"La mayoría de los sistemas fallan en silencio.\"",
+          "tag": "No con crashes, sino con complejidad.",
+          "body": "El sistema sigue corriendo, pero se vuelve inmantenible."
         }
       ]
     },

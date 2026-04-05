@@ -168,7 +168,7 @@
       "secondaryCta": "INITIATE_CONTACT",
       "codeHint": "/* latency_sensitive: true */"
     },
-    "identity": {
+    "about": {
       "fileLabel": "[FILE: IDENTITY_LOG]",
       "title": "Practical Architecture",
       "watermark": "ARCH",
@@ -179,9 +179,11 @@
         "BLINDLY FOLLOWING MANIFESTOS",
         "OVER-ENGINEERED ABSTRACTIONS"
       ],
-      "leadPrefix": "Backend, Architecture, and Decision Making under constraints. I don't build for hypothetical scale; I build for",
-      "leadEmphasis": "predictable evolution",
-      "body": "I work on systems that are already running in production or will be. That means dealing with constraints, legacy decisions, and real business impact. Architecture is not about drawing boxes, it is about controlling how complexity evolves over time.",
+      "paragraphs": [
+        "Backend, Architecture, and decision making under constraints. I don't build for hypothetical scale; I build for predictable evolution.",
+        "I work on systems that are already running in production or will be. That means dealing with constraints, legacy decisions, and real business impact.",
+        "Architecture is not about drawing boxes, it is about controlling how complexity evolves over time."
+      ],
       "modeBadge": "[MODE: OPINIONATED]",
       "stanceBadge": "[STANCE: ANTI_HYPE]"
     },
@@ -211,30 +213,55 @@
         }
       ]
     },
-    "caseStudy": {
-      "tag": "[CASE_STUDY: 082]",
-      "title": "Re-architecting for 10x Load",
-      "points": [
+    "caseStudies": {
+      "title": "Case Studies",
+      "subtitle": "[EXPANDABLE_ARCHIVE]",
+      "footerHint": "/* expand() to inspect rationale */",
+      "items": [
         {
-          "label": "The Problem",
-          "text": "A CRM backend handling business operations and integrations started hitting architectural limits as the system grew in complexity and usage."
+          "id": "CS-001",
+          "title": "Re-architecting for 10x Load",
+          "summary": "From growing monolith to modular system with controlled complexity.",
+          "problem": "System complexity increased without clear boundaries, affecting maintainability and evolution.",
+          "decision": "Move to modular monolith with contract-based communication.",
+          "tags": [
+            "MODULAR_MONOLITH",
+            "CQRS",
+            "DOMAIN_EVENTS"
+          ],
+          "status": "[STATUS: PRODUCTION]",
+          "statusClass": "bg-primary"
         },
         {
-          "label": "The Decisions",
-          "text": "Evolved from a traditional Clean Architecture monolith into a modular monolith with explicit contracts between modules to reduce coupling and enable controlled growth."
+          "id": "CS-002",
+          "title": "OTP Authentication with AWS",
+          "summary": "Decoupling authentication flow using SNS and external services.",
+          "problem": "Tight coupling between authentication logic and core system.",
+          "decision": "Externalized OTP via AWS SNS with retry and validation flows.",
+          "tags": [
+            "AWS",
+            "SNS",
+            "AUTH",
+            "DECOUPLING"
+          ],
+          "status": "[STATUS: PRODUCTION]",
+          "statusClass": "bg-primary"
+        },
+        {
+          "id": "CS-003",
+          "title": "Automated Update System (WinForms)",
+          "summary": "Forced updates with background download and integrity validation.",
+          "problem": "Clients running outdated versions causing inconsistencies.",
+          "decision": "Background updater with checksum validation and mandatory updates.",
+          "tags": [
+            "DESKTOP",
+            "UPDATES",
+            "DEVOPS"
+          ],
+          "status": "[STATUS: PRODUCTION]",
+          "statusClass": "bg-tertiary-container"
         }
-      ],
-      "stack": [
-        "C# / .NET 8 / .NET 10",
-        "MySQL / Amazon RDS",
-        "Dapper / EF Core",
-        "Docker",
-        "AWS (Cognito, SNS, S3, SES)"
-      ],
-      "imageAlt": "Server racks in a dark data center",
-      "resultLabel": "RESULT_REPORT",
-      "resultTitle": "SYSTEM READY FOR CONTROLLED SCALING",
-      "resultDescription": "(Improved maintainability, reduced coupling, better observability)"
+      ]
     },
     "decisionLog": {
       "title": "Decision Log",
@@ -243,7 +270,7 @@
       "footerHint": "/* better a monolith than a mess */",
       "items": [
         {
-          "id": "decision-cqrs",
+          "id": "DL-001",
           "statusClass": "bg-primary",
           "status": "[STATUS: ACCEPTED]",
           "context": "[CONTEXT: DOMAIN_MODEL]",
@@ -252,22 +279,31 @@
           "tradeoff": "COMPLEXITY ↑ / DOMAIN CLARITY ↑"
         },
         {
-          "id": "decision-cross-module",
+          "id": "DL-002",
           "statusClass": "bg-error",
           "status": "[STATUS: DEPRECATED]",
           "context": "[CONTEXT: DATA_ACCESS]",
-          "title": "Direct Cross-Module Access",
-          "body": "Modules accessing each other's data directly caused hidden coupling and fragile behavior.",
-          "tradeoff": "SHORT-TERM SPEED ↓ / LONG-TERM STABILITY ↑"
+          "title": "Shared DB Access",
+          "body": "Direct access across modules created hidden coupling.",
+          "tradeoff": "SPEED ↓ / SAFETY ↑"
         },
         {
-          "id": "decision-contract-boundaries",
+          "id": "DL-003",
           "statusClass": "bg-tertiary-container",
           "status": "[STATUS: ACCEPTED]",
           "context": "[CONTEXT: ARCHITECTURE]",
-          "title": "Contract-Based Module Boundaries",
-          "body": "Introduced explicit contracts to isolate modules and prevent dependency leakage.",
+          "title": "Contract-Based Modules",
+          "body": "Defined strict interfaces between modules.",
           "tradeoff": "UPFRONT DESIGN COST ↑ / COUPLING ↓"
+        },
+        {
+          "id": "DL-004",
+          "statusClass": "bg-tertiary-container",
+          "status": "[STATUS: EVALUATING]",
+          "context": "[CONTEXT: OBSERVABILITY]",
+          "title": "OpenTelemetry Adoption",
+          "body": "Standardizing traces and metrics across services.",
+          "tradeoff": "SETUP COST ↑ / DEBUGGING ↓"
         }
       ]
     },
@@ -306,7 +342,7 @@
       "subtitle": "// OPINIONS",
       "items": [
         {
-          "id": "notes-microservices",
+          "id": "N-001",
           "borderClass": "border-l border-primary/30",
           "markerClass": "bg-primary",
           "tagClass": "text-primary/50",
@@ -315,13 +351,31 @@
           "body": "The cost of coordination, network latency, and operational overhead is often ignored. If a team cannot manage a monolith, splitting it will not solve the problem."
         },
         {
-          "id": "notes-architecture",
+          "id": "N-002",
           "borderClass": "border-l border-zinc-800",
           "markerClass": "bg-zinc-800",
           "tagClass": "text-zinc-600",
           "title": "\"Architecture is deciding what to leave out.\"",
           "tag": "Every abstraction has a cost.",
           "body": "Good systems are not defined by how many patterns they use, but by how many unnecessary ones they avoid."
+        },
+        {
+          "id": "N-003",
+          "borderClass": "border-l border-primary/20",
+          "markerClass": "bg-primary/80",
+          "tagClass": "text-primary/40",
+          "title": "\"Clean Architecture is not enough.\"",
+          "tag": "Structure without boundaries is still fragile.",
+          "body": "Layers alone don’t prevent coupling."
+        },
+        {
+          "id": "N-004",
+          "borderClass": "border-l border-zinc-700",
+          "markerClass": "bg-zinc-700",
+          "tagClass": "text-zinc-500",
+          "title": "\"Most systems fail silently.\"",
+          "tag": "Not with crashes, but with complexity.",
+          "body": "The system keeps running, but becomes unmaintainable."
         }
       ]
     },
