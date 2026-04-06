@@ -495,7 +495,7 @@
         },
         {
           "id": "DL-004",
-          "statusClass": "bg-tertiary-container",
+          "statusClass": "bg-primary",
           "status": "[STATUS: ACCEPTED]",
           "context": "[CONTEXT: DISTRIBUTED_FLOW]",
           "title": "Orchestrated saga for onboarding with multiple side effects",

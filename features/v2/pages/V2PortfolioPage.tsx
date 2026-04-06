@@ -531,7 +531,7 @@ function DecisionLogSection({ copy }: { copy: V2MessagesShape['decisionLog'] }) 
           >
             <div className="font-label text-[10px] text-primary tracking-widest mb-3">[{item.id}]</div>
             <div className="flex flex-col gap-2 mb-4">
-              <div className={`${item.statusClass} text-black font-label text-[9px] px-2 py-0.5 w-fit font-bold`}>{item.status}</div>
+              <div className={`${item.statusClass} ${item.statusClass === 'bg-primary' ? 'text-black' : 'text-white'} font-label text-[9px] px-2 py-0.5 w-fit font-bold`}>{item.status}</div>
               <div className="bg-zinc-800 text-zinc-300 font-label text-[9px] px-2 py-0.5 w-fit">{item.context}</div>
             </div>
             <h5 className="font-headline font-bold text-xl mb-3 group-hover:text-primary">{item.title}</h5>
