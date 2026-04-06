@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { getMessages } from 'next-intl/server'
 import type { Locale } from '@/i18n/config'
 import type { V2RouteKey } from '@/features/v2/content/sections'
@@ -290,16 +291,17 @@ function TopBar({ copy, localeSwitchCode, localeSwitchHref }: { copy: V2TopBarCo
         </div>
       </div>
       <div className="flex items-center gap-3 text-xs font-label">
-        <a
+        <Link
           aria-label="Switch language"
           className="inline-flex items-center gap-2 border border-primary/30 px-2 py-1 text-primary bg-zinc-900 hover:bg-[#FF7CF5]/10 hover:text-[#FF7CF5] transition-none"
           href={localeSwitchHref}
+          scroll={false}
           title="Switch language"
         >
           <span className="text-zinc-500/95 font-medium">{copy.localeSwitchPrefix}</span>
           <span aria-hidden="true">⇄</span>
           {localeSwitchCode}
-        </a>
+        </Link>
         <V2SystemStateDrift initialState={copy.ping} states={copy.pingStates} />
       </div>
     </header>
