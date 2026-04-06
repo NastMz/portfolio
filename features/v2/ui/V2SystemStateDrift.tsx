@@ -5,16 +5,18 @@ import { useEffect, useMemo, useState } from 'react'
 interface V2SystemStateDriftProps {
   initialState: string
   states?: string[]
+  minIntervalMs?: number
+  intervalWindowMs?: number
 }
 
-const MIN_INTERVAL_MS = 8000
-const INTERVAL_WINDOW_MS = 7000
+const DEFAULT_MIN_INTERVAL_MS = 8000
+const DEFAULT_INTERVAL_WINDOW_MS = 7000
 
-function getNextDelay() {
-  return MIN_INTERVAL_MS + Math.floor(Math.random() * (INTERVAL_WINDOW_MS + 1))
+function getNextDelay(minIntervalMs: number, intervalWindowMs: number) {
+  return minIntervalMs + Math.floor(Math.random() * (intervalWindowMs + 1))
 }
 
-export function V2SystemStateDrift({ initialState, states }: V2SystemStateDriftProps) {
+export function V2SystemStateDrift({ initialState, states, minIntervalMs = DEFAULT_MIN_INTERVAL_MS, intervalWindowMs = DEFAULT_INTERVAL_WINDOW_MS }: V2SystemStateDriftProps) {
   const availableStates = useMemo(() => {
     const source = states?.filter(Boolean) ?? []
     return source.length > 0 ? source : [initialState]
@@ -38,7 +40,7 @@ export function V2SystemStateDrift({ initialState, states }: V2SystemStateDriftP
       timeoutId = window.setTimeout(() => {
         setActiveIndex((currentIndex) => (currentIndex + 1) % availableStates.length)
         scheduleNextTick()
-      }, getNextDelay())
+      }, getNextDelay(minIntervalMs, intervalWindowMs))
     }
 
     scheduleNextTick()
@@ -48,7 +50,7 @@ export function V2SystemStateDrift({ initialState, states }: V2SystemStateDriftP
         window.clearTimeout(timeoutId)
       }
     }
-  }, [availableStates])
+  }, [availableStates, intervalWindowMs, minIntervalMs])
 
   return (
     <span className="inline-block text-right tabular-nums" style={{ minWidth: reservedWidth }}>

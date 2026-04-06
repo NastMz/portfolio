@@ -113,7 +113,7 @@ export function V2SidebarRotatingLog({ initialLog, logs }: V2SidebarRotatingLogP
   const currentLog = availableLogs.length <= 1 ? (availableLogs[0] ?? initialLog) : logState.currentLog
 
   return (
-    <div aria-live="polite" className="text-[8px] text-zinc-500 mt-2 font-label transition-opacity duration-300 motion-reduce:transition-none">
+    <div aria-live="polite" className="text-[8px] text-zinc-500/95 mt-2 font-label font-medium transition-opacity duration-300 motion-reduce:transition-none">
       {currentLog}
     </div>
   )

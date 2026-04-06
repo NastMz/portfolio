@@ -126,19 +126,18 @@
     "topBar": {
       "title": "[SYS_CORE: v23.07]",
       "localeSwitchPrefix": "IDIOMA",
+      "systemEvents": [
+        "SYS_EVENT: module_loaded → case_studies",
+        "TRACE: decision_log indexed",
+        "SYNC: system_components ready",
+        "EVENT: saga_pattern_detected",
+        "STATUS: system stable"
+      ],
       "ping": "[PING_STATUS: OPERATIVO]",
       "pingStates": [
         "[PING_STATUS: ACTIVO]",
         "[PING_STATUS: ESTABLE]",
         "[PING_STATUS: OPERATIVO]"
-      ],
-      "nav": [
-        { "label": "ARCHIVE // Resumen", "href": "#overview" },
-        { "label": "BUILD_LOG // Case Studies", "href": "#systems" },
-        { "label": "COMPONENTS // Proyectos y librerías", "href": "#artifacts" },
-        { "label": "LOGS // Decisiones", "href": "#decision-log" },
-        { "label": "STACK // Tecnologías", "href": "#stack" },
-        { "label": "TERMINAL // Contacto", "href": "#contact" }
       ]
     },
     "sidebar": {
@@ -241,7 +240,7 @@
         },
         {
           "id": "principle-overabstraction",
-          "indexLabel": "04",
+          "indexLabel": "04_CRITICAL",
           "title": "Claridad antes que Sobreabstracción",
           "description": "No toda abstracción mejora un sistema. Cuando solo esconde código explícito, suele agregar capas, indirección y costo mental sin resolver un problema real.",
           "isCritical": true,
@@ -642,6 +641,7 @@
       "form": {
         "bootLine": "[boot] contact terminal ready :: secure handshake available",
         "helperLine": "completá identidad y endpoint para abrir el cliente de correo con el payload cargado",
+        "previewHint": "// command preview",
         "identityLabel": "IDENTITY",
         "endpointLabel": "ENDPOINT_ADDRESS",
         "identityPlaceholder": "John Doe",

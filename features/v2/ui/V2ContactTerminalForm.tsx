@@ -8,6 +8,7 @@ const SUCCESS_SEQUENCE_COMPLETE_DELAY_MS = 100
 export interface V2ContactTerminalFormCopy {
   bootLine: string
   helperLine: string
+  previewHint: string
   identityLabel: string
   endpointLabel: string
   identityPlaceholder: string
@@ -125,18 +126,18 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
           <span className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
           <span className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
         </div>
-        <div className="font-label text-[10px] uppercase tracking-[0.28em] text-zinc-500">terminal://contact-protocol</div>
+        <div className="font-label text-[10px] uppercase tracking-[0.28em] text-zinc-500/95 font-medium">terminal://contact-protocol</div>
       </div>
 
       <div className="border-b border-zinc-800 px-4 py-3 font-label text-[10px] uppercase tracking-[0.2em] text-primary">
         <div>{copy.bootLine}</div>
-        <div className="mt-1 text-zinc-500">{copy.helperLine}</div>
+        <div className="mt-1 text-zinc-400/90 font-medium">{copy.helperLine}</div>
       </div>
 
       <form className="space-y-4 p-4 md:p-6" noValidate onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 group">
-            <label className="block font-label text-[10px] text-zinc-500 tracking-widest uppercase mb-2" htmlFor="contact-identity">
+            <label className="block font-label text-[10px] text-zinc-400/90 tracking-widest uppercase mb-2" htmlFor="contact-identity">
               {copy.identityLabel}
             </label>
             <div className="relative">
@@ -144,7 +145,7 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
               <input
                 id="contact-identity"
                 aria-invalid={feedback?.type === 'error' && !identity.trim()}
-                className="w-full bg-black border border-zinc-800 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs placeholder:text-zinc-600"
+                className="w-full bg-black border border-zinc-800 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs placeholder:text-zinc-500"
                 name="identity"
                 onChange={(event) => setIdentity(event.target.value)}
                 placeholder={copy.identityPlaceholder}
@@ -154,7 +155,7 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
             </div>
           </div>
           <div className="flex-1 group">
-            <label className="block font-label text-[10px] text-zinc-500 tracking-widest uppercase mb-2" htmlFor="contact-endpoint">
+            <label className="block font-label text-[10px] text-zinc-400/90 tracking-widest uppercase mb-2" htmlFor="contact-endpoint">
               {copy.endpointLabel}
             </label>
             <div className="relative">
@@ -162,7 +163,7 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
               <input
                 id="contact-endpoint"
                 aria-invalid={feedback?.type === 'error' && endpointAddress.trim().length > 0 && !EMAIL_REGEX.test(endpointAddress.trim())}
-                className="w-full bg-black border border-zinc-800 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs placeholder:text-zinc-600"
+                className="w-full bg-black border border-zinc-800 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs placeholder:text-zinc-500"
                 name="endpointAddress"
                 onChange={(event) => setEndpointAddress(event.target.value)}
                 placeholder={copy.endpointPlaceholder}
@@ -173,8 +174,11 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
           </div>
         </div>
 
-        <div className="border border-dashed border-zinc-800 bg-black/70 px-4 py-3 font-label text-[10px] uppercase tracking-[0.18em] text-zinc-500">
-          $ send_message --identity=&quot;{identity.trim() || copy.identityPlaceholder}&quot; --endpoint=&quot;{endpointAddress.trim() || copy.endpointPlaceholder}&quot;
+        <div className="space-y-2">
+          <div className="font-label text-[10px] uppercase tracking-[0.22em] text-zinc-500/95 font-medium">{copy.previewHint}</div>
+          <div className="border-l border-primary/20 bg-zinc-950/70 px-4 py-3 font-label text-[10px] uppercase tracking-[0.18em] text-zinc-400/90 font-medium cursor-default select-none">
+            $ send_message --identity=&quot;{identity.trim() || copy.identityPlaceholder}&quot; --endpoint=&quot;{endpointAddress.trim() || copy.endpointPlaceholder}&quot;
+          </div>
         </div>
 
         {feedback ? (
@@ -195,7 +199,7 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
           {copy.submitLabel}
         </button>
 
-        <div className="font-label text-[10px] uppercase tracking-[0.22em] text-zinc-600 text-center">{copy.submitHint}</div>
+        <div className="font-label text-[10px] uppercase tracking-[0.22em] text-zinc-500/95 text-center font-medium">{copy.submitHint}</div>
       </form>
     </div>
   )

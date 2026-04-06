@@ -63,8 +63,8 @@ export function V2CustomCursor() {
       const reducedMotion = reducedMotionQuery.matches
       const nextHaloX = reducedMotion ? pointerX : haloX + (pointerX - haloX) * 0.12
       const nextHaloY = reducedMotion ? pointerY : haloY + (pointerY - haloY) * 0.12
-      const nextRingX = reducedMotion ? pointerX : ringX + (pointerX - ringX) * 0.22
-      const nextRingY = reducedMotion ? pointerY : ringY + (pointerY - ringY) * 0.22
+      const nextRingX = reducedMotion ? pointerX : ringX + (pointerX - ringX) * 0.36
+      const nextRingY = reducedMotion ? pointerY : ringY + (pointerY - ringY) * 0.36
 
       haloX = nextHaloX
       haloY = nextHaloY
