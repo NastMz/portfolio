@@ -9,6 +9,8 @@ export interface V2ContactTerminalFormCopy {
   bootLine: string
   helperLine: string
   previewHint: string
+  fallbackHint: string
+  fallbackLabel: string
   identityLabel: string
   endpointLabel: string
   identityPlaceholder: string
@@ -18,9 +20,11 @@ export interface V2ContactTerminalFormCopy {
   feedback: {
     identityRequired: string
     endpointInvalid: string
+    copyUnavailable: string
     successSequence: string[]
   }
   mail: {
+    targetAddress: string
     subjectPrefix: string
     contextLabel: string
     payloadLabel: string
@@ -87,7 +91,7 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
       copy.mail.defaultMessage,
     ].join('\n')
 
-    const mailtoHref = `mailto:ksmartinez23@outlook.com?subject=${encodeMailtoValue(subject)}&body=${encodeMailtoValue(body)}`
+    const mailtoHref = `mailto:${copy.mail.targetAddress}?subject=${encodeMailtoValue(subject)}&body=${encodeMailtoValue(body)}`
     const sequence = copy.feedback.successSequence
 
     setIsSubmitting(true)
@@ -116,6 +120,15 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
     }, SUCCESS_SEQUENCE_STEP_MS * (sequence.length - 1) + SUCCESS_SEQUENCE_COMPLETE_DELAY_MS)
 
     timeoutRefs.current.push(launchTimeoutId)
+  }
+
+  async function handleCopyEndpoint() {
+    try {
+      await navigator.clipboard.writeText(copy.mail.targetAddress)
+      setFeedback({ type: 'success', messages: ['> fallback_ready', '> endpoint_copied'] })
+    } catch {
+      setFeedback({ type: 'error', message: copy.feedback.copyUnavailable })
+    }
   }
 
   return (
@@ -200,6 +213,17 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
         </button>
 
         <div className="font-label text-[10px] uppercase tracking-[0.22em] text-zinc-500/95 text-center font-medium">{copy.submitHint}</div>
+
+        <div className="border-t border-zinc-800/80 pt-4 text-center space-y-3">
+          <div className="font-label text-[10px] uppercase tracking-[0.22em] text-zinc-500/95 font-medium">{copy.fallbackHint}</div>
+          <button
+            className="inline-flex items-center justify-center border border-zinc-700 bg-black/40 px-4 py-2 font-label text-[10px] uppercase tracking-[0.18em] text-zinc-300/95 hover:border-primary/30 hover:text-primary transition-none"
+            type="button"
+            onClick={handleCopyEndpoint}
+          >
+            {copy.fallbackLabel}
+          </button>
+        </div>
       </form>
     </div>
   )

@@ -642,6 +642,8 @@
         "bootLine": "[boot] contact terminal ready :: secure handshake available",
         "helperLine": "fill identity and endpoint to launch your mail client with the payload preloaded",
         "previewHint": "// command preview",
+        "fallbackHint": "// fallback: copy endpoint address if no mail handler is configured",
+        "fallbackLabel": "COPY_ENDPOINT_ADDRESS",
         "identityLabel": "IDENTITY",
         "endpointLabel": "ENDPOINT_ADDRESS",
         "identityPlaceholder": "John Doe",
@@ -651,6 +653,7 @@
         "feedback": {
           "identityRequired": "ERROR::IDENTITY_REQUIRED",
           "endpointInvalid": "ERROR::ENDPOINT_ADDRESS_INVALID",
+          "copyUnavailable": "ERROR::COPY_ENDPOINT_UNAVAILABLE",
           "successSequence": [
             "> payload_received",
             "> processing...",
@@ -659,6 +662,7 @@
           ]
         },
         "mail": {
+          "targetAddress": "ksmartinez23@outlook.com",
           "subjectPrefix": "V2_HANDSHAKE",
           "contextLabel": "TERMINAL_CONTEXT",
           "payloadLabel": "MESSAGE_PAYLOAD",
