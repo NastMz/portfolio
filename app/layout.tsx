@@ -1,6 +1,7 @@
 import './globals.css'
 import '@/features/v2/tokens/tokens.css'
 import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({
   subsets: ['latin'],
