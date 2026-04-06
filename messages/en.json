@@ -165,12 +165,10 @@
         "LATEST_LOG: 204 NO_CONTENT - /api/presence",
         "LATEST_LOG: WORKER SYNCED - locale.en"
       ],
-      "contactAction": "[INITIATE_CONTACT]",
       "version": "[v23.07.0]"
     },
     "floatingPanel": {
-      "label": "HYPE_RESISTANCE_LEVEL",
-      "value": "99.98% [NOMINAL]"
+      "label": "HYPE_RESISTANCE_LEVEL"
     },
     "hero": {
       "eyebrow": "[IDENTITY_VERIFIED]",
@@ -328,7 +326,6 @@
     },
     "artifacts": {
       "title": "ARTIFACTS",
-      "subtitle": "[BUILD_LOG]",
       "alias": "// PROJECTS, LIBRARIES, AND TOOLING",
       "inventoryLabel": "INVENTORY",
       "buildLogLabel": "BUILD_LOG",
@@ -582,7 +579,6 @@
           "id": "N-001",
           "borderClass": "border-l border-primary/30",
           "markerClass": "bg-primary",
-          "tagClass": "text-primary/50",
           "title": "\"Microservices do not fix a poorly designed system.\"",
           "tag": "They only distribute the cost of bad decisions.",
           "body": "If a team still does not control boundaries, data, and dependencies inside a monolith, splitting it into services adds coordination, network overhead, and more failure points."
@@ -591,7 +587,6 @@
           "id": "N-002",
           "borderClass": "border-l border-zinc-800",
           "markerClass": "bg-zinc-800",
-          "tagClass": "text-zinc-600",
           "title": "\"Architecture is not drawing boxes.\"",
           "tag": "It is deciding which complexity is worth paying for.",
           "body": "A lot of diagrams look fine until production happens. Useful architecture shows up when changes are still possible months later."
@@ -600,7 +595,6 @@
           "id": "N-003",
           "borderClass": "border-l border-primary/20",
           "markerClass": "bg-primary/80",
-          "tagClass": "text-primary/40",
           "title": "\"Clean Architecture alone will not save you.\"",
           "tag": "Neat folders do not replace real boundaries.",
           "body": "You can have very clean layers and still be trapped in a fragile system if everything ends up knowing too much about everything else."
@@ -609,7 +603,6 @@
           "id": "N-004",
           "borderClass": "border-l border-zinc-700",
           "markerClass": "bg-zinc-700",
-          "tagClass": "text-zinc-500",
           "title": "\"Most systems do not die in a crash.\"",
           "tag": "They die when every change becomes slow and expensive.",
           "body": "Software can stay online for months while losing maintainability, clarity, and speed of evolution. That deterioration is also failure."
@@ -618,7 +611,6 @@
           "id": "N-005",
           "borderClass": "border-l border-primary/20",
           "markerClass": "bg-primary/70",
-          "tagClass": "text-primary/40",
           "title": "\"The stack matters less than the ability to use it with judgment.\"",
           "tag": "Technology without judgment only changes the type of problem.",
           "body": "I am not interested in defending tools like a religion. I care about choosing them according to constraints, costs, and system shape."
@@ -627,7 +619,6 @@
           "id": "N-006",
           "borderClass": "border-l border-primary/30",
           "markerClass": "bg-primary",
-          "tagClass": "text-primary/50",
           "title": "\"Knowing a language is not the same as solving problems.\"",
           "tag": "Technology ≠ judgment.",
           "body": "You can master a framework and still not understand how to build a system. Tools change; modeling, boundaries, and evolution problems do not. If your value depends on one specific technology, it is fragile. Judgment is what actually scales across contexts."

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { getMessages } from 'next-intl/server'
 import type { Locale } from '@/i18n/config'
-import type { V2RouteKey } from '@/features/v2/content/sections'
 import { V2ContactTerminalForm, type V2ContactTerminalFormCopy } from '@/features/v2/ui/V2ContactTerminalForm'
 import { V2BootOverlay } from '@/features/v2/ui/V2BootOverlay'
 import { V2BootReplayTitle } from '@/features/v2/ui/V2BootReplayTitle'
@@ -15,6 +14,8 @@ interface V2PortfolioPageProps {
   locale: Locale
   routeKey?: V2RouteKey
 }
+
+type V2RouteKey = 'home' | 'projects' | 'contact'
 
 interface V2NavLink {
   label: string
@@ -49,7 +50,6 @@ interface V2SidebarCopy {
   throughputTitle: string
   throughputLatestLog: string
   throughputLogs?: string[]
-  contactAction: string
   version: string
 }
 
@@ -138,7 +138,6 @@ interface V2NoteItem {
   id: string
   borderClass: string
   markerClass: string
-  tagClass: string
   title: string
   tag: string
   body: string
@@ -159,7 +158,6 @@ interface V2FooterCopy {
 
 interface V2FloatingPanelCopy {
   label: string
-  value: string
 }
 
 const canonicalNavAnchors: V2NavAnchor[] = ['#overview', '#systems', '#artifacts', '#decision-log', '#stack', '#contact']
@@ -183,7 +181,6 @@ interface V2MessagesShape {
   }
   artifacts: {
     title: string
-    subtitle: string
     alias?: string
     inventoryLabel: string
     buildLogLabel: string
