@@ -2,6 +2,7 @@ import './globals.css'
 import '@/features/v2/tokens/tokens.css'
 import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,6 +34,8 @@ export default function RootLayout({
     <html suppressHydrationWarning>
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
