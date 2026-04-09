@@ -9,9 +9,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "e2e": "playwright test",
-    "e2e:v2": "playwright test tests/e2e/v2-parity.spec.ts",
-    "rollout:check:coexistence": "node scripts/check-v2-rollout.mjs --mode=coexistence",
-    "rollout:check:cutover": "node scripts/check-v2-rollout.mjs --mode=cutover",
+    "e2e:canonical": "playwright test tests/e2e/v2-parity.spec.ts",
     "perf:gate": "node scripts/check-v2-performance-gate.mjs",
     "start": "next start",
     "prepare": "husky install"

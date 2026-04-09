@@ -9,13 +9,12 @@ import { V2HoverTrace } from '@/features/v2/ui/V2HoverTrace'
 import { V2HypeResistanceMetric } from '@/features/v2/ui/V2HypeResistanceMetric'
 import { V2SectionNavigation } from '@/features/v2/ui/V2SectionNavigation'
 import { V2SystemStateDrift } from '@/features/v2/ui/V2SystemStateDrift'
+import { getCanonicalRoutePath, type CanonicalRouteKey } from '@/lib/site'
 
 interface V2PortfolioPageProps {
   locale: Locale
-  routeKey?: V2RouteKey
+  routeKey?: CanonicalRouteKey
 }
-
-type V2RouteKey = 'home' | 'projects' | 'contact'
 
 interface V2NavLink {
   label: string
@@ -218,12 +217,6 @@ interface V2MessagesShape {
   contact: V2ContactCopy
   footer: V2FooterCopy
   floatingPanel: V2FloatingPanelCopy
-}
-
-const routePathByKey: Record<V2RouteKey, string> = {
-  home: '/v2',
-  projects: '/v2/projects',
-  contact: '/v2/contact',
 }
 
 function resolveV2MessagesShape(messages: unknown): V2MessagesShape {
@@ -773,7 +766,7 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
   const copy = resolveV2MessagesShape(messages)
   const canonicalSidebarNav = resolveCanonicalNav(copy.sidebar.nav)
   const targetLocale: Locale = locale === 'en' ? 'es' : 'en'
-  const localeSwitchHref = `/${targetLocale}${routePathByKey[routeKey]}`
+  const localeSwitchHref = getCanonicalRoutePath(targetLocale, routeKey)
   const localeSwitchCode = targetLocale.toUpperCase()
   const cvHref = locale === 'es' ? '/cv/CV_Kevin_Martinez_ES.pdf' : '/cv/CV_Kevin_Martinez_EN.pdf'
 

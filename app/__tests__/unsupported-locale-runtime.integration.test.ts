@@ -1,10 +1,13 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
 const ORIGINAL_ENV = { ...process.env }
-const { notFoundMock, setRequestLocaleMock } = vi.hoisted(() => {
+const { notFoundMock, redirectMock, setRequestLocaleMock } = vi.hoisted(() => {
   return {
     notFoundMock: vi.fn(() => {
       throw new Error('NEXT_NOT_FOUND')
+    }),
+    redirectMock: vi.fn((target: string) => {
+      throw new Error(`NEXT_REDIRECT:${target}`)
     }),
     setRequestLocaleMock: vi.fn(),
   }
@@ -12,6 +15,7 @@ const { notFoundMock, setRequestLocaleMock } = vi.hoisted(() => {
 
 vi.mock('next/navigation', () => ({
   notFound: notFoundMock,
+  redirect: redirectMock,
 }))
 
 vi.mock('next-intl/server', () => ({
@@ -19,7 +23,10 @@ vi.mock('next-intl/server', () => ({
 }))
 
 import RootLocalePage from '@/app/[locale]/page'
-import V2Layout from '@/app/[locale]/v2/layout'
+import LegacyLocalePage from '@/app/[locale]/legacy/page'
+import VersionedLocalePage from '@/app/[locale]/v2/page'
+import VersionedProjectsPage from '@/app/[locale]/v2/projects/page'
+import VersionedContactPage from '@/app/[locale]/v2/contact/page'
 
 describe('unsupported locale runtime behavior', () => {
   afterEach(() => {
@@ -39,17 +46,65 @@ describe('unsupported locale runtime behavior', () => {
     expect(notFoundMock).toHaveBeenCalledTimes(1)
   })
 
-  it('falls back to default locale in v2 route layout when configured', async () => {
+  it('preserves fallback-default behavior on the canonical locale root', async () => {
     process.env.NEXT_PUBLIC_UNSUPPORTED_LOCALE_BEHAVIOR = 'fallback-default'
-    process.env.NEXT_PUBLIC_EXPOSE_V2_PATH = 'true'
 
-    const result = await V2Layout({
-      children: null,
+    const result = await RootLocalePage({
       params: Promise.resolve({ locale: 'fr' }),
     })
 
     expect(notFoundMock).not.toHaveBeenCalled()
     expect(setRequestLocaleMock).toHaveBeenCalledWith('en')
     expect(result).toBeDefined()
+  })
+
+  it('redirects legacy and versioned routes to canonical locale paths', async () => {
+    await expect(
+      LegacyLocalePage({
+        params: Promise.resolve({ locale: 'en' }),
+      }),
+    ).rejects.toThrow('NEXT_REDIRECT:/en')
+
+    await expect(
+      VersionedLocalePage({
+        params: Promise.resolve({ locale: 'es' }),
+      }),
+    ).rejects.toThrow('NEXT_REDIRECT:/es')
+
+    await expect(
+      VersionedProjectsPage({
+        params: Promise.resolve({ locale: 'en' }),
+      }),
+    ).rejects.toThrow('NEXT_REDIRECT:/en/projects')
+
+    await expect(
+      VersionedContactPage({
+        params: Promise.resolve({ locale: 'es' }),
+      }),
+    ).rejects.toThrow('NEXT_REDIRECT:/es/contact')
+
+    expect(redirectMock).toHaveBeenNthCalledWith(1, '/en')
+    expect(redirectMock).toHaveBeenNthCalledWith(2, '/es')
+    expect(redirectMock).toHaveBeenNthCalledWith(3, '/en/projects')
+    expect(redirectMock).toHaveBeenNthCalledWith(4, '/es/contact')
+  })
+
+  it('redirects unsupported locales through the configured fallback locale on retired routes', async () => {
+    process.env.NEXT_PUBLIC_UNSUPPORTED_LOCALE_BEHAVIOR = 'fallback-default'
+
+    await expect(
+      LegacyLocalePage({
+        params: Promise.resolve({ locale: 'fr' }),
+      }),
+    ).rejects.toThrow('NEXT_REDIRECT:/en')
+
+    await expect(
+      VersionedProjectsPage({
+        params: Promise.resolve({ locale: 'fr' }),
+      }),
+    ).rejects.toThrow('NEXT_REDIRECT:/en/projects')
+
+    expect(redirectMock).toHaveBeenNthCalledWith(1, '/en')
+    expect(redirectMock).toHaveBeenNthCalledWith(2, '/en/projects')
   })
 })

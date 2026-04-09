@@ -1,14 +1,14 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import {
+  CANONICAL_ROUTE_PATHS,
+  getCanonicalRouteKey,
   siteConfig,
   getProfileImageUrl,
-  getCanonicalUrl,
   getLocalizedAlternates,
-  getRouteVersionPolicy,
-  type PortfolioVersion,
-} from '@/lib/site-config'
+  getCanonicalUrl,
+  type CanonicalRoutePath,
+} from '@/lib/site'
 import type { Locale } from '@/i18n/config'
-import { defaultLocale, locales } from '@/i18n/config'
 
 export interface MetadataParams {
   locale: Locale
@@ -16,8 +16,7 @@ export interface MetadataParams {
   description: string
   image?: string
   noindex?: boolean
-  version?: PortfolioVersion
-  routePath?: `/${string}`
+  routePath?: CanonicalRoutePath
 }
 
 export function generateMetadata(params: MetadataParams): Metadata {
@@ -27,40 +26,11 @@ export function generateMetadata(params: MetadataParams): Metadata {
     description,
     image = getProfileImageUrl(),
     noindex = false,
-    version = 'v1',
-    routePath,
+    routePath = CANONICAL_ROUTE_PATHS.home,
   } = params
 
-  const policy = getRouteVersionPolicy()
-
-  const effectiveNoIndex =
-    noindex ||
-    (version === 'v2' && policy.rootVersion === 'v1') ||
-    (version === 'v1' && policy.rootVersion === 'v2') ||
-    version === 'legacy'
-
-  const shouldCanonicalizeToRoot =
-    policy.rootVersion === 'v2' && (version === 'v2' || version === 'legacy')
-
-  const canonicalVersion: PortfolioVersion = version === 'legacy' ? 'v2' : version
-  const canonicalUrl = shouldCanonicalizeToRoot
-    ? `${siteConfig.baseUrl}/${locale}`
-    : routePath
-      ? `${siteConfig.baseUrl}/${locale}${routePath}`
-      : getCanonicalUrl(locale, canonicalVersion)
-
-  const alternateVersion: PortfolioVersion = shouldCanonicalizeToRoot
-    ? 'v1'
-    : version === 'v2'
-      ? 'v2'
-      : 'v1'
-
-  const localizedRouteAlternates = routePath
-    ? {
-        ...Object.fromEntries(locales.map((localeOption) => [localeOption, `${siteConfig.baseUrl}/${localeOption}${routePath}`])),
-        'x-default': `${siteConfig.baseUrl}/${defaultLocale}${routePath}`,
-      }
-    : undefined
+  const routeKey = getCanonicalRouteKey(routePath)
+  const canonicalUrl = getCanonicalUrl(locale, routeKey)
 
   return {
     title,
@@ -77,8 +47,8 @@ export function generateMetadata(params: MetadataParams): Metadata {
     creator: 'Kevin Martinez',
     publisher: 'Kevin Martinez',
     robots: {
-      index: !effectiveNoIndex,
-      follow: !effectiveNoIndex,
+      index: !noindex,
+      follow: !noindex,
     },
     openGraph: {
       type: 'website',
@@ -103,16 +73,13 @@ export function generateMetadata(params: MetadataParams): Metadata {
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: shouldCanonicalizeToRoot
-        ? getLocalizedAlternates(alternateVersion)
-        : localizedRouteAlternates ?? getLocalizedAlternates(alternateVersion),
+      languages: getLocalizedAlternates(routeKey),
     },
   }
 }
 
 export function generateStructuredData(params: {
   locale: Locale
-  version?: 'v1' | 'v2'
   name: string
   title: string
   description: string
@@ -129,7 +96,6 @@ export function generateStructuredData(params: {
 }) {
   const {
     locale,
-    version = 'v1',
     name,
     title,
     description,
@@ -157,7 +123,7 @@ export function generateStructuredData(params: {
     },
   }
 
-  if (version === 'v1') {
+  if (projects.length === 0) {
     return personData
   }
 

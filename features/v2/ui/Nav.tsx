@@ -29,7 +29,7 @@ export function Nav({ locale, items, localeLabel }: V2NavProps) {
 
         <a
           className="v2-focusable rounded-none border border-[var(--v2-color-border)] bg-[var(--v2-color-bg)] px-3 py-1.5 text-xs uppercase tracking-wide text-[var(--v2-color-text)]"
-          href={`/${otherLocale}/v2`}
+          href={`/${otherLocale}`}
         >
           {localeLabel}
         </a>

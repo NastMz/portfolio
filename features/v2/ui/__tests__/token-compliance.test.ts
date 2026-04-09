@@ -67,8 +67,8 @@ describe('v2 token compliance in UI primitives', () => {
           title: 'OPS',
           routeLabel: 'Route: Home',
           localeSwitchLabel: 'Switch locale',
-          localeHref: '/es/v2',
-          links: [{ label: 'Home', href: '/en/v2' }],
+          localeHref: '/es',
+          links: [{ label: 'Home', href: '/en' }],
         }),
       ),
     ].join('\n')

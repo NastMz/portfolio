@@ -1,42 +1,22 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
 import { locales } from '@/i18n/config'
-import { siteConfig, getRouteVersionPolicy } from '@/lib/site-config'
+import { siteConfig, CANONICAL_ROUTE_PATHS } from '@/lib/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const policy = getRouteVersionPolicy()
+  const priorityByRoute = {
+    home: 1,
+    projects: 0.8,
+    contact: 0.8,
+  } as const
 
-  const localeRoutes = locales.flatMap((locale) => [
-    {
-      url: `${siteConfig.baseUrl}/${locale}`,
+  const localizedRoutes = locales.flatMap((locale) =>
+    Object.entries(CANONICAL_ROUTE_PATHS).map(([routeKey, routePath]) => ({
+      url: `${siteConfig.baseUrl}/${locale}${routePath}`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
-      priority: 1,
-    },
-  ])
-
-  const v2Routes =
-    policy.rootVersion === 'v2'
-      ? locales.flatMap((locale) => [
-          {
-            url: `${siteConfig.baseUrl}/${locale}/v2`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 0.8,
-          },
-          {
-            url: `${siteConfig.baseUrl}/${locale}/v2/projects`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 0.7,
-          },
-          {
-            url: `${siteConfig.baseUrl}/${locale}/v2/contact`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 0.7,
-          },
-        ])
-      : []
+      priority: priorityByRoute[routeKey as keyof typeof priorityByRoute],
+    })),
+  )
 
   return [
     {
@@ -45,7 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 1,
     },
-    ...localeRoutes,
-    ...v2Routes,
+    ...localizedRoutes,
   ]
 }

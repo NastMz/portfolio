@@ -7,7 +7,7 @@ const thresholds = {
   inp: 200,
 }
 
-const requiredRoutes = ['/en/v2', '/en/v2/projects', '/en/v2/contact']
+const requiredRoutes = ['/en', '/en/projects', '/en/contact']
 const metricsPath = process.env.V2_PERF_METRICS_PATH
   ? resolve(process.cwd(), process.env.V2_PERF_METRICS_PATH)
   : resolve(process.cwd(), 'reports/performance/v2-route-metrics.json')
@@ -47,4 +47,4 @@ if (failures.length > 0) {
   throw new Error(`Performance gate failed:\n- ${failures.join('\n- ')}`)
 }
 
-console.log('Performance gate passed for v2 key routes')
+console.log('Performance gate passed for canonical portfolio routes')
