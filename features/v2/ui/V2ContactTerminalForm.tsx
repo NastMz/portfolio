@@ -36,6 +36,11 @@ interface V2ContactTerminalFormProps {
   copy: V2ContactTerminalFormCopy
 }
 
+interface V2ContactFieldErrors {
+  endpointAddress?: string
+  identity?: string
+}
+
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 function encodeMailtoValue(value: string): string {
@@ -46,6 +51,7 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
   const [identity, setIdentity] = useState('')
   const [endpointAddress, setEndpointAddress] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [fieldErrors, setFieldErrors] = useState<V2ContactFieldErrors>({})
   const [feedback, setFeedback] = useState<
     | { type: 'error'; message: string }
     | { type: 'success'; messages: string[] }
@@ -70,14 +76,20 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
 
     const normalizedIdentity = identity.trim()
     const normalizedEndpoint = endpointAddress.trim()
+    const nextFieldErrors: V2ContactFieldErrors = {}
 
     if (!normalizedIdentity) {
-      setFeedback({ type: 'error', message: copy.feedback.identityRequired })
-      return
+      nextFieldErrors.identity = copy.feedback.identityRequired
     }
 
     if (!EMAIL_REGEX.test(normalizedEndpoint)) {
-      setFeedback({ type: 'error', message: copy.feedback.endpointInvalid })
+      nextFieldErrors.endpointAddress = copy.feedback.endpointInvalid
+    }
+
+    setFieldErrors(nextFieldErrors)
+
+    if (nextFieldErrors.identity || nextFieldErrors.endpointAddress) {
+      setFeedback(null)
       return
     }
 
@@ -125,11 +137,15 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
   async function handleCopyEndpoint() {
     try {
       await navigator.clipboard.writeText(copy.mail.targetAddress)
+      setFieldErrors({})
       setFeedback({ type: 'success', messages: ['> fallback_ready', '> endpoint_copied'] })
     } catch {
       setFeedback({ type: 'error', message: copy.feedback.copyUnavailable })
     }
   }
+
+  const identityErrorId = 'contact-identity-error'
+  const endpointErrorId = 'contact-endpoint-error'
 
   return (
     <div className="border border-zinc-800 bg-[#080808] text-left shadow-[0_0_0_1px_rgba(255,124,245,0.06)]">
@@ -157,15 +173,24 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-label">&gt;</span>
               <input
                 id="contact-identity"
-                aria-invalid={feedback?.type === 'error' && !identity.trim()}
+                aria-describedby={fieldErrors.identity ? identityErrorId : undefined}
+                aria-invalid={fieldErrors.identity ? 'true' : undefined}
                 className="w-full bg-black border border-zinc-800 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs placeholder:text-zinc-500"
                 name="identity"
-                onChange={(event) => setIdentity(event.target.value)}
+                onChange={(event) => {
+                  setIdentity(event.target.value)
+                  setFieldErrors((current) => ({ ...current, identity: undefined }))
+                }}
                 placeholder={copy.identityPlaceholder}
                 type="text"
                 value={identity}
               />
             </div>
+            {fieldErrors.identity ? (
+              <p className="mt-2 font-label text-[10px] uppercase tracking-widest text-error" id={identityErrorId} role="alert">
+                [{fieldErrors.identity}]
+              </p>
+            ) : null}
           </div>
           <div className="flex-1 group">
             <label className="block font-label text-[10px] text-zinc-400/90 tracking-widest uppercase mb-2" htmlFor="contact-endpoint">
@@ -175,15 +200,24 @@ export function V2ContactTerminalForm({ copy }: V2ContactTerminalFormProps) {
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-label">$</span>
               <input
                 id="contact-endpoint"
-                aria-invalid={feedback?.type === 'error' && endpointAddress.trim().length > 0 && !EMAIL_REGEX.test(endpointAddress.trim())}
+                aria-describedby={fieldErrors.endpointAddress ? endpointErrorId : undefined}
+                aria-invalid={fieldErrors.endpointAddress ? 'true' : undefined}
                 className="w-full bg-black border border-zinc-800 py-4 pl-10 pr-4 text-white focus:ring-0 focus:border-primary font-label text-xs placeholder:text-zinc-500"
                 name="endpointAddress"
-                onChange={(event) => setEndpointAddress(event.target.value)}
+                onChange={(event) => {
+                  setEndpointAddress(event.target.value)
+                  setFieldErrors((current) => ({ ...current, endpointAddress: undefined }))
+                }}
                 placeholder={copy.endpointPlaceholder}
                 type="email"
                 value={endpointAddress}
               />
             </div>
+            {fieldErrors.endpointAddress ? (
+              <p className="mt-2 font-label text-[10px] uppercase tracking-widest text-error" id={endpointErrorId} role="alert">
+                [{fieldErrors.endpointAddress}]
+              </p>
+            ) : null}
           </div>
         </div>
 

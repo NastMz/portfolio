@@ -1,5 +1,16 @@
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { siteConfig } from '@/lib/site'
+
+const { notFoundMock } = vi.hoisted(() => ({
+  notFoundMock: vi.fn(() => {
+    throw new Error('NEXT_NOT_FOUND')
+  }),
+}))
+
+vi.mock('next/navigation', () => ({
+  notFound: notFoundMock,
+}))
+
 import { generateMetadata as generateLocaleMetadata } from '@/app/[locale]/layout'
 import { generateMetadata as generateProjectsMetadata } from '@/app/[locale]/projects/page'
 import { generateMetadata as generateContactMetadata } from '@/app/[locale]/contact/page'
@@ -9,6 +20,7 @@ const ORIGINAL_ENV = { ...process.env }
 describe('canonical metadata policy', () => {
   afterEach(() => {
     process.env = { ...ORIGINAL_ENV }
+    vi.clearAllMocks()
   })
 
   it('serves v2 metadata on the locale homepage without rollout branching', async () => {
@@ -63,48 +75,26 @@ describe('canonical metadata policy', () => {
     })
   })
 
-  it('keeps unsupported locale fallback unchanged for SEO entry points when fallback-default is enabled', async () => {
-    process.env.NEXT_PUBLIC_UNSUPPORTED_LOCALE_BEHAVIOR = 'fallback-default'
+  it('rejects unsupported locales before canonical metadata is emitted', async () => {
+    await expect(
+      generateLocaleMetadata({
+        params: Promise.resolve({ locale: 'fr' }),
+      }),
+    ).rejects.toThrow('NEXT_NOT_FOUND')
 
-    const localeMetadata = await generateLocaleMetadata({
-      params: Promise.resolve({ locale: 'fr' }),
-    })
-    const projectsMetadata = await generateProjectsMetadata({
-      params: Promise.resolve({ locale: 'fr' }),
-    })
-    const contactMetadata = await generateContactMetadata({
-      params: Promise.resolve({ locale: 'fr' }),
-    })
+    await expect(
+      generateProjectsMetadata({
+        params: Promise.resolve({ locale: 'fr' }),
+      }),
+    ).rejects.toThrow('NEXT_NOT_FOUND')
 
-    expect(String(localeMetadata.alternates?.canonical)).toBe(`${siteConfig.baseUrl}/en`)
-    expect(localeMetadata.title).toBe('Kevin Martinez | Portfolio v2')
+    await expect(
+      generateContactMetadata({
+        params: Promise.resolve({ locale: 'fr' }),
+      }),
+    ).rejects.toThrow('NEXT_NOT_FOUND')
 
-    const localeLanguages = localeMetadata.alternates?.languages as Record<string, string>
-    expect(localeLanguages).toEqual({
-      en: `${siteConfig.baseUrl}/en`,
-      es: `${siteConfig.baseUrl}/es`,
-      'x-default': `${siteConfig.baseUrl}/en`,
-    })
-
-    expect(String(projectsMetadata.alternates?.canonical)).toBe(`${siteConfig.baseUrl}/en/projects`)
-    expect(projectsMetadata.title).toBe('Kevin Martinez | Portfolio v2')
-
-    const projectLanguages = projectsMetadata.alternates?.languages as Record<string, string>
-    expect(projectLanguages).toEqual({
-      en: `${siteConfig.baseUrl}/en/projects`,
-      es: `${siteConfig.baseUrl}/es/projects`,
-      'x-default': `${siteConfig.baseUrl}/en/projects`,
-    })
-
-    expect(String(contactMetadata.alternates?.canonical)).toBe(`${siteConfig.baseUrl}/en/contact`)
-    expect(contactMetadata.title).toBe('Kevin Martinez | Portfolio v2')
-
-    const contactLanguages = contactMetadata.alternates?.languages as Record<string, string>
-    expect(contactLanguages).toEqual({
-      en: `${siteConfig.baseUrl}/en/contact`,
-      es: `${siteConfig.baseUrl}/es/contact`,
-      'x-default': `${siteConfig.baseUrl}/en/contact`,
-    })
+    expect(notFoundMock).toHaveBeenCalledTimes(3)
   })
 
   it('keeps projects and contact metadata independent from retired version flags', async () => {

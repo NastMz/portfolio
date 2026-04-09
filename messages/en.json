@@ -123,6 +123,12 @@
     "builtWith": "Built with Next.js, Tailwind CSS and ☕ © {year}"
   },
   "V2": {
+    "a11y": {
+      "skipToContent": "Skip to main content",
+      "localeSwitchLabel": "Switch language",
+      "sidebarNavLabel": "V2 section navigation",
+      "mobileNavLabel": "V2 mobile navigation"
+    },
     "topBar": {
       "title": "[SYS_CORE: v23.07]",
       "localeSwitchPrefix": "LANG",

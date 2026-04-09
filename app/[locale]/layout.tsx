@@ -19,13 +19,13 @@ export async function generateMetadata({
   const requestLocale = resolveRequestLocale(locale)
 
   if (!requestLocale) {
-    return {}
+    notFound()
   }
 
-  const v2Content = await loadV2Content(requestLocale as Locale)
+  const v2Content = await loadV2Content(requestLocale)
 
   return generateSEOMetadata({
-    locale: requestLocale as Locale,
+    locale: requestLocale,
     title: v2Content.seo.title,
     description: v2Content.seo.description,
     image: `${siteConfig.baseUrl}/images/profile.jpg`,

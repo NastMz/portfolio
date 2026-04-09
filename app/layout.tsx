@@ -1,8 +1,11 @@
 import './globals.css'
 import '@/features/v2/tokens/tokens.css'
+import type { ReactNode } from 'react'
 import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
+import { headers } from 'next/headers'
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { resolveDocumentLocaleHeader } from '@/lib/locale-routing'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -25,13 +28,16 @@ const jetBrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
 })
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactNode
 }>) {
+  const requestHeaders = await headers()
+  const activeLocale = resolveDocumentLocaleHeader(requestHeaders.get('x-locale'))
+
   return (
-    <html suppressHydrationWarning>
+    <html lang={activeLocale} suppressHydrationWarning>
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
         {children}
         <Analytics />

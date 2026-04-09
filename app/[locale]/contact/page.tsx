@@ -1,7 +1,6 @@
 import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { type Locale } from '@/i18n/config'
 import { generateMetadata as generateSEOMetadata } from '@/components/seo/metadata'
 import { loadV2Content } from '@/features/v2/content/loaders'
 import { V2ContactPage } from '@/features/v2/pages/V2ContactPage'
@@ -17,13 +16,13 @@ export async function generateMetadata({
   const requestLocale = resolveRequestLocale(locale)
 
   if (!requestLocale) {
-    return {}
+    notFound()
   }
 
-  const content = await loadV2Content(requestLocale as Locale)
+  const content = await loadV2Content(requestLocale)
 
   return generateSEOMetadata({
-    locale: requestLocale as Locale,
+    locale: requestLocale,
     title: content.seo.title,
     description: content.seo.description,
     routePath: CANONICAL_ROUTE_PATHS.contact,
@@ -44,5 +43,5 @@ export default async function ContactPage({
 
   setRequestLocale(requestLocale)
 
-  return <V2ContactPage locale={requestLocale as Locale} />
+  return <V2ContactPage locale={requestLocale} />
 }

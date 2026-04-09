@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { V2SidebarRotatingLog } from '@/features/v2/ui/V2SidebarRotatingLog'
 
 interface V2NavLink {
@@ -34,6 +34,8 @@ interface ParsedNavLabel {
 interface V2SectionNavigationProps {
   brandTitle: string
   copy: V2SidebarCopy
+  sidebarNavLabel: string
+  mobileNavLabel: string
 }
 
 function parseNavLabel(label: string): ParsedNavLabel {
@@ -122,7 +124,7 @@ function toSectionToken(label: string) {
     .toUpperCase()
 }
 
-export function V2SectionNavigation({ brandTitle, copy }: V2SectionNavigationProps) {
+export function V2SectionNavigation({ brandTitle, copy, sidebarNavLabel, mobileNavLabel }: V2SectionNavigationProps) {
   const [activeHref, setActiveHref] = useState<V2NavAnchor>('#overview')
 
   useEffect(() => {
@@ -184,11 +186,8 @@ export function V2SectionNavigation({ brandTitle, copy }: V2SectionNavigationPro
     }
   }, [copy.nav])
 
-  const activeSectionLabel = useMemo(() => {
-    const activeItem = copy.nav.find((item) => item.href === activeHref) ?? copy.nav[0]
-
-    return activeItem ? `[SECTION: ${toSectionToken(activeItem.label)}]` : null
-  }, [activeHref, copy.nav])
+  const activeItem = copy.nav.find((item) => item.href === activeHref) ?? copy.nav[0]
+  const activeSectionLabel = activeItem ? `[SECTION: ${toSectionToken(activeItem.label)}]` : null
 
   return (
     <>
@@ -215,7 +214,7 @@ export function V2SectionNavigation({ brandTitle, copy }: V2SectionNavigationPro
           </div>
         </div>
 
-        <div className="flex-1">
+        <nav aria-label={sidebarNavLabel} className="flex-1">
           {copy.nav.map((item) => {
             const isActive = item.href === activeHref
 
@@ -240,7 +239,7 @@ export function V2SectionNavigation({ brandTitle, copy }: V2SectionNavigationPro
               </a>
             )
           })}
-        </div>
+        </nav>
 
         <div className="mt-auto p-4 border-t border-zinc-800/20 bg-black/40">
           <div className="mb-4">
@@ -263,7 +262,7 @@ export function V2SectionNavigation({ brandTitle, copy }: V2SectionNavigationPro
       </aside>
 
       <nav
-        aria-label="V2 mobile navigation"
+        aria-label={mobileNavLabel}
         className="fixed inset-x-0 bottom-0 z-50 border-t border-zinc-800/40 bg-[#0b0b0b]/95 px-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pt-2 backdrop-blur md:hidden"
       >
         <div className="mb-2 px-1 font-label text-[9px] tracking-[0.18em] text-primary/80">{activeSectionLabel}</div>

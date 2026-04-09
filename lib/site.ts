@@ -45,6 +45,16 @@ export const getLocalizedAlternates = (routeKey: CanonicalRouteKey = 'home') => 
   }
 }
 
+export const getCanonicalSitemapEntries = () => {
+  return locales.flatMap((locale) =>
+    (Object.keys(CANONICAL_ROUTE_PATHS) as CanonicalRouteKey[]).map((routeKey) => ({
+      locale,
+      routeKey,
+      url: getCanonicalUrl(locale, routeKey),
+    })),
+  )
+}
+
 export const getProfileImageUrl = (customPath?: string) => {
   const path = customPath || siteConfig.profileImagePath
   return `${siteConfig.baseUrl}${path}`

@@ -162,6 +162,12 @@ interface V2FloatingPanelCopy {
 const canonicalNavAnchors: V2NavAnchor[] = ['#overview', '#systems', '#artifacts', '#decision-log', '#stack', '#contact']
 
 interface V2MessagesShape {
+  a11y: {
+    skipToContent: string
+    localeSwitchLabel: string
+    sidebarNavLabel: string
+    mobileNavLabel: string
+  }
   topBar: V2TopBarCopy
   sidebar: V2SidebarCopy
   hero: V2HeroCopy
@@ -269,7 +275,17 @@ function resolveCanonicalNav(items: V2NavLink[]): V2NavLink[] {
   })
 }
 
-function TopBar({ copy, localeSwitchCode, localeSwitchHref }: { copy: V2TopBarCopy; localeSwitchCode: string; localeSwitchHref: string }) {
+function TopBar({
+  copy,
+  localeSwitchCode,
+  localeSwitchHref,
+  localeSwitchLabel,
+}: {
+  copy: V2TopBarCopy
+  localeSwitchCode: string
+  localeSwitchHref: string
+  localeSwitchLabel: string
+}) {
   const initialEvent = copy.systemEvents[0] ?? '[STATUS: SYSTEM_STABLE]'
 
   return (
@@ -282,11 +298,11 @@ function TopBar({ copy, localeSwitchCode, localeSwitchHref }: { copy: V2TopBarCo
       </div>
       <div className="flex items-center gap-3 text-xs font-label">
         <Link
-          aria-label="Switch language"
+          aria-label={localeSwitchLabel}
           className="inline-flex items-center gap-2 border border-primary/30 px-2 py-1 text-primary bg-zinc-900 hover:bg-[#FF7CF5]/10 hover:text-[#FF7CF5] transition-none"
           href={localeSwitchHref}
           scroll={false}
-          title="Switch language"
+          title={localeSwitchLabel}
         >
           <span className="text-zinc-500/95 font-medium">{copy.localeSwitchPrefix}</span>
           <span aria-hidden="true">⇄</span>
@@ -359,7 +375,7 @@ function AboutSection({ copy }: { copy: V2AboutCopy }) {
     >
       <div className="lg:col-span-5 lg:-translate-x-4">
         <div className="font-label text-zinc-500/95 text-xs mb-2 tracking-widest font-medium">{copy.fileLabel}</div>
-        <h3 className="font-headline text-4xl font-bold">{copy.title}</h3>
+        <h2 className="font-headline text-4xl font-bold">{copy.title}</h2>
         <div className="mt-8 bg-black/40 border border-zinc-800 p-6 hidden lg:block relative overflow-hidden">
           <div className="absolute -right-4 -top-4 font-label text-[40px] opacity-5 pointer-events-none select-none">{copy.watermark}</div>
           <div className="font-label text-[10px] text-primary mb-4">{copy.avoidTitle}</div>
@@ -389,7 +405,7 @@ function CorePrinciplesSection({ title, items }: { title: string; items: V2Princ
   return (
     <section className="px-8 md:px-16 py-32 relative scroll-mt-28" id="core-principles">
       <div className="absolute right-0 top-1/4 h-[1px] w-64 bg-primary/20 rotate-45 pointer-events-none" />
-      <div className="relative z-30 font-label text-primary text-sm mb-24 tracking-widest text-center">{title}</div>
+      <h2 className="relative z-30 font-label text-primary text-sm mb-24 tracking-widest text-center">{title}</h2>
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 items-stretch md:grid-cols-2 2xl:grid-cols-4">
         {items.map((item) => (
           <div
@@ -406,9 +422,9 @@ function CorePrinciplesSection({ title, items }: { title: string; items: V2Princ
             <div className={item.isCritical ? 'mb-4 font-label text-[9px] text-primary/75 tracking-[0.18em] uppercase' : 'mb-4 font-label text-[9px] text-zinc-500/95 tracking-[0.18em] uppercase font-medium'}>
               {item.isCritical ? '// core principles (high priority)' : '// foundational principles'}
             </div>
-            <h4 className={item.isCritical ? 'font-headline text-2xl font-bold mb-6 text-primary' : 'font-headline text-xl font-extrabold mb-4 text-zinc-100/95 hover:text-zinc-50'}>
+            <h3 className={item.isCritical ? 'font-headline text-2xl font-bold mb-6 text-primary' : 'font-headline text-xl font-extrabold mb-4 text-zinc-100/95 hover:text-zinc-50'}>
               {item.title}
-            </h4>
+            </h3>
             <p className={item.isCritical ? 'font-body text-md text-zinc-100 leading-relaxed' : 'font-body text-sm text-zinc-400/95 leading-relaxed font-medium'}>{item.description}</p>
             <>
               <div className={item.isCritical ? 'mt-8 h-[2px] w-full bg-primary/40' : 'mt-6 h-px w-full bg-zinc-800'} />
@@ -430,7 +446,7 @@ function CaseStudiesSection({ copy }: { copy: V2MessagesShape['caseStudies'] }) 
       <div className="max-w-6xl mx-auto" id="case-study">
         <div className="flex items-center justify-between mb-12">
           <div>
-            <h3 className="font-headline text-3xl md:text-4xl font-bold">{copy.title}</h3>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold">{copy.title}</h2>
             {copy.alias ? <div className="font-label text-[10px] text-zinc-500/95 tracking-widest uppercase mt-2 font-medium">{copy.alias}</div> : null}
           </div>
           <div className="h-[1px] flex-1 bg-primary/20 mx-8" />
@@ -451,7 +467,7 @@ function CaseStudiesSection({ copy }: { copy: V2MessagesShape['caseStudies'] }) 
                         {item.status}
                       </span>
                     </div>
-                    <h4 className="font-headline text-2xl font-bold mb-2 group-hover:text-primary">{item.title}</h4>
+                    <h3 className="font-headline text-2xl font-bold mb-2 group-hover:text-primary">{item.title}</h3>
                     <p className="font-body text-zinc-300/95 max-w-3xl">{item.summary}</p>
                   </div>
                   <div className="flex items-center gap-3 border border-zinc-800 bg-black/40 px-3 py-2 text-zinc-400 group-hover:border-primary/30 group-hover:text-primary">
@@ -509,7 +525,7 @@ function DecisionLogSection({ copy }: { copy: V2MessagesShape['decisionLog'] }) 
     <section className="px-8 md:px-16 py-32 bg-black scanline-magenta border-b border-zinc-900 scroll-mt-28" id="decision-log">
       <div className="flex items-center justify-between mb-12">
         <div>
-          <h3 className="font-headline text-3xl font-bold">{copy.title}</h3>
+          <h2 className="font-headline text-3xl font-bold">{copy.title}</h2>
           {copy.alias ? <div className="font-label text-[10px] text-zinc-500/95 tracking-widest uppercase mt-2 font-medium">{copy.alias}</div> : null}
         </div>
         <div className="h-[1px] flex-1 bg-primary/20 mx-8" />
@@ -526,7 +542,7 @@ function DecisionLogSection({ copy }: { copy: V2MessagesShape['decisionLog'] }) 
               <div className={`${item.statusClass} ${item.statusClass === 'bg-primary' ? 'text-black' : 'text-white'} font-label text-[9px] px-2 py-0.5 w-fit font-bold`}>{item.status}</div>
               <div className="bg-zinc-800 text-zinc-300 font-label text-[9px] px-2 py-0.5 w-fit">{item.context}</div>
             </div>
-            <h5 className="font-headline font-bold text-xl mb-3 group-hover:text-primary">{item.title}</h5>
+            <h3 className="font-headline font-bold text-xl mb-3 group-hover:text-primary">{item.title}</h3>
             <p className="font-body text-sm text-zinc-400/95 mb-6">{item.body}</p>
             <div className="mt-auto pt-4 border-t border-zinc-800">
               <div className="font-label text-[9px] text-zinc-400 uppercase">{copy.tradeoffLabel}</div>
@@ -557,7 +573,7 @@ function ArtifactsSection({ copy }: { copy: V2MessagesShape['artifacts'] }) {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-wrap items-center gap-4 mb-12">
           <div>
-            <h3 className="font-headline text-3xl md:text-4xl font-bold">{copy.title}</h3>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold">{copy.title}</h2>
             {copy.alias ? <div className="font-label text-[10px] text-zinc-500/95 tracking-widest uppercase mt-2 font-medium">{copy.alias}</div> : null}
           </div>
           <div className="h-[1px] flex-1 bg-primary/20 min-w-20" />
@@ -591,7 +607,7 @@ function ArtifactsSection({ copy }: { copy: V2MessagesShape['artifacts'] }) {
                     </span>
                   </div>
 
-                  <h4 className="font-headline text-2xl font-bold mb-2">{item.name}</h4>
+                  <h3 className="font-headline text-2xl font-bold mb-2">{item.name}</h3>
                   <p className="font-body text-zinc-300/95 mb-6 max-w-4xl">{item.description}</p>
 
                   <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8">
@@ -668,7 +684,7 @@ function StackEvaluationSection({ copy }: { copy: V2MessagesShape['stack'] }) {
   return (
     <section className="px-8 md:px-16 py-24 bg-surface-container-low/30 scroll-mt-28" id="stack-evaluation">
       <div className="mb-16 text-center">
-        <div className="font-label text-primary text-xs tracking-[0.3em] uppercase">{copy.title}</div>
+        <h2 className="font-label text-primary text-xs tracking-[0.3em] uppercase">{copy.title}</h2>
         {copy.alias ? <div className="font-label text-[10px] text-zinc-500/95 tracking-widest uppercase mt-2 font-medium">{copy.alias}</div> : null}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-zinc-800/40">
@@ -693,15 +709,15 @@ function StackEvaluationSection({ copy }: { copy: V2MessagesShape['stack'] }) {
 function NotesSection({ copy }: { copy: V2MessagesShape['notes'] }) {
   return (
     <section className="px-8 md:px-16 py-24" id="notes">
-      <h3 className="font-headline text-3xl font-bold mb-12">
+      <h2 className="font-headline text-3xl font-bold mb-12">
         {copy.title} <span className="text-zinc-300/95 font-label text-sm ml-4 uppercase tracking-[0.18em] font-medium">{copy.subtitle}</span>
-      </h3>
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {copy.items.map((item) => (
           <div key={item.id} className={`relative pl-12 ${item.borderClass}`}>
             <div className={`absolute -left-1.5 top-0 w-3 h-3 ${item.markerClass}`} />
             <div className="font-label text-[10px] text-primary tracking-widest mb-2">[{item.id}]</div>
-            <h4 className="font-headline text-xl font-bold mb-2">{item.title}</h4>
+            <h3 className="font-headline text-xl font-bold mb-2">{item.title}</h3>
             <p className="font-label text-[10px] mb-4 uppercase tracking-[0.14em] text-zinc-300/95 font-medium">{item.tag}</p>
             <p className="font-body text-zinc-300/95 leading-relaxed">{item.body}</p>
           </div>
@@ -716,7 +732,7 @@ function ContactSection({ copy }: { copy: V2ContactCopy }) {
     <section className="px-8 md:px-16 py-32 bg-surface-container-lowest flex flex-col items-center text-center scroll-mt-28" id="contact">
       <div className="w-full max-w-2xl">
         <div className="font-label text-primary text-xs mb-6 tracking-[0.5em] uppercase">{copy.eyebrow}</div>
-        <h3 className="font-headline text-4xl md:text-6xl font-bold mb-8">{copy.title}</h3>
+        <h2 className="font-headline text-4xl md:text-6xl font-bold mb-8">{copy.title}</h2>
         <p className="font-body text-zinc-400 mb-12">{copy.description}</p>
         <V2ContactTerminalForm copy={copy.form} />
       </div>
@@ -775,6 +791,12 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
       <V2BootOverlay>
         <V2CustomCursor />
         <V2HoverTrace />
+        <a
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-black focus:px-4 focus:py-3 focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+          href="#main-content"
+        >
+          {copy.a11y.skipToContent}
+        </a>
         <div className="interference-line top-1/4 -left-1/2" />
         <div className="interference-line top-3/4 -left-1/4" />
 
@@ -787,10 +809,20 @@ export async function V2PortfolioPage({ locale, routeKey = 'home' }: V2Portfolio
           </div>
         </div>
 
-        <TopBar copy={copy.topBar} localeSwitchHref={localeSwitchHref} localeSwitchCode={localeSwitchCode} />
-        <V2SectionNavigation brandTitle={copy.hero.title} copy={{ ...copy.sidebar, nav: canonicalSidebarNav }} />
+        <TopBar
+          copy={copy.topBar}
+          localeSwitchHref={localeSwitchHref}
+          localeSwitchCode={localeSwitchCode}
+          localeSwitchLabel={copy.a11y.localeSwitchLabel}
+        />
+        <V2SectionNavigation
+          brandTitle={copy.hero.title}
+          copy={{ ...copy.sidebar, nav: canonicalSidebarNav }}
+          mobileNavLabel={copy.a11y.mobileNavLabel}
+          sidebarNavLabel={copy.a11y.sidebarNavLabel}
+        />
 
-        <main className="pt-24 pb-[calc(7rem+env(safe-area-inset-bottom))] md:ml-64 md:pb-24 relative z-10" id="main-content">
+        <main className="pt-24 pb-[calc(7rem+env(safe-area-inset-bottom))] md:ml-64 md:pb-24 relative z-10" id="main-content" tabIndex={-1}>
           <div className="scroll-mt-28" id="overview" />
           <HeroSection copy={copy.hero} cvHref={cvHref} />
           <AboutSection copy={copy.about} />

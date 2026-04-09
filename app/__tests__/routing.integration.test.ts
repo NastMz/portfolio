@@ -23,6 +23,7 @@ describe('canonical routing seo integration', () => {
         expect.stringMatching(/\/es\/contact$/),
       ]),
     )
+    expect(urls).not.toContain('https://kevin-martinez-portfolio-alpha.vercel.app')
     expect(urls.some((url) => url.includes('/v2'))).toBe(false)
     expect(urls.some((url) => url.includes('/legacy'))).toBe(false)
   })

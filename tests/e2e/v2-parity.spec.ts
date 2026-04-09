@@ -38,6 +38,10 @@ const localeCases = [
     locale: 'en',
     path: '/en',
     labels: {
+      skipLink: 'Skip to main content',
+      localeSwitchLabel: 'Switch language',
+      sidebarNavLabel: 'V2 section navigation',
+      mobileNavLabel: 'V2 mobile navigation',
       archive: 'ARCHIVE',
       logs: 'LOGS',
       stack: 'STACK',
@@ -51,6 +55,10 @@ const localeCases = [
     locale: 'es',
     path: '/es',
     labels: {
+      skipLink: 'Saltar al contenido principal',
+      localeSwitchLabel: 'Cambiar idioma',
+      sidebarNavLabel: 'Navegación de secciones V2',
+      mobileNavLabel: 'Navegación móvil V2',
       archive: 'ARCHIVE',
       logs: 'LOGS',
       stack: 'STACK',
@@ -68,11 +76,13 @@ test.describe('v2 i18n interaction and accessibility parity', () => {
       await page.goto(localeCase.path)
       await waitForExperienceReady(page)
 
-      const localeSwitch = page.getByLabel('Switch language')
+      const localeSwitch = page.getByLabel(localeCase.labels.localeSwitchLabel)
 
       await expect(localeSwitch).toBeVisible()
       await expect(localeSwitch).toHaveAttribute('href', localeCase.locale === 'en' ? '/es' : '/en')
+      await expect(page.locator('html')).toHaveAttribute('lang', localeCase.locale)
       await expect(page.locator('main#main-content')).toBeVisible()
+      await expect(page.getByRole('navigation', { name: localeCase.labels.sidebarNavLabel })).toBeVisible()
       await expect(page.locator('#artifacts')).toBeVisible()
       await expect(page.locator('#decision-log')).toBeVisible()
       await expect(page.locator('#stack-evaluation')).toBeVisible()
@@ -80,11 +90,56 @@ test.describe('v2 i18n interaction and accessibility parity', () => {
       await expect(page.locator('#contact')).toBeVisible()
     })
 
+    test(`${localeCase.locale}: skip link is the first keyboard target and lands on main content`, async ({ page }) => {
+      await page.goto(localeCase.path)
+      await waitForExperienceReady(page)
+
+      await page.keyboard.press('Tab')
+
+      const skipLink = page.getByRole('link', { name: localeCase.labels.skipLink })
+      await expect(skipLink).toBeFocused()
+      await skipLink.press('Enter')
+
+      await expect(page.locator('main#main-content')).toBeFocused()
+    })
+
+    test(`${localeCase.locale}: main content exposes a coherent heading outline`, async ({ page }) => {
+      await page.goto(localeCase.path)
+      await waitForExperienceReady(page)
+
+      const headings = await page.locator('main#main-content :is(h1, h2, h3, h4, h5, h6)').evaluateAll((nodes) => {
+        return nodes
+          .map((node) => {
+            const element = node as HTMLElement
+            const level = Number(element.tagName.slice(1))
+            const text = element.textContent?.trim() ?? ''
+            const style = window.getComputedStyle(element)
+            const isVisible = style.display !== 'none' && style.visibility !== 'hidden' && text.length > 0
+
+            return isVisible ? { level, text } : null
+          })
+          .filter((heading): heading is { level: number; text: string } => heading !== null)
+      })
+
+      expect(headings.length).toBeGreaterThan(0)
+      expect(headings.filter((heading) => heading.level === 1)).toHaveLength(1)
+      expect(headings[0]).toMatchObject({ level: 1 })
+
+      for (const [index, heading] of headings.entries()) {
+        if (index === 0) {
+          continue
+        }
+
+        const previousHeading = headings[index - 1]
+        expect(heading.level - previousHeading.level).toBeLessThanOrEqual(1)
+      }
+    })
+
     test(`${localeCase.locale}: language switch receives a visible focus ring`, async ({ page }) => {
       await page.goto(localeCase.path)
       await waitForExperienceReady(page)
 
-      const localeSwitch = page.getByLabel('Switch language')
+      const localeSwitch = page.getByLabel(localeCase.labels.localeSwitchLabel)
       await localeSwitch.focus()
       await expect(localeSwitch).toBeFocused()
 
@@ -117,7 +172,7 @@ test.describe('v2 i18n interaction and accessibility parity', () => {
       await page.goto(localeCase.path)
       await waitForExperienceReady(page)
 
-      const mobileNav = page.getByRole('navigation', { name: 'V2 mobile navigation' })
+      const mobileNav = page.getByRole('navigation', { name: localeCase.labels.mobileNavLabel })
 
       await expect(mobileNav).toBeVisible()
       await expect(mobileNav.locator('a')).toHaveCount(6)
@@ -145,10 +200,6 @@ test.describe('v2 i18n interaction and accessibility parity', () => {
         return window.getComputedStyle(node).backgroundColor
       })
 
-      const caseStudyClasses = await page.locator('#case-study').evaluate((node) => {
-        return (node.parentElement as HTMLElement).className
-      })
-
       const resolvedTokenColors = await page.evaluate((tokens) => {
         const probe = document.createElement('div')
         probe.style.display = 'none'
@@ -168,10 +219,11 @@ test.describe('v2 i18n interaction and accessibility parity', () => {
       }, tokenValues)
 
       expect(routeBackground).toBe(resolvedTokenColors.bg)
-      expect(caseStudyClasses.length).toBeGreaterThan(0)
+      await expect(page.locator('#case-study details').first()).toContainText('PROBLEM')
+      await expect(page.locator('#case-study details').first()).toContainText('DECISION')
 
       const routeText = await page.locator('.v2-route h1').first().evaluate((node) => window.getComputedStyle(node).color)
-      const mutedText = await page.getByLabel('Switch language').evaluate((node) => {
+      const mutedText = await page.getByLabel(localeCase.labels.localeSwitchLabel).evaluate((node) => {
         return window.getComputedStyle(node).color
       })
       const routeBgRgb = parseRgb(routeBackground)
@@ -197,6 +249,32 @@ test.describe('v2 i18n interaction and accessibility parity', () => {
     await page.goto('/es/legacy')
     await expect(page).toHaveURL(/\/es$/)
     await waitForExperienceReady(page)
+  })
+
+  test('contact form associates each invalid field with its own error message', async ({ page }) => {
+    await page.goto('/en/contact')
+    await waitForExperienceReady(page)
+
+    const submitButton = page.getByRole('button', { name: 'SEND_MESSAGE' })
+    const identityInput = page.getByLabel('IDENTITY')
+    const endpointInput = page.getByLabel('ENDPOINT_ADDRESS')
+
+    await endpointInput.fill('kevin@example.com')
+    await submitButton.click()
+
+    await expect(identityInput).toHaveAttribute('aria-invalid', 'true')
+    await expect(identityInput).toHaveAttribute('aria-describedby', 'contact-identity-error')
+    await expect(page.locator('#contact-identity-error')).toContainText('ERROR::IDENTITY_REQUIRED')
+    await expect(endpointInput).not.toHaveAttribute('aria-describedby', /contact-endpoint-error/)
+
+    await identityInput.fill('Kevin')
+    await endpointInput.fill('invalid-endpoint')
+    await submitButton.click()
+
+    await expect(endpointInput).toHaveAttribute('aria-invalid', 'true')
+    await expect(endpointInput).toHaveAttribute('aria-describedby', 'contact-endpoint-error')
+    await expect(page.locator('#contact-endpoint-error')).toContainText('ERROR::ENDPOINT_ADDRESS_INVALID')
+    await expect(identityInput).not.toHaveAttribute('aria-describedby', /contact-identity-error/)
   })
 
   test('reduced-motion token collapses duration to 0ms', async ({ browser }) => {

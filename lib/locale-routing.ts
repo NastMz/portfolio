@@ -1,21 +1,27 @@
 import { defaultLocale, locales, type Locale } from '@/i18n/config'
 
-export type UnsupportedLocaleBehavior = 'not-found' | 'fallback-default'
+export const supportedLocales = locales
 
-export const getUnsupportedLocaleBehavior = (): UnsupportedLocaleBehavior => {
-  return process.env.NEXT_PUBLIC_UNSUPPORTED_LOCALE_BEHAVIOR === 'fallback-default'
-    ? 'fallback-default'
-    : 'not-found'
+export type SupportedLocale = Locale
+
+export const isSupportedLocale = (value: string): value is SupportedLocale => {
+  return supportedLocales.includes(value as SupportedLocale)
 }
 
-export const resolveRequestLocale = (locale: string): Locale | null => {
-  if (locales.includes(locale as Locale)) {
-    return locale as Locale
-  }
+export const resolveRequestLocale = (locale: string): SupportedLocale | null => {
+  return isSupportedLocale(locale) ? locale : null
+}
 
-  if (getUnsupportedLocaleBehavior() === 'fallback-default') {
+export const resolveDocumentLocaleHeader = (locale: string | null | undefined): SupportedLocale => {
+  return locale && isSupportedLocale(locale) ? locale : defaultLocale
+}
+
+export const getDocumentLocale = (pathname: string | null): SupportedLocale => {
+  if (!pathname) {
     return defaultLocale
   }
 
-  return null
+  const [, segment] = pathname.split('/')
+
+  return resolveDocumentLocaleHeader(segment)
 }

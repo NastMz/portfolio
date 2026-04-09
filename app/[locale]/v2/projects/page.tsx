@@ -1,4 +1,4 @@
-import { notFound, redirect } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import { resolveRequestLocale } from '@/lib/locale-routing'
 import { getCanonicalRoutePath } from '@/lib/site'
 
@@ -14,5 +14,5 @@ export default async function V2ProjectsRoute({
     notFound()
   }
 
-  redirect(getCanonicalRoutePath(requestLocale, 'projects'))
+  permanentRedirect(getCanonicalRoutePath(requestLocale, 'projects'))
 }
