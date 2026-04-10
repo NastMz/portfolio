@@ -1,14 +1,17 @@
+import type { ReactNode } from 'react'
 import type { Metadata, Viewport } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
-import { Toaster } from "@/components/ui/sonner"
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages, setRequestLocale} from 'next-intl/server';
-import {notFound} from 'next/navigation';
-import { type Locale } from '@/i18n/config';
+import { Toaster } from '@/components/ui/sonner'
+import { setRequestLocale } from 'next-intl/server'
+import { notFound } from 'next/navigation'
 import { generateMetadata as generateSEOMetadata } from '@/components/seo/metadata'
 import { siteConfig } from '@/lib/site'
 import { loadV2Content } from '@/features/v2/content/loaders'
-import { resolveRequestLocale } from '@/lib/locale-routing'
+import { getLocaleStaticParams, resolveRequestLocale } from '@/lib/locale-routing'
+
+export function generateStaticParams() {
+  return getLocaleStaticParams()
+}
 
 export async function generateMetadata({
   params,
@@ -39,36 +42,29 @@ export const viewport: Viewport = {
 
 export default async function LocaleLayout({
   children,
-  params
+  params,
 }: {
-  children: React.ReactNode;
-  params: Promise<{locale: string}>;
+  children: ReactNode
+  params: Promise<{ locale: string }>
 }) {
-  const { locale } = await params;
+  const { locale } = await params
   const requestLocale = resolveRequestLocale(locale)
-  
-  // Ensure that the incoming `locale` is valid
+
   if (!requestLocale) {
-    notFound();
+    notFound()
   }
- 
-  // Enable static rendering
-  setRequestLocale(requestLocale);
- 
-  // Providing all messages to the client
-  const messages = await getMessages();
+
+  setRequestLocale(requestLocale)
 
   return (
-    <NextIntlClientProvider messages={messages}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        {children}
-        <Toaster />
-      </ThemeProvider>
-    </NextIntlClientProvider>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      {children}
+      <Toaster />
+    </ThemeProvider>
   )
 }

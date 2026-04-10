@@ -8,6 +8,10 @@ export const isSupportedLocale = (value: string): value is SupportedLocale => {
   return supportedLocales.includes(value as SupportedLocale)
 }
 
+export const getLocaleStaticParams = () => {
+  return supportedLocales.map((locale) => ({ locale }))
+}
+
 export const resolveRequestLocale = (locale: string): SupportedLocale | null => {
   return isSupportedLocale(locale) ? locale : null
 }

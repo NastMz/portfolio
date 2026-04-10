@@ -21,6 +21,12 @@ try {
 }
 
 const failures = []
+const routeKeys = Object.keys(report?.routes ?? {}).sort()
+const expectedRouteKeys = [...requiredRoutes].sort()
+
+if (JSON.stringify(routeKeys) !== JSON.stringify(expectedRouteKeys)) {
+  failures.push(`route alignment mismatch: expected ${expectedRouteKeys.join(', ')} but received ${routeKeys.join(', ') || 'none'}`)
+}
 
 for (const route of requiredRoutes) {
   const metric = report?.routes?.[route]

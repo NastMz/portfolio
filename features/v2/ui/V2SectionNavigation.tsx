@@ -113,6 +113,16 @@ function renderNavIcon(href: V2NavAnchor, className = 'h-5 w-5') {
   )
 }
 
+function renderInfoIcon(className = 'h-4 w-4') {
+  return (
+    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="8.25" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M12 10v5" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
+      <circle cx="12" cy="7.25" fill="currentColor" r="1" />
+    </svg>
+  )
+}
+
 function toSectionToken(label: string) {
   const parsed = parseNavLabel(label)
   const source = parsed.human ?? parsed.technical
@@ -254,7 +264,7 @@ export function V2SectionNavigation({ brandTitle, copy, sidebarNavLabel, mobileN
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2 text-zinc-400">
-              <span className="material-symbols-outlined text-sm">info</span>
+              {renderInfoIcon()}
               <span>{copy.version}</span>
             </div>
           </div>

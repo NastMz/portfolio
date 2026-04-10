@@ -76,4 +76,17 @@ describe('document language propagation', () => {
     expect(spanishMarkup).toContain('<html lang="es"')
     expect(rootMarkup).toContain('<html lang="en"')
   })
+
+  it('keeps root html lang driven by the x-locale header after locale tree changes', async () => {
+    headersMock.mockResolvedValue(new Headers({ 'x-locale': 'es' }))
+
+    const markup = renderToStaticMarkup(
+      await RootLayout({
+        children: createElement('main', { 'data-tree': 'locale-shell' }, 'shell'),
+      }),
+    )
+
+    expect(markup).toContain('<html lang="es"')
+    expect(markup).toContain('data-tree="locale-shell"')
+  })
 })
