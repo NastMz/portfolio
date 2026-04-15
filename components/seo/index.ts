@@ -1,2 +1,2 @@
-export { StructuredData } from './StructuredData'
-export { generateMetadata, generateStructuredData } from './metadata'
+export { StructuredData } from "./StructuredData";
+export { generateMetadata, generateStructuredData } from "./metadata";

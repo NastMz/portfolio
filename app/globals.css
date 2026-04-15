@@ -13,33 +13,33 @@ body {
   .scroll-offset {
     scroll-margin-top: 5rem; /* 80px - un poco más que el header h-16 (64px) */
   }
-  
+
   /* Mobile optimizations */
   @media (max-width: 640px) {
     .scroll-offset {
       scroll-margin-top: 4rem; /* Reduce offset on mobile */
     }
   }
-  
+
   /* Improved text rendering on mobile */
   .mobile-text-optimize {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
-  
+
   /* Better touch targets for mobile */
   .touch-target {
     min-height: 44px;
     min-width: 44px;
   }
-  
+
   /* Prevent horizontal overflow */
   .prevent-overflow {
     overflow-x: hidden;
     word-wrap: break-word;
     word-break: break-word;
   }
-  
+
   /* Enable sticky positioning */
   .enable-sticky {
     position: relative;
@@ -48,15 +48,20 @@ body {
 
   /* Section Background Patterns */
   .bg-dot-pattern {
-    background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+    background-image: radial-gradient(
+      circle,
+      currentColor 1px,
+      transparent 1px
+    );
     background-size: 24px 24px;
     color: rgb(148, 163, 184); /* slate-400 */
     opacity: 0.18;
   }
-  
+
   .bg-grid-pattern {
-    background-image: linear-gradient(to right, currentColor 1px, transparent 1px),
-                      linear-gradient(to bottom, currentColor 1px, transparent 1px);
+    background-image:
+      linear-gradient(to right, currentColor 1px, transparent 1px),
+      linear-gradient(to bottom, currentColor 1px, transparent 1px);
     background-size: 40px 40px;
     color: rgb(148, 163, 184); /* slate-400 */
     opacity: 0.15;
@@ -66,14 +71,16 @@ body {
     color: hsl(var(--primary));
     opacity: 0.05;
   }
-  
+
   .dark .bg-grid-pattern {
     color: hsl(var(--primary));
     opacity: 0.03;
   }
 
   .section-transition {
-    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+    transition:
+      background-color 0.5s ease-in-out,
+      border-color 0.5s ease-in-out;
   }
 }
 
@@ -163,7 +170,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   /* Improved mobile viewport handling */
   @media (max-width: 768px) {
     html {

@@ -1,22 +1,22 @@
-import { notFound } from 'next/navigation'
-import { setRequestLocale } from 'next-intl/server'
-import { resolveRequestLocale } from '@/lib/locale-routing'
+import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { resolveRequestLocale } from "@/lib/locale-routing";
 
 export default async function V2Layout({
   children,
   params,
 }: {
-  children: React.ReactNode
-  params: Promise<{ locale: string }>
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params
-  const requestLocale = resolveRequestLocale(locale)
+  const { locale } = await params;
+  const requestLocale = resolveRequestLocale(locale);
 
   if (!requestLocale) {
-    notFound()
+    notFound();
   }
 
-  setRequestLocale(requestLocale)
+  setRequestLocale(requestLocale);
 
-  return <>{children}</>
+  return <>{children}</>;
 }

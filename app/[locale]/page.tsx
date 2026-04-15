@@ -1,22 +1,22 @@
-import { setRequestLocale } from 'next-intl/server'
-import { notFound } from 'next/navigation'
-import { V2PortfolioPage } from '@/features/v2/pages/V2PortfolioPage'
-import { resolveRequestLocale } from '@/lib/locale-routing'
+import { setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { V2PortfolioPage } from "@/features/v2/pages/V2PortfolioPage";
+import { resolveRequestLocale } from "@/lib/locale-routing";
 
 export default async function Portfolio({
-  params
+  params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params
+  const { locale } = await params;
 
-  const requestLocale = resolveRequestLocale(locale)
+  const requestLocale = resolveRequestLocale(locale);
 
   if (!requestLocale) {
-    notFound()
+    notFound();
   }
 
-  setRequestLocale(requestLocale)
+  setRequestLocale(requestLocale);
 
-  return <V2PortfolioPage locale={requestLocale} routeKey="home" />
+  return <V2PortfolioPage locale={requestLocale} routeKey="home" />;
 }

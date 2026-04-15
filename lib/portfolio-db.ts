@@ -1,59 +1,59 @@
-import { promises as fs } from "fs"
-import path from "path"
+import { promises as fs } from "fs";
+import path from "path";
 
 export interface Skill {
-  id: string
-  name: string
-  category: string
-  experience: string
-  projects: string
-  icon: string
+  id: string;
+  name: string;
+  category: string;
+  experience: string;
+  projects: string;
+  icon: string;
 }
 
 export interface Project {
-  id: string
-  title: string
-  description: string
-  tech: string[]
+  id: string;
+  title: string;
+  description: string;
+  tech: string[];
   metrics: {
-    label: string
-    value: string
-    icon: string
-  }[]
-  github: string
-  demo: string
-  gradient: string
+    label: string;
+    value: string;
+    icon: string;
+  }[];
+  github: string;
+  demo: string;
+  gradient: string;
 }
 
 export interface Experience {
-  id: string
-  title: string
-  company: string
-  period: string
-  location: string
-  achievements: string[]
-  color: string
+  id: string;
+  title: string;
+  company: string;
+  period: string;
+  location: string;
+  achievements: string[];
+  color: string;
 }
 
 export interface PersonalInfo {
-  name: string
-  title: string
-  description: string
-  location: string
-  email: string
-  github: string
-  linkedin: string
-  availability: string
+  name: string;
+  title: string;
+  description: string;
+  location: string;
+  email: string;
+  github: string;
+  linkedin: string;
+  availability: string;
 }
 
 export interface PortfolioData {
-  personalInfo: PersonalInfo
-  skills: Skill[]
-  projects: Project[]
-  experience: Experience[]
+  personalInfo: PersonalInfo;
+  skills: Skill[];
+  projects: Project[];
+  experience: Experience[];
 }
 
-const DB_PATH = path.join(process.cwd(), "data", "portfolio.json")
+const DB_PATH = path.join(process.cwd(), "data", "portfolio.json");
 
 const defaultData: PortfolioData = {
   personalInfo: {
@@ -117,105 +117,116 @@ const defaultData: PortfolioData = {
       color: "border-l-blue-500",
     },
   ],
-}
+};
 
 export async function getPortfolioData(): Promise<PortfolioData> {
   try {
-    const data = await fs.readFile(DB_PATH, "utf8")
-    return JSON.parse(data)
+    const data = await fs.readFile(DB_PATH, "utf8");
+    return JSON.parse(data);
   } catch (error) {
-    return defaultData
+    return defaultData;
   }
 }
 
 export async function savePortfolioData(data: PortfolioData): Promise<void> {
-  const dataDir = path.dirname(DB_PATH)
+  const dataDir = path.dirname(DB_PATH);
   try {
-    await fs.access(dataDir)
+    await fs.access(dataDir);
   } catch {
-    await fs.mkdir(dataDir, { recursive: true })
+    await fs.mkdir(dataDir, { recursive: true });
   }
 
-  await fs.writeFile(DB_PATH, JSON.stringify(data, null, 2))
+  await fs.writeFile(DB_PATH, JSON.stringify(data, null, 2));
 }
 
 export async function updatePersonalInfo(info: PersonalInfo): Promise<void> {
-  const data = await getPortfolioData()
-  data.personalInfo = info
-  await savePortfolioData(data)
+  const data = await getPortfolioData();
+  data.personalInfo = info;
+  await savePortfolioData(data);
 }
 
 export async function addSkill(skill: Omit<Skill, "id">): Promise<void> {
-  const data = await getPortfolioData()
+  const data = await getPortfolioData();
   const newSkill: Skill = {
     ...skill,
     id: Date.now().toString(),
-  }
-  data.skills.push(newSkill)
-  await savePortfolioData(data)
+  };
+  data.skills.push(newSkill);
+  await savePortfolioData(data);
 }
 
-export async function updateSkill(id: string, skill: Omit<Skill, "id">): Promise<void> {
-  const data = await getPortfolioData()
-  const index = data.skills.findIndex((s) => s.id === id)
+export async function updateSkill(
+  id: string,
+  skill: Omit<Skill, "id">,
+): Promise<void> {
+  const data = await getPortfolioData();
+  const index = data.skills.findIndex((s) => s.id === id);
   if (index !== -1) {
-    data.skills[index] = { ...skill, id }
-    await savePortfolioData(data)
+    data.skills[index] = { ...skill, id };
+    await savePortfolioData(data);
   }
 }
 
 export async function deleteSkill(id: string): Promise<void> {
-  const data = await getPortfolioData()
-  data.skills = data.skills.filter((s) => s.id !== id)
-  await savePortfolioData(data)
+  const data = await getPortfolioData();
+  data.skills = data.skills.filter((s) => s.id !== id);
+  await savePortfolioData(data);
 }
 
 export async function addProject(project: Omit<Project, "id">): Promise<void> {
-  const data = await getPortfolioData()
+  const data = await getPortfolioData();
   const newProject: Project = {
     ...project,
     id: Date.now().toString(),
-  }
-  data.projects.push(newProject)
-  await savePortfolioData(data)
+  };
+  data.projects.push(newProject);
+  await savePortfolioData(data);
 }
 
-export async function updateProject(id: string, project: Omit<Project, "id">): Promise<void> {
-  const data = await getPortfolioData()
-  const index = data.projects.findIndex((p) => p.id === id)
+export async function updateProject(
+  id: string,
+  project: Omit<Project, "id">,
+): Promise<void> {
+  const data = await getPortfolioData();
+  const index = data.projects.findIndex((p) => p.id === id);
   if (index !== -1) {
-    data.projects[index] = { ...project, id }
-    await savePortfolioData(data)
+    data.projects[index] = { ...project, id };
+    await savePortfolioData(data);
   }
 }
 
 export async function deleteProject(id: string): Promise<void> {
-  const data = await getPortfolioData()
-  data.projects = data.projects.filter((p) => p.id !== id)
-  await savePortfolioData(data)
+  const data = await getPortfolioData();
+  data.projects = data.projects.filter((p) => p.id !== id);
+  await savePortfolioData(data);
 }
 
-export async function addExperience(experience: Omit<Experience, "id">): Promise<void> {
-  const data = await getPortfolioData()
+export async function addExperience(
+  experience: Omit<Experience, "id">,
+): Promise<void> {
+  const data = await getPortfolioData();
   const newExperience: Experience = {
     ...experience,
     id: Date.now().toString(),
-  }
-  data.experience.push(newExperience)
-  await savePortfolioData(data)
+  };
+  data.experience.push(newExperience);
+  await savePortfolioData(data);
 }
 
-export async function updateExperience(id: string, experience: Omit<Experience, "id">): Promise<void> {
-  const data = await getPortfolioData()
-  const index = data.experience.findIndex((e) => e.id === id)
+export async function updateExperience(
+  id: string,
+  experience: Omit<Experience, "id">,
+): Promise<void> {
+  const data = await getPortfolioData();
+  const index = data.experience.findIndex((e) => e.id === id);
   if (index !== -1) {
-    data.experience[index] = { ...experience, id }
-    await savePortfolioData(data)
+    data.experience[index] = { ...experience, id };
+    await savePortfolioData(data);
   }
 }
 
 export async function deleteExperience(id: string): Promise<void> {
-  const data = await getPortfolioData()
-  data.experience = data.experience.filter((e) => e.id !== id)
-  await savePortfolioData(data)
+  const data = await getPortfolioData();
+  data.experience = data.experience.filter((e) => e.id !== id);
+  await savePortfolioData(data);
 }

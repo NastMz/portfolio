@@ -1,17 +1,17 @@
-import type { ReactNode } from 'react'
+import type { ReactNode } from "react";
 
 interface SystemTopBarLink {
-  label: string
-  href: string
+  label: string;
+  href: string;
 }
 
 interface SystemTopBarProps {
-  title: string
-  routeLabel: string
-  localeSwitchLabel: string
-  localeHref: string
-  links: SystemTopBarLink[]
-  rightSlot?: ReactNode
+  title: string;
+  routeLabel: string;
+  localeSwitchLabel: string;
+  localeHref: string;
+  links: SystemTopBarLink[];
+  rightSlot?: ReactNode;
 }
 
 export function SystemTopBar({
@@ -24,12 +24,17 @@ export function SystemTopBar({
 }: SystemTopBarProps) {
   return (
     <header className="border-b border-[var(--v2-color-border)] bg-[var(--v2-color-surface-strong)]">
-      <nav className="v2-container flex flex-wrap items-center justify-between gap-4 py-4" aria-label="V2 main navigation">
+      <nav
+        className="v2-container flex flex-wrap items-center justify-between gap-4 py-4"
+        aria-label="V2 main navigation"
+      >
         <div className="flex min-w-[16rem] items-center gap-3">
           <p className="border border-[var(--v2-color-border)] px-2 py-1 text-xs uppercase tracking-[0.12em] text-[var(--v2-color-text-muted)]">
             {routeLabel}
           </p>
-          <p className="text-sm font-semibold uppercase tracking-[0.08em]">{title}</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.08em]">
+            {title}
+          </p>
         </div>
 
         <ul className="flex flex-wrap items-center gap-2 text-sm text-[var(--v2-color-text-muted)]">
@@ -56,5 +61,5 @@ export function SystemTopBar({
         </div>
       </nav>
     </header>
-  )
+  );
 }

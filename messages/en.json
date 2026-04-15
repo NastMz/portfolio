@@ -148,15 +148,30 @@
     },
     "sidebar": {
       "monitorTitle": "[SYSTEM_MONITOR]",
-        "monitorItems": [
-          { "label": "ROLE:", "value": "SOFTWARE ENGINEER", "valueClassName": "text-primary" },
-          { "label": "FOCUS:", "value": "BACKEND / SYSTEMS / TOOLING", "valueClassName": "text-white" },
-          { "label": "SPECIALTY:", "value": "ARCHITECTURE", "valueClassName": "text-white" }
-        ],
+      "monitorItems": [
+        {
+          "label": "ROLE:",
+          "value": "SOFTWARE ENGINEER",
+          "valueClassName": "text-primary"
+        },
+        {
+          "label": "FOCUS:",
+          "value": "BACKEND / SYSTEMS / TOOLING",
+          "valueClassName": "text-white"
+        },
+        {
+          "label": "SPECIALTY:",
+          "value": "ARCHITECTURE",
+          "valueClassName": "text-white"
+        }
+      ],
       "nav": [
         { "label": "[ARCHIVE] // Overview", "href": "#overview" },
         { "label": "[BUILD_LOG] // Case Studies", "href": "#systems" },
-        { "label": "[COMPONENTS] // Projects & Libraries", "href": "#artifacts" },
+        {
+          "label": "[COMPONENTS] // Projects & Libraries",
+          "href": "#artifacts"
+        },
         { "label": "[LOGS] // Decisions", "href": "#decision-log" },
         { "label": "[STACK] // Technologies", "href": "#stack" },
         { "label": "[TERMINAL] // Contact", "href": "#contact" }
@@ -178,18 +193,18 @@
     },
     "hero": {
       "eyebrow": "[IDENTITY_VERIFIED]",
-        "signals": [
-          "[REAL WORLD BACKEND]",
-          "[USED IN PRODUCTION]",
-          "[FULL STACK WHEN NEEDED]"
-        ],
+      "signals": [
+        "[REAL WORLD BACKEND]",
+        "[USED IN PRODUCTION]",
+        "[FULL STACK WHEN NEEDED]"
+      ],
       "title": "Kevin Martínez",
       "titleMuted": "Software Engineer",
       "subtitlePrefix": "I design systems for",
       "subtitleHighlight": "when things stop being simple.",
       "quote": "Scaling isn't the problem. Uncontrolled complexity is.",
-        "plainStatement": "Software Engineer primarily focused on backend, systems design, tooling, and architecture on top of .NET.",
-        "description": "I build software that has to survive real constraints: production traffic, integrations, legacy decisions, data consistency, and operational maintenance. My primary focus is backend, systems, and architecture, but I also cover React frontend work, tooling, CI/CD, and Python services when the problem calls for it.",
+      "plainStatement": "Software Engineer primarily focused on backend, systems design, tooling, and architecture on top of .NET.",
+      "description": "I build software that has to survive real constraints: production traffic, integrations, legacy decisions, data consistency, and operational maintenance. My primary focus is backend, systems, and architecture, but I also cover React frontend work, tooling, CI/CD, and Python services when the problem calls for it.",
       "primaryCta": "CASE_STUDIES",
       "secondaryCta": "INITIATE_CONTACT",
       "cvCta": "DOWNLOAD_CV",
@@ -208,7 +223,7 @@
       ],
       "paragraphs": [
         "Backend, Architecture, and decision making under constraints. I don't build for hypothetical scale; I build for predictable evolution.",
-          "I work on systems that are already running in production or will be. That means dealing with constraints, legacy decisions, real business impact, and covering multiple layers when needed: backend, data, delivery, tooling, and React UI.",
+        "I work on systems that are already running in production or will be. That means dealing with constraints, legacy decisions, real business impact, and covering multiple layers when needed: backend, data, delivery, tooling, and React UI.",
         "Architecture is not about drawing boxes, it is about controlling how complexity evolves over time."
       ],
       "modeBadge": "[MODE: OPINIONATED]",
@@ -345,122 +360,129 @@
       "distributionLabel": "DISTRIBUTION",
       "repoLabel": "REPO",
       "intentLabel": "INTENT",
-        "items": [
-          {
-            "id": "PRJ-001",
-            "track": "CORE",
-            "name": "Html2Pdf",
-            "type": "LIBRERIA_BACKEND",
-            "status": "PUBLISHED",
-            "description": ".NET library for turning HTML into PDF when a backend needs repeatable document generation without duplicating rendering logic per project.",
-            "details": [
-              "Solves document generation from HTML templates without rebuilding rendering pipelines in every system.",
-              "Uses RazorLight and PuppeteerSharp to keep output consistent for reports, receipts, and operational documents.",
-              "Fits service flows, jobs, or batch processes where PDF is a cross-cutting capability instead of an isolated feature."
-            ],
-            "stack": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
-            "distribution": "NuGet / Html2Pdf",
-            "distributionHref": "https://www.nuget.org/packages/Nast.Html2Pdf",
-            "distributionLabel": "OPEN_NUGET",
-            "repoHref": "https://github.com/NastMz/Html2Pdf",
-            "intent": "Turn PDF generation into reusable backend infrastructure for systems that produce documents under business rules."
-          },
-          {
-            "id": "PRJ-002",
-            "track": "CORE",
-            "name": "SimpleMediator",
-            "type": "LIBRERIA_BACKEND",
-            "status": "PUBLISHED",
-            "description": "Lightweight Mediator/CQRS implementation for .NET for systems that need command/query separation without paying for ornamental complexity.",
-            "details": [
-              "Solves common boilerplate in .NET applications built around handlers, requests, and simple composition.",
-              "Exists to keep write/read boundaries explicit without depending on heavier packages when the problem does not justify them.",
-              "Used in modular backends, business APIs, and internal libraries where structural clarity matters more than endless extension points."
-            ],
-            "stack": [".NET 8", "C#", "CQRS", "Mediator"],
-            "distribution": "NuGet / SimpleMediator",
-            "distributionHref": "https://www.nuget.org/packages/Nast.SimpleMediator",
-            "distributionLabel": "OPEN_NUGET",
-            "repoHref": "https://github.com/NastMz/SimpleMediator",
-            "intent": "Reduce accidental overhead in small and medium CQRS implementations while keeping the structure explicit."
-          },
-          {
-            "id": "PRJ-003",
-            "track": "CORE",
-            "name": "Flask Forge CLI",
-            "type": "HERRAMIENTA_CLI",
-            "status": "PUBLISHED",
-            "description": "CLI for bootstrapping Flask projects when Python is the right runtime for a service or developer tool and the starting point must stay consistent.",
-            "details": [
-              "Solves repetitive project setup by generating structure, conventions, and baseline configuration ready to evolve.",
-              "Exists to avoid inconsistent manual setup and to shorten the path from idea to working service.",
-              "Used for small APIs, internal utilities, or tools where Python/Flask fits the problem better than forcing the primary stack everywhere."
-            ],
-            "stack": ["Python", "Flask", "Typer", "Jinja2", "SQLAlchemy", "Alembic"],
-            "distribution": "PyPI / flask-forge-cli",
-            "distributionHref": "https://pypi.org/project/flask-forge-cli/",
-            "distributionLabel": "OPEN_PYPI",
-            "repoHref": "https://github.com/NastMz/flask-forge",
-            "intent": "Standardize the starting point of Flask projects and make setup a repeatable operation."
-          },
-          {
-            "id": "PRJ-004",
-            "track": "CORE",
-            "name": "light-query",
-            "type": "FRONTEND_LIBRARY",
-            "status": "PUBLISHED",
-            "description": "React hooks library for remote data flows with a small API and a deliberate focus on reducing integration noise.",
-            "details": [
-              "Wraps fetch, loading states, and basic synchronization so components do not repeat transport plumbing.",
-              "Keeps the surface area intentionally small for teams that want control without adopting a heavier caching runtime.",
-              "Fits React frontends where clarity of integration matters more than maximizing abstraction coverage."
-            ],
-            "stack": ["React", "TypeScript", "NPM"],
-            "distribution": "NPM / @nastmz/light-query",
-            "distributionHref": "https://www.npmjs.com/package/@nastmz/light-query",
-            "distributionLabel": "OPEN_NPM",
-            "repoHref": "https://github.com/NastMz/light-query",
-            "intent": "Simplify API consumption in React without hiding the actual data flow or adding accidental complexity."
-          },
-          {
-            "id": "PRJ-005",
-            "track": "EXPERIMENTAL",
-            "name": "Vanilla SPA",
-            "type": "FRONTEND_FRAMEWORK",
-            "status": "PUBLIC_EXPLORATION",
-            "description": "Dependency-free SPA architecture used to test routing, state, and UI composition on top of browser-native APIs.",
-            "details": [
-              "Measures how much runtime a framework is actually buying compared with an organized native baseline.",
-              "Implements routing, a reactive store, and component composition with ES Modules and minimal tooling.",
-              "Has a public deployment, but the main role is frontend architecture exploration rather than general production adoption."
-            ],
-            "stack": ["JavaScript", "HTML", "CSS", "Vite", "ES Modules"],
-            "distribution": "DEPLOY / VERCEL",
-            "distributionHref": "https://vanilla-spa-indol.vercel.app/",
-            "distributionLabel": "OPEN_DEMO",
-            "repoHref": "https://github.com/NastMz/vanilla-spa",
-            "intent": "Explore how far a real SPA can be pushed with native primitives before introducing a framework."
-          },
-          {
-            "id": "PRJ-006",
-            "track": "EXPERIMENTAL",
-            "name": "mini-php-framework",
-            "type": "BACKEND_FRAMEWORK",
-            "status": "PUBLIC_EXPLORATION",
-            "description": "PHP micro-framework for exploring a minimal core with routing, middleware, and SQLite persistence under PSR conventions.",
-            "details": [
-              "Isolates the basics of a request pipeline without starting from a full framework stack.",
-              "Uses PSR standards to preserve interoperability while testing a deliberately small and explicit base.",
-              "Has Packagist distribution, but its role is to investigate lightweight framework decisions rather than package a closed platform."
-            ],
-            "stack": ["PHP 8.4+", "PSR-4/12/15", "SQLite"],
-            "distribution": "PACKAGIST / miniframework/installer",
-            "distributionHref": "https://packagist.org/packages/miniframework/installer",
-            "distributionLabel": "OPEN_PACKAGIST",
-            "repoHref": "https://github.com/NastMz/mini-php-framework",
-            "intent": "Test the minimum viable set of backend framework decisions to understand the real cost of abstraction in PHP."
-          }
-        ]
+      "items": [
+        {
+          "id": "PRJ-001",
+          "track": "CORE",
+          "name": "Html2Pdf",
+          "type": "LIBRERIA_BACKEND",
+          "status": "PUBLISHED",
+          "description": ".NET library for turning HTML into PDF when a backend needs repeatable document generation without duplicating rendering logic per project.",
+          "details": [
+            "Solves document generation from HTML templates without rebuilding rendering pipelines in every system.",
+            "Uses RazorLight and PuppeteerSharp to keep output consistent for reports, receipts, and operational documents.",
+            "Fits service flows, jobs, or batch processes where PDF is a cross-cutting capability instead of an isolated feature."
+          ],
+          "stack": [".NET 8", "C#", "RazorLight", "PuppeteerSharp"],
+          "distribution": "NuGet / Html2Pdf",
+          "distributionHref": "https://www.nuget.org/packages/Nast.Html2Pdf",
+          "distributionLabel": "OPEN_NUGET",
+          "repoHref": "https://github.com/NastMz/Html2Pdf",
+          "intent": "Turn PDF generation into reusable backend infrastructure for systems that produce documents under business rules."
+        },
+        {
+          "id": "PRJ-002",
+          "track": "CORE",
+          "name": "SimpleMediator",
+          "type": "LIBRERIA_BACKEND",
+          "status": "PUBLISHED",
+          "description": "Lightweight Mediator/CQRS implementation for .NET for systems that need command/query separation without paying for ornamental complexity.",
+          "details": [
+            "Solves common boilerplate in .NET applications built around handlers, requests, and simple composition.",
+            "Exists to keep write/read boundaries explicit without depending on heavier packages when the problem does not justify them.",
+            "Used in modular backends, business APIs, and internal libraries where structural clarity matters more than endless extension points."
+          ],
+          "stack": [".NET 8", "C#", "CQRS", "Mediator"],
+          "distribution": "NuGet / SimpleMediator",
+          "distributionHref": "https://www.nuget.org/packages/Nast.SimpleMediator",
+          "distributionLabel": "OPEN_NUGET",
+          "repoHref": "https://github.com/NastMz/SimpleMediator",
+          "intent": "Reduce accidental overhead in small and medium CQRS implementations while keeping the structure explicit."
+        },
+        {
+          "id": "PRJ-003",
+          "track": "CORE",
+          "name": "Flask Forge CLI",
+          "type": "HERRAMIENTA_CLI",
+          "status": "PUBLISHED",
+          "description": "CLI for bootstrapping Flask projects when Python is the right runtime for a service or developer tool and the starting point must stay consistent.",
+          "details": [
+            "Solves repetitive project setup by generating structure, conventions, and baseline configuration ready to evolve.",
+            "Exists to avoid inconsistent manual setup and to shorten the path from idea to working service.",
+            "Used for small APIs, internal utilities, or tools where Python/Flask fits the problem better than forcing the primary stack everywhere."
+          ],
+          "stack": [
+            "Python",
+            "Flask",
+            "Typer",
+            "Jinja2",
+            "SQLAlchemy",
+            "Alembic"
+          ],
+          "distribution": "PyPI / flask-forge-cli",
+          "distributionHref": "https://pypi.org/project/flask-forge-cli/",
+          "distributionLabel": "OPEN_PYPI",
+          "repoHref": "https://github.com/NastMz/flask-forge",
+          "intent": "Standardize the starting point of Flask projects and make setup a repeatable operation."
+        },
+        {
+          "id": "PRJ-004",
+          "track": "CORE",
+          "name": "light-query",
+          "type": "FRONTEND_LIBRARY",
+          "status": "PUBLISHED",
+          "description": "React hooks library for remote data flows with a small API and a deliberate focus on reducing integration noise.",
+          "details": [
+            "Wraps fetch, loading states, and basic synchronization so components do not repeat transport plumbing.",
+            "Keeps the surface area intentionally small for teams that want control without adopting a heavier caching runtime.",
+            "Fits React frontends where clarity of integration matters more than maximizing abstraction coverage."
+          ],
+          "stack": ["React", "TypeScript", "NPM"],
+          "distribution": "NPM / @nastmz/light-query",
+          "distributionHref": "https://www.npmjs.com/package/@nastmz/light-query",
+          "distributionLabel": "OPEN_NPM",
+          "repoHref": "https://github.com/NastMz/light-query",
+          "intent": "Simplify API consumption in React without hiding the actual data flow or adding accidental complexity."
+        },
+        {
+          "id": "PRJ-005",
+          "track": "EXPERIMENTAL",
+          "name": "Vanilla SPA",
+          "type": "FRONTEND_FRAMEWORK",
+          "status": "PUBLIC_EXPLORATION",
+          "description": "Dependency-free SPA architecture used to test routing, state, and UI composition on top of browser-native APIs.",
+          "details": [
+            "Measures how much runtime a framework is actually buying compared with an organized native baseline.",
+            "Implements routing, a reactive store, and component composition with ES Modules and minimal tooling.",
+            "Has a public deployment, but the main role is frontend architecture exploration rather than general production adoption."
+          ],
+          "stack": ["JavaScript", "HTML", "CSS", "Vite", "ES Modules"],
+          "distribution": "DEPLOY / VERCEL",
+          "distributionHref": "https://vanilla-spa-indol.vercel.app/",
+          "distributionLabel": "OPEN_DEMO",
+          "repoHref": "https://github.com/NastMz/vanilla-spa",
+          "intent": "Explore how far a real SPA can be pushed with native primitives before introducing a framework."
+        },
+        {
+          "id": "PRJ-006",
+          "track": "EXPERIMENTAL",
+          "name": "mini-php-framework",
+          "type": "BACKEND_FRAMEWORK",
+          "status": "PUBLIC_EXPLORATION",
+          "description": "PHP micro-framework for exploring a minimal core with routing, middleware, and SQLite persistence under PSR conventions.",
+          "details": [
+            "Isolates the basics of a request pipeline without starting from a full framework stack.",
+            "Uses PSR standards to preserve interoperability while testing a deliberately small and explicit base.",
+            "Has Packagist distribution, but its role is to investigate lightweight framework decisions rather than package a closed platform."
+          ],
+          "stack": ["PHP 8.4+", "PSR-4/12/15", "SQLite"],
+          "distribution": "PACKAGIST / miniframework/installer",
+          "distributionHref": "https://packagist.org/packages/miniframework/installer",
+          "distributionLabel": "OPEN_PACKAGIST",
+          "repoHref": "https://github.com/NastMz/mini-php-framework",
+          "intent": "Test the minimum viable set of backend framework decisions to understand the real cost of abstraction in PHP."
+        }
+      ]
     },
     "decisionLog": {
       "title": "Decision Log",
@@ -671,7 +693,10 @@
       "title": "KEVIN_MARTINEZ_PORTFOLIO",
       "build": "[BUILD_2024.11] // ALL_RIGHTS_RESERVED",
       "links": [
-        { "label": "LINKEDIN", "href": "https://www.linkedin.com/in/ksmartinez23/" },
+        {
+          "label": "LINKEDIN",
+          "href": "https://www.linkedin.com/in/ksmartinez23/"
+        },
         { "label": "GITHUB", "href": "https://github.com/NastMz" }
       ]
     }
