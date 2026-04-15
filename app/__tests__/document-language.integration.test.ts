@@ -16,9 +16,8 @@ vi.mock('next/headers', () => ({
 }))
 
 vi.mock('next/font/google', () => ({
-  Inter: vi.fn(() => ({ variable: 'font-inter' })),
+  IBM_Plex_Sans: vi.fn(() => ({ variable: 'font-ibm-plex-sans' })),
   JetBrains_Mono: vi.fn(() => ({ variable: 'font-jetbrains-mono' })),
-  Space_Grotesk: vi.fn(() => ({ variable: 'font-space-grotesk' })),
 }))
 
 vi.mock('@vercel/analytics/next', () => ({

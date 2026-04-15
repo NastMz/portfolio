@@ -122,8 +122,8 @@ const config: Config = {
 			sm: 'calc(var(--radius) - 4px)'
 		},
 		fontFamily: {
-			headline: ['var(--font-space-grotesk)', 'sans-serif'],
-			body: ['var(--font-inter)', 'sans-serif'],
+			headline: ['var(--font-jetbrains-mono)', 'monospace'],
+			body: ['var(--font-ibm-plex-sans)', 'sans-serif'],
 			label: ['var(--font-jetbrains-mono)', 'monospace'],
 		},
 		keyframes: {

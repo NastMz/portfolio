@@ -399,15 +399,15 @@ body::-webkit-scrollbar-corner {
 }
 
 .v2-faithful {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-ibm-plex-sans), sans-serif;
 }
 
 .v2-faithful .font-headline {
-  font-family: var(--font-space-grotesk), sans-serif;
+  font-family: var(--font-jetbrains-mono), monospace;
 }
 
 .v2-faithful .font-body {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-ibm-plex-sans), sans-serif;
 }
 
 .v2-faithful .font-label {
