@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/components/atoms/ui/sonner";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { generateMetadata as generateSEOMetadata } from "@/components/seo/metadata";
 import { siteConfig } from "@/lib/site";
-import { loadV2Content } from "@/features/v2/content/loaders";
+import { loadPortfolioContent } from "@/features/content/loaders";
 import {
   getLocaleStaticParams,
   resolveRequestLocale,
@@ -28,12 +28,12 @@ export async function generateMetadata({
     notFound();
   }
 
-  const v2Content = await loadV2Content(requestLocale);
+  const portfolioContent = await loadPortfolioContent(requestLocale);
 
   return generateSEOMetadata({
     locale: requestLocale,
-    title: v2Content.seo.title,
-    description: v2Content.seo.description,
+    title: portfolioContent.seo.title,
+    description: portfolioContent.seo.description,
     image: `${siteConfig.baseUrl}/images/profile.jpg`,
   });
 }

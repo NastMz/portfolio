@@ -122,12 +122,12 @@
     "reserved": "All rights reserved.",
     "builtWith": "Built with Next.js, Tailwind CSS and ☕ © {year}"
   },
-  "V2": {
+  "Portfolio": {
     "a11y": {
       "skipToContent": "Skip to main content",
       "localeSwitchLabel": "Switch language",
-      "sidebarNavLabel": "V2 section navigation",
-      "mobileNavLabel": "V2 mobile navigation"
+      "sidebarNavLabel": "Section navigation",
+      "mobileNavLabel": "Mobile navigation"
     },
     "topBar": {
       "title": "[SYS_CORE: v23.07]",
@@ -682,10 +682,10 @@
         },
         "mail": {
           "targetAddress": "ksmartinez23@outlook.com",
-          "subjectPrefix": "V2_HANDSHAKE",
+          "subjectPrefix": "PORTFOLIO_HANDSHAKE",
           "contextLabel": "TERMINAL_CONTEXT",
           "payloadLabel": "MESSAGE_PAYLOAD",
-          "defaultMessage": "Hi Kevin, reaching out from the v2 contact terminal."
+          "defaultMessage": "Hi Kevin, reaching out from the portfolio terminal."
         }
       }
     },

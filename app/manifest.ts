@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Portfolio of Kevin Martinez, .NET backend developer",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#000000",
+    background_color: "#0e0e0e",
+    theme_color: "#ff7cf5",
     icons: [
       {
         src: "/favicon.ico",

@@ -1,6 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { V2PortfolioPage } from "@/features/v2/pages/V2PortfolioPage";
+import { PortfolioPage } from "@/features/pages/PortfolioPage";
 import { resolveRequestLocale } from "@/lib/locale-routing";
 
 export default async function Portfolio({
@@ -9,14 +9,13 @@ export default async function Portfolio({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const resolvedLocale = resolveRequestLocale(locale);
 
-  const requestLocale = resolveRequestLocale(locale);
-
-  if (!requestLocale) {
+  if (!resolvedLocale) {
     notFound();
   }
 
-  setRequestLocale(requestLocale);
+  setRequestLocale(resolvedLocale);
 
-  return <V2PortfolioPage locale={requestLocale} routeKey="home" />;
+  return <PortfolioPage locale={resolvedLocale} />;
 }

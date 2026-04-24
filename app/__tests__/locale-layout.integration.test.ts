@@ -32,12 +32,12 @@ vi.mock("@/components/theme-provider", () => ({
     createElement("mock-theme-provider", null, children),
 }));
 
-vi.mock("@/components/ui/sonner", () => ({
+vi.mock("@/components/atoms/ui/sonner", () => ({
   Toaster: () => createElement("mock-toaster"),
 }));
 
-vi.mock("@/features/v2/content/loaders", () => ({
-  loadV2Content: vi.fn(),
+vi.mock("@/features/content/loaders", () => ({
+  loadPortfolioContent: vi.fn(),
 }));
 
 import LocaleLayout from "@/app/[locale]/layout";

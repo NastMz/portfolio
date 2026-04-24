@@ -2,8 +2,8 @@ import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { generateMetadata as generateSEOMetadata } from "@/components/seo/metadata";
-import { loadV2Content } from "@/features/v2/content/loaders";
-import { V2ContactPage } from "@/features/v2/pages/V2ContactPage";
+import { loadPortfolioContent } from "@/features/content/loaders";
+import { ContactPage as ContactFeaturePage } from "@/features/pages/ContactPage";
 import { CANONICAL_ROUTE_PATHS } from "@/lib/site";
 import { resolveRequestLocale } from "@/lib/locale-routing";
 
@@ -19,7 +19,7 @@ export async function generateMetadata({
     notFound();
   }
 
-  const content = await loadV2Content(requestLocale);
+  const content = await loadPortfolioContent(requestLocale);
 
   return generateSEOMetadata({
     locale: requestLocale,
@@ -29,7 +29,7 @@ export async function generateMetadata({
   });
 }
 
-export default async function ContactPage({
+export default async function Contact({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -43,5 +43,5 @@ export default async function ContactPage({
 
   setRequestLocale(requestLocale);
 
-  return <V2ContactPage locale={requestLocale} />;
+  return <ContactFeaturePage locale={requestLocale} />;
 }

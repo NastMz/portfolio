@@ -122,7 +122,7 @@
     "reserved": "Todos los derechos reservados.",
     "builtWith": "Creado con Next.js, Tailwind CSS y ☕ © {year}"
   },
-  "V2": {
+  "Portfolio": {
     "a11y": {
       "skipToContent": "Saltar al contenido principal",
       "localeSwitchLabel": "Cambiar idioma",
@@ -682,10 +682,10 @@
         },
         "mail": {
           "targetAddress": "ksmartinez23@outlook.com",
-          "subjectPrefix": "V2_HANDSHAKE",
+          "subjectPrefix": "PORTFOLIO_HANDSHAKE",
           "contextLabel": "TERMINAL_CONTEXT",
           "payloadLabel": "MESSAGE_PAYLOAD",
-          "defaultMessage": "Hola Kevin, te escribo desde el terminal de contacto v2."
+          "defaultMessage": "Hola Kevin, te escribo desde el terminal del portafolio."
         }
       }
     },

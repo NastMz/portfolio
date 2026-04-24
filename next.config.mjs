@@ -7,6 +7,25 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/:locale/v2",
+        destination: "/:locale",
+        permanent: true,
+      },
+      {
+        source: "/:locale/v2/:path*",
+        destination: "/:locale/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:locale/legacy",
+        destination: "/:locale",
+        permanent: true,
+      },
+    ];
+  },
   headers: async () => {
     return [
       {

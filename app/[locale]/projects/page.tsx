@@ -2,8 +2,8 @@ import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { generateMetadata as generateSEOMetadata } from "@/components/seo/metadata";
-import { loadV2Content } from "@/features/v2/content/loaders";
-import { V2ProjectsPage } from "@/features/v2/pages/V2ProjectsPage";
+import { loadPortfolioContent } from "@/features/content/loaders";
+import { ProjectsPage as ProjectsFeaturePage } from "@/features/pages/ProjectsPage";
 import { CANONICAL_ROUTE_PATHS } from "@/lib/site";
 import { resolveRequestLocale } from "@/lib/locale-routing";
 
@@ -19,7 +19,7 @@ export async function generateMetadata({
     notFound();
   }
 
-  const content = await loadV2Content(requestLocale);
+  const content = await loadPortfolioContent(requestLocale);
 
   return generateSEOMetadata({
     locale: requestLocale,
@@ -29,7 +29,7 @@ export async function generateMetadata({
   });
 }
 
-export default async function ProjectsPage({
+export default async function Projects({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -43,5 +43,5 @@ export default async function ProjectsPage({
 
   setRequestLocale(requestLocale);
 
-  return <V2ProjectsPage locale={requestLocale} />;
+  return <ProjectsFeaturePage locale={requestLocale} />;
 }

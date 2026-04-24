@@ -1,5 +1,5 @@
 import "./globals.css";
-import "@/features/v2/tokens/tokens.css";
+import "@/features/tokens/tokens.css";
 import type { ReactNode } from "react";
 import { IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
 import { headers } from "next/headers";

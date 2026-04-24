@@ -23,18 +23,14 @@ describe("canonical metadata policy", () => {
     vi.clearAllMocks();
   });
 
-  it("serves v2 metadata on the locale homepage without rollout branching", async () => {
-    process.env.NEXT_PUBLIC_ROOT_VERSION = "v1";
-    process.env.NEXT_PUBLIC_EXPOSE_V2_PATH = "false";
-    process.env.NEXT_PUBLIC_ALLOW_LEGACY_PATH = "true";
-
+  it("serves portfolio metadata on the locale homepage", async () => {
     const metadata = await generateLocaleMetadata({
       params: Promise.resolve({ locale: "en" }),
     });
 
-    expect(metadata.title).toBe("Kevin Martinez | Portfolio v2");
+    expect(metadata.title).toBe("Kevin Martinez | Portfolio");
     expect(metadata.description).toBe(
-      "Portfolio v2 of Kevin Martinez: backend engineering, modular architecture, and production-grade delivery.",
+      "Portfolio of Kevin Martinez: backend engineering, modular architecture, and production-grade delivery.",
     );
     expect(String(metadata.alternates?.canonical)).toBe(
       `${siteConfig.baseUrl}/en`,
@@ -49,7 +45,7 @@ describe("canonical metadata policy", () => {
     });
   });
 
-  it("publishes canonical projects and contact metadata only on non-versioned locale routes", async () => {
+  it("publishes canonical projects and contact metadata", async () => {
     const projectsMetadata = await generateProjectsMetadata({
       params: Promise.resolve({ locale: "es" }),
     });
@@ -107,34 +103,5 @@ describe("canonical metadata policy", () => {
     ).rejects.toThrow("NEXT_NOT_FOUND");
 
     expect(notFoundMock).toHaveBeenCalledTimes(3);
-  });
-
-  it("keeps projects and contact metadata independent from retired version flags", async () => {
-    process.env.NEXT_PUBLIC_ROOT_VERSION = "v1";
-    process.env.NEXT_PUBLIC_EXPOSE_V2_PATH = "false";
-    process.env.NEXT_PUBLIC_ALLOW_LEGACY_PATH = "true";
-
-    const projectsMetadata = await generateProjectsMetadata({
-      params: Promise.resolve({ locale: "en" }),
-    });
-    const contactMetadata = await generateContactMetadata({
-      params: Promise.resolve({ locale: "es" }),
-    });
-
-    expect(projectsMetadata.title).toBe("Kevin Martinez | Portfolio v2");
-    expect(projectsMetadata.description).toBe(
-      "Portfolio v2 of Kevin Martinez: backend engineering, modular architecture, and production-grade delivery.",
-    );
-    expect(String(projectsMetadata.alternates?.canonical)).toBe(
-      `${siteConfig.baseUrl}/en/projects`,
-    );
-
-    expect(contactMetadata.title).toBe("Kevin Martinez | Portafolio v2");
-    expect(contactMetadata.description).toBe(
-      "Portafolio v2 de Kevin Martinez: ingeniería backend, arquitectura modular y entregas productivas.",
-    );
-    expect(String(contactMetadata.alternates?.canonical)).toBe(
-      `${siteConfig.baseUrl}/es/contact`,
-    );
   });
 });
