@@ -19,7 +19,7 @@ import {
   NotesSection, 
   ContactSection 
 } from "@/components/organisms/sections";
-import { PortfolioMessagesShape } from "@/components/organisms/sections/types";
+import { PortfolioMessagesShape, NavLink } from "@/components/organisms/sections/types";
 import { CanonicalRouteKey } from "@/lib/site";
 import { Locale } from "@/i18n/config";
 
@@ -27,7 +27,7 @@ interface PortfolioTemplateProps {
   locale: Locale;
   routeKey: CanonicalRouteKey;
   copy: PortfolioMessagesShape;
-  canonicalSidebarNav: any[];
+  canonicalSidebarNav: NavLink[];
   localeSwitchHref: string;
   localeSwitchCode: string;
   cvHref: string;

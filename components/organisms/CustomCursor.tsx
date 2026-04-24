@@ -40,7 +40,7 @@ export function CustomCursor() {
       return;
     }
 
-    const route = root.closest(".-route");
+    const route = root.closest(".portfolio-route");
 
     let frame = 0;
     let isVisible = false;
@@ -172,15 +172,15 @@ export function CustomCursor() {
     <div
       ref={rootRef}
       aria-hidden="true"
-      className="-custom-cursor"
+      className="custom-cursor"
       data-interactive="false"
       data-variant="default"
       data-pressed="false"
       data-visible="false"
     >
-      <span ref={haloRef} className="-custom-cursor__halo" />
-      <span ref={ringRef} className="-custom-cursor__ring" />
-      <span ref={dotRef} className="-custom-cursor__dot" />
+      <span ref={haloRef} className="custom-cursor__halo" />
+      <span ref={ringRef} className="custom-cursor__ring" />
+      <span ref={dotRef} className="custom-cursor__dot" />
     </div>
   );
 }

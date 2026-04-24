@@ -248,8 +248,8 @@ export function HoverTrace() {
   }, []);
 
   return (
-    <div aria-hidden="true" className="-hover-trace" data-phase={phase}>
-      <span className="-hover-trace__message">
+    <div aria-hidden="true" className="hover-trace" data-phase={phase}>
+      <span className="hover-trace__message">
         {phase === "idle" ? "" : visibleMessage || message}
       </span>
     </div>

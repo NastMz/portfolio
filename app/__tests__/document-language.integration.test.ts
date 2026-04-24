@@ -32,7 +32,7 @@ vi.mock("@vercel/speed-insights/next", () => ({
   SpeedInsights: () => null,
 }));
 
-import { appendLocaleHeader } from "@/middleware";
+import { appendLocaleHeader } from "@/proxy";
 import RootLayout from "@/app/layout";
 
 describe("document language propagation", () => {

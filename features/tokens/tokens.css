@@ -204,17 +204,8 @@ body::-webkit-scrollbar-corner {
 
 @media (hover: hover) and (pointer: fine) {
   .portfolio-route[data-cursor-ready="true"],
-  .portfolio-route[data-cursor-ready="true"] a,
-  .portfolio-route[data-cursor-ready="true"] button,
-  .portfolio-route[data-cursor-ready="true"] input,
-  .portfolio-route[data-cursor-ready="true"] select,
-  .portfolio-route[data-cursor-ready="true"] textarea,
-  .portfolio-route[data-cursor-ready="true"] summary,
-  .portfolio-route[data-cursor-ready="true"] label[for],
-  .portfolio-route[data-cursor-ready="true"] [role="button"],
-  .portfolio-route[data-cursor-ready="true"] [role="link"],
-  .portfolio-route[data-cursor-ready="true"] [data-cursor] {
-    cursor: none;
+  .portfolio-route[data-cursor-ready="true"] * {
+    cursor: none !important;
   }
 
   .custom-cursor {
