@@ -446,6 +446,34 @@
         },
         {
           "id": "PRJ-005",
+          "track": "CORE",
+          "name": "dotnet-clean-template",
+          "type": "TEMPLATE_BACKEND",
+          "status": "PUBLICADO",
+          "description": "Template pack nativo para .NET que bootstrapea proyectos con Clean Architecture desde `dotnet new`, evitando repetir estructura base, decisiones transversales y setup inicial en cada backend.",
+          "details": [
+            "Genera una base opinionada con Application, Domain, Infrastructure, SharedKernel, Web.Api y ArchitectureTests lista para evolucionar.",
+            "Incluye autenticación JWT, hashing PBKDF2, EF Core con PostgreSQL, Problem Details, health checks y decorators de validación/logging sin depender de MediatR.",
+            "Ofrece dos variantes de arranque: una orientada a Docker Compose para infraestructura local y otra basada en .NET Aspire para orquestación y service defaults."
+          ],
+          "stack": [
+            ".NET 10",
+            "C#",
+            "Clean Architecture",
+            "EF Core",
+            "PostgreSQL",
+            "JWT",
+            "Docker Compose",
+            ".NET Aspire"
+          ],
+          "distribution": "NUGET / NastMz.CleanArchitecture.Templates",
+          "distributionHref": "https://www.nuget.org/packages/NastMz.CleanArchitecture.Templates",
+          "distributionLabel": "ABRIR_NUGET",
+          "repoHref": "https://github.com/NastMz/dotnet-clean-template",
+          "intent": "Convertir el arranque de APIs .NET en una operación repetible, con estándares arquitectónicos consistentes y menos boilerplate accidental."
+        },
+        {
+          "id": "PRJ-006",
           "track": "EXPERIMENTAL",
           "name": "Vanilla SPA",
           "type": "FRAMEWORK_FRONTEND",
@@ -464,7 +492,7 @@
           "intent": "Explorar cuánto se puede sostener una SPA real con primitives nativas antes de incorporar un framework."
         },
         {
-          "id": "PRJ-006",
+          "id": "PRJ-007",
           "track": "EXPERIMENTAL",
           "name": "mini-php-framework",
           "type": "FRAMEWORK_BACKEND",

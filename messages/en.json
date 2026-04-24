@@ -446,6 +446,34 @@
         },
         {
           "id": "PRJ-005",
+          "track": "CORE",
+          "name": "dotnet-clean-template",
+          "type": "BACKEND_TEMPLATE",
+          "status": "PUBLISHED",
+          "description": "Native .NET template pack that bootstraps Clean Architecture projects through `dotnet new`, avoiding repeated base structure, cross-cutting decisions, and setup work in every backend.",
+          "details": [
+            "Generates an opinionated foundation with Application, Domain, Infrastructure, SharedKernel, Web.Api, and ArchitectureTests ready to evolve.",
+            "Includes JWT authentication, PBKDF2 hashing, EF Core with PostgreSQL, Problem Details, health checks, and validation/logging decorators without depending on MediatR.",
+            "Provides two starting points: one oriented to Docker Compose for local infrastructure and another based on .NET Aspire for orchestration and service defaults."
+          ],
+          "stack": [
+            ".NET 10",
+            "C#",
+            "Clean Architecture",
+            "EF Core",
+            "PostgreSQL",
+            "JWT",
+            "Docker Compose",
+            ".NET Aspire"
+          ],
+          "distribution": "NUGET / NastMz.CleanArchitecture.Templates",
+          "distributionHref": "https://www.nuget.org/packages/NastMz.CleanArchitecture.Templates",
+          "distributionLabel": "OPEN_NUGET",
+          "repoHref": "https://github.com/NastMz/dotnet-clean-template",
+          "intent": "Turn .NET API bootstrap into a repeatable operation with consistent architectural standards and less accidental boilerplate."
+        },
+        {
+          "id": "PRJ-006",
           "track": "EXPERIMENTAL",
           "name": "Vanilla SPA",
           "type": "FRONTEND_FRAMEWORK",
@@ -464,7 +492,7 @@
           "intent": "Explore how far a real SPA can be pushed with native primitives before introducing a framework."
         },
         {
-          "id": "PRJ-006",
+          "id": "PRJ-007",
           "track": "EXPERIMENTAL",
           "name": "mini-php-framework",
           "type": "BACKEND_FRAMEWORK",
