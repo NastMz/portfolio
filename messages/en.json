@@ -447,6 +447,32 @@
         {
           "id": "PRJ-005",
           "track": "CORE",
+          "name": "react-clean-architecture-template",
+          "type": "FRONTEND_TEMPLATE",
+          "status": "PUBLISHED",
+          "description": "Opinionated template for creating Clean Architecture React SPAs with Vite, TypeScript, and production-minded defaults through a scaffolding CLI.",
+          "details": [
+            "Generates a feature-first structure with app, features, shared, unit tests, integration tests, and E2E tests from the start.",
+            "Includes React 19, TanStack Query, Zod-based environment parsing, Result/Error primitives, OpenTelemetry-ready observability, and in-memory repositories for local development.",
+            "Ships feature scaffolding commands, Storybook for shared UI, and contract tests to protect architecture rules."
+          ],
+          "stack": [
+            "React 19",
+            "TypeScript",
+            "Vite",
+            "TanStack Query",
+            "Zod",
+            "Vitest",
+            "Playwright",
+            "Storybook"
+          ],
+          "distribution": "CLI / npm create @nastmz/clean-react",
+          "repoHref": "https://github.com/NastMz/react-clean-architecture-template",
+          "intent": "Turn React SPA bootstrap into a repeatable foundation with clear boundaries, layered testing, and fewer accidental decisions per project."
+        },
+        {
+          "id": "PRJ-006",
+          "track": "CORE",
           "name": "dotnet-clean-template",
           "type": "BACKEND_TEMPLATE",
           "status": "PUBLISHED",
@@ -473,7 +499,7 @@
           "intent": "Turn .NET API bootstrap into a repeatable operation with consistent architectural standards and less accidental boilerplate."
         },
         {
-          "id": "PRJ-006",
+          "id": "PRJ-007",
           "track": "EXPERIMENTAL",
           "name": "Vanilla SPA",
           "type": "FRONTEND_FRAMEWORK",
@@ -492,7 +518,7 @@
           "intent": "Explore how far a real SPA can be pushed with native primitives before introducing a framework."
         },
         {
-          "id": "PRJ-007",
+          "id": "PRJ-008",
           "track": "EXPERIMENTAL",
           "name": "mini-php-framework",
           "type": "BACKEND_FRAMEWORK",

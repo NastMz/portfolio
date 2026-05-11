@@ -447,6 +447,32 @@
         {
           "id": "PRJ-005",
           "track": "CORE",
+          "name": "react-clean-architecture-template",
+          "type": "TEMPLATE_FRONTEND",
+          "status": "PUBLICADO",
+          "description": "Template opinionado para crear SPAs React con Clean Architecture, Vite, TypeScript y defaults productivos desde un CLI de scaffolding.",
+          "details": [
+            "Genera una estructura feature-first con app, features, shared, tests unitarios, integración y E2E desde el inicio.",
+            "Incluye React 19, TanStack Query, Zod para parsing de entorno, Result/Error primitives, observabilidad preparada para OpenTelemetry y repositorios en memoria para desarrollo local.",
+            "Trae comandos de scaffold para nuevas features, Storybook para UI compartida y contract tests para proteger reglas de arquitectura."
+          ],
+          "stack": [
+            "React 19",
+            "TypeScript",
+            "Vite",
+            "TanStack Query",
+            "Zod",
+            "Vitest",
+            "Playwright",
+            "Storybook"
+          ],
+          "distribution": "CLI / npm create @nastmz/clean-react",
+          "repoHref": "https://github.com/NastMz/react-clean-architecture-template",
+          "intent": "Convertir el arranque de SPAs React en una base repetible con límites claros, testing por capas y menos decisiones accidentales en cada proyecto."
+        },
+        {
+          "id": "PRJ-006",
+          "track": "CORE",
           "name": "dotnet-clean-template",
           "type": "TEMPLATE_BACKEND",
           "status": "PUBLICADO",
@@ -473,7 +499,7 @@
           "intent": "Convertir el arranque de APIs .NET en una operación repetible, con estándares arquitectónicos consistentes y menos boilerplate accidental."
         },
         {
-          "id": "PRJ-006",
+          "id": "PRJ-007",
           "track": "EXPERIMENTAL",
           "name": "Vanilla SPA",
           "type": "FRAMEWORK_FRONTEND",
@@ -492,7 +518,7 @@
           "intent": "Explorar cuánto se puede sostener una SPA real con primitives nativas antes de incorporar un framework."
         },
         {
-          "id": "PRJ-007",
+          "id": "PRJ-008",
           "track": "EXPERIMENTAL",
           "name": "mini-php-framework",
           "type": "FRAMEWORK_BACKEND",
